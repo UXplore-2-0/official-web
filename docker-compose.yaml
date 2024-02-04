@@ -1,0 +1,57 @@
+services:
+  server:
+    build: ./server
+    restart: always
+    expose:
+      - 3001
+    environment:
+      NODE_ENV: "production"
+      ENVIRONMENT: "production"
+      PORT: 3001
+      DATABASE: ${DATABASE:?err}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:?err}
+      FRONTEND_HOST: ${FRONTEND_HOST:?err}
+      FRONTEND_URL: ${FRONTEND_URL:?err}
+      ALT_FRONTEND_URL: ${ALT_FRONTEND_URL:?err}
+      JWT_SECRET: ${JWT_SECRET:?err}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:?err}
+      JWT_COOKIE_EXPIRES_IN: ${JWT_COOKIE_EXPIRES_IN:?err}
+      FROM_EMAIL: ${FROM_EMAIL:?err}
+      FROM_NAME: ${FROM_NAME:?err}
+      EMAIL_USERNAME: ${EMAIL_USERNAME:?err}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD:?err}
+      EMAIL_HOST: ${EMAIL_HOST:?err}
+      EMAIL_PORT: ${EMAIL_PORT:?err}
+      EMAIL_FROM: ${EMAIL_FROM:?err}
+      EMAIL: ${EMAIL:?err}
+      PASSWORD: ${PASSWORD:?err}
+      GOOGLE_EMAIL_USERNAME: ${GOOGLE_EMAIL_USERNAME:?err}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:?err}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:?err}
+      GOOGLE_REFRESH_TOKEN: ${GOOGLE_REFRESH_TOKEN:?err}
+      GOOGLE_REDIRECT_URI: ${GOOGLE_REDIRECT_URI:?err}
+
+  client:
+    build: 
+      context: ./client
+      args:
+        REACT_APP_API_URL: ${REACT_APP_API_URL:?err}
+    restart: always
+    expose:
+      - 80
+      - 443
+    environment:
+      REACT_APP_API_URL: ${REACT_APP_API_URL:?err}
+
+  nginx:
+    image: nginx:1.22-alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 443:443
+      - 80:80
+    depends_on:
+      - client
+      - server
+    restart: always
+    
