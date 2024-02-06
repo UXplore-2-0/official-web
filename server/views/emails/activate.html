@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{SUBJECT}}</title>
+    <style>
+      @media only screen and (max-width: 600px) {
+        /* CSS styles for small screens */
+
+        body {
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(
+            72.71deg,
+            #b84bc9 3.31%,
+            #0d3491 57.44%,
+            #00a8b4 108.12%
+          );
+          background-blend-mode: darken;
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.5;
+          color: #fff;
+        }
+
+        h1 {
+          font-size: 32px;
+          margin: 0;
+          padding: 0;
+          color: #fff;
+          text-align: center;
+        }
+        .logo {
+          display: block;
+          margin: 0 auto;
+          max-width: 200px;
+          padding: 20px 0;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background: linear-gradient(
+            72.71deg,
+            #b84bc9 3.31%,
+            #0d3491 57.44%,
+            #00a8b4 108.12%
+          );
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          margin-top: 20px;
+          font-size: 18px;
+        }
+        .btn:hover {
+          background: #333;
+        }
+
+        .content {
+          background: #fff;
+          border-radius: 10px;
+          padding: 20px;
+          margin-top: 20px;
+          color: #333;
+          font-size: 18px;
+          line-height: 1.5;
+          text-align: center;
+        }
+
+        .container {
+          max-width: 500px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        p {
+          text-align: left;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+
+      @media only screen and (min-width: 601px) and (max-width: 1024px) {
+        /* CSS styles for medium screens */
+
+        body {
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(
+            72.71deg,
+            #b84bc9 3.31%,
+            #0d3491 57.44%,
+            #00a8b4 108.12%
+          );
+          background-blend-mode: darken;
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.5;
+          color: #fff;
+        }
+
+        h1 {
+          font-size: 32px;
+          margin: 0;
+          padding: 0;
+          color: #fff;
+          text-align: center;
+        }
+        .logo {
+          display: block;
+          margin: 0 auto;
+          max-width: 200px;
+          padding: 20px 0;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background: linear-gradient(
+            72.71deg,
+            #b84bc9 3.31%,
+            #0d3491 57.44%,
+            #00a8b4 108.12%
+          );
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          margin-top: 20px;
+          font-size: 18px;
+        }
+        .btn:hover {
+          background: #333;
+        }
+
+        .content {
+          background: #fff;
+          border-radius: 10px;
+          padding: 20px;
+          margin-top: 20px;
+          color: #333;
+          font-size: 18px;
+          line-height: 1.5;
+          text-align: center;
+        }
+
+        .container {
+          max-width: 600px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        p {
+          text-align: left;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+
+      @media only screen and (min-width: 1025px) {
+        /* CSS styles for large screens */
+        body {
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(
+            72.71deg,
+            #b84bc9 3.31%,
+            #0d3491 57.44%,
+            #00a8b4 108.12%
+          );
+          background-blend-mode: darken;
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+          line-height: 1.5;
+          color: #fff;
+        }
+
+        h1 {
+          font-size: 32px;
+          margin: 0;
+          padding: 0;
+          color: #fff;
+          text-align: center;
+        }
+        .logo {
+          display: block;
+          margin: 0 auto;
+          max-width: 200px;
+          padding: 20px 0;
+        }
+
+        .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background: linear-gradient(
+            72.71deg,
+            #b84bc9 3.31%,
+            #0d3491 57.44%,
+            #00a8b4 108.12%
+          );
+          color: #fff;
+          text-decoration: none;
+          border-radius: 5px;
+          margin-top: 20px;
+          font-size: 18px;
+        }
+        .btn:hover {
+          background: #333;
+        }
+
+        .content {
+          background: #fff;
+          border-radius: 10px;
+          padding: 20px;
+          margin-top: 20px;
+          color: #333;
+          font-size: 18px;
+          line-height: 1.5;
+          text-align: center;
+        }
+
+        .container {
+          max-width: 1024px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+        p {
+          text-align: left;
+          padding-left: 3rem;
+          padding-right: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://i.postimg.cc/K87w3H71/Logo.png"
+        alt="Designthon Logo"
+        class="logo"
+      />
+      <h1>Registration Verification</h1>
+      <div class="content">
+        <p>Hi {{TEAMNAME}},</p>
+        <p>
+          We're excited to have you as a participant in our UI/UX competition.
+          To activate your account and complete the registration process, please
+          click on the following link:
+        </p>
+        <a href="{{ACTIVATEURL}}" class="btn">Activate Team</a>
+        <p>
+          If the activation button doesn't work, you can open the following url
+          in your browser:
+        </p>
+        <p>{{ACTIVATEURL}}</p>
+        <p>Best regards,</p>
+        <p></p>
+        <p>MORA UXplore-v.1.0 Team</p>
+        <p></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{SUBJECT}}</title>
+    <style>
+      /* Set global styles */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.4;
+        color: #333;
+      }
+
+      /* Set styles for the header section */
+      .header {
+        background-color: #f5f5f5;
+        padding: 20px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Set styles for the content section */
+      .content {
+        padding: 20px;
+      }
+
+      .content p {
+        margin-bottom: 1.5em;
+      }
+
+      .button {
+        display: inline-block;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.2s ease-in-out;
+      }
+
+      .button:hover {
+        background-color: #0069d9;
+      }
+
+      /* Set styles for the footer section */
+      .footer {
+        background-color: #f5f5f5;
+        padding: 20px;
+        font-size: 12px;
+        color: #666;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>{{SUBJECT}}</h1>
+    </div>
+    <div class="content">
+      <p>Hi {{TEAMNAME}},</p>
+      <p>Thank you for signing up for MORA UXplore-v.1.0!</p>
+      <p>
+        We're excited to have you as a participant in our UI/UX competition. To
+        activate your account and complete the registration process, please
+        click on the following link:
+      </p>
+      <p>
+        <a class="button" href="{{ACTIVATEURL}}">Activate Your Account</a>
+      </p>
+      <p>If you did not sign up for our service, please ignore this email.</p>
+    </div>
+    <div class="footer">
+      <p>This email was sent by [Your Company Name].</p>
+    </div>
+  </body>
+</html> -->
