@@ -4,7 +4,7 @@
   "rules": {
     "prettier/prettier": "off",
     "spaced-comment": "off",
-    "no-console": "warn",
+    // "no-console": "warn",
     "consistent-return": "off",
     "func-names": "off",
     "object-shorthand": "off",
