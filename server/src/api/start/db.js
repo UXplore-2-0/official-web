@@ -13,10 +13,8 @@ const dbConnect = async () => {
     .connect(dbUri)
     .then(() => {
       logger.info('Database connect successfully');
-      logger.info('Database connect successfully');
     })
     .catch((err) => {
-      logger.error('Database connection failed: ', err);
       logger.error('Database connection failed: ', err);
     });
 };
