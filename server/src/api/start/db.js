@@ -1,17 +1,21 @@
 const mongoose = require('mongoose');
+const logger = require('./logger');
 
 const dbConnect = async () => {
-  const dbUri = process.env.DATABASE;
+  const dbUri = process.env.MONGO_DATABASE.replace(
+    '<PASSWORD>',
+    process.env.MONGO_DATABASE_PASSWORD
+  );
 
-  mongoose.set('strictQuery', false);
-
+  // mongoose.set('strictQuery', false);
+  logger.error('dbUri: ', dbUri);
   await mongoose
     .connect(dbUri)
     .then(() => {
-      console.log('Database connect successfully');
+      logger.info('Database connect successfully');
     })
     .catch((err) => {
-      console.log(err);
+      logger.error('Database connection failed: ', err);
     });
 };
 
