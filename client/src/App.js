@@ -1,13 +1,10 @@
 import React from 'react'
-import Navbar from "./layout/NavBar/Navbar"
-import Home from "./pages/Home/Home"
+import Timeline from './pages/Home/components/Timeline/Timeline'
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Home />
-    
+      <Timeline />
     </>
   )
 }
