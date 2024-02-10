@@ -1,20 +1,21 @@
 /**
- * Handles the sign up process for a team.
+ * Retrieves all notifications.
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  * @param {Function} next - The next middleware function.
  */
-function signUpTeam(req, res, next) {}
+function getAllNotification(req, res, next) {}
 
 /**
- * Handles the login process.
+ * Adds a notification.
+ *
  * @param {Object} req - The request object.
  * @param {Object} res - The response object.
  * @param {Function} next - The next middleware function.
  */
-function login(req, res, next) {}
+function addNotification(req, res, next) {}
 
 module.exports = {
-  signUpTeam,
-  login,
+  getAllNotification,
+  addNotification,
 };

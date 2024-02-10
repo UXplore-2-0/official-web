@@ -41,6 +41,7 @@ const teamSchema = new mongoose.Schema({
   role: {
     type: String,
     default: 'team',
+    enum: ['team', 'admin'],
   },
   created_at: {
     type: Date,

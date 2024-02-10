@@ -58,7 +58,7 @@ The database model is as follows:
 
 - `GET /api/v1/teams` - Get all the teams (<span style="color:blue">Admin Only</span>)
 
-- `POST /api/v1/teams/add` - Add new members to the team
+- `POST /api/v1/teams/:team_name/add` - Add new members to the team
 - `GET /api/v1/teams/:team_name/:member_id` - Get a single member details
 - `PUT /api/v1/teams/:team_name/:member_id` - Update a single member details
 - `DELETE /api/v1/teams/:team_name/:member_id` - Delete a single member from the team
