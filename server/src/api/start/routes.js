@@ -6,6 +6,11 @@ const morgan = require('morgan');
 const mongoSanitize = require('express-mongo-sanitize');
 const errorMiddleware = require('../middleware/error');
 
+const authRoutes = require('../routes/auth.routes');
+const teamsRoutes = require('../routes/teams.routes');
+const statRoutes = require('../routes/stat.routes');
+const notificationRoutes = require('../routes/notification.routes');
+
 module.exports = (app) => {
   // log the requesta with morgan in the dev mode
   if (process.env.NODE_ENV === 'development') {
@@ -26,6 +31,10 @@ module.exports = (app) => {
   //   app.use(xss());
 
   // handle all the routes belongs to the API
+  app.use('/api/v1/auth', authRoutes);
+  app.use('/api/v1/teams', teamsRoutes);
+  app.use('/api/v1/stat', statRoutes);
+  app.use('/api/v1/notifications', notificationRoutes);
 
   // handle all the routes except for above routes
   app.all('*', (req, res, next) => {
