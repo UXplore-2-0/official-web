@@ -94,7 +94,7 @@ h1 {
     right: 0;
 }
 
-.timeline-container:nth-child(odd) div::before,
+/* .timeline-container:nth-child(odd) div::before,
 .timeline-container:nth-child(even) div::before {
     content: '';
     background: #fff;
@@ -105,7 +105,7 @@ h1 {
     top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
-}
+} */
 
 .timeline-container:nth-child(odd) div::before {
     left: -0.5em;
