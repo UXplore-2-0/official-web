@@ -8,7 +8,7 @@ const {
 // create a router for handle the notification routes
 const router = express.Router();
 
-router.get.get('/', auth, getAllNotification);
+router.get('/', auth, getAllNotification);
 router.post('/', auth, admin, addNotification);
 
 module.exports = router;

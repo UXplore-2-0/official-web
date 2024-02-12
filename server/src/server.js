@@ -7,7 +7,7 @@ const {
   unCaughtExceptionHandler,
   unHandledPromiseRejectionHandler,
 } = require('./api/start/unhandled');
-const dbConnect = require('./api/start/db');
+const db = require('./api/models');
 // setup the dotend file
 dotenv.config({ path: '.env' });
 // create a new express powered server
@@ -20,12 +20,13 @@ process.on('uncaughtException', unCaughtExceptionHandler);
 // handle all the routes belongs to the server
 require('./api/start/routes')(app);
 
-// connect to the database
-dbConnect();
-
 const port = process.env.PORT || 5000;
-// listen on the port specified by the environment
-app.listen(port, () => {
-  logger.info(`NODE ENV: ${process.env.NODE_ENV}`);
-  logger.info(`Server running on port ${port}`);
+
+// start the server by checking the existence of the database
+db.sequelize.sync().then(() => {
+  // listen on the port specified by the environment
+  app.listen(port, () => {
+    logger.info(`NODE ENV: ${process.env.NODE_ENV}`);
+    logger.info(`Server running on port ${port}`);
+  });
 });

@@ -1,54 +1,55 @@
-const mongoose = require('mongoose');
-
-// create the schema for the Team model
-const teamSchema = new mongoose.Schema({
-  team_name: {
-    type: String,
-    required: [true, 'Team name is required'],
-    unique: true,
-    trim: true,
-    maxlength: [50, 'Team name must be less than 50 characters'],
-  },
-  email: {
-    type: String,
-    required: [true, 'Email is required'],
-    unique: true,
-    trim: true,
-    maxlength: [255, 'Email must be less than 50 characters'],
-    match: [
-      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      'Please provide a valid email',
-    ],
-  },
-  password: {
-    type: String,
-    required: [true, 'Password is required'],
-  },
-  team_members: [
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Team',
+module.exports = (sequelize, DataTypes) => {
+  const Team = sequelize.define('Team', {
+    team_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
-  ],
-  is_verified: {
-    type: Boolean,
-    default: false,
-  },
-  verification_token: {
-    type: String,
-    default: '',
-  },
-  role: {
-    type: String,
-    default: 'team',
-    enum: ['team', 'admin'],
-  },
-  created_at: {
-    type: Date,
-    default: Date.now,
-  },
-});
+    team_name: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: [1, 50],
+      },
+    },
+    email: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: [1, 255],
+        isEmail: true,
+      },
+    },
+    password: {
+      type: DataTypes.STRING(1024),
+      allowNull: false,
+    },
+    is_verrified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    verification_token: {
+      type: DataTypes.STRING(1024),
+      defaultValue: '',
+    },
+    role: {
+      type: DataTypes.ENUM('team', 'admin'),
+      defaultValue: 'team',
+    },
+  });
 
-const Team = mongoose.model('Team', teamSchema);
+  Team.associate = (models) => {
+    // setup the association between Team and Member
+    Team.hasMany(models.Member, {
+      foreignKey: {
+        name: 'team_id',
+        allowNull: false,
+      },
+      onDelete: 'CASCADE',
+    });
+  };
 
-module.exports = Team;
+  return Team;
+};

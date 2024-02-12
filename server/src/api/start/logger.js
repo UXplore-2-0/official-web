@@ -1,7 +1,5 @@
 const winston = require('winston');
 const DailyRotateFile = require('winston-daily-rotate-file');
-const { Logtail } = require('@logtail/node');
-const { LogtailTransport } = require('@logtail/winston');
 
 // create separate trasports for different log levels
 const errorTrasport = new DailyRotateFile({
@@ -31,19 +29,14 @@ const combinedTransport = new DailyRotateFile({
 });
 
 // create the cloud log servrice trasport
-const logTail = new Logtail(`${process.env.LOGTAIL_API_KEY}`);
+// const logTail = new Logtail(`${process.env.LOGTAIL_API_KEY}`);
 
 // create  the logger with those trasports
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.json(),
   defaultMeta: { service: 'user-service' },
-  trasnports: [
-    errorTrasport,
-    infoTransport,
-    combinedTransport,
-    new LogtailTransport(logTail),
-  ],
+  trasnports: [errorTrasport, infoTransport, combinedTransport],
 });
 
 // if we're not in the production level then lof to the console as well

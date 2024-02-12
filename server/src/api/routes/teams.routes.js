@@ -41,7 +41,7 @@ router.post('/:team_name/submissions', auth, addSubmission);
 router.get('/:team_name/question', auth, getQuestion);
 
 // QA related routes
-router.post('/:tem_name/qa', auth, addQA);
+router.post('/:team_name/qa', auth, addQA);
 router.get('/:team_name/qa', auth, getQAs);
 router.get('/:team_name/qa/:qa_id', auth, getQA);
 
@@ -50,3 +50,5 @@ router.get('/', auth, admin, getAllTeams);
 router.post('/:team_name/question', auth, admin, addQuestion);
 router.get(':/team_name/submission', auth, admin, getSubmissions);
 router.post(':/team_name/qa/:qa_id/answer', auth, admin, addAnswer);
+
+module.exports = router;

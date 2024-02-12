@@ -3,6 +3,7 @@ const logger = require('./logger');
 // this function is called when an error is not caught
 function unCaughtExceptionHandler(err) {
   logger.error('Uncaught Error: Shutting Down!!!');
+  console.log(err);
   logger.error(err.name, err.message);
   // if we're in production then we should exit the process
   process.exit(1);

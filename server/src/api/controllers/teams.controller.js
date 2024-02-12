@@ -16,9 +16,13 @@ function addSubmission(req, res, next) {}
 
 function getQuestion(req, res, next) {}
 
+function addQA(req, res, next) {}
+
 function addQAs(req, res, next) {}
 
 function getQA(req, res, next) {}
+
+function getQAs(req, res, next) {}
 
 function getAllTeams(req, res, next) {}
 
@@ -39,7 +43,9 @@ module.exports = {
   addSubmission,
   getQuestion,
   addQAs,
+  addQA,
   getQA,
+  getQAs,
   getAllTeams,
   addQuestion,
   getSubmissions,
