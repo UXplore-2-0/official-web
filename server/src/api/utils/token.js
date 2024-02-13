@@ -1,14 +1,11 @@
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
 
 function hashPassword(password) {
   const hashSalt = bcrypt.genSaltSync(10);
 
   return bcrypt.hashSync(password, hashSalt);
-}
-
-function compare(password, hash) {
-  return bcrypt.compareSync(password, hash);
 }
 
 function generateVerificationToken() {
@@ -24,8 +21,14 @@ function generateVerificationToken() {
   });
 }
 
+function generateJWT(payload) {
+  return jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: '1d',
+  });
+}
+
 module.exports = {
   hashPassword,
-  compare,
   generateVerificationToken,
+  generateJWT,
 };

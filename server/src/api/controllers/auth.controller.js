@@ -1,12 +1,11 @@
 const { Team } = require('../models');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 const { validateTeam, validateLogin } = require('../validations/team');
 const {
-  compare,
   hashPassword,
   generateVerificationToken,
+  generateJWT,
 } = require('../utils/token');
 const sendMail = require('../utils/email');
 
@@ -143,11 +142,11 @@ async function login(req, res, next) {
     }
 
     // create a json web token for the team
-    const accessToken = jwt.sign(
-      { team_name: team.team_name, team_id: team.team_id },
-      'secret',
-      { expiresIn: '1d' }
-    );
+    const accessToken = generateJWT({
+      team_name: team.team_name,
+      team_id: team.team_id,
+      role: team.role,
+    });
 
     // return the token with appropriate message
     return res.json({
