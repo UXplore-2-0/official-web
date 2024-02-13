@@ -37,9 +37,9 @@
   //   "ecmaVersion": 12
   // },
   "rules": {
-    "indent": ["error", 2],
+    // "indent": ["error", ],
     // "linebreak-style": ["error", "unix"],
-    "quotes": ["error", "single"],
+    // "quotes": ["error", "single"],
     "semi": ["error", "always"]
   }
 }
