@@ -13,3 +13,17 @@ Content-Type: {{contentType}}
     "email": "shavinanjithachandrawansha@gmail.com",
     "password": "12345678"
 }
+
+### verify an account
+@token = 7ccf12d72c075bde50629065c6abe7304786f7c6
+@team_name = BitMonsters
+POST {{host}}/api/v1/auth/verify/{{team_name}}/{{token}} {{http}}
+
+### login to the team account
+POST {{host}}/api/v1/auth/login {{http}}
+Content-Type: {{contentType}}
+
+{
+    "email": "shavinanjithachandrawansha@gmail.com",
+    "password": "12345678"
+}

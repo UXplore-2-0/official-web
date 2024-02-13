@@ -10,6 +10,16 @@ function validateTeam(data) {
   return teamSchema.validate(data);
 }
 
+function validateLogin(data) {
+  const loginSchema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(8).max(1024).required(),
+  });
+
+  return loginSchema.validate(data);
+}
+
 module.exports = {
   validateTeam,
+  validateLogin,
 };

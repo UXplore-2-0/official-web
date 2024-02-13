@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const Mailgen = require('mailgen');
 
-function generateMailBody(verificationToken) {
+function generateMailBody(verificationToken, team_name) {
   let mailGenerator = new Mailgen({
     theme: 'default',
     product: {
@@ -12,7 +12,7 @@ function generateMailBody(verificationToken) {
 
   let email = {
     body: {
-      name: 'John Doe',
+      name: `${team_name}`,
       intro:
         "Welcome to Your UXplore 2.0! We're very excited to have you on board.",
       action: {
@@ -21,7 +21,7 @@ function generateMailBody(verificationToken) {
         button: {
           color: '#22BC66',
           text: 'Confirm your account',
-          link: `http://localhost:3000/api/v1/auth/verify/${verificationToken}`,
+          link: `http://localhost:3000/api/v1/auth/verify/${team_name}/${verificationToken}`,
         },
       },
       outro:
@@ -32,7 +32,7 @@ function generateMailBody(verificationToken) {
   return mailGenerator.generate(email);
 }
 
-async function sendMail(verificationToken, email) {
+async function sendMail(verificationToken, team_name, email) {
   // Create a transporter
   let transporter = nodemailer.createTransport({
     host: 'sandbox.smtp.mailtrap.io',
@@ -49,13 +49,18 @@ async function sendMail(verificationToken, email) {
     to: email, // list of receivers
     subject: 'UXPlore 2.0', // Subject line
     text: 'Hello world?', // plain text body
-    html: generateMailBody(verificationToken), // html body
+    html: generateMailBody(verificationToken, team_name), // html body
   };
 
   // Send email
   let info = await transporter.sendMail(mailOptions);
 
-  console.log('Message sent: %s', info.messageId);
+  console.log(
+    'Message sent: %s',
+    info.messageId,
+    ' token: ',
+    verificationToken
+  );
   return true;
 }
 
