@@ -10,7 +10,7 @@ const { auth, admin } = require('../middleware/auth');
 // create a new Router for the auth routes
 const router = express.Router();
 
-router.post('/signup/admin', auth, admin, signUpAdmin);
+router.post('/signup/admin', auth, admin, signUpAdmin); // route for the admin to create a new team
 router.post('/signup', signUpTeam);
 router.post('/verify/:team_name/:token', verifyTeam);
 router.post('/login', login);
