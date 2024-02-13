@@ -1,6 +1,5 @@
 require('express-async-error');
 const dotenv = require('dotenv');
-require('express-async-error');
 const express = require('express');
 const logger = require('./api/start/logger');
 const {
