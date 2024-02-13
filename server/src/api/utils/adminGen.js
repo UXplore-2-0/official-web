@@ -1,6 +1,7 @@
 const { Team } = require('../models');
 const logger = require('../start/logger');
 const log = require('../start/logger');
+const { hashPassword } = require('./token');
 
 async function createRootAdmin() {
   const rootAdmin = await Team.findOne({
@@ -17,7 +18,7 @@ async function createRootAdmin() {
       team_name: `${process.env.ROOT_USER}`,
       email: `${process.env.ROOT_EMAIL}`,
       role: 'admin',
-      password: `${process.env.ROOT_PASSWORD}`,
+      password: hashPassword(`${process.env.ROOT_PASSWORD}`),
       is_verified: true,
       verification_token: 'verified',
     });

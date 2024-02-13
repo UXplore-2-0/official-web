@@ -157,8 +157,59 @@ async function login(req, res, next) {
   });
 }
 
+async function signUpAdmin(req, res, next) {
+  // first validate the request body
+  const { error } = validateTeam(req.body);
+  if (error)
+    return res
+      .status(400)
+      .json({ status: false, message: error.details[0].message });
+
+  const data = req.body;
+  // check if the tem already exists
+  const team = await Team.findOne({
+    where: {
+      [Op.or]: [{ email: data.email }, { team_name: data.team_name }],
+    },
+  });
+
+  // if found one then return the error
+  if (team)
+    return res.status(400).json({
+      status: false,
+      message: 'Team with this email or team name already exists!',
+    });
+
+  // create a new team as a admin
+  // first hash the password using the bcrypt
+  const hash = hashPassword(data.password);
+  // save the team in the database
+  const newTeam = await Team.build({
+    team_name: data.team_name,
+    email: data.email,
+    password: hash,
+    role: 'admin',
+    is_verified: true,
+    verification_token: 'verified',
+  });
+
+  // save the team in the database
+  await newTeam.save();
+
+  return res.json({
+    status: true,
+    team: {
+      team_name: newTeam.team_name,
+      email: newTeam.email,
+      is_verified: newTeam.is_verified,
+      role: newTeam.role,
+    },
+  });
+}
+
 module.exports = {
   signUpTeam,
+  signUpAdmin,
   login,
   verifyTeam,
 };
