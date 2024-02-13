@@ -20,6 +20,7 @@
     justify-content: space-around;
     position: absolute;
     bottom: -70px;
+    opacity: 40%;
 }
 
 @keyframes bubble {
@@ -29,15 +30,18 @@
     }
     50% {
         opacity: 1;
+        transition-behavior: smooth;
     }
     70% {
         opacity: 1;
+        transform: rotateX('angle');
     }
     100% {
         transform: translateY(-80vh);
         opacity: 0;
     }
 } 
+
 
 .bubble img:nth-child(1) {
     animation-delay: 2s;
@@ -58,12 +62,12 @@
 }
 
 .bubble img:nth-child(5) {
-    animation-delay: 3s;
+    animation-delay: 3.75s;
 }
 
 .bubble img:nth-child(6) {
     animation-delay: 6s;
-    width: 20px;
+    width: 60px;
 }
 
 .bubble img:nth-child(7) {
@@ -82,7 +86,7 @@
 }
 
 .bubble img:nth-child(10) {
-    animation-delay: 3s;
+    animation-delay: 5.5s;
     width: 65px;
 }
 
@@ -96,7 +100,7 @@
 }
 
 .bubble img:nth-child(13) {
-    animation-delay: 3s;
+    animation-delay: 2.5s;
     width: 25px;
 }
 
@@ -105,5 +109,5 @@
 }
 
 .bubble img:nth-child(15) {
-    animation-delay: 3s;
+    animation-delay: 3.25s;
 }
