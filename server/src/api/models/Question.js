@@ -30,5 +30,16 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  Question.associate = (models) => {
+    // setup the association between the Question and Team models
+    Question.belongsTo(models.Team, {
+      foreignKey: {
+        name: 'team_id',
+        allowNull: false,
+      },
+      onDelete: 'CASCADE',
+    });
+  };
+
   return Question;
 };

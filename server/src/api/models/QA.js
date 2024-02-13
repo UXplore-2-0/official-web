@@ -29,5 +29,16 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
+  QA.associate = (models) => {
+    // setup the association between the QA and Team models
+    QA.belongsTo(models.Team, {
+      foreignKey: {
+        name: 'team_id',
+        allowNull: false,
+      },
+      onDelete: 'CASCADE',
+    });
+  };
+
   return QA;
 };
