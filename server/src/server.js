@@ -8,6 +8,7 @@ const {
   unHandledPromiseRejectionHandler,
 } = require('./api/start/unhandled');
 const db = require('./api/models');
+const createRootAdmin = require('./api/utils/adminGen');
 // setup the dotend file
 dotenv.config({ path: '.env' });
 // create a new express powered server
@@ -24,6 +25,8 @@ const port = process.env.PORT || 5000;
 
 // start the server by checking the existence of the database
 db.sequelize.sync().then(() => {
+  // create the root admin user
+  createRootAdmin();
   // listen on the port specified by the environment
   app.listen(port, () => {
     logger.info(`NODE ENV: ${process.env.NODE_ENV}`);

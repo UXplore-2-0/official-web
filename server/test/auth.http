@@ -9,14 +9,14 @@ POST {{host}}/api/v1/auth/signup {{http}}
 Content-Type: {{contentType}}
 
 {
-    "team_name": "BitMonsters",
+    "team_name": "EvoTech",
     "email": "shavinanjithachandrawansha@gmail.com",
     "password": "12345678"
 }
 
 ### verify an account
-@token = 7ccf12d72c075bde50629065c6abe7304786f7c6
-@team_name = BitMonsters
+@token =  50792d22f4f9b0ffc1dfea59f5611f6392cdd20c
+@team_name = EvoTech
 POST {{host}}/api/v1/auth/verify/{{team_name}}/{{token}} {{http}}
 
 ### login to the team account

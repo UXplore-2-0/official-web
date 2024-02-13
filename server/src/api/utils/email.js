@@ -6,7 +6,7 @@ function generateMailBody(verificationToken, team_name) {
     theme: 'default',
     product: {
       name: 'Mora UXPlore 2.0',
-      link: 'https://uxplore.com/',
+      link: `${process.env.FRONT_END_URL}`,
     },
   });
 
@@ -16,8 +16,7 @@ function generateMailBody(verificationToken, team_name) {
       intro:
         "Welcome to Your UXplore 2.0! We're very excited to have you on board.",
       action: {
-        instructions:
-          'To get started with Your Product Name, please click here:',
+        instructions: `To get started with Your Team ${team_name}, please click here:`,
         button: {
           color: '#22BC66',
           text: 'Confirm your account',
@@ -35,20 +34,19 @@ function generateMailBody(verificationToken, team_name) {
 async function sendMail(verificationToken, team_name, email) {
   // Create a transporter
   let transporter = nodemailer.createTransport({
-    host: 'sandbox.smtp.mailtrap.io',
-    port: 2525, // replace with your email provider
+    host: `${process.env.MAIL_TEST_HOST}`,
+    port: process.env.MAIL_TEST_PORT, // replace with your email provider
     auth: {
-      user: '86a2a3063d8427', // replace with your email
-      pass: 'ad224d680ae018', // replace with your password
+      user: `${process.env.MAIL_TEST_USER}`, // replace with your email
+      pass: `${process.env.MAIL_TEST_PASSWORD}`, // replace with your password
     },
   });
 
   // Email options
   let mailOptions = {
-    from: '', // sender address
+    from: `${process.env.MAIL_TEST_HOST}`, // sender address
     to: email, // list of receivers
     subject: 'UXPlore 2.0', // Subject line
-    text: 'Hello world?', // plain text body
     html: generateMailBody(verificationToken, team_name), // html body
   };
 
