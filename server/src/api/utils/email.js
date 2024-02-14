@@ -20,7 +20,7 @@ function generateMailBody(verificationToken, team_name) {
         button: {
           color: '#22BC66',
           text: 'Confirm your account',
-          link: `http://localhost:3000/api/v1/auth/verify/${team_name}/${verificationToken}`,
+          link: `http://localhost:5000/api/v1/auth/verify/${team_name}/${verificationToken}`,
         },
       },
       outro:
@@ -31,7 +31,36 @@ function generateMailBody(verificationToken, team_name) {
   return mailGenerator.generate(email);
 }
 
-async function sendMail(verificationToken, team_name, email) {
+function generateResetMailBody(token, team_id) {
+  let mailGenerator = new Mailgen({
+    theme: 'default',
+    product: {
+      name: 'Mora UXPlore 2.0',
+      link: `${process.env.FRONT_END_URL}`,
+    },
+  });
+
+  let email = {
+    body: {
+      intro:
+        'You have received this email because a password reset request for your account was received.',
+      action: {
+        instructions:
+          'If you did not request a password reset, no further action is required on your part.',
+        button: {
+          color: '#22BC66',
+          text: 'Reset your password',
+          link: `http://localhost:5000/api/v1/auth/forget-password/reset/${team_id}/${token}`,
+        },
+      },
+      outro: 'If you have any questions, please contact us at',
+    },
+  };
+
+  return mailGenerator.generate(email);
+}
+
+function createMailTrasport() {
   // Create a transporter
   let transporter = nodemailer.createTransport({
     host: `${process.env.MAIL_TEST_HOST}`,
@@ -42,11 +71,17 @@ async function sendMail(verificationToken, team_name, email) {
     },
   });
 
+  return transporter;
+}
+
+async function sendMail(verificationToken, team_name, email) {
+  const transporter = createMailTrasport();
+
   // Email options
   let mailOptions = {
     from: `${process.env.MAIL_TEST_HOST}`, // sender address
     to: email, // list of receivers
-    subject: 'UXPlore 2.0', // Subject line
+    subject: 'UXPlore 2.0 Registration', // Subject line
     html: generateMailBody(verificationToken, team_name), // html body
   };
 
@@ -59,7 +94,28 @@ async function sendMail(verificationToken, team_name, email) {
     ' token: ',
     verificationToken
   );
-  return true;
+  return info;
 }
 
-module.exports = sendMail;
+async function sendResetMail(token, email, team_id) {
+  // get the transporter
+  const transporter = createMailTrasport();
+
+  let mailOptions = {
+    from: `${process.env.MAIL_TEST_HOST}`,
+    to: email,
+    subject: 'Password Reset | Mora UXPlore 2.0',
+    html: generateResetMailBody(token, team_id),
+  };
+
+  let info = await transporter.sendMail(mailOptions);
+
+  console.log('Message sent: %s', info.messageId, ' token: ', token);
+
+  return info;
+}
+
+module.exports = {
+  sendMail,
+  sendResetMail,
+};

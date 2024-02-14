@@ -19,7 +19,24 @@ function validateLogin(data) {
   return loginSchema.validate(data);
 }
 
+async function validateNewPassword(data) {
+  const passwordSchema = Joi.object({
+    old_password: Joi.string().min(8).max(1024).required(),
+    new_password: Joi.string().min(8).max(1024).required(),
+  });
+
+  return passwordSchema.validate(data);
+}
+
+async function validatePassword(data) {
+  return Joi.object({
+    password: Joi.string().min(8).max(1024).required(),
+  }).validate(data);
+}
+
 module.exports = {
   validateTeam,
   validateLogin,
+  validateNewPassword,
+  validatePassword,
 };

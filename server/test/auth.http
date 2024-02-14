@@ -25,7 +25,7 @@ Content-Type: {{contentType}}
 
 {
     "email": "shavinanjithachandrawansha@gmail.com",
-    "password": "12345678"
+    "password": "123456789"
 }
 
 
@@ -37,4 +37,34 @@ Content-Type: {{contentType}}
     "team_name": "root_1",
     "email": "root1@gmail.com",
     "password": "12345678"
+}
+
+
+### reset password
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJFdm9UZWNoIiwidGVhbV9pZCI6Miwicm9sZSI6InRlYW0iLCJpYXQiOjE3MDc4ODcxMDEsImV4cCI6MTcwNzk3MzUwMX0.CeUuNz0bn23hFpB76-4AJKSD24YDqTke90QrCkjuWLo
+POST {{host}}/api/v1/auth/reset {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "old_password": "12345678",
+    "new_password": "123456789"
+}
+
+### forget password
+POST {{host}}/api/v1/auth/forget-password {{http}}
+Content-Type: {{contentType}}
+
+{
+    "email" : "shavinanjithachandrawansha@gmail.com"
+}
+
+### reset fotget password
+@token=413ba4b006a1fd2cdd7092a4875d18134ca9b9a
+@team_id=2
+POST {{host}}/api/v1/auth/forget-password/reset/{{team_id}}/{{token}} {{http}}
+Content-Type: {{contentType}}
+
+{
+    "password" : "12345678"
 }

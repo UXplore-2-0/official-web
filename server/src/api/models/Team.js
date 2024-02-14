@@ -34,6 +34,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(1024),
       defaultValue: '',
     },
+    reset_token: {
+      type: DataTypes.STRING(1024),
+      defaultValue: null,
+    },
+    reset_valid: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
     role: {
       type: DataTypes.ENUM('team', 'admin'),
       defaultValue: 'team',
