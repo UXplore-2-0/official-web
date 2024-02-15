@@ -1,0 +1,5 @@
+.timeline-backdrop {
+    background-image: url('./images/Underwater.jpg');
+    background-size: cover;
+    background-position: center;
+}
