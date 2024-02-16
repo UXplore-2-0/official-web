@@ -69,7 +69,7 @@
 
 .bubble img:nth-child(6) {
     animation-delay: 6s;
-    width: 60px;
+    width: 72px;
 }
 
 .bubble img:nth-child(7) {
@@ -79,7 +79,7 @@
 
 .bubble img:nth-child(8) {
     animation-delay: 5s;
-    width: 20px;
+    width: 45px;
 }
 
 .bubble img:nth-child(9) {
@@ -112,4 +112,5 @@
 
 .bubble img:nth-child(15) {
     animation-delay: 3.25s;
+    width: 58px;
 }
