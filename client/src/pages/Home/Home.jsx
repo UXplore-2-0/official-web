@@ -3,7 +3,7 @@ import Main from './components/Main/Main'
 import Guidlines from './components/Guidlines/Guidlines'
 import Timeline from './components/Timeline/Timeline'
 import Sponsorships from './components/Sponsorships/Sponsorships'
-import Contacts from './components/Contacts/ContactUs'
+import Contacts from './components/Contacts/Contacts'
 
 
 function Home() {
