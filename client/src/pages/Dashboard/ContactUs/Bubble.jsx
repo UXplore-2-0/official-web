@@ -4,8 +4,8 @@ import bubble from "./images/bubble.png";
 
 function Bubble() {
   return (
-    <div className="contact_us">
-      <div className="bubble">
+    <div class="contact_us">
+      <div class="bubble">
         {Array.from({ length: 15 }).map((_, i) => (
           <img key={i} src={bubble} alt={`bubble${i}`} />
         ))}
