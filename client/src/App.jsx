@@ -1,15 +1,16 @@
 import React from 'react'
-import Navbar from "./layout/NavBar/Navbar"
-import Home from "./pages/Home/Home"
+
+import UserDashboard from './pages/Dashboard/UserDashboard/UserDashboard';
+
+
 
 function App() {
   return (
-    <>
-      <Navbar />
-      <Home />
-    
-    </>
-  )
+    < div>
+      <UserDashboard />
+    </div>
+  );
 }
 
-export default App
+export default App;
+
