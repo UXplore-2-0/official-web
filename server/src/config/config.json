@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Sha2002@vin",
+    "password": "12345",
     "database": "uxplore",
     "host": "127.0.0.1",
     "dialect": "mysql"
