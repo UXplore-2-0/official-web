@@ -21,7 +21,7 @@ function Sidebar() {
         <div className="flex">
             <div
                 className={` ${open ? "w-72" : "w-20 "
-                    } bg-dark-purple h-screen p-5  pt-8 relative duration-300`}
+                    } bg-[#081A51] h-screen p-5 pt-8 relative duration-300`}
             >
                 <img
                     src={control}

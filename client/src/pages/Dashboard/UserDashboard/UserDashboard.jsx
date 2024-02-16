@@ -3,8 +3,11 @@ import Sidebar from './Component/Sidebar'
 
 function UserDashboard() {
     return (
-        <div>
-            <Sidebar />
+        <div >
+            <div className=''>
+                <Sidebar />
+            </div>
+
         </div>
     )
 }
