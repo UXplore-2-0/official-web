@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        len: [1, 50],
+        len: [3, 50],
       },
     },
     email: {
@@ -26,13 +26,21 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(1024),
       allowNull: false,
     },
-    is_verrified: {
+    is_verified: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
     verification_token: {
       type: DataTypes.STRING(1024),
       defaultValue: '',
+    },
+    reset_token: {
+      type: DataTypes.STRING(1024),
+      defaultValue: null,
+    },
+    reset_valid: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
     role: {
       type: DataTypes.ENUM('team', 'admin'),
