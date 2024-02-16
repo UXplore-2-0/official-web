@@ -1,5 +1,5 @@
 import React from "react";
-import PageLeft from "./DetailsWithPhoto/PageLeft";
+import PageLeft from "./Details With Photo/PageLeft";
 
 function ContactUsPage() {
   return (
@@ -7,7 +7,7 @@ function ContactUsPage() {
       <div class="">
         <PageLeft />
       </div>
-      <div class="">Contact Us</div>
+      <div class="text-5xl font-bold	">Contact Us</div>
     </>
   );
 }

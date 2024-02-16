@@ -8,7 +8,7 @@ import ImageText from "./ImageText";
 
 function PageLeft() {
   return (
-    <div class="items-start">
+    <div class="grid justify-items-start">
       <div class="w-full flex flex-row justify-center items-center">
         <ImageView Image={P1} />
         <ImageText
