@@ -1,6 +1,6 @@
 import React from "react";
 import "./Bubble.css";
-import bubble from "./images/bubble.png";
+import bubble from "../images/bubble.png";
 
 function Bubble() {
   return (
