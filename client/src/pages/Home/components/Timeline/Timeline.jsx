@@ -23,7 +23,6 @@ function Timeline() {
           end: "top 70%",
           scrub: true,
           toggleActions: "play none none none",
-          markers: true,
         },
       });
     });
@@ -38,7 +37,6 @@ function Timeline() {
         end: "bottom 70%",
         scrub: true,
         toggleActions: "play none none none",
-        markers: true,
       },
     });
 
@@ -52,7 +50,6 @@ function Timeline() {
         end: "bottom 70%",
         scrub: true,
         toggleActions: "play none none none",
-        markers: true,
       },
     });
 
