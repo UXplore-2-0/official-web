@@ -18,7 +18,7 @@ export default function Guidlines() {
       rotationX: 180,
       transformOrigin: "0% 50% -50",
       ease: "back",
-      stagger: 0.015,
+      stagger: 0.085,
     });
 
     gsap.from(".points-block", {
@@ -45,19 +45,20 @@ export default function Guidlines() {
     });
   }, []);
 
-  const sentence1 = "sdfvsdefdsvdse  dsbfkbka bsakcb hjsb kc";
+  const sentence1 =
+    "The project's success is contingent on adhering to the established guidelines.";
 
   const sentence2 = "Hello, GSAP is awesome gsd! ugasbuzdb ushncihn hnduiaHNXS";
   const sentence3 =
-    "Hello, GSAP is awesome hjbaszjba! BAIBIU HIHXA UHOHisbx jnhaho";
+    "Employees should familiarize themselves with the company's ethical guidelines";
   const sentence4 =
-    "Hello, GSAP is awesome hjbaszjba! BAIBIU HIHXA UHOHisbx jnhaho";
+    "The teacher provided clear guidelines for the research paper, including formatting and citation requirements.";
   const sentence5 =
-    "Hello, GSAP is awesome hjbaszjba! BAIBIU HIHXA UHOHisbx jnhaho";
+    "The team developed comprehensive guidelines for project management to improve efficiency.";
   const sentence6 =
-    "Hello, GSAP is awesome hjbaszjba! BAIBIU HIHXA UHOHisbx jnhaho";
+    "Guidelines for social media use in the workplace help maintain a professional online presence.";
   const sentence7 =
-    "Hello, GSAP is awesome hjbaszjba! BAIBIU HIHXA UHOHisbx jnhaho";
+    "When in doubt, consult the guidelines to make informed decisions.";
 
   const array = [
     sentence1,
@@ -97,15 +98,12 @@ export default function Guidlines() {
                 className="flex ml-2 text-sm text-white/40 flex-wrap sm:text-base md:text-lg"
                 style={{ fontFamily: "rubik,sans-serif" }}
               >
-                {sentence.split("").map((char, index) => {
-                  return char === " " ? (
-                    <span key={index}>&nbsp;</span>
-                  ) : (
-                    <span key={index} className="char">
-                      {char}
-                    </span>
-                  );
-                })}
+                {sentence.split(" ").map((word, index) => (
+                  <span key={index} className="char">
+                    {index > 0 && <span>&nbsp;</span>}
+                    {word}
+                  </span>
+                ))}
               </div>
             </div>
           );
