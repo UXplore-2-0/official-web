@@ -17,7 +17,7 @@ function Notification() {
     ]
 
     return (
-        <div className="w-60 mr-0 h-screen bg-[#081A51] rounded-lg p-4 gap-4 flex flex-col text-sm mt-3 mb-3">
+        <div className="w-60 mr-0 h-2/4 bg-[#081A51] rounded-lg p-4 gap-4 flex flex-col text-sm mt-3 mb-3">
             <h1 className="text-white font-bold text-lg border-sky-500">Notification</h1>
             {UpdatesData.map((update, index) => (
                 <div className="update" key={index}>

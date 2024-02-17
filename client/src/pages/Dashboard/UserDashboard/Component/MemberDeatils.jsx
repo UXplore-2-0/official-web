@@ -25,8 +25,9 @@ function MemberDeatils() {
     ];
 
     return (
-        <div className='w-2/4 h-full'>
-            <div className='grid grid-cols-2 gap-x-50 h-fix'>
+        <div className='w-full h-full'>
+            <div className='text-white font-bold' style={{ fontSize: '50px' }}>Member Details</div>
+            <div className='grid grid-cols-2 gap-x-50 h-fix text-white font-bold'>
                 <div>
                     Name
                 </div>
