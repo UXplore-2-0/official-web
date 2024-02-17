@@ -18,10 +18,10 @@ function Sidebar() {
         { title: "Setting", src: Setting },
     ];
     return (
-        <div className="flex">
+        <div className="flex ml-1 rounded">
             <div
                 className={` ${open ? "w-72" : "w-20 "
-                    } bg-[#081A51] h-screen p-5 pt-8 relative duration-300`}
+                    } bg-[#081A51] h-screen p-5 pt-8 relative duration-300 mt-3 mb-3 rounded-lg`}
             >
                 <img
                     src={control}
