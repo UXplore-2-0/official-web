@@ -16,12 +16,11 @@ function Timeline() {
         opacity: 0,
         scale: 0,
         y: 50,
-        duration: 1.6,
+        duration: 0.8,
         scrollTrigger: {
           trigger: div,
           start: "top 95%",
           end: "top 70%",
-          scrub: true,
           toggleActions: "play none none none",
         },
       });
@@ -35,7 +34,6 @@ function Timeline() {
         trigger: '.timeline-title h1',
         start: "top 90%",
         end: "bottom 70%",
-        scrub: true,
         toggleActions: "play none none none",
       },
     });
@@ -43,12 +41,11 @@ function Timeline() {
     gsap.from('.timeline-title p', {
       opacity: 0,
       y: 35,
-      duration: 1.6,
+      duration: 1,
       scrollTrigger: {
         trigger: '.timeline-title p',
         start: "top 90%",
         end: "bottom 70%",
-        scrub: true,
         toggleActions: "play none none none",
       },
     });
