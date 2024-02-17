@@ -1,96 +1,121 @@
 const nodemailer = require('nodemailer');
-const htmlToText = require('html-to-text');
-const fs = require('fs');
-const path = require('path');
-const { google } = require('googleapis');
+const Mailgen = require('mailgen');
 
-//Configure Google API
+function generateMailBody(verificationToken, team_name) {
+  let mailGenerator = new Mailgen({
+    theme: 'default',
+    product: {
+      name: 'Mora UXPlore 2.0',
+      link: `${process.env.FRONT_END_URL}`,
+    },
+  });
 
-const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
-const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI;
-const REFRESH_TOKEN = process.env.GOOGLE_REFRESH_TOKEN;
-
-const oAuth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLIENT_SECRET,
-  REDIRECT_URI
-);
-
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
-
-const generateAccessToken = async () => await oAuth2Client.getAccessToken();
-
-module.exports = class Email {
-  constructor(team, url) {
-    this.to = team.email;
-    this.teamName = team.teamName;
-    this.url = url;
-    this.from = `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`;
-  }
-
-  newTransport() {
-    if (process.env.NODE_ENV.trim() === 'production') {
-      // Google API
-      return nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          type: 'OAuth2',
-          user: process.env.GOOGLE_EMAIL_USERNAME,
-          clientId: CLIENT_ID,
-          clientSecret: CLIENT_SECRET,
-          refreshToken: REFRESH_TOKEN,
-          accessToken: generateAccessToken(),
+  let email = {
+    body: {
+      name: `${team_name}`,
+      intro:
+        "Welcome to Your UXplore 2.0! We're very excited to have you on board.",
+      action: {
+        instructions: `To get started with Your Team ${team_name}, please click here:`,
+        button: {
+          color: '#22BC66',
+          text: 'Confirm your account',
+          link: `http://localhost:5000/api/v1/auth/verify/${team_name}/${verificationToken}`,
         },
-      });
-    }
-    return nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
-      auth: {
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
       },
-    });
-  }
+      outro:
+        "Need help, or have questions? Just reply to this email, we'd love to help.",
+    },
+  };
 
-  async send(template, subject) {
-    // 1.) HTML Template
-    const html = fs.readFileSync(
-      path.join(__dirname, '..', 'views', 'emails', `${template}.html`),
-      'utf-8'
-    );
+  return mailGenerator.generate(email);
+}
 
-    //const htmltext = htmlToText.fromString(html);
+function generateResetMailBody(token, team_id) {
+  let mailGenerator = new Mailgen({
+    theme: 'default',
+    product: {
+      name: 'Mora UXPlore 2.0',
+      link: `${process.env.FRONT_END_URL}`,
+    },
+  });
 
-    // 2.) Define email options
-    const mailOptions = {
-      from: this.from,
-      to: this.to,
-      subject,
-      html: html
-        .replace('{{TEAMNAME}}', this.teamName)
-        .replace(/{{ACTIVATEURL}}/g, this.url)
-        .replace(/{{SUBJECT}}/g, subject),
-      //text: htmltext,
-    };
+  let email = {
+    body: {
+      intro:
+        'You have received this email because a password reset request for your account was received.',
+      action: {
+        instructions:
+          'If you did not request a password reset, no further action is required on your part.',
+        button: {
+          color: '#22BC66',
+          text: 'Reset your password',
+          link: `http://localhost:5000/api/v1/auth/forget-password/reset/${team_id}/${token}`,
+        },
+      },
+      outro: 'If you have any questions, please contact us at',
+    },
+  };
 
-    // 3.) Create a transport and send email
-    await this.newTransport().sendMail(mailOptions);
-  }
+  return mailGenerator.generate(email);
+}
 
-  async sendWelcome() {
-    await this.send('welcome', 'Welcome to OrangeHRM Family !');
-  }
+function createMailTrasport() {
+  // Create a transporter
+  let transporter = nodemailer.createTransport({
+    host: `${process.env.MAIL_TEST_HOST}`,
+    port: process.env.MAIL_TEST_PORT, // replace with your email provider
+    auth: {
+      user: `${process.env.MAIL_TEST_USER}`, // replace with your email
+      pass: `${process.env.MAIL_TEST_PASSWORD}`, // replace with your password
+    },
+  });
 
-  async sendVerificationToken() {
-    await this.send('activate', 'Your activation Email');
-  }
+  return transporter;
+}
 
-  async sendPasswordReset() {
-    await this.send(
-      'resetPassword',
-      'Your password reset token (valid for only 10 minutes)'
-    );
-  }
+async function sendMail(verificationToken, team_name, email) {
+  const transporter = createMailTrasport();
+
+  // Email options
+  let mailOptions = {
+    from: `${process.env.MAIL_TEST_HOST}`, // sender address
+    to: email, // list of receivers
+    subject: 'UXPlore 2.0 Registration', // Subject line
+    html: generateMailBody(verificationToken, team_name), // html body
+  };
+
+  // Send email
+  let info = await transporter.sendMail(mailOptions);
+
+  console.log(
+    'Message sent: %s',
+    info.messageId,
+    ' token: ',
+    verificationToken
+  );
+  return info;
+}
+
+async function sendResetMail(token, email, team_id) {
+  // get the transporter
+  const transporter = createMailTrasport();
+
+  let mailOptions = {
+    from: `${process.env.MAIL_TEST_HOST}`,
+    to: email,
+    subject: 'Password Reset | Mora UXPlore 2.0',
+    html: generateResetMailBody(token, team_id),
+  };
+
+  let info = await transporter.sendMail(mailOptions);
+
+  console.log('Message sent: %s', info.messageId, ' token: ', token);
+
+  return info;
+}
+
+module.exports = {
+  sendMail,
+  sendResetMail,
 };
