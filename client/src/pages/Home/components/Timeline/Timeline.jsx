@@ -2,7 +2,7 @@ import React from 'react';
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 import './Timeline.css';
 
@@ -58,7 +58,7 @@ function Timeline() {
     <div className="timeline-backdrop text-white px-10 py-10 md:py-24">
 
       <div className='timeline-title flex flex-col items-center'>
-        <h1 className='mb-1 text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold'>Timeline</h1>
+        <h1 className='mb-1 text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold' >Timeline</h1>
         <p className='text-center text-stone-200 text-sm md:text-base lg:text-lg'>Unraveling the Dynamic Journey through Time in the Mora UXplore 2.0 Evolution</p>
       </div>
 

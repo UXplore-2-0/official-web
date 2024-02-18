@@ -2,5 +2,5 @@
     background-image: url('./images/Underwater.jpg');
     background-size: cover;
     background-position: center;
-    font-family: 'Rubik';
+    font-family: 'Rubik' , sans-serif;
 }
