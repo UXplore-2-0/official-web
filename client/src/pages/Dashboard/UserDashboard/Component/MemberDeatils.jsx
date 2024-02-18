@@ -38,7 +38,7 @@ function MemberDeatils() {
             </div>
 
             {MemberDeatls.map((member, index) => (
-                <div key={index} className='grid grid-cols-2 justify h-6 gap-x-50 text-white'>
+                <div key={index} className='grid grid-cols-2 justify h-auto gap-x-50 text-white'>
                     <div>
                         {member.name}
                     </div>

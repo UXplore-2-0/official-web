@@ -19,22 +19,22 @@ function UserDashboard() {
 
             {/* Middle Content */}
 
-            <div className='border  w-full mt-3 mb-3 rounded bg-[#081A51] '>
+            <div className='  w-full mt-3 mb-3  '>
 
-                <div className='flex flex-row border w-full mt-3 mb-3 h-2/4'>
-                    <div className=' mx-3 flex w-2/4'>
+                <div className='flex flex-row  w-full  h-2/4   '>
+                    <div className=' mx-3 flex w-2/4 ml-3 border rounded bg-[#081A51]'>
                         <Problem details='Coming Soon ' />
 
 
                     </div>
 
-                    <div className='border w-2/4 ml-2'>
+                    <div className='border w-2/4 ml-2 mr-2 rounded bg-[#081A51]'>
                         <Submission />
 
                     </div>
                 </div>
 
-                <div className='border w-2/4 mt-7 mb-3 h-72 mx-3'>
+                <div className='border w-full mt-8 mb-3 h-80 mx-3 ml-3 rounded bg-[#081A51]'>
                     <MemberDeatils />
                 </div>
 
