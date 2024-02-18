@@ -13,13 +13,13 @@ function UserDashboard() {
 
 
             {/* sidebar */}
-            <div className='ml-0'>
+            <div className='ml-3 mb-8'>
                 <Sidebar />
             </div>
 
             {/* Middle Content */}
 
-            <div className='  w-full mt-3 mb-3  '>
+            <div className='  w-full mt-3 mb-3   '>
 
                 <div className='flex flex-row  w-full  h-2/4   '>
                     <div className=' mx-3 flex w-2/4 ml-3 border rounded bg-[#081A51]'>
@@ -34,7 +34,7 @@ function UserDashboard() {
                     </div>
                 </div>
 
-                <div className='border w-full mt-8 mb-3 h-80 mx-3 ml-3 rounded bg-[#081A51]'>
+                <div className='border w-auto mt-8 mb-3 h-80  ml-3 mr-2 rounded bg-[#081A51]'>
                     <MemberDeatils />
                 </div>
 
