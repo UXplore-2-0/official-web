@@ -4,7 +4,7 @@ import './Intro.css'
 function Intro() {
   return (
     <>
-     <section class="bg-[url('./bgNew.jpg')] bg-cover bg-center bg-no-repeat">
+     <section  className="intro-backdrop">
         <div class="container mx-auto ">
             <div class="lg:flex bg-brown bg-blue flex-wrap lg:mx-5 py-7">
                 <div class="box1 lg:basis-1/2 md:text-center text-center sm:text-center lg:text-start">

@@ -79,7 +79,7 @@ export default function Guidlines() {
           "url('https://rare-gallery.com/thumbs/1180321-sea-artwork-underwater-light-ocean-darkness.jpg')",
       }}
     >
-      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8 md:text-[96px] sm:text-[45] w-full sm:justify-end sm:ml-0">
+      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8 md:text-[128px] sm:text-[45] w-full sm:justify-end sm:ml-0">
         {"GUIDELINES".split("").map((characters, index) => {
           return characters === " " ? (
             <span key={index}>&nbsp;</span>
