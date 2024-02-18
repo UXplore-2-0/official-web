@@ -1,0 +1,9 @@
+.member-image {
+  height: 60%;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}

@@ -1,0 +1,25 @@
+.member-imagetext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.name-dev {
+  padding: 2.5px;
+}
+
+.name-dev > p {
+  font-size: 1.5em;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.details-dev {
+  padding: 2.5px 5px;
+}
+
+.details-dev > p {
+  font-size: 1.1em;
+  color: #cbd5e0;
+  letter-spacing: 1px;
+}

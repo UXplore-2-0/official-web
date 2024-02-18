@@ -1,0 +1,48 @@
+.ContactUsMain {
+  position: relative;
+}
+
+.pageleft-contacts {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.bubble-contacts {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.contactus {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: #0a0f1d;
+  z-index: 0;
+}
+
+.deapsea-dev {
+  width: auto;
+  height: 100vh;
+}
+
+.deapsea {
+  height: 100%;
+  width: auto;
+}
+
+.bg-gradient {
+  flex-grow: 1;
+  background: linear-gradient(to left, #0a0f1d, #0f172a);
+}
+
+.bg-gradient-2 {
+  width: 200px;
+  /* flex-grow: 1; */
+  background: linear-gradient(to right, #0a0f1d, #0f172a);
+}
