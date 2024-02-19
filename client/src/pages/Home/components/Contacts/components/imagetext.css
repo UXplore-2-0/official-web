@@ -9,7 +9,7 @@
 }
 
 .name-dev > p {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: white;
   letter-spacing: 1px;
 }
@@ -19,7 +19,54 @@
 }
 
 .details-dev > p {
-  font-size: 1.1em;
+  font-size: 1em;
   color: #cbd5e0;
   letter-spacing: 1px;
+}
+
+@media screen and (max-width: 1280px) {
+  .name-dev > p {
+    font-size: 1.2em;
+    letter-spacing: 0.9px;
+  }
+  .details-dev > p {
+    font-size: 1em;
+    letter-spacing: 0.9px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .name-dev > p {
+    font-size: 1.1em;
+    letter-spacing: 0.8px;
+  }
+  .details-dev > p {
+    font-size: 0.9em;
+    letter-spacing: 0.8px;
+    /* line-height: 1.35; */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .name-dev > p {
+    font-size: 1em;
+    letter-spacing: 0.7px;
+  }
+  .details-dev > p {
+    font-size: 0.8em;
+    letter-spacing: 0.8px;
+    /* line-height: 1.35; */
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .name-dev > p {
+    font-size: 1.1em;
+    letter-spacing: 0.8px;
+  }
+  .details-dev > p {
+    font-size: 0.9em;
+    letter-spacing: 0.7px;
+    /* line-height: 1.35; */
+  }
 }

@@ -3,7 +3,7 @@ import "./imagetext.css";
 
 function ImageText({ name, lead, University, email, number }) {
   return (
-    <div className="imagetext">
+    <div className="member-imagetext">
       <div className="name-dev">
         <p className="name">{name}</p>
       </div>

@@ -4,7 +4,7 @@ import "./imageview.css";
 function ImageView({ Image }) {
   return (
     <div class="member-image">
-      <img src={Image} alt="ProfileImage" />
+      <img src={Image} alt="ProfileImage" className="ProfileImage" />
     </div>
   );
 }

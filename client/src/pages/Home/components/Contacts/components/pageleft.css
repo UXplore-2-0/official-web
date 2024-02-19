@@ -15,7 +15,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 25px;
 }
 
 .member-image-dev {
@@ -28,4 +28,41 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (max-width: 1280px) {
+  .pageleft-main {
+    width: 60%;
+  }
+  .member-full {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .pageleft-main {
+    width: 60%;
+  }
+  .member-full {
+    gap: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pageleft-main {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .pageleft-main {
+    width: 100%;
+  }
+  .member-full {
+    gap: 0px;
+  }
+
+  .pageleft-main:nth-child(2) {
+    display: none;
+  }
 }
