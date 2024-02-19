@@ -4,3 +4,12 @@
     background-position: center;
     font-family: 'Rubik' , sans-serif;
 }
+.heading{
+    position: relative;
+}
+.logo{
+    position: absolute;
+}
+body{
+    overflow-x: hidden;
+}
