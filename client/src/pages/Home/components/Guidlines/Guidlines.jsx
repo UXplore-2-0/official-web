@@ -74,10 +74,10 @@ export default function Guidlines() {
   return (
     <div
       className="w-[100%] h-[100%] flex flex-col bg-cover justify-between py-11 sm:flex-row-reverse"
-      style={{
-        backgroundImage:
-          "url('https://rare-gallery.com/thumbs/1180321-sea-artwork-underwater-light-ocean-darkness.jpg')",
-      }}
+      // style={{
+      //   backgroundImage:
+      //     "url('https://rare-gallery.com/thumbs/1180321-sea-artwork-underwater-light-ocean-darkness.jpg')",
+      // }}
     >
       <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8 md:text-[128px] sm:text-[45] w-full sm:justify-end sm:ml-0">
         {"GUIDELINES".split("").map((characters, index) => {
