@@ -1,10 +1,11 @@
 {
   "development": {
-    "username": "null",
-    "password": "null",
-    "database": "uxplore",
+    "username": "root",
+    "password": null,
+    "database": "uxPlore",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port":4000
   },
   "test": {
     "username": "root",
