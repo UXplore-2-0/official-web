@@ -140,6 +140,13 @@ async function login(req, res, next) {
     });
   }
 
+  if (!team.is_verified) {
+    return res.status(400).json({
+      status: false,
+      message: 'Account is not verified!',
+    });
+  }
+
   // compare the provided password with the password in the database
   bcrypt.compare(password, team.password).then((match) => {
     if (!match) {

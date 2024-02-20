@@ -20,7 +20,7 @@ function generateMailBody(verificationToken, team_name) {
         button: {
           color: '#22BC66',
           text: 'Confirm your account',
-          link: `http://localhost:5000/api/v1/auth/verify/${team_name}/${verificationToken}`,
+          link: `http://localhost:3000/verify/${team_name}/${verificationToken}`,
         },
       },
       outro:
