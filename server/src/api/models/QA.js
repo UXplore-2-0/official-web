@@ -23,9 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     answer: {
       type: DataTypes.STRING(255),
       allowNull: true,
-      validate: {
-        len: [1, 255],
-      },
     },
   });
 

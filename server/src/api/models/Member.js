@@ -40,11 +40,8 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     contact_no: {
-      type: DataTypes.STRING(15),
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [10, 15],
-      },
     },
     beverages: {
       type: DataTypes.ENUM('non-veg', 'veg'),

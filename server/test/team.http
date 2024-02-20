@@ -1,0 +1,45 @@
+@hostname = http://localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@http = HTTP/1.1
+
+### Add member
+@teamId = 10
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJQeXRoYSIsInRlYW1faWQiOjEwLCJyb2xlIjoidGVhbSIsImlhdCI6MTcwODQ1ODcxMSwiZXhwIjoxNzA4NTQ1MTExfQ.TnZzc9CJn4j26YQ20DErovcTH3KI9yBXRV-DRQokWfA
+POST {{host}}/api/v1/teams/{{teamId}}/add {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "name": "Pytha",
+    "email" : "pytha@gmail.com",
+    "university" : "IIT Madras",
+    "uni_index" : "2017A7PS0011P",
+    "contact_no": "987654321",
+    "beverages": "Veg"
+}
+
+### get the member details
+@memberId = 1
+GET {{host}}/api/v1/teams/{{teamId}}/{{memberId}} {{http}}
+x-auth-token: {{token}}
+
+### get the team
+GET {{host}}/api/v1/teams/{{teamId}} {{http}}
+x-auth-token: {{token}}
+
+
+### update the member details
+PUT {{host}}/api/v1/teams/{{teamId}}/{{memberId}} {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "name": "Pytha",
+    "email" : "pytha@gmail.com",
+    "university" : "University of Moratuwa",
+    "uni_index" : "2017A7PS0011P",
+    "contact_no": "987654321",
+    "beverages": "Veg"
+}

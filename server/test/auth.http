@@ -24,7 +24,7 @@ POST {{host}}/api/v1/auth/login {{http}}
 Content-Type: {{contentType}}
 
 {
-    "email": "shavinanjithachandrawansha@gmail.com",
+    "email": "pytha@gmail.com",
     "password": "123456789"
 }
 
