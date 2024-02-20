@@ -12,8 +12,9 @@ function Home() {
     <>
       <Main/>
       <Intro />
-      <Guidlines/>
+      
       <Timeline/>
+      <Guidlines/>
       <Sponsorships/>
       <Contacts/>
     </>
