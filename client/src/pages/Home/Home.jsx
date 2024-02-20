@@ -1,5 +1,5 @@
 import React from 'react'
-import Main from './components/Main/Main'
+import Main from './components/Hero/hero'
 import Guidlines from './components/Guidlines/Guidlines'
 import Timeline from './components/Timeline/Timeline'
 import Sponsorships from './components/Sponsorships/Sponsorships'
@@ -10,7 +10,7 @@ import Intro from './components/Intro/Intro'
 function Home() {
   return (
     <>
-      <Main/>
+      {/* <Main/> */}
       <Intro />
       
       <Timeline/>
