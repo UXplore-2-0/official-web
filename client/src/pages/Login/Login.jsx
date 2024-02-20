@@ -9,13 +9,13 @@ function Login() {
                 <img src={SeaImage} alt='Sea Image' className='object-cover h-screen w-1/2' />
             </div>
             <div className='relative z-20 text-white flex flex-col items-center justify-center w-full min-h-screen'>  
-                <div className='bg-transparent backdrop-blur-2xl shadow-lg flex flex-col items-center justify-center w-[85%] md:w-[70%] lg:w-[60%] py-8 rounded-2xl font-poppins my-5'>
-                    <img src={Logo} alt='Mora UXplore 2.0 Logo' width={100} />
+                <div className='bg-transparent backdrop-blur-2xl shadow-lg flex flex-col items-center justify-center w-[85%] sm:w-[78%] md:w-[70%] lg:w-[55%] py-8 lg:py-10 rounded-2xl font-poppins my-5'>
+                    <img src={Logo} alt='Mora UXplore 2.0 Logo' className='w-28 sm:w-32 lg:w-36'/>
                     <div className='flex flex-col items-center justify-center my-6'>
                         <h1 className='text-2xl tracking-widest'>WELCOME BACK</h1>
                         <p className='text-xs'>Please enter your details.</p>
                     </div>
-                    <form className='flex flex-col items-center justify-center w-[85%] md:w-[45%]'>
+                    <form className='flex flex-col items-center justify-center w-[85%] sm:w-[55%] md:w-[45%]'>
                         <label className='w-full text-sm mb-1' htmlFor='email'>Email</label>
                         <input
                         type='email'
@@ -45,10 +45,13 @@ function Login() {
                         </div>
                         <button
                             type='submit'
-                            className='w-[100%] mb-4 bg-black bg-opacity-10 rounded-md py-1 text-sm'>
+                            className='w-[100%] mb-4 bg-black bg-opacity-10 rounded-md py-1 sm:py-2 text-sm'>
                             Log in
                         </button>
-                        <p className='text-xs'>Don't have an account? <a href='#'>Register free!</a></p>
+                        <div className='flex flex-col sm:flex-row sm:gap-1 items-center justify-center'>
+                            <div className='text-xs'>Don't have an account?</div>
+                            <div className='text-xs'><a href='#'>Register free!</a></div>
+                        </div>
                     </form>
             
                 </div>  
