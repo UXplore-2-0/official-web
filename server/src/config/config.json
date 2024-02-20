@@ -4,7 +4,8 @@
     "password": "Sha2002@vin",
     "database": "uxplore",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 4000
   },
   "test": {
     "username": "root",
