@@ -84,7 +84,7 @@ export default function Guidlines() {
           return characters === " " ? (
             <span key={index}>&nbsp;</span>
           ) : (
-            <span key={index} className="characters font-medium">
+            <span key={index} className="characters font-medium" >
               {characters}
             </span>
           );

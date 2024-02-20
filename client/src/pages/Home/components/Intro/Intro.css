@@ -3,6 +3,8 @@
     background-size: cover;
     background-position: center;
     font-family: 'Rubik' , sans-serif;
+    height: 90vh;
+    
 }
 .heading{
     position: relative;
