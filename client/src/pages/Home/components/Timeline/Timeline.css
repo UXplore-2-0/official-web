@@ -1,0 +1,12 @@
+.timeline-backdrop {
+      
+    background-image: url('./images/bgNew.jpg');
+    /* object-fit: ; */
+    position: sticky;
+    top: 0;
+    left:0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Rubik' , sans-serif;
+}
