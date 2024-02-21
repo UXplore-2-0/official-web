@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import logo from "../../../public/logo512.png";
+import AuthContext from "../../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const { user, setUser, login, logout } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +28,9 @@ function Login() {
         }
       )
       .then((res) => {
+        // set the user value
+        setUser({ token: res.data.token, role: res.data.role });
+        console.log(user);
         navigate("/dashboard");
       })
       .catch((err) => {

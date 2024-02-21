@@ -12,12 +12,13 @@ Content-Type: {{contentType}}
 x-auth-token: {{token}}
 
 {
-    "name": "Pytha",
-    "email" : "pytha@gmail.com",
-    "university" : "IIT Madras",
-    "uni_index" : "2017A7PS0011P",
+    "name": "Maya",
+    "email" : "maya@gmail.com",
+    "university" : "Uni of Moratuwa",
+    "uni_index" : "2017A7P5df41P",
     "contact_no": "987654321",
-    "beverages": "Veg"
+    "beverages": "Veg",
+    "is_leader": true
 }
 
 ### get the member details

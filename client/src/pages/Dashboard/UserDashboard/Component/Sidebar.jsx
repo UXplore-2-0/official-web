@@ -1,6 +1,5 @@
-import React from "react";
-import Chart_fill from "../Component/Assets/Chart_fill.png";
-
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import control from "../Component/Assets/control.png";
 import logo from "../Component/Assets/logo.png";
 import Setting from "../Component/Assets/Setting.png";
@@ -14,18 +13,20 @@ import {
   faUser,
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
+import AuthContext from "../../../../context/AuthContext";
 
 function Sidebar({ selected, setSelected }) {
   const [open, setOpen] = React.useState(true);
-  const Menus = [
-    { title: "Dashboard", src: Chart_fill },
+  const navigate = useNavigate();
+  const { user, setUser } = useContext(AuthContext);
 
-    { title: "Members", src: User },
+  const logout = () => {
+    console.log(user);
+    setUser(null);
+    // redirect to the main page
+    navigate("/");
+  };
 
-    { title: "AddMember", src: User },
-
-    { title: "Setting", src: Setting },
-  ];
   return (
     // <div>
     //   <div className="flex ml-1 rounded">
@@ -209,6 +210,7 @@ function Sidebar({ selected, setSelected }) {
             href="#"
             className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-red-700 transition group`}
             style={{ justifySelf: "flex-end" }}
+            onClick={logout}
           >
             <FontAwesomeIcon icon={faSignOut} />
             <span className="flex-1 ms-3 whitespace-nowrap">Logout</span>

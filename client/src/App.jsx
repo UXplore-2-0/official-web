@@ -34,7 +34,7 @@ function App() {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout }}>
       <div>
         {/* <Home /> */}
         <BrowserRouter>

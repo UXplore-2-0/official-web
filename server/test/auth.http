@@ -35,7 +35,7 @@ Content-Type: {{contentType}}
 
 {
     "email": "pytha@gmail.com",
-    "password": "123456789"
+    "password": "987654321"
 }
 
 
@@ -51,13 +51,13 @@ Content-Type: {{contentType}}
 
 
 ### reset password
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJFdm9UZWNoIiwidGVhbV9pZCI6Miwicm9sZSI6InRlYW0iLCJpYXQiOjE3MDc4ODcxMDEsImV4cCI6MTcwNzk3MzUwMX0.CeUuNz0bn23hFpB76-4AJKSD24YDqTke90QrCkjuWLo
+@token1 = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJQeXRoYSIsInRlYW1faWQiOjEwLCJyb2xlIjoidGVhbSIsImlhdCI6MTcwODUyMjc0NywiZXhwIjoxNzA4NjA5MTQ3fQ.AMSfinP13ZNe41lvBI8dQ8QI6_ETtG0c2OAr8mmqMb8
 POST {{host}}/api/v1/auth/reset {{http}}
 Content-Type: {{contentType}}
-x-auth-token: {{token}}
+x-auth-token: {{token1}}
 
 {
-    "old_password": "12345678",
+    "old_password": "987654321",
     "new_password": "123456789"
 }
 

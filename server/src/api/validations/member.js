@@ -8,6 +8,7 @@ function validateMember(data) {
     uni_index: Joi.string().required(),
     contact_no: Joi.string().max(10).required(),
     beverages: Joi.string().valid('Veg', 'Non-Veg').required(),
+    is_leader: Joi.boolean().optional(),
   });
 
   return memberSchema.validate(data);

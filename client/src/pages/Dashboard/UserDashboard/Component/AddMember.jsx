@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "../../../../api/axios";
 
 function AddMember() {
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [uniIndex, setUniIndex] = useState();
+  const [phone, setPhone] = useState();
+  const [beverage, setBeverage] = useState();
+
+  useEffect(() => {
+    axios.post("/teams/");
+  }, []);
+
   return (
     <div className="sm:ml-64 dark p-20">
       <div

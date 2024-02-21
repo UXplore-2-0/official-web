@@ -1,11 +1,22 @@
 const { Team, Member, Question, QA } = require('../models');
 const { validateMember, validateBeverage } = require('../validations/member');
 const { validateQuestion } = require('../validations/QA');
+const { Op } = require('sequelize');
 
 const MAX_MEMBERS = 3;
 
 async function getAllTeams(req, res, next) {
-  const team = await Team.findAll();
+  const team = await Team.findAll({
+    attributes: [
+      'team_id',
+      'team_name',
+      'email',
+      'is_verified',
+      'role',
+      'createdAt',
+      'updatedAt',
+    ],
+  });
   if (!team) {
     return res.status(404).json({ error: 'Team not found' });
   }
@@ -13,14 +24,27 @@ async function getAllTeams(req, res, next) {
 }
 
 async function addMember(req, res, next) {
-  const id = req.params.team_id;
+  const id = req.user.team_id;
 
   const { error } = validateMember(req.body);
   if (error) {
     return res.status(400).json({ error: error.details[0].message });
   }
 
-  var { name, email, university, uni_index, contact_no, beverages } = req.body;
+  var { name, email, university, uni_index, contact_no, beverages, is_leader } =
+    req.body;
+
+  if (is_leader) {
+    // check whether there is another leader
+    const leader = await Member.findOne({
+      where: {
+        team_id: id,
+        is_leader: true,
+      },
+    });
+
+    if (leader) return res.status(400).json({ error: 'Leader already exists' });
+  }
 
   const team = await Team.findOne({ where: { team_id: id } });
   if (!team) {
@@ -43,7 +67,7 @@ async function addMember(req, res, next) {
   // check whether if the member is already add to the system
   const member = await Member.findOne({
     where: {
-      [Op.or]: [{ email: email }, { name: name }],
+      [Op.or]: [{ name: name }, { email: email }],
     },
   });
 
@@ -61,17 +85,29 @@ async function addMember(req, res, next) {
     uni_index,
     contact_no,
     beverages,
+    is_leader: is_leader ? is_leader : false,
   });
 
-  return res.json(newMember);
+  return res.json({ member: newMember, count: memberCount + 1 });
 }
 
 async function getMember(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
   const mid = req.params.member_id;
 
   // first check whether the team exists
-  const team = await Team.findOne({ where: { team_id: tid } });
+  const team = await Team.findOne({
+    where: { team_id: tid },
+    attributes: [
+      'team_id',
+      'team_name',
+      'email',
+      'is_verified',
+      'role',
+      'createdAt',
+      'updatedAt',
+    ],
+  });
   if (!team) {
     return res.status(404).json({ error: 'Team not found' });
   }
@@ -87,7 +123,7 @@ async function getMember(req, res, next) {
 }
 
 async function updateMember(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
   const mid = req.params.member_id;
 
   // validate the request body
@@ -122,7 +158,7 @@ async function updateMember(req, res, next) {
 }
 
 async function deleteMember(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
   const mid = req.params.member_id;
 
   // first check whether the team exists
@@ -142,17 +178,39 @@ async function deleteMember(req, res, next) {
 }
 
 async function getTeam(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
 
-  const team = await Team.findOne({ where: { team_id: tid } });
+  const team = await Team.findOne({
+    where: { team_id: tid },
+    attributes: [
+      'team_id',
+      'team_name',
+      'email',
+      'is_verified',
+      'role',
+      'createdAt',
+      'updatedAt',
+    ],
+  });
   if (!team) {
     return res.status(404).json({ error: 'Team not found' });
   }
-  return res.json(team);
+
+  // get the members of the team
+  const members = await Member.findAll({ where: { team_id: tid } });
+
+  // get the memebr count of the team
+  const memberCount = await Member.count({
+    where: {
+      team_id: tid,
+    },
+  });
+
+  return res.json({ team: team, members: members, count: memberCount });
 }
 
 async function addBeverage(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
   const mid = req.params.member_id;
 
   const { error } = validateBeverage(req.body);
@@ -182,10 +240,8 @@ async function addBeverage(req, res, next) {
   return res.json({ message: 'Beverages Add' });
 }
 
-// function updateBeverages(req, res, next) { }
-
 async function addSubmission(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
   const { question, is_submitted, submission_link } = req.body;
 
   const team = await Team.findOne({ where: { team_id: tid } });
@@ -206,7 +262,7 @@ async function addSubmission(req, res, next) {
 function addQuestion(req, res, next) {}
 
 async function getQuestion(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
 
   const question = await Question.findOne({ where: { team_id: tid } });
   if (!question) {
@@ -218,7 +274,7 @@ async function getQuestion(req, res, next) {
 // function getSubmissions(req, res, next) { }
 
 async function addQA(req, res, next) {
-  const id = req.params.team_id;
+  const id = req.user.team_id;
   const { error } = validateQuestion(req.body);
 
   if (error) {
@@ -240,7 +296,7 @@ async function addQA(req, res, next) {
 }
 
 async function getQA(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.user.team_id;
   const qid = req.params.qa_id;
 
   const team = await Team.findOne({ where: { team_id: tid } });
@@ -255,14 +311,14 @@ async function getQA(req, res, next) {
 }
 
 async function getQAs(req, res, next) {
-  const tid = parseInt(req.params.team_id);
+  const tid = parseInt(req.user.team_id);
 
   const qa = await QA.findAll({ where: { team_id: tid } });
   return res.json(qa);
 }
 
 async function addAnswer(req, res, next) {
-  const tid = req.params.team_id;
+  const tid = req.param.team_id;
   const qid = req.params.qa_id;
 
   const team = await Team.findOne({ where: { team_id: tid } });
