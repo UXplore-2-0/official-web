@@ -1,9 +1,9 @@
 const express = require('express');
-const { auth, admin } = require('../middleware/auth');
+const { auth, admin } = require('../middleware/auth'); 
 const {
   getTeamStat,
   getFullStat,
-  submitInCompetition,
+  getTotalNoOfSubmissions,
   getTotalTeamSubmissions,
   getTotalTeamPerfomance,
 } = require('../controllers/stat.controller');
@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get('/', auth, admin, getFullStat);
 router.get('/:team_name', auth, admin, getTeamStat);
-router.get('/:team_name/submissions', auth, admin, submitInCompetition);
+router.get('/:team_name/submissions', auth, admin, getTotalNoOfSubmissions);
 router.get(
   '/:team_name/Totalsubmissions',
   auth,

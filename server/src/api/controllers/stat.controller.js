@@ -1,11 +1,13 @@
+const { Team } = require('../models');
+
 const submissions = [];
 const teams = [];
 
-// Function to handle submission in the competition
-function submitInCompetition(req, res, next) {
+// Function to handle submission in the competitionm
+async function submitInCompetition(req, res, next) {
   const { teamId, submission, presentation, submissionTime } = req.body;
 
-  const team = teams.find((t) => t.id === teamId);
+  const team = await Team.find((t) => t.id === teamId);
 
   if (!team) {
     return res.status(404).json({ error: 'Team not found' });
@@ -25,40 +27,30 @@ function submitInCompetition(req, res, next) {
 }
 
 // Function to get team statistics
-function getTeamStat(req, res, next) {
+async function getTeamStat(req, res, next) {
   const { teamId } = req.params;
 
   // Assuming you have a function to calculate team stats
-  const teamStat = calculateTeamStat(teamId);
+  const teamStat = await alculateTeamStat(teamId);
   res.json({ teamId, teamStat });
 }
 
 // Function to get full statistics
-function getFullStat(req, res, next) {
+async function getFullStat(req, res, next) {
   // Assuming you have a function to calculate overall stats
-  const fullStat = calculateFullStat();
+  const fullStat = await calculateFullStat();
 
   res.json({ fullStat });
 }
 
 // Function to get total team submissions
-function getTotalTeamSubmissions(req, res, next) {
+function getTeamSubmissions(req, res, next) {
   const { teamId } = req.params;
 
   // Assuming you have a function to get total submissions for a team
   const totalSubmissions = getTotalSubmissionsForTeam(teamId);
 
   res.json({ teamId, totalSubmissions });
-}
-
-// Function to get total team questions
-function getTotalTeamQuestions(req, res, next) {
-  const { teamId } = req.params;
-
-  // Assuming you have a function to get total questions for a team
-  const totalQuestions = getTotalQuestionsForTeam(teamId);
-
-  res.json({ teamId, totalQuestions });
 }
 
 function getTotalTeamPerfomance(req, res, next) {
@@ -68,15 +60,23 @@ function getTotalTeamPerfomance(req, res, next) {
   res.json({ teamId, totalSubmissions, totalQuestions });
 }
 
-// Additional requirements:
-// - You might want to add validation middleware to check request bodies.
-// - Implement actual functions (calculateTeamStat, calculateFullStat, getTotalSubmissionsForTeam, getTotalQuestionsForTeam).
-// - Connect to a database or use appropriate data structures to store and retrieve data.
+function getTotalNoOfSubmissions(req, res, next) {
+  const totalSubmissions = getTotalSubmissions();
+  res.json({ totalSubmissions });
+}
+
+function getTeamPerfomance(req, res, next) {
+  const { teamId } = req.params;
+  const totalSubmissions = getTotalSubmissionsForTeam(teamId);
+  const totalQuestions = getTotalQuestionsForTeam(teamId);
+  res.json({ teamId, totalSubmissions, totalQuestions });
+}
 
 module.exports = {
   getTeamStat,
   getFullStat,
-  getTotalTeamSubmissions,
-  submitInCompetition,
+  getTeamSubmissions,
+  getTotalNoOfSubmissions,
+  getTeamPerfomance,
   getTotalTeamPerfomance,
 };
