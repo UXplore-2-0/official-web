@@ -54,42 +54,31 @@ const App = () => {
           opacity: 1,
           duration: 0.1,
           ease: "power1.inOut",
-          delay: 0.1,
+          
         });
       } else if (i % 6 === 3) {
         timeLine.to("#thunder-2, #thunder-1, #uxplore-landing", {
           opacity: 1,
           duration: 0.1,
           ease: "power1.inOut",
-          delay: 0.05,
+          
         });
       } else if (i % 6 === 4) {
         timeLine.to("#thunder-2, #mora-landing-right", {
           opacity: 1,
           duration: 0.1,
           ease: "power1.inOut",
-          delay: 0.1,
+        
         });
       } else if (i === 14) {
         timeLine.to("#logo-landing", {
           opacity: 1,
-          duration: 1.2,
+          duration: 1.5,
           ease: "power1.inOut",
-          delay: 0,
+        
           onComplete: function () {
-            gsap.to("#logo-landing", {
-              opacity: 0,
-              duration: 1,
-              ease: "power2.inOut",
-              onComplete: function () {
-                setIsAnimated(true);
-                gsap.to("#main-div-after-animated", {
-                  opacity: 1,
-                  ease: "power1.inOut",
-                  
-                });
-              },
-            });
+            setIsAnimated(true);
+           
           },
         });
       } else {
@@ -101,6 +90,11 @@ const App = () => {
         });
       }
     }
+    gsap.to("#main-div-after-animated", {
+      opacity: 1,
+      ease: "power1.inOut",
+      
+    });
   }, { scope: document.getElementById("container"), dependencies: [isAnimated]});
 
 
@@ -155,7 +149,8 @@ useGSAP ( () => {
       scrub: 1,
     },
     scale: 1.25,
-    y: 700,
+    y: 900,
+    x: 200,
   });
 
 
@@ -210,39 +205,39 @@ useGSAP ( () => {
       {isAnimated ? (
         <div id="main-div-after-animated" style ={{opacity: 0}}>
           <section>
-            <div style={{ height: 10 }} className="top-background"></div>
+            {/* <div style={{ height: 10 }} className="top-background"></div> */}
 
             <img src="./sponsor/background-sky.jpeg" alt="backgroundimage" id = "animated-page-background"/>
             <img
               id="moon"
               src="./sponsor/moon.png"
-              style={{ width: 200, height: 200, left: 1000, top: -100 }}
+              // style={{ width: 200, height: 200, left: 1000, top: -100 }}
               alt="moon"
             />
             <img
               id="cloud-right"
               src="./sponsor/clouds.png"
-              style={{
-                width: 700,
-                height: 400,
-                left: 800,
-                top: 100,
-                opacity: 0.7,
-              }}
+              // style={{
+              //   width: 700,
+              //   height: 400,
+              //   left: 800,
+              //   top: 100,
+              //   opacity: 0.7,
+              // }}
               alt="cloud"
             />
             {/* <div id = "title-1" style= {{top : 60}} >SPONSORS</div> */}
             <img
               id="cloud-left"
               src="./sponsor/clouds-2.png"
-              style={{ width: 700, height: 400, left: -200, opacity: 0.6 }}
+              // style={{ width: 700, height: 400, left: -200, opacity: 0.6 }}
               alt="clouds-2"
             />
 
             <img
               id="ship"
              
-              src="./sponsor/foregroundship.png"
+              src="./sponsor/ship-new.png"
               alt="ship"
             />
             
@@ -279,7 +274,7 @@ useGSAP ( () => {
             </div> 
           </div>*/}
 
-          <div style = {{height:1000 , width:"100%"}}> </div>
+         
         </div>
       ) : (
         <>

@@ -1,0 +1,68 @@
+/* StickyButtons.css */
+.sticky-buttons-container {
+  position: fixed;
+  top: 50%;
+  right: -40px;
+  transform: translateY(-50%);
+  z-index: 10000;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, right 0.3s ease; /* Added transition property */
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  
+}
+
+.sticky-buttons-container:hover {
+  opacity: 1;
+  right: 0;
+}
+
+.sticky-buttons-container:hover {
+  opacity: 1;
+  right: 0;
+}
+  
+  .sticky-buttons-container-button {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+    
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .sticky-buttons-container button:hover {
+   
+   scale: 1.2;
+   transition: all 0.3s ease-in-out;
+  
+  }
+  
+
+  .circular-sticky-button {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color:#fff;
+    color: #000000;
+    margin : 30px;
+    margin-top: 30%;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .circular-sticky-button:hover {
+   
+  }
