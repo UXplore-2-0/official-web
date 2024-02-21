@@ -1,5 +1,5 @@
 import React from "react";
-import deapsea from "./assests/Deepsea.svg";
+import deapsea from "./assests/DeepSea.jpg";
 import "./Contacts.css";
 import "./components/Bubble.jsx";
 import Bubble from "./components/Bubble.jsx";

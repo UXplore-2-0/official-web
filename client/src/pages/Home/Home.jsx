@@ -10,12 +10,11 @@ import Intro from './components/Intro/Intro'
 function Home() {
   return (
     <>
-      {/* <Main/> */}
+      <Main/>
       <Intro />
-      
-      <Timeline/>
       <Guidlines/>
-      <Sponsorships/>
+      <Timeline/>
+      {/* <Sponsorships/> */}
       <Contacts/>
     </>
     

@@ -37,7 +37,7 @@ export default function Guidlines() {
         scrub: true,
         markers: false,
       },
-      opacity: 0,
+      opacity: 0.05,
       stagger: 0.5,
       x: 20,
       transformOrigin: "60% 50% -100",
