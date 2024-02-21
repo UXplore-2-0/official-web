@@ -165,6 +165,7 @@ async function login(req, res, next) {
       status: true,
       message: 'Login successful!',
       token: accessToken,
+      role: team.role,
     });
   });
 }

@@ -47,6 +47,11 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.ENUM('non-veg', 'veg'),
       allowNull: true,
     },
+    is_leader: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
+    },
   });
 
   Member.associate = (models) => {

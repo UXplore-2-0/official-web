@@ -14,6 +14,16 @@ Content-Type: {{contentType}}
     "password": "12345678"
 }
 
+### root
+
+POST {{host}}/api/v1/auth/login {{http}}
+Content-Type: {{contentType}}
+
+{
+    "email": "shavin@gmail.com",
+    "password": "rootrootroot"
+}
+
 ### verify an account
 @token =  50792d22f4f9b0ffc1dfea59f5611f6392cdd20c
 @team_name = EvoTech

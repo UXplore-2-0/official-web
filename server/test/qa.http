@@ -1,0 +1,51 @@
+@hostname = http://localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@http = HTTP/1.1
+
+
+### 
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJQeXRoYSIsInRlYW1faWQiOjEwLCJyb2xlIjoidGVhbSIsImlhdCI6MTcwODQ1ODcxMSwiZXhwIjoxNzA4NTQ1MTExfQ.TnZzc9CJn4j26YQ20DErovcTH3KI9yBXRV-DRQokWfA
+POST {{host}}/api/v1/teams/10/qa {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "question": "What si?"
+}
+
+
+### get QAs
+GET {{host}}/api/v1/teams/10/getqa {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+### 
+GET {{host}}/api/v1/teams/10/qa/1 {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+### 
+GET {{host}}/api/v1/teams/10 {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+### 
+POST {{host}}/api/v1/teams/10/qa/1/answer {{http}}
+Content-Type: {{contentType}}
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJyb290IiwidGVhbV9pZCI6MTMsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODUxMTA4OCwiZXhwIjoxNzA4NTk3NDg4fQ.r9QBngqy6TAjiF1SxwOM5W74gRaCExvVDZbth_pj7iE
+
+{
+    "answer" : "sdfsfsdf"
+}
+
+###
+GET {{host}}/api/v1/teams {{http}}
+Content-Type: {{contentType}}
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJyb290IiwidGVhbV9pZCI6MTMsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODUxMTA4OCwiZXhwIjoxNzA4NTk3NDg4fQ.r9QBngqy6TAjiF1SxwOM5W74gRaCExvVDZbth_pj7iE
+
+### 
+GET {{host}}/api/v1/teams/10/getquestion {{http}}
+Content-Type: {{contentType}}
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJyb290IiwidGVhbV9pZCI6MTMsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcwODUxMTA4OCwiZXhwIjoxNzA4NTk3NDg4fQ.r9QBngqy6TAjiF1SxwOM5W74gRaCExvVDZbth_pj7iE

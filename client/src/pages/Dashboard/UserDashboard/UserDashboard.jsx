@@ -13,40 +13,36 @@ function UserDashboard() {
   const [selected, setSelected] = useState("Dashboard");
 
   return (
-    <div className="flex flex-row dark rounded-lg border-r-slate-950 justify-between space-x-5  h-full">
-      <div className="ml-3 mb-8" style={{ justifySelf: "flex-start" }}>
-        <Sidebar selected={selected} setSelected={setSelected} />
-      </div>
+    <div>
+      <Sidebar selected={selected} setSelected={setSelected} />
 
       {selected === "Dashboard" && (
         <>
-          <div className="  w-full mt-3 mb-3   ">
-            <div className="flex flex-row  w-full  h-2/4   ">
-              <div className=" mx-3 flex w-2/4 ml-3 rounded bg-[#081A51]">
-                <Problem details="Coming Soon " />
-              </div>
+          <div class="sm:ml-64 dark">
+            <div className="  w-full mt-3 mb-3   ">
+              <div className="flex flex-row  w-full  h-2/4   ">
+                <div className=" mx-3 flex w-2/4 ml-3 rounded">
+                  <Problem details="Coming Soon " />
+                </div>
 
-              <div className="w-2/4 ml-2 mr-2 rounded bg-[#081A51]">
-                <Submission />
+                <div className="w-2/4 ml-2 mr-2 rounded bg-[#1b222b]">
+                  <Submission />
+                </div>
               </div>
             </div>
 
-            <div className="w-auto mt-8 mb-3 h-80  ml-3 mr-2 rounded bg-[#081A51] overflow-hidden scroll-m-48">
-              <MemberDeatils />
+            {/* Notification bar */}
+            <div className="mr-3" style={{ justifySelf: "flex-end" }}>
+              <Notification />
+              <Timer />
             </div>
-          </div>
-
-          {/* Notification bar */}
-
-          <div className="mr-3">
-            <Notification />
-            <Timer />
           </div>
         </>
       )}
 
       {selected === "AddMember" && <AddMember />}
-      {selected === "Setting" && <Settings />}
+      {selected === "Members" && <MemberDeatils />}
+      {selected === "Settings" && <Settings />}
     </div>
   );
 }

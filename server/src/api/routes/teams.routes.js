@@ -23,32 +23,32 @@ const {
 // create a router for handle the team routes
 const router = express.Router();
 
+// QA related routes
+router.post('/:team_id/qa', auth, addQA); // TODO: success
+router.get('/:team_id/getqa', auth, getQAs); // TODO: success
+router.get('/:team_id/qa/:qa_id', auth, getQA); // TODO: success
+
+// question related routes
+router.get('/:team_id/getquestion', auth, getQuestion); // TODO: suucess
+
 // team authorized routes
-router.post('/:team_id/add', auth, addMember);
-router.get('/:team_id/:member_id', auth, getMember);
-router.put('/:team_id/:member_id', auth, updateMember);
-router.delete('/:team_id/:member_id', auth, deleteMember);
-router.get('/:team_id', auth, getTeam);
+router.post('/:team_id/add', auth, addMember); // TODO: success
+router.get('/:team_id/:member_id', auth, getMember); // TODO: sucess
+router.put('/:team_id/:member_id', auth, updateMember); // TODO: sucess
+router.delete('/:team_id/:member_id', auth, deleteMember); // TODO: sucess
+router.get('/:team_id', auth, getTeam); // TODO: success
 
 // beverage related routes
-router.post('/:team_id/:member_id/beverages', auth, addBeverage);
-router.put('/:team_id/:member_id/beverages', auth, addBeverage);
+router.post('/:team_id/:member_id/beverages', auth, addBeverage); // TODO: sucess
+router.put('/:team_id/:member_id/beverages', auth, addBeverage); // TODO: success
 
 // submission related routes
 router.post('/:team_id/submissions', auth, addSubmission);
 
-// question related routes
-router.post('/:team_id/getquestion', auth, getQuestion);
-
-// QA related routes
-router.post('/:team_id/qa', auth, addQA);
-router.post('/:team_id/getqa', auth, getQAs);
-router.get('/:team_id/qa/:qa_id', auth, getQA);
-
 // admin only authorized routes
-router.get('/', auth, admin, getAllTeams);
 router.post('/:team_id/question', auth, admin, addQuestion);
 // router.get(':/team_id/submission', auth, admin, getSubmissions);
-router.post('/:team_id/qa/:qa_id/answer', auth, admin, addAnswer);
+router.post('/:team_id/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
+router.get('/', auth, admin, getAllTeams); // TODO: success
 
 module.exports = router;

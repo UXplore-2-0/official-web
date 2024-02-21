@@ -2,8 +2,11 @@ import React from "react";
 
 function AddMember() {
   return (
-    <div className="w-full h-full overflow-hidden m-20 p-20">
-      <div className="flex justify-center items-center text-2xl text-white m-10">
+    <div className="sm:ml-64 dark p-20">
+      <div
+        className="flex justify-center items-center font-bold text-white m-10"
+        style={{ fontSize: "40px" }}
+      >
         Add Member
       </div>
       <form>

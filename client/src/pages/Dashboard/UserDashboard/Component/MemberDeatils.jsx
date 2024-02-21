@@ -33,41 +33,15 @@ function MemberDeatils() {
   ];
 
   return (
-    <div className="w-full h-full">
+    <div className="sm:ml-64 dark p-20">
       <div className="flex justify-between items-center px-5 py-2">
-        <div
-          className="text-white font-bold px-10 py-5"
-          style={{ fontSize: "30px" }}
-        >
+        <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Member Details
         </div>
         <button className="flex justify-center items-center rounded-lg bg-blue-700 text-white hover:bg-blue-500 py-2 px-5 transition">
           Add Member
         </button>
       </div>
-      {/* <div className='grid grid-cols-2 gap-x-50 h-fix text-white font-bold'>
-                <div>
-                    Name
-                </div>
-                <div>
-                    Email
-                </div>
-
-            </div>
-
-            {MemberDeatls.map((member, index) => (
-                <div key={index} className='grid grid-cols-2 justify h-auto gap-x-50 text-white'>
-                    <div>
-                        {member.name}
-                    </div>
-                    <div>
-                        {member.email}
-                    </div>
-                    <div>
-                        {member.phone}
-                    </div>
-                </div>
-            ))} */}
 
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg dark">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
