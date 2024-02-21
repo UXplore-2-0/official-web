@@ -201,7 +201,8 @@ useGSAP ( () => {
 
 
   return (
-    <div style={{backgroundColor : "#000"}}>
+
+    <div style={{backgroundColor : "#000"}} id="main" >
       {isAnimated ? (
         <div id="main-div-after-animated" style ={{opacity: 0}}>
           <section>

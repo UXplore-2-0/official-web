@@ -15,9 +15,9 @@ function Home() {
   const timelineRef = useRef(null);
 
   console.log("mainRef:", mainRef);
-console.log("introRef:", introRef);
+  console.log("introRef:", introRef);
 // console.log("guidelinesRef:", guidelinesRef);
-console.log("timelineRef:", timelineRef);
+  console.log("timelineRef:", timelineRef);
 
 
   return (
@@ -28,10 +28,10 @@ console.log("timelineRef:", timelineRef);
         // guidelinesRef={guidelinesRef}
         timelineRef={timelineRef}
       />
-      <Main ref={mainRef} />
-  <Intro ref={introRef} />
+      <Main />
+      <Intro />
   {/* <Guidelines ref={guidelinesRef} /> */}
-  <Timeline ref={timelineRef} />
+      <Timeline />
       <Sponsorships />
       <Contacts />
     </>

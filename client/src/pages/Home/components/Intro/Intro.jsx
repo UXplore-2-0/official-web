@@ -92,7 +92,7 @@ function Intro() {
   return (
     <>
      <section  className="intro-backdrop main-section">
-        <div class="container mx-auto ">
+        <div id='Intro' class="  container mx-auto ">
             <div class="lg:flex bg-brown bg-blue flex-wrap lg:mx-5 py-7">
                 <div class="box1 lg:basis-1/2 md:text-center text-center sm:text-center lg:text-start">
                     <span class="lg:text-[124px] md:text-[90px] sm:text-[64px] text-[48px] leading-[1]   heading font-medium" style={{ fontFamily: "Raleway" }}>

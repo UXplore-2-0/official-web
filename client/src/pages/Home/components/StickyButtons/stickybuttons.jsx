@@ -14,10 +14,10 @@ function StickyButton({ mainRef, introRef, timelineRef }) {
   };
   return (
     <div className="sticky-buttons-container">
-      <button className="sticky-buttons-container-button" onClick={() => scrollToRef(mainRef)}>Main</button>
-      <button className="sticky-buttons-container-button" onClick={() => scrollToRef(introRef)}>Intro</button>
+      <button className="sticky-buttons-container-button" ><a href='#main'>Main </a></button>
+      <button className="sticky-buttons-container-button"><a href="#Intro"> Intro </a></button>
       {/* <button className="sticky-buttons-container-button" onClick={() => scrollToRef(guidelinesRef)}>Guidelines</button> */}
-      <button className="sticky-buttons-container-button" onClick={() => scrollToRef(timelineRef)}>Timeline</button>
+      <button className="sticky-buttons-container-button"  > <a href="#timeline">Timeline</a></button>
       <button className= "circular-sticky-button">Register</button>
     </div>
   );
