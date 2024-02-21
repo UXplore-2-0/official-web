@@ -7,6 +7,7 @@ function Register() {
   const [formData, setFormData] = useState({
     team: "",
     university: "",
+    otherUniversity: "",
     email: "",
     password: "",
   });
@@ -32,6 +33,11 @@ function Register() {
       validationErrors.university = "University is required";
     }
 
+    // Validate other university name
+    if (formData.university === "Other" && !formData.otherUniversity.trim()) {
+      validationErrors.otherUniversity = "University name is required";
+    }
+
     // Validate email format
     if (!formData.email.trim()) {
       validationErrors.email = "Leader's email is required";
@@ -52,23 +58,29 @@ function Register() {
       console.log("Form submitted:", formData);
 
       // Clear form data
-      setFormData({ team: "", university: "", email: "", password: "" });
+      setFormData({
+        team: "",
+        university: "",
+        otherUniversity: "",
+        email: "",
+        password: "",
+      });
     }
   };
 
   return (
     <div
-      className="relative"
+      className="relative overflow-hidden w-full h-full"
       style={{
         background:
           "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
       }}
     >
-      <div className="absolute z-10 w-full flex justify-end">
+      <div className="absolute z-10 w-full flex justify-end top-1/2 sm:top-0">
         <img
           src={SeaImage}
           alt="Sea Image"
-          className="object-cover h-lvh w-1/2"
+          className="fixed object-cover h-lvh w-full sm:w-1/2"
         />
       </div>
       <div className="relative z-20 text-white flex flex-col items-center justify-center w-full min-h-screen">
@@ -113,19 +125,65 @@ function Register() {
               <label className="w-full text-sm mb-1" htmlFor="university">
                 University
               </label>
-              <input
-                type="text"
+              <select
                 id="university"
                 name="university"
                 value={formData.university}
-                onChange={handleChange}
                 placeholder="Enter your university"
                 className={`w-full bg-transparent text-sm p-2 mb-4 border border-white border-opacity-25 rounded-lg
                           ${errors.university ? "border-red-500" : ""}`}
-              />
+                onChange={handleChange}
+              >
+                <option className="bg-[#1E3855]" value="">
+                  Select your university
+                </option>
+                <option className="bg-[#1E3855]">University of Moratuwa</option>
+                <option className="bg-[#1E3855]">University of Colombo</option>
+                <option className="bg-[#1E3855]">
+                  University of Peradeniya
+                </option>
+                <option className="bg-[#1E3855]">University of Kelaniya</option>
+                <option className="bg-[#1E3855]">University of Ruhuna</option>
+                <option className="bg-[#1E3855]">University of Jaffna</option>
+                <option className="bg-[#1E3855]">
+                  University of Sri Jayewardenepura
+                </option>
+                <option className="bg-[#1E3855]">
+                  University of Sabaragamuwa
+                </option>
+                <option className="bg-[#1E3855]">University of Wayamba</option>
+                <option className="bg-[#1E3855]">University of Rajarata</option>
+                <option className="bg-[#1E3855]">
+                  University of Uva Wellassa
+                </option>
+                <option className="bg-[#1E3855]">
+                  University of the Visual & Performing Arts
+                </option>
+                <option className="bg-[#1E3855]">Other</option>
+              </select>
               {errors.university && (
                 <div className="w-full text-xs text-red-500 -mt-3 mb-4">
                   {errors.university}
+                </div>
+              )}
+
+              {formData.university === "Other" && (
+                <div className="w-full">
+                  <input
+                    type="text"
+                    id="otherUniversity"
+                    name="otherUniversity"
+                    value={formData.otherUniversity}
+                    onChange={handleChange}
+                    placeholder="Enter your university"
+                    className={`w-full bg-transparent text-sm p-2 -mt-3 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.otherUniversity ? "border-red-500" : ""}`}
+                  />
+                  {errors.otherUniversity && (
+                    <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                      {errors.otherUniversity}
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -177,7 +235,7 @@ function Register() {
                 <div className="text-xs">Already have an account?</div>
                 <div className="text-xs">
                   <a href="#" className="hover:underline">
-                    Log in!
+                    Log in
                   </a>
                 </div>
               </div>

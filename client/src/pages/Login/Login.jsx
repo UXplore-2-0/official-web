@@ -53,11 +53,11 @@ function Login() {
           "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
       }}
     >
-      <div className="absolute z-10 w-full flex justify-end">
+      <div className="absolute z-10 w-full flex justify-end top-1/2 sm:top-0">
         <img
           src={SeaImage}
           alt="Sea Image"
-          className="object-cover h-lvh w-1/2"
+          className="fixed object-cover h-lvh w-full sm:w-1/2"
         />
       </div>
       <div className="relative z-20 text-white flex flex-col items-center justify-center w-full min-h-screen">
