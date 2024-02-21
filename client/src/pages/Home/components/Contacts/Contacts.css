@@ -44,7 +44,6 @@
 
 .bg-gradient-2 {
   width: 150px;
-  /* flex-grow: 1; */
   background: linear-gradient(to right, #0a0f1d, #0f172a);
 }
 
@@ -61,9 +60,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .deapsea-dev {
-    width: auto;
-    top: 0;
-    right: 0;
+  .deapsea {
   }
 }
