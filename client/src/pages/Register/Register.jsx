@@ -102,6 +102,7 @@ function Register() {
               className="flex flex-col items-center justify-center"
               onSubmit={handleSubmit}
               noValidate
+              autoComplete="off"
             >
               <label className="w-full text-sm mb-1" htmlFor="team">
                 Team Name
