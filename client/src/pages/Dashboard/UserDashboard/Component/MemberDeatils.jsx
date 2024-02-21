@@ -1,36 +1,13 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
+import AuthContext from "../../../../context/AuthContext";
+import axios from "../../../../api/axios";
 
-function MemberDeatils() {
-  const MemberDetails = [
-    {
-      name: "John Doe",
-      email: "johndoe@example.com",
-      phone: "1234567890",
-      index: "114578D",
-      beverage: "Coffee",
-    },
-    {
-      name: "John Doe",
-      email: "johndoe@example.com",
-      phone: "1234567890",
-      index: "114578D",
-      beverage: "Coffee",
-    },
-    {
-      name: "John Doe",
-      email: "johndoe@example.com",
-      phone: "1234567890",
-      index: "114578D",
-      beverage: "Coffee",
-    },
-    {
-      name: "John Doe",
-      email: "johndoe@example.com",
-      phone: "1234567890",
-      index: "114578D",
-      beverage: "Coffee",
-    },
-  ];
+function MemberDeatils({ selected, setSelected, team }) {
+  const { user } = useContext(AuthContext);
+
+  const handleAddMembers = () => {
+    setSelected("AddMember");
+  };
 
   return (
     <div className="sm:ml-64 dark p-20">
@@ -38,9 +15,14 @@ function MemberDeatils() {
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Member Details
         </div>
-        <button className="flex justify-center items-center rounded-lg bg-blue-700 text-white hover:bg-blue-500 py-2 px-5 transition">
-          Add Member
-        </button>
+        {team.count < 3 && (
+          <button
+            className="flex justify-center items-center rounded-lg bg-blue-700 text-white hover:bg-blue-500 py-2 px-5 transition"
+            onClick={handleAddMembers}
+          >
+            Add Member
+          </button>
+        )}
       </div>
 
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg dark">
@@ -62,33 +44,58 @@ function MemberDeatils() {
               <th scope="col" class="px-6 py-3">
                 Beverages
               </th>
+              <th scope="col" class="px-6 py-3">
+                Leader
+              </th>
               <th scope="col" class="px-6 py-3"></th>
             </tr>
           </thead>
           <tbody>
-            {MemberDetails.map((member, index) => (
-              <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <th
-                  scope="row"
-                  class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  member.name
-                </th>
-                <td class="px-6 py-4">{member.email}</td>
-                <td class="px-6 py-4">{member.phone}</td>
-                <td class="px-6 py-4">{member.index}</td>
-                <td class="px-6 py-4">{member.beverage}</td>
-
-                <td class="px-6 py-4">
-                  <a
-                    href="#"
-                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            {team.members &&
+              team.members.map((member, index) => (
+                <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                  <th
+                    scope="row"
+                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    Edit
-                  </a>
-                </td>
-              </tr>
-            ))}
+                    {member.name}
+                  </th>
+                  <td class="px-6 py-4">{member.email}</td>
+                  <td class="px-6 py-4">{member.contact_no}</td>
+                  <td class="px-6 py-4">{member.uni_index}</td>
+                  <td class="px-6 py-4">
+                    {member.beverages === "veg" ? (
+                      <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-5 py-1.5 rounded dark:bg-green-900 dark:text-green-300">
+                        Veg
+                      </span>
+                    ) : (
+                      <span class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-5 py-1.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+                        Non Veg
+                      </span>
+                    )}
+                  </td>
+                  <td class="px-6 py-4">
+                    {member.is_leader ? (
+                      <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-5 py-1.5 rounded dark:bg-green-900 dark:text-green-300">
+                        Leader
+                      </span>
+                    ) : (
+                      <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-5 py-1.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                        Member
+                      </span>
+                    )}
+                  </td>
+
+                  <td class="px-6 py-4">
+                    <a
+                      href="#"
+                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      Edit
+                    </a>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

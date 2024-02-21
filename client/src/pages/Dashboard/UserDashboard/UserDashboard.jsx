@@ -1,20 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import AuthContext from "../../../context/AuthContext";
 import Sidebar from "./Component/Sidebar";
 import Notification from "./Component/Notification";
-import Card from "./Component/Card";
 import MemberDeatils from "./Component/MemberDeatils";
 import Problem from "./Component/Problem";
 import Timer from "./Component/Timer";
 import Submission from "./Component/Submission";
 import AddMember from "./Component/AddMember";
 import Settings from "./Component/Settings";
+import axios from "../../../api/axios";
 
 function UserDashboard() {
+  const { user } = useContext(AuthContext);
   const [selected, setSelected] = useState("Dashboard");
+  const [team, setTeam] = useState({});
+
+  useEffect(() => {
+    axios
+      .get("/teams/", {
+        headers: {
+          "x-auth-token": user.token,
+        },
+      })
+      .then((res) => {
+        setTeam(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div>
-      <Sidebar selected={selected} setSelected={setSelected} />
+      <Sidebar selected={selected} setSelected={setSelected} team={team} />
 
       {selected === "Dashboard" && (
         <>
@@ -40,8 +59,14 @@ function UserDashboard() {
         </>
       )}
 
-      {selected === "AddMember" && <AddMember />}
-      {selected === "Members" && <MemberDeatils />}
+      {selected === "AddMember" && <AddMember team={team} setTeam={setTeam} />}
+      {selected === "Members" && (
+        <MemberDeatils
+          selected={selected}
+          setSelected={setSelected}
+          team={team}
+        />
+      )}
       {selected === "Settings" && <Settings />}
     </div>
   );

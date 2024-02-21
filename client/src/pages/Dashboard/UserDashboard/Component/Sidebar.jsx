@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../../../../context/AuthContext";
 
-function Sidebar({ selected, setSelected }) {
+function Sidebar({ selected, setSelected, team }) {
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
   const { user, setUser } = useContext(AuthContext);
@@ -140,6 +140,10 @@ function Sidebar({ selected, setSelected }) {
           </div>
         </div>
 
+        <div class="text-2xl font-bold text-center text-blue-500">
+          Hello {team.team && team.team.team_name}
+        </div>
+
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             <li>
@@ -177,21 +181,24 @@ function Sidebar({ selected, setSelected }) {
                 <span className="flex-1 ms-3 whitespace-nowrap">Members</span>
               </a>
             </li>
-            <li>
-              <a
-                href="#"
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
-                  selected === "AddMember" &&
-                  "dark:bg-slate-600 hover:dark:bg-blue-900"
-                }`}
-                onClick={() => setSelected("AddMember")}
-              >
-                <FontAwesomeIcon icon={faUser} />
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Add Members
-                </span>
-              </a>
-            </li>
+
+            {team.count < 3 && (
+              <li>
+                <a
+                  href="#"
+                  className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                    selected === "AddMember" &&
+                    "dark:bg-slate-600 hover:dark:bg-blue-900"
+                  }`}
+                  onClick={() => setSelected("AddMember")}
+                >
+                  <FontAwesomeIcon icon={faUser} />
+                  <span className="flex-1 ms-3 whitespace-nowrap">
+                    Add Members
+                  </span>
+                </a>
+              </li>
+            )}
             <li>
               <a
                 href="#"
