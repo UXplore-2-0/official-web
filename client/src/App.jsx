@@ -5,14 +5,10 @@ import Guidlines from "./pages/Home/components/Guidlines/Guidlines";
 import Timeline from "./pages/Home/components/Timeline/Timeline";
 import Intro from "./pages/Home/components/Intro/Intro";
 import "./App.css";
+import Button from "./components/Button";
 
 function App() {
-  return (
-    <div>
-      <Home />
-
-    </div>
-  );
+  return <div></div>;
 }
 
 export default App;
