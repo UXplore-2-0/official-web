@@ -25,11 +25,12 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
-    university: {
-      type: DataTypes.STRING(255),
+    nic: {
+      type: DataTypes.STRING(15),
       allowNull: false,
+      unique: true,
       validate: {
-        len: [1, 255],
+        len: [1, 15],
       },
     },
     uni_index: {

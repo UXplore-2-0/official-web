@@ -64,8 +64,8 @@ function Timer() {
     startCountDown();
   }, [startCountDown]);
   return (
-    <div className="bg-[#191A24] h-screen">
-      <div className="flex flex-col items-center justify-center w-full h-full gap-8 sm:gap-16">
+    <div className="bg-[#191A24] w-full h-full">
+      <div className="flex flex-col items-center justify-center w-full gap-8 sm:gap-12 h-full py-4">
         <span className="text-2xl sm:text-3xl font-semibold text-white text-center tracking-widest px-2">
           Act Now, Time is Short
         </span>

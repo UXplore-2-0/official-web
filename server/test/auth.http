@@ -11,7 +11,8 @@ Content-Type: {{contentType}}
 {
     "team_name": "EvoTech",
     "email": "shavinanjithachandrawansha@gmail.com",
-    "password": "12345678"
+    "password": "12345678",
+    "university": "University of Moratuwa"
 }
 
 ### root
@@ -25,7 +26,7 @@ Content-Type: {{contentType}}
 }
 
 ### verify an account
-@token =  50792d22f4f9b0ffc1dfea59f5611f6392cdd20c
+@token=a0139b50d4b4db7c120eec64ffbc1927da35618d
 @team_name = EvoTech
 POST {{host}}/api/v1/auth/verify/{{team_name}}/{{token}} {{http}}
 
@@ -34,8 +35,8 @@ POST {{host}}/api/v1/auth/login {{http}}
 Content-Type: {{contentType}}
 
 {
-    "email": "pytha@gmail.com",
-    "password": "987654321"
+    "email": "shavinanjithachandrawansha@gmail.com",
+    "password": "12345678"
 }
 
 
@@ -70,7 +71,7 @@ Content-Type: {{contentType}}
 }
 
 ### reset fotget password
-@token=413ba4b006a1fd2cdd7092a4875d18134ca9b9a
+# @token=413ba4b006a1fd2cdd7092a4875d18134ca9b9a
 @team_id=2
 POST {{host}}/api/v1/auth/forget-password/reset/{{team_id}}/{{token}} {{http}}
 Content-Type: {{contentType}}

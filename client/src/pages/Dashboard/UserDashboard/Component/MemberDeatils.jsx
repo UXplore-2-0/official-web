@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
-import AuthContext from "../../../../context/AuthContext";
-import axios from "../../../../api/axios";
-
-function MemberDeatils({ selected, setSelected, team }) {
-  const { user } = useContext(AuthContext);
-
+function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
   const handleAddMembers = () => {
     setSelected("AddMember");
   };
+
+  const MAX_NUMBERS = 3;
+
+  const circumference = ((2 * 22) / 7) * 120;
+  const strokeDashoffset =
+    circumference - (team.count / MAX_NUMBERS) * 100 * circumference;
 
   return (
     <div className="sm:ml-64 dark p-20">
@@ -15,14 +15,24 @@ function MemberDeatils({ selected, setSelected, team }) {
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Member Details
         </div>
-        {team.count < 3 && (
+        <div className="flex flex-row justify-end items-center">
           <button
-            className="flex justify-center items-center rounded-lg bg-blue-700 text-white hover:bg-blue-500 py-2 px-5 transition"
-            onClick={handleAddMembers}
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            onClick={refreshTeam}
           >
-            Add Member
+            Refresh
           </button>
-        )}
+
+          {team.count < 3 && (
+            <button
+              className="flex justify-center items-center rounded-lg bg-blue-700 text-white hover:bg-blue-500 py-2 px-5 transition"
+              onClick={handleAddMembers}
+            >
+              Add Member
+            </button>
+          )}
+        </div>
       </div>
 
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg dark">
@@ -98,6 +108,38 @@ function MemberDeatils({ selected, setSelected, team }) {
               ))}
           </tbody>
         </table>
+
+        <div
+          className="flex items-center justify-center mt-8"
+          x-data="{ circumference: 2 * 22 / 7 * 120 }"
+        >
+          <svg className="transform -rotate-90 w-72 h-72">
+            <circle
+              cx="145"
+              cy="145"
+              r="120"
+              stroke="currentColor"
+              stroke-width="30"
+              fill="transparent"
+              className="text-gray-700"
+            />
+
+            <circle
+              cx="145"
+              cy="145"
+              r="120"
+              stroke="currentColor"
+              stroke-width="30"
+              fill="transparent"
+              strokeDasharray={circumference}
+              strokeDashoffset={strokeDashoffset}
+              className="text-blue-500 "
+            />
+          </svg>
+          <span className="absolute text-5xl text-sky-600" x-text={`${78}%`}>
+            {MAX_NUMBERS - team.count} More
+          </span>
+        </div>
       </div>
     </div>
   );

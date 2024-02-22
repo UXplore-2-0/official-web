@@ -7,7 +7,9 @@ import User from "../Component/Assets/User.png";
 import images from "../Component/Assets/images.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCircleQuestion,
   faGear,
+  faQuestion,
   faRightFromBracket,
   faSignOut,
   faUser,
@@ -140,9 +142,9 @@ function Sidebar({ selected, setSelected, team }) {
           </div>
         </div>
 
-        <div class="text-2xl font-bold text-center text-blue-500">
+        {/* <div class="text-2xl font-bold text-center text-blue-500">
           Hello {team.team && team.team.team_name}
-        </div>
+        </div> */}
 
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
@@ -199,6 +201,19 @@ function Sidebar({ selected, setSelected, team }) {
                 </a>
               </li>
             )}
+            <li>
+              <a
+                href="#"
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                  selected === "FAQ" &&
+                  "dark:bg-slate-600 hover:dark:bg-blue-900"
+                }`}
+                onClick={() => setSelected("FAQ")}
+              >
+                <FontAwesomeIcon icon={faCircleQuestion} />
+                <span className="flex-1 ms-3 whitespace-nowrap">FAQs</span>
+              </a>
+            </li>
             <li>
               <a
                 href="#"

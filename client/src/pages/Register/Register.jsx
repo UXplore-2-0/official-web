@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
+import universities from "../../data/universities";
 import logo from "../../../public/logo512.png";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [teamName, setTeamName] = useState("");
+  const [university, setUniversity] = useState(universities[0]);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -45,6 +47,7 @@ function Register() {
       team_name: teamName,
       email: email,
       password: password,
+      university: university,
     };
 
     // make the API request
@@ -96,7 +99,7 @@ function Register() {
                       for="email"
                       className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      Your email
+                      Leader email
                     </label>
                     <input
                       type="email"
@@ -126,6 +129,25 @@ function Register() {
                       value={teamName}
                       onChange={(e) => setTeamName(e.target.value)}
                     />
+                  </div>
+                  <div>
+                    <label
+                      for="team-name"
+                      className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      University
+                    </label>
+                    <select
+                      id="beverages"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      required
+                      value={university}
+                      onChange={(e) => setUniversity(e.target.value)}
+                    >
+                      {universities.map((university) => (
+                        <option value={university}>{university}</option>
+                      ))}
+                    </select>
                   </div>
                   <div>
                     <label

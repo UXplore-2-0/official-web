@@ -8,25 +8,34 @@ function AddMember({ team, setTeam }) {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [uniIndex, setUniIndex] = useState();
+  const [nic, setNic] = useState();
   const [phone, setPhone] = useState();
-  const [beverage, setBeverage] = useState();
+  const [beverage, setBeverage] = useState("Veg");
   const [leader, setLeader] = useState(false);
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
 
+  const isThereIsLeader = () => {
+    const leader = team.members.find((member) => member.is_leader === true);
+    if (leader) {
+      return true;
+    }
+    return false;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       name: name,
-      email: email,
+      email: leader ? team.team.email : email,
       uni_index: uniIndex,
       contact_no: phone,
+      nic: nic,
       beverages: beverage,
       is_leader: leader,
-      university: "Uni of Moratuwa",
     };
-
+    console.log(beverage);
     axios
       .post("/teams/add", data, {
         headers: {
@@ -40,7 +49,7 @@ function AddMember({ team, setTeam }) {
 
         setTeam({
           ...team,
-          members: [...team.members, res.data],
+          members: [...team.members, res.data.member],
           count: team.count + 1,
         });
 
@@ -74,7 +83,7 @@ function AddMember({ team, setTeam }) {
             </label>
             <input
               type="text"
-              id="first_name"
+              id="full_name"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="John"
               required
@@ -84,19 +93,37 @@ function AddMember({ team, setTeam }) {
           </div>
           <div>
             <label
-              for="last_name"
+              for="uni_index"
               className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               University Index
             </label>
             <input
               type="text"
-              id="last_name"
+              id="university Index"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Doe"
+              placeholder="170000V"
               required
               value={uniIndex}
               onChange={(e) => setUniIndex(e.target.value)}
+            />
+          </div>
+          <div>
+            <label
+              for="nic"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              NIC Number
+            </label>
+            <input
+              type="text"
+              id="nic"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="123456789V"
+              pattern="^[0-9]{9}[vVxX]$|^[0-9]{12}$"
+              required
+              value={nic}
+              onChange={(e) => setNic(e.target.value)}
             />
           </div>
           <div>
@@ -151,6 +178,7 @@ function AddMember({ team, setTeam }) {
               placeholder="john.doe@company.com"
               required
               value={email}
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               onChange={(e) => setEmail(e.target.value)}
             />
           ) : (
@@ -166,21 +194,29 @@ function AddMember({ team, setTeam }) {
           )}
         </div>
 
-        <div className="flex items-center mb-4">
-          <input
-            id="default-checkbox"
-            type="checkbox"
-            value={leader}
-            onChange={(e) => setLeader(e.target.checked)}
-            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-          />
-          <label
-            for="default-checkbox"
-            className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Leader
-          </label>
-        </div>
+        {isThereIsLeader() ? (
+          <div className="flex flex-row my-5">
+            <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-3 py-1.5 rounded dark:bg-green-900 dark:text-green-300">
+              Leader is already choosen.
+            </span>
+          </div>
+        ) : (
+          <div className="flex items-center mb-4">
+            <input
+              id="default-checkbox"
+              type="checkbox"
+              value={leader}
+              onChange={(e) => setLeader(e.target.checked)}
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              for="default-checkbox"
+              className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            >
+              Leader
+            </label>
+          </div>
+        )}
 
         <button
           type="submit"

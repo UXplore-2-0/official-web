@@ -6,19 +6,19 @@
 
 ### Add member
 @teamId = 10
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJQeXRoYSIsInRlYW1faWQiOjEwLCJyb2xlIjoidGVhbSIsImlhdCI6MTcwODQ1ODcxMSwiZXhwIjoxNzA4NTQ1MTExfQ.TnZzc9CJn4j26YQ20DErovcTH3KI9yBXRV-DRQokWfA
-POST {{host}}/api/v1/teams/{{teamId}}/add {{http}}
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJFdm9UZWNoIiwidGVhbV9pZCI6Miwicm9sZSI6InRlYW0iLCJpYXQiOjE3MDg1NzYwMTIsImV4cCI6MTcwODY2MjQxMn0.F0ijYrhy7FtyerxIk-jscSztx-SmLpxWAwm4d4F6frc
+POST {{host}}/api/v1/teams/add {{http}}
 Content-Type: {{contentType}}
 x-auth-token: {{token}}
 
 {
-    "name": "Maya",
-    "email" : "maya@gmail.com",
-    "university" : "Uni of Moratuwa",
-    "uni_index" : "2017A7P5df41P",
-    "contact_no": "987654321",
-    "beverages": "Veg",
-    "is_leader": true
+    "name": "Cassy",
+    "email" : "cassy@gmail.com",
+    "nic" : "200214521457",
+    "uni_index" : "2157P5df41P",
+    "contact_no": "987854321",
+    "beverages": "Non-Veg",
+    "is_leader": false
 }
 
 ### get the member details

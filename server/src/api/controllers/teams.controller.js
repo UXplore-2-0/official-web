@@ -11,6 +11,7 @@ async function getAllTeams(req, res, next) {
       'team_id',
       'team_name',
       'email',
+      'university',
       'is_verified',
       'role',
       'createdAt',
@@ -31,7 +32,7 @@ async function addMember(req, res, next) {
     return res.status(400).json({ error: error.details[0].message });
   }
 
-  var { name, email, university, uni_index, contact_no, beverages, is_leader } =
+  var { name, email, nic, uni_index, contact_no, beverages, is_leader } =
     req.body;
 
   if (is_leader) {
@@ -81,10 +82,10 @@ async function addMember(req, res, next) {
     team_id: id,
     name,
     email,
-    university,
     uni_index,
     contact_no,
     beverages,
+    nic,
     is_leader: is_leader ? is_leader : false,
   });
 
@@ -102,6 +103,7 @@ async function getMember(req, res, next) {
       'team_id',
       'team_name',
       'email',
+      'university',
       'is_verified',
       'role',
       'createdAt',
@@ -132,7 +134,7 @@ async function updateMember(req, res, next) {
     return res.status(400).json({ error: error.details[0].message });
   }
 
-  var { name, email, university, uni_index, contact_no, beverages } = req.body;
+  var { name, email, nic, uni_index, contact_no, beverages } = req.body;
 
   // first check whether the team exists
   const team = await Team.findOne({ where: { team_id: tid } });
@@ -149,7 +151,7 @@ async function updateMember(req, res, next) {
   const updateMember = await member.update({
     name,
     email,
-    university,
+    nic,
     uni_index,
     contact_no,
     beverages,
@@ -186,6 +188,7 @@ async function getTeam(req, res, next) {
       'team_id',
       'team_name',
       'email',
+      'university',
       'is_verified',
       'role',
       'createdAt',

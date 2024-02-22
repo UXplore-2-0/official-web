@@ -4,7 +4,7 @@ function validateMember(data) {
   const memberSchema = Joi.object({
     name: Joi.string().required(),
     email: Joi.string().email().required(),
-    university: Joi.string().required(),
+    nic: Joi.string().max(15).required(),
     uni_index: Joi.string().required(),
     contact_no: Joi.string().max(10).required(),
     beverages: Joi.string().valid('Veg', 'Non-Veg').required(),

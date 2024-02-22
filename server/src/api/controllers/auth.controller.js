@@ -55,6 +55,7 @@ async function signUpTeam(req, res, next) {
     email: data.email,
     password: hash,
     verification_token: token,
+    university: data.university,
   });
   // save the team in the database with the verification token
   await newTeam.save();

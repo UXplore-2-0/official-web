@@ -2,8 +2,8 @@ import React from "react";
 
 function Problem(prop) {
   return (
-    <div className="mt-3 w-full">
-      <div className="flex justify-center flex-col items-center h-full w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="mt-3 w-full h-56">
+      <div className="flex justify-center flex-col items-center h-full w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-2">
         <a href="#">
           <h1
             className="mb-2 font-medium tracking-tight text-gray-900 dark:text-white"
