@@ -2,8 +2,7 @@ const { Team } = require('../models');
 
 async function getOnlineStats(req, res, next) {
   try {
-    // Assuming you have a method to retrieve online stats from your database
-    const onlineStats = await Team.getOnlineUsers(); // Replace YourModel.getOnlineStats with the actual method
+    const onlineStats = await Team.getOnlineUsers(); 
 
     res.json(onlineStats);
   } catch (error) {
