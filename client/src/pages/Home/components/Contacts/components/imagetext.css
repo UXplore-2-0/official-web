@@ -10,7 +10,8 @@
 }
 
 .name-dev > p {
-  font-size: 1em;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
   color: white;
   letter-spacing: 1px;
 }
@@ -20,46 +21,62 @@
 }
 
 .details-dev > p {
-  font-size: 0.8em;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
   color: #cbd5e0;
   letter-spacing: 1px;
 }
 
 @media screen and (max-width: 1280px) {
   .name-dev > p {
-    font-size: 1em;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
     letter-spacing: 0.9px;
   }
 
   .details-dev > p {
-    font-size: 0.8em;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
     letter-spacing: 0.9px;
   }
 }
 
 @media screen and (max-width: 1024px) {
   .name-dev > p {
-    font-size: 0.8em;
-    letter-spacing: 0.5px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.9px;
   }
   .details-dev > p {
-    font-size: 0.7em;
-    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    letter-spacing: 0.9px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .name-dev > p {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.9px;
+  }
+  .details-dev > p {
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    letter-spacing: 0.9px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .details-dev {
-    padding: 0.5% 1.5% 0.5% 1.5%;
-  }
   .name-dev > p {
-    font-size: 0.8em;
-    letter-spacing: 0.7px;
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.9px;
   }
   .details-dev > p {
-    font-size: 0.7em;
-    letter-spacing: 0.8px;
-    /* line-height: 1.35; */
+    font-size: 1em;
+    line-height: 1.2rem;
+    letter-spacing: 0.9px;
   }
 }
 
@@ -71,6 +88,5 @@
   .details-dev > p {
     font-size: 0.9em;
     letter-spacing: 0.7px;
-    /* line-height: 1.35; */
   }
 }

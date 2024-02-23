@@ -10,39 +10,47 @@
 }
 
 img {
-  height: 60%;
-  width: 60%;
+  height: 75%;
+  width: 75%;
   object-fit: cover;
 }
 
 @media screen and (max-width: 1280px) {
   img {
-    height: 60%;
-    width: 60%;
+    height: 75%;
+    width: 75%;
     object-fit: cover;
   }
 }
 
 @media screen and (max-width: 1024px) {
   img {
-    height: 85%;
-    width: 85%;
+    height: 75%;
+    width: 75%;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  img {
+    height: 75%;
+    width: 75%;
     object-fit: cover;
   }
 }
 
 @media screen and (max-width: 768px) {
   img {
-    height: 80%;
-    width: 80%;
+    height: 75%;
+    width: 75%;
     object-fit: cover;
   }
 }
 
 @media screen and (max-width: 640px) {
   img {
-    height: 55%;
-    width: 55%;
+    height: 85%;
+    width: 85%;
     object-fit: cover;
   }
 }
