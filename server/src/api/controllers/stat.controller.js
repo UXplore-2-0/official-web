@@ -1,22 +1,17 @@
-/**
- * Retrieves the full stat.
- *
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- * @param {Function} next - The next middleware function.
- */
-function getFullStat(req, res, next) {}
+// server/src/api/controllers/stat.controller.js
 
-/**
- * Retrieves the team statistics.
- *
- * @param {Object} req - The request object.
- * @param {Object} res - The response object.
- * @param {Function} next - The next middleware function.
- */
-function getTeamStat(req, res, next) {}
+// In a real application, you would fetch data from a database or another source
+const statsData = [
+  { title: 'Total Submission', value: 249 },
+  { title: 'Online', value: 25 },
+  // Add more stats as needed
+];
+
+// Controller function to get stats
+const getStats = (req, res) => {
+  res.json(statsData);
+};
 
 module.exports = {
-  getFullStat,
-  getTeamStat,
+  getStats,
 };

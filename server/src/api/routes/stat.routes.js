@@ -1,11 +1,10 @@
+// server/src/api/routes/stat.routes.js
+
 const express = require('express');
-const { getFullStat, getTeamStat } = require('../controllers/stat.controller');
-const { auth, admin } = require('../middleware/auth');
-
-// create a router for handle the stat routes
 const router = express.Router();
+const statController = require('../controllers/stat.controller');
 
-router.get('/', auth, admin, getFullStat);
-router.get('/:team_name', auth, admin, getTeamStat);
+// Define a route to get stats
+router.get('/stats', statController.getStats);
 
 module.exports = router;
