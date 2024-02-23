@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Searchbar from '../Components/Searchbar';
 
 function TeamDetails() {
     const [selectedTeam, setSelectedTeam] = useState(null);
@@ -37,41 +38,46 @@ function TeamDetails() {
     };
 
     return (
-        <div className=" ">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-black uppercase dark:text-gray-400 bg-blue-600">
-                    <tr>
-                        <th scope="col" className="px-6 py-3">
-                            <button className="text-white">Team Name</button>
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            <button className="text-white">Email</button>
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            <button className="text-white">No. of Members</button>
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            <button className="text-white">University Name</button>
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            <button className="text-white">Actions</button>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody className='bg-blue-950'>
-                    {Team_Details.map((team, index) => (
-                        <tr key={index}>
-                            <td className="px-6 py-3 cursor-pointer" onClick={() => showMemberDetails(team.teamName)}>{team.teamName}</td>
-                            <td className="px-6 py-3">{team.email}</td>
-                            <td className="px-6 py-3">{team.numOfMembers}</td>
-                            <td className="px-6 py-3">{team.universityName}</td>
-                            <td className="px-6 py-3">
-                                <button className="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Delete</button>
-                            </td>
+        <div className="flex flex-col  ">
+            <div className='justify-center '>
+                <Searchbar />
+            </div>
+            <div className='mt-5'>
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-black uppercase dark:text-gray-400 bg-blue-600">
+                        <tr>
+                            <th scope="col" className="px-6 py-3">
+                                <button className="text-white">Team Name</button>
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                <button className="text-white">Email</button>
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                <button className="text-white">No. of Members</button>
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                <button className="text-white">University Name</button>
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                                <button className="text-white">Actions</button>
+                            </th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody className='bg-blue-950'>
+                        {Team_Details.map((team, index) => (
+                            <tr key={index}>
+                                <td className="px-6 py-3 cursor-pointer" onClick={() => showMemberDetails(team.teamName)}>{team.teamName}</td>
+                                <td className="px-6 py-3">{team.email}</td>
+                                <td className="px-6 py-3">{team.numOfMembers}</td>
+                                <td className="px-6 py-3">{team.universityName}</td>
+                                <td className="px-6 py-3">
+                                    <button className="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Delete</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
             {/* Popup */}
             {selectedTeam && (
