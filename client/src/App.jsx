@@ -1,4 +1,3 @@
-
 import React from "react";
 import Navbar from "./layout/NavBar/Navbar";
 import Home from "./pages/Home/Home";
@@ -8,15 +7,15 @@ import Intro from "./pages/Home/components/Intro/Intro";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import "./App.css";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
     <div>
-      <Home />
-
+      <Register />
     </div>
   );
 }
 
 export default App;
-
