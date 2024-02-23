@@ -1,17 +1,23 @@
-// server/src/api/controllers/stat.controller.js
-
-// In a real application, you would fetch data from a database or another source
-const statsData = [
+const statsDummyData = [
+  { title: 'Total Users', value: 391 },
   { title: 'Total Submission', value: 249 },
   { title: 'Online', value: 25 },
-  // Add more stats as needed
 ];
 
-// Controller function to get stats
-const getStats = (req, res) => {
+function getOnlineStats(req, res, next) {
   res.json(statsData);
-};
+}
+
+function getTotalTeams(req, res, next) {
+  res.json({ value: 391 });
+}
+
+function PostTotalSubmission(req, res, next) {
+  res.json({ value: 249 });
+}
 
 module.exports = {
-  getStats,
+  getOnlineStats,
+  getTotalTeams,
+  PostTotalSubmission,
 };
