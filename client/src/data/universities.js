@@ -1,0 +1,22 @@
+export default [
+  "University of Colombo",
+  "University of Peradeniya",
+  "University of Moratuwa",
+  "University of Kelaniya",
+  "University of Sri Jayewardenepura",
+  "University of Ruhuna",
+  "University of Jaffna",
+  "Eastern University, Sri Lanka",
+  "Rajarata University of Sri Lanka",
+  "South Eastern University of Sri Lanka",
+  "Sabaragamuwa University of Sri Lanka",
+  "Wayamba University of Sri Lanka",
+  "Uva Wellassa University",
+  "Open University of Sri Lanka",
+  "Sri Lanka Institute of Information Technology (SLIIT)",
+  "General Sir John Kotelawala Defence University (KDU)",
+  "Buddhist and Pali University of Sri Lanka",
+  "South Asian Institute of Technology and Medicine (SAITM)", // Note: SAITM closed in 2018
+  "Sri Lanka Institute of Development Administration (SLIDA)",
+  "Sri Lanka Institute of Advanced Technological Education (SLIATE)",
+];

@@ -12,8 +12,7 @@ function unCaughtExceptionHandler(err) {
 // this function is called when a promise is rejected and there is no catch block
 function unHandledPromiseRejectionHandler(err) {
   logger.error('Unhandled Promise Rejection: Shutting Down!!!');
-  logger.erro(err.name, err.message);
-  logger.erro(err.stack);
+  logger.error(err.stack);
   // if we're in production then we should exit the process
   process.exit(1);
 }

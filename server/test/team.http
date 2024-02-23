@@ -1,0 +1,46 @@
+@hostname = http://localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@http = HTTP/1.1
+
+### Add member
+@teamId = 10
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJFdm9UZWNoIiwidGVhbV9pZCI6Miwicm9sZSI6InRlYW0iLCJpYXQiOjE3MDg1NzYwMTIsImV4cCI6MTcwODY2MjQxMn0.F0ijYrhy7FtyerxIk-jscSztx-SmLpxWAwm4d4F6frc
+POST {{host}}/api/v1/teams/add {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "name": "Cassy",
+    "email" : "cassy@gmail.com",
+    "nic" : "200214521457",
+    "uni_index" : "2157P5df41P",
+    "contact_no": "987854321",
+    "beverages": "Non-Veg",
+    "is_leader": false
+}
+
+### get the member details
+@memberId = 1
+GET {{host}}/api/v1/teams/{{teamId}}/{{memberId}} {{http}}
+x-auth-token: {{token}}
+
+### get the team
+GET {{host}}/api/v1/teams/{{teamId}} {{http}}
+x-auth-token: {{token}}
+
+
+### update the member details
+PUT {{host}}/api/v1/teams/{{teamId}}/{{memberId}} {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "name": "Pytha",
+    "email" : "pytha@gmail.com",
+    "university" : "University of Moratuwa",
+    "uni_index" : "2017A7PS0011P",
+    "contact_no": "987654321",
+    "beverages": "Veg"
+}

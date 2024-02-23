@@ -25,11 +25,12 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
-    university: {
-      type: DataTypes.STRING(255),
+    nic: {
+      type: DataTypes.STRING(15),
       allowNull: false,
+      unique: true,
       validate: {
-        len: [1, 255],
+        len: [1, 15],
       },
     },
     uni_index: {
@@ -40,15 +41,17 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     contact_no: {
-      type: DataTypes.STRING(15),
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [10, 15],
-      },
     },
     beverages: {
       type: DataTypes.ENUM('non-veg', 'veg'),
       allowNull: true,
+    },
+    is_leader: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
     },
   });
 

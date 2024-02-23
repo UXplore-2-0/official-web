@@ -18,37 +18,39 @@ const {
   addQuestion,
   getSubmissions,
   addAnswer,
+  getStatus,
 } = require('../controllers/teams.controller');
 
 // create a router for handle the team routes
 const router = express.Router();
 
-// team authorized routes
-router.post('/:team_name/add', auth, addMember);
-router.get('/:team_name/:member_id', auth, getMember);
-router.put('/:team_name/:member_id', auth, updateMember);
-router.delete('/:team_name/:member_id', auth, deleteMember);
-router.get('/:team_name', auth, getTeam);
-
-// beverage related routes
-router.post('/:team_name/:member_id/beverages', auth, addBeverage);
-router.put('/:team_name/:member_id/beverages', auth, updateBeverages);
-
-// submission related routes
-router.post('/:team_name/submissions', auth, addSubmission);
+// QA related routes
+router.post('/qa', auth, addQA); // TODO: success
+router.get('/getqa', auth, getQAs); // TODO: success
+router.get('/qa/:qa_id', auth, getQA); // TODO: success
 
 // question related routes
-router.get('/:team_name/question', auth, getQuestion);
+router.get('/getquestion', auth, getQuestion); // TODO: suucess
 
-// QA related routes
-router.post('/:team_name/qa', auth, addQA);
-router.get('/:team_name/qa', auth, getQAs);
-router.get('/:team_name/qa/:qa_id', auth, getQA);
+// beverage related routes
+router.post('/:member_id/beverages', auth, addBeverage); // TODO: sucess
+router.put('/:member_id/beverages', auth, addBeverage); // TODO: success
+
+// submission related routes
+router.post('/submissions', auth, addSubmission);
 
 // admin only authorized routes
-router.get('/', auth, admin, getAllTeams);
-router.post('/:team_name/question', auth, admin, addQuestion);
-router.get(':/team_name/submission', auth, admin, getSubmissions);
-router.post(':/team_name/qa/:qa_id/answer', auth, admin, addAnswer);
+router.post('/question', auth, admin, addQuestion); // TODO: suucess
+// router.get(':/team_id/submission', auth, admin, getSubmissions);
+router.post('/:team_id/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
+router.get('/all', auth, admin, getAllTeams); // TODO: success
+
+// team authorized routes
+router.get('/status', getStatus); // TODO: success
+router.post('/add', auth, addMember); // TODO: success
+router.get('/:member_id', auth, getMember); // TODO: sucess
+router.put('/:member_id', auth, updateMember); // TODO: sucess
+router.delete('/:member_id', auth, deleteMember); // TODO: sucess
+router.get('/', auth, getTeam); // TODO: success
 
 module.exports = router;
