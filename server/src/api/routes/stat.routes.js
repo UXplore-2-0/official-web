@@ -1,25 +1,10 @@
 const express = require('express');
-const { auth, admin } = require('../middleware/auth'); 
-const {
-  getTeamStat,
-  getFullStat,
-  getTotalNoOfSubmissions,
-  getTotalTeamSubmissions,
-  getTotalTeamPerfomance,
-} = require('../controllers/stat.controller');
-
-// create a router for handle the stat routes
 const router = express.Router();
+const statController = require('../controllers/stat.controller');
 
-router.get('/', auth, admin, getFullStat);
-router.get('/:team_name', auth, admin, getTeamStat);
-router.get('/:team_name/submissions', auth, admin, getTotalNoOfSubmissions);
-router.get(
-  '/:team_name/Totalsubmissions',
-  auth,
-  admin,
-  getTotalTeamSubmissions
-);
-router.get('/:team_name/Totalperfomance', auth, admin, getTotalTeamPerfomance);
+// Define a route to get stats
+router.get('/onlinestats', statController.getOnlineStats);
+router.get('/totalteams', statController.getTotalUsers);
+router.get('/totalsubmission', statController.getTotalSubmissions);
 
 module.exports = router;
