@@ -5,20 +5,20 @@ function TeamDetails() {
 
     const Team_Details = [
         {
-            teamName: 'Team 1', email: 'team1@example.com', numOfMembers: 5, members: [
+            teamName: 'Team 1', email: 'team1@example.com', numOfMembers: 5, universityName: 'University 1', members: [
                 { name: 'Member 1', email: 'member1@example.com' },
                 { name: 'Member 2', email: 'member2@example.com' },
                 { name: 'Member 3', email: 'member3@example.com' }
             ]
         },
         {
-            teamName: 'Team 2', email: 'team2@example.com', numOfMembers: 3, members: [
+            teamName: 'Team 2', email: 'team2@example.com', numOfMembers: 3, universityName: 'University 2', members: [
                 { name: 'Member 4', email: 'member4@example.com' },
                 { name: 'Member 5', email: 'member5@example.com' }
             ]
         },
         {
-            teamName: 'Team 3', email: 'team3@example.com', numOfMembers: 7, members: [
+            teamName: 'Team 3', email: 'team3@example.com', numOfMembers: 7, universityName: 'University 3', members: [
                 { name: 'Member 6', email: 'member6@example.com' },
                 { name: 'Member 7', email: 'member7@example.com' },
                 { name: 'Member 8', email: 'member8@example.com' },
@@ -37,7 +37,7 @@ function TeamDetails() {
     };
 
     return (
-        <div className="ml-0 ">
+        <div className=" ">
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-black uppercase dark:text-gray-400 bg-blue-600">
                     <tr>
@@ -51,6 +51,9 @@ function TeamDetails() {
                             <button className="text-white">No. of Members</button>
                         </th>
                         <th scope="col" className="px-6 py-3">
+                            <button className="text-white">University Name</button>
+                        </th>
+                        <th scope="col" className="px-6 py-3">
                             <button className="text-white">Actions</button>
                         </th>
                     </tr>
@@ -61,6 +64,7 @@ function TeamDetails() {
                             <td className="px-6 py-3 cursor-pointer" onClick={() => showMemberDetails(team.teamName)}>{team.teamName}</td>
                             <td className="px-6 py-3">{team.email}</td>
                             <td className="px-6 py-3">{team.numOfMembers}</td>
+                            <td className="px-6 py-3">{team.universityName}</td>
                             <td className="px-6 py-3">
                                 <button className="text-white bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded">Delete</button>
                             </td>
@@ -80,13 +84,17 @@ function TeamDetails() {
                                 <tr>
                                     <th className="px-6 py-3">Name</th>
                                     <th className="px-6 py-3">Email</th>
+                                    <th className="px-6 py-3">Actions</th>
                                 </tr>
                             </thead>
                             <tbody >
                                 {selectedTeam.members.map((member, index) => (
                                     <tr key={index}>
                                         <td className="px-6 py-3">{member.name}</td>
-                                        <td>{member.email}</td>
+                                        <td className='px-6 py-3'>{member.email}</td>
+                                        <td className='px-6 py-3'>
+                                            <button className="text-white bg-red-500 hover:bg-red-700 px-4 py-2 rounded" onClick={() => handleDeleteMember(index)}>Delete</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
