@@ -1,0 +1,65 @@
+@hostname = http://localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@http = HTTP/1.1
+
+### add notification
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJyb290IiwidGVhbV9pZCI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzA4NjY4MTc2LCJleHAiOjE3MDg3NTQ1NzZ9.YhpbyeRmlmiSVr5Yb4Ek6npXUkxqtAdWd0wIsD4f8pE
+POST {{host}}/api/v1/notifications {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "message_title": "This is not an annoucement",
+    "message" : "This is regarding of the new feature that we are going to release in Upcoming December, also we are going to have a meeting on 20th of December 2023. Please make sure you are available on that day."
+}
+
+### get all
+GET {{host}}/api/v1/notifications {{http}}
+Content-Type:  {{contentType}}
+x-auth-token: {{token}}
+
+### create a question
+POST {{host}}/api/v1/teams/qa {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "question": "What is the capital of Nigeria?"
+}
+
+### answer the FAQ
+POST {{host}}/api/v1/teams/2/qa/5/answer {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "answer": "This is the Mora UXPLORE 2.0 Competition organized by IEEE Commitee!"
+}
+
+### get all questions
+GET {{host}}/api/v1/teams/getqa {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+### get the question
+GET {{host}}/api/v1/teams/getquestion {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+### add the question
+POST {{host}}/api/v1/teams/question {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+{
+    "question": "What is the capital of Colombia?",
+    "question_link": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn.vox-cdn"
+}
+
+
+### get the status
+GET {{host}}/api/v1/teams/status {{http}}
+Content-Type: {{contentType}}
+

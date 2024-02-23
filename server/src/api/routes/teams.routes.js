@@ -18,6 +18,7 @@ const {
   addQuestion,
   getSubmissions,
   addAnswer,
+  getStatus,
 } = require('../controllers/teams.controller');
 
 // create a router for handle the team routes
@@ -39,12 +40,13 @@ router.put('/:member_id/beverages', auth, addBeverage); // TODO: success
 router.post('/submissions', auth, addSubmission);
 
 // admin only authorized routes
-router.post('/:team_id/question', auth, admin, addQuestion);
+router.post('/question', auth, admin, addQuestion); // TODO: suucess
 // router.get(':/team_id/submission', auth, admin, getSubmissions);
 router.post('/:team_id/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
 router.get('/all', auth, admin, getAllTeams); // TODO: success
 
 // team authorized routes
+router.get('/status', getStatus); // TODO: success
 router.post('/add', auth, addMember); // TODO: success
 router.get('/:member_id', auth, getMember); // TODO: sucess
 router.put('/:member_id', auth, updateMember); // TODO: sucess

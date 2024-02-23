@@ -13,8 +13,10 @@ import FAQ from "./Component/FAQ";
 
 function UserDashboard() {
   const { user } = useContext(AuthContext);
+  const [open, setOpen] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
   const [team, setTeam] = useState({});
+  const [status, setStatus] = useState({});
 
   const refreshTeam = () => {
     axios
@@ -33,6 +35,15 @@ function UserDashboard() {
 
   useEffect(() => {
     axios
+      .get("/teams/status")
+      .then((res) => {
+        setStatus(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
       .get("/teams/", {
         headers: {
           "x-auth-token": user.token,
@@ -48,29 +59,24 @@ function UserDashboard() {
   }, []);
 
   return (
-    <div className="h-screen">
-      <Sidebar selected={selected} setSelected={setSelected} team={team} />
+    <div
+      className="h-screen"
+      style={{
+        background:
+          "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
+      }}
+    >
+      <Sidebar
+        selected={selected}
+        setSelected={setSelected}
+        team={team}
+        open={open}
+        setOpen={setOpen}
+      />
 
       {selected === "Dashboard" && (
         <>
-          <div class="sm:ml-64 h-full dark">
-            {/* <div className="  w-full mt-3 mb-3   ">
-              <div className="flex flex-row  w-full  h-2/4   ">
-                <div className=" mx-3 flex w-2/4 ml-3 rounded">
-                  <Problem details="Coming Soon " />
-                </div>
-
-                <div className="w-2/4 ml-2 mr-2 rounded bg-[#1b222b]">
-                  <Submission />
-                </div>
-              </div>
-            </div>
-
-            <div className="mr-3" style={{ justifySelf: "flex-end" }}>
-              <Notification />
-              <Timer />
-            </div> */}
-
+          <div class={`${open ? "sm:ml-64 " : "sm:ml-28"} h-full dark`}>
             <div className="flex flex-col justify-between items-center h-full">
               <div className="flex flex-row justify-between items-center h-full w-full">
                 <div className="flex flex-col justify-center items-center w-full">
@@ -97,7 +103,7 @@ function UserDashboard() {
                   <Notification />
                 </div>
               </div>
-              <Timer />
+              <Timer status={status} />
             </div>
           </div>
         </>

@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRefresh } from "@fortawesome/free-solid-svg-icons";
+
 function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
   const handleAddMembers = () => {
     setSelected("AddMember");
@@ -10,7 +13,7 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
     circumference - (team.count / MAX_NUMBERS) * 100 * circumference;
 
   return (
-    <div className="sm:ml-64 dark p-20">
+    <div className="sm:ml-64 dark p-20 h-full">
       <div className="flex justify-between items-center px-5 py-2">
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Member Details
@@ -18,9 +21,20 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
         <div className="flex flex-row justify-end items-center">
           <button
             type="button"
+            className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none border-2 border-gray-700 mx-5"
+            disabled
+          >
+            <span className="inline-flex items-center justify-center w-4 h-4 ms-2 mx-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+              {MAX_NUMBERS - team.count}
+            </span>
+            More Members
+          </button>
+          <button
+            type="button"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
             onClick={refreshTeam}
           >
+            <FontAwesomeIcon icon={faRefresh} className="px-2" />
             Refresh
           </button>
 
@@ -109,7 +123,7 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
           </tbody>
         </table>
 
-        <div
+        {/* <div
           className="flex items-center justify-center mt-8"
           x-data="{ circumference: 2 * 22 / 7 * 120 }"
         >
@@ -139,7 +153,7 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
           <span className="absolute text-5xl text-sky-600" x-text={`${78}%`}>
             {MAX_NUMBERS - team.count} More
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

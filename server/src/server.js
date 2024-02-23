@@ -7,6 +7,7 @@ const {
 } = require('./api/start/unhandled');
 const db = require('./api/models');
 const createRootAdmin = require('./api/utils/adminGen');
+const createProperty = require('./api/utils/createProperty');
 // setup the dotend file
 dotenv.config({ path: '.env' });
 // create a new express powered server
@@ -25,6 +26,7 @@ const port = process.env.PORT || 5000;
 db.sequelize.sync().then(() => {
   // create the root admin user
   createRootAdmin();
+  createProperty();
   // listen on the port specified by the environment
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

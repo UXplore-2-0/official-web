@@ -1,46 +1,70 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
-import React from "react";
+import { faBell, faRefresh } from "@fortawesome/free-solid-svg-icons";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "../../../../api/axios";
+import AuthContext from "../../../../context/AuthContext";
+import DateFormatter from "../../../../util/DateFormatter";
 
 function Notification() {
-  const UpdatesData = [
-    {
-      img: "dummy-img1.jpg",
-      name: "John Doe",
-      noti: "Lorem ipsum dolor sit amet",
-      time: "10:00 AM",
-    },
-    {
-      img: "dummy-img2.jpg",
-      name: "Jane Smith",
-      noti: "Consectetur adipiscing elit",
-      time: "11:30 AM",
-    },
-    {
-      img: "dummy-img2.jpg",
-      name: "Jane Smith",
-      noti: "Consectetur adipiscing elit",
-      time: "11:30 AM",
-    },
-    {
-      img: "dummy-img2.jpg",
-      name: "Jane Smith",
-      noti: "Consectetur adipiscing elit",
-      time: "11:30 AM",
-    },
-  ];
+  const { user } = useContext(AuthContext);
+  const [notifications, setNotifications] = useState([]);
+
+  const loadNotifications = () => {
+    axios
+      .get("/notifications", {
+        headers: {
+          "x-auth-token": user.token,
+        },
+      })
+      .then((response) => {
+        setNotifications(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching notifications: ", error);
+      });
+  };
+
+  useEffect(() => {
+    // make the API request to get all the notifications
+    axios
+      .get("/notifications", {
+        headers: {
+          "x-auth-token": user.token,
+        },
+      })
+      .then((response) => {
+        setNotifications(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching notifications: ", error);
+      });
+
+    const intervalID = setInterval(() => {
+      loadNotifications();
+    }, 2000);
+
+    return () => {
+      clearInterval(intervalID);
+    };
+  }, []);
 
   return (
     <div className="min-w-80 w-150 mr-0 h-2/4 rounded-lg p-4 gap-4 flex flex-col text-sm mt-3 mb-3">
-      <div className="flex flex-row justify-start">
+      <div className="flex flex-row justify-between">
         <h1 className="text-white font-bold text-lg border-sky-500">
           <FontAwesomeIcon icon={faBell} className="mx-3" />
           Notification
         </h1>
+        <button
+          className="px-1 py-1 mx-5 text-base font-medium transition text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          onClick={loadNotifications}
+        >
+          <FontAwesomeIcon icon={faRefresh} className="px-2" />
+        </button>
       </div>
 
       <div class="overflow-auto h-52 text-sm px-4 py-2">
-        {UpdatesData.map((update, index) => (
+        {notifications.map((notification, index) => (
           <div
             id="toast-notification"
             className="w-full max-w-xs p-4 text-gray-900 bg-white rounded-lg shadow dark:bg-gray-800 dark:text-gray-300 my-5"
@@ -48,7 +72,7 @@ function Notification() {
           >
             <div class="flex items-center mb-3">
               <span className="mb-1 text-sm font-semibold text-gray-900 dark:text-white">
-                New notification
+                {notification.message_title}
               </span>
               <button
                 type="button"
@@ -77,14 +101,11 @@ function Notification() {
             <div className="flex items-center">
               <div className="relative inline-block shrink-0"></div>
               <div className="ms-3 text-sm font-normal">
-                <div className="text-sm font-semibold text-gray-900 dark:text-white">
-                  Bonnie Green
-                </div>
                 <div className="text-sm font-normal">
-                  commented on your photo
+                  {notification.message}
                 </div>
                 <span className="text-xs font-medium text-blue-600 dark:text-blue-500">
-                  a few seconds ago
+                  {DateFormatter(new Date(notification.added_at))}
                 </span>
               </div>
             </div>

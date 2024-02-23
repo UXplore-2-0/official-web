@@ -1,7 +1,8 @@
-const { Team, Member, Question, QA } = require('../models');
+const { Team, Member, Question, QA, Properties } = require('../models');
 const { validateMember, validateBeverage } = require('../validations/member');
 const { validateQuestion } = require('../validations/QA');
-const { Op } = require('sequelize');
+const { validateQuestionBody } = require('../validations/team');
+const { Op, where } = require('sequelize');
 
 const MAX_MEMBERS = 3;
 
@@ -239,39 +240,75 @@ async function addBeverage(req, res, next) {
   });
   await member.save();
 
-  // member.update({ beverages: beverages });
   return res.json({ message: 'Beverages Add' });
 }
 
 async function addSubmission(req, res, next) {
   const tid = req.user.team_id;
-  const { question, is_submitted, submission_link } = req.body;
+  const { submission_link } = req.body;
 
   const team = await Team.findOne({ where: { team_id: tid } });
   if (!team) {
     return res.status(404).json({ error: 'Team not found' });
   }
   const newQuestion = await Question.create({
-    question,
     team_id: tid,
-    is_submitted,
+    is_submitted: true,
     submission_link,
   });
-  console.log('User created successfully:', newQuestion.toJSON());
+
+  return res.json({
+    message: 'Submission Added',
+    link: submission_link,
+    team: team,
+  });
+}
+
+async function addQuestion(req, res, next) {
+  // validate the request body
+  const { error } = validateQuestionBody(req.body);
+  if (error) {
+    return res.status(400).json({ error: error.details[0].message });
+  }
+  const { question, question_link } = req.body;
+
+  // add the question to the database
+  await Properties.update(
+    { property_value: question },
+    {
+      where: {
+        property_name: 'question',
+      },
+    }
+  );
+
+  await Properties.update(
+    { property_value: question_link },
+    {
+      where: {
+        property_name: 'question_link',
+      },
+    }
+  );
 
   return res.json({ message: 'Question Added' });
 }
 
-function addQuestion(req, res, next) {}
-
 async function getQuestion(req, res, next) {
   const tid = req.user.team_id;
 
-  const question = await Question.findOne({ where: { team_id: tid } });
-  if (!question) {
-    return res.status(404).json({ error: 'Team not found' });
-  }
-  return res.json(question);
+  const question = await Properties.findOne({
+    where: {
+      property_name: 'question',
+    },
+  });
+
+  const questionLink = await Properties.findOne({
+    where: {
+      property_name: 'question_link',
+    },
+  });
+  return res.json({ question, questionLink });
 }
 
 // function getSubmissions(req, res, next) { }
@@ -321,7 +358,7 @@ async function getQAs(req, res, next) {
 }
 
 async function addAnswer(req, res, next) {
-  const tid = req.param.team_id;
+  const tid = req.params.team_id;
   const qid = req.params.qa_id;
 
   const team = await Team.findOne({ where: { team_id: tid } });
@@ -339,6 +376,31 @@ async function addAnswer(req, res, next) {
   });
   await qa.save();
   return res.json(qa);
+}
+
+async function getStatus(req, res, next) {
+  const startTime = await Properties.findOne({
+    where: {
+      property_name: 'start_time',
+    },
+  });
+
+  const endTime = await Properties.findOne({
+    where: {
+      property_name: 'end_time',
+    },
+  });
+  const status = await Properties.findOne({
+    where: {
+      property_name: 'status',
+    },
+  });
+
+  res.json({
+    startTime,
+    endTime,
+    status: status.property_value === 'inactive' ? false : true,
+  });
 }
 
 function addQAs(req, res, next) {}
@@ -360,4 +422,5 @@ module.exports = {
   addQuestion,
   // getSubmissions,
   addAnswer,
+  getStatus,
 };

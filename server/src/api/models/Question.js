@@ -5,13 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    question: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-      validate: {
-        len: [1, 255],
-      },
-    },
     team_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -27,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     submitted_at: {
       type: DataTypes.DATE,
       allowNull: true,
+      defaultValue: Date(),
     },
   });
 
