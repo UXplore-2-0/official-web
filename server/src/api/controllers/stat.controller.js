@@ -1,81 +1,40 @@
-const { Team, QA, Member } = require('../models');
+const { Team } = require('../models');
 
-const submissions = [];
+async function getOnlineStats(req, res, next) {
+  try {
+    // Assuming you have a method to retrieve online stats from your database
+    const onlineStats = await Team.getOnlineUsers(); // Replace YourModel.getOnlineStats with the actual method
 
-// Function to handle submission in the competitionm
-async function submitInCompetition(req, res, next) {
-  const { teamId, QA, presentation, submissionTime } = req.body;
-
-  const team = await Team.find((t) => t.id === teamId);
-
-  if (!team) {
-    return res.status(404).json({ error: 'Team not found' });
+    res.json(onlineStats);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-
-  // Add submission to the submissions array
-  submissions.push({
-    teamId,
-    submission,
-    presentation,
-    submissionTime,
-  });
-
-  // You can perform any additional logic here, such as updating team stats or storing more information.
-
-  res.status(201).json({ message: 'Submission successful' });
 }
 
-// Function to get team statistics
-async function getTeamStat(req, res, next) {
-  const { teamId } = req.params;
+async function getTotalUsers(req, res, next) {
+  try {
+    const totalUsers = await Team.getAllTeams();
 
-  // Assuming you have a function to calculate team stats
-  const teamStat = await alculateTeamStat(teamId);
-  res.json({ teamId, teamStat });
+    res.json({ value: totalUsers });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
-// Function to get full statistics
-async function getFullStat(req, res, next) {
-  // Assuming you have a function to calculate overall stats
-  const fullStat = await calculateFullStat();
-
-  res.json({ fullStat });
-}
-
-// Function to get total team submissions
-function getTeamSubmissions(req, res, next) {
-  const { teamId } = req.params;
-
-  // Assuming you have a function to get total submissions for a team
-  const totalSubmissions = getTotalSubmissionsForTeam(teamId);
-
-  res.json({ teamId, totalSubmissions });
-}
-
-function getTotalTeamPerfomance(req, res, next) {
-  const { teamId } = req.params;
-  const totalSubmissions = getTotalSubmissionsForTeam(teamId);
-  const totalQuestions = getTotalQuestionsForTeam(teamId);
-  res.json({ teamId, totalSubmissions, totalQuestions });
-}
-
-function getTotalNoOfSubmissions(req, res, next) {
-  const totalSubmissions = getTotalSubmissions();
-  res.json({ totalSubmissions });
-}
-
-function getTeamPerfomance(req, res, next) {
-  const { teamId } = req.params;
-  const totalSubmissions = getTotalSubmissionsForTeam(teamId);
-  const totalQuestions = getTotalQuestionsForTeam(teamId);
-  res.json({ teamId, totalSubmissions, totalQuestions });
+async function getTotalSubmissions(req, res, next) {
+  try {
+    const totalSubmissions = await Team.getSubmissions();
+    res.json({ value: totalSubmissions });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
 }
 
 module.exports = {
-  getTeamStat,
-  getFullStat,
-  getTeamSubmissions,
-  getTotalNoOfSubmissions,
-  getTeamPerfomance,
-  getTotalTeamPerfomance,
+  getOnlineStats,
+  getTotalUsers,
+  getTotalSubmissions,
 };

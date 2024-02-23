@@ -17,6 +17,7 @@ const {
   getAllTeams,
   addQuestion,
   getSubmissions,
+  getOnlineUsers,
   addAnswer,
 } = require('../controllers/teams.controller');
 

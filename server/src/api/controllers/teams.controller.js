@@ -30,6 +30,8 @@ function addQuestion(req, res, next) {}
 
 function getSubmissions(req, res, next) {}
 
+function getOnlineUsers(req, res, next) {}
+
 function addAnswer(req, res, next) {}
 
 module.exports = {
@@ -49,5 +51,6 @@ module.exports = {
   getAllTeams,
   addQuestion,
   getSubmissions,
+  getOnlineUsers,
   addAnswer,
 };
