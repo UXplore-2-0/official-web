@@ -178,7 +178,8 @@
     font-size: large;
     color: white;
     font-size: 3em;
-    font-weight: 600;
+    font-weight: 500;
+    padding-top: 10px;
   }
 
   .pageleft-middle {
@@ -187,9 +188,5 @@
 
   .member-full {
     gap: 0px;
-  }
-
-  .pageleft-main:nth-child(2) {
-    display: none;
   }
 }

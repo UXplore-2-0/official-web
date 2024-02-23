@@ -47,6 +47,7 @@
     line-height: 1.5rem;
     letter-spacing: 0.9px;
   }
+
   .details-dev > p {
     font-size: 0.9rem;
     line-height: 1.2rem;
@@ -60,6 +61,7 @@
     line-height: 1.5rem;
     letter-spacing: 0.9px;
   }
+
   .details-dev > p {
     font-size: 0.9rem;
     line-height: 1.2rem;
@@ -73,6 +75,7 @@
     line-height: 1.5rem;
     letter-spacing: 0.9px;
   }
+
   .details-dev > p {
     font-size: 1em;
     line-height: 1.2rem;
@@ -85,8 +88,20 @@
     font-size: 1.1em;
     letter-spacing: 0.8px;
   }
+
   .details-dev > p {
     font-size: 0.9em;
     letter-spacing: 0.7px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .name-dev > p {
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+  }
+  .details-dev > p {
+    font-size: 0.8em;
+    letter-spacing: 0.4px;
   }
 }
