@@ -64,8 +64,8 @@
     border-radius: 25px;
     height: 300px;
    justify-content:  center;
-    margin-top: 50px;
-    position: relative; /* Needed for the transformation */
+    
+    position: relative; 
     
 }
 

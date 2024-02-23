@@ -47,7 +47,7 @@ function Sponsorships() {
 
   return (
 
-      <section className="bottom-background">
+      <section id = "sponsorships" className="bottom-background">
             <div className="title-division">
               <div id="title-2">OUR PARTNERS</div>
             </div>
