@@ -18,7 +18,7 @@ function Static() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-blue-400">
+    <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-screen-md p-6 bg-white rounded-lg shadow-md">
         <h2 className="flex justify-center text-3xl font-semibold mb-4">
           Statistics

@@ -63,3 +63,14 @@ x-auth-token: {{token}}
 GET {{host}}/api/v1/teams/status {{http}}
 Content-Type: {{contentType}}
 
+### get all teams
+GET {{host}}/api/v1/teams/all {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
+
+
+### submision
+GET {{host}}/api/v1/teams/submissions {{http}}
+x-auth-token: {{token}}
+
+

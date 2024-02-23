@@ -19,13 +19,17 @@ const {
   getSubmissions,
   addAnswer,
   getStatus,
+  deleteTeam,
+  getAllQAs,
 } = require('../controllers/teams.controller');
 
 // create a router for handle the team routes
 const router = express.Router();
 
 // QA related routes
+router.post('/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
 router.post('/qa', auth, addQA); // TODO: success
+router.get('/qa/all', auth, getAllQAs); // TODO: success
 router.get('/getqa', auth, getQAs); // TODO: success
 router.get('/qa/:qa_id', auth, getQA); // TODO: success
 
@@ -41,9 +45,9 @@ router.post('/submissions', auth, addSubmission);
 
 // admin only authorized routes
 router.post('/question', auth, admin, addQuestion); // TODO: suucess
-// router.get(':/team_id/submission', auth, admin, getSubmissions);
-router.post('/:team_id/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
+router.get('/submissions', auth, admin, getSubmissions);
 router.get('/all', auth, admin, getAllTeams); // TODO: success
+router.delete('/delete/:team_id', auth, admin, deleteTeam); // TODO: success
 
 // team authorized routes
 router.get('/status', getStatus); // TODO: success

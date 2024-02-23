@@ -122,38 +122,6 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
               ))}
           </tbody>
         </table>
-
-        {/* <div
-          className="flex items-center justify-center mt-8"
-          x-data="{ circumference: 2 * 22 / 7 * 120 }"
-        >
-          <svg className="transform -rotate-90 w-72 h-72">
-            <circle
-              cx="145"
-              cy="145"
-              r="120"
-              stroke="currentColor"
-              stroke-width="30"
-              fill="transparent"
-              className="text-gray-700"
-            />
-
-            <circle
-              cx="145"
-              cy="145"
-              r="120"
-              stroke="currentColor"
-              stroke-width="30"
-              fill="transparent"
-              strokeDasharray={circumference}
-              strokeDashoffset={strokeDashoffset}
-              className="text-blue-500 "
-            />
-          </svg>
-          <span className="absolute text-5xl text-sky-600" x-text={`${78}%`}>
-            {MAX_NUMBERS - team.count} More
-          </span>
-        </div> */}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { faBell, faRefresh } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext, useEffect, useState } from "react";
 import axios from "../../../../api/axios";
 import AuthContext from "../../../../context/AuthContext";
-import DateFormatter from "../../../../util/DateFormatter";
+import { DateFormatter } from "../../../../util/DateFormatter";
 
 function Notification() {
   const { user } = useContext(AuthContext);

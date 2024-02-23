@@ -1,4 +1,4 @@
-export default function (date) {
+function DateFormatter(date) {
   // Using Intl.DateTimeFormat
   const options = {
     year: "numeric",
@@ -12,3 +12,13 @@ export default function (date) {
   const formatter = new Intl.DateTimeFormat("en-US", options);
   return formatter.format(date);
 }
+
+function DateFormatterZone(date) {
+  // split the date into date and time
+  const [dateString, timeString] = date.split("T");
+  const [time, zone] = timeString.split(".");
+
+  return DateFormatter(new Date(`${dateString}T${time}`));
+}
+
+export { DateFormatter, DateFormatterZone };

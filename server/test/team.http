@@ -44,3 +44,13 @@ x-auth-token: {{token}}
     "contact_no": "987654321",
     "beverages": "Veg"
 }
+
+### add submisson
+@token2 = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJTYW5zYSIsInRlYW1faWQiOjIsInJvbGUiOiJ0ZWFtIiwiaWF0IjoxNzA4NzA1MzA4LCJleHAiOjE3MDkwNjUzMDh9.-qgvIDuh2-8B43Ah0FOmnnc9RHkkEl4Wv1q-khvsnFQ
+POST {{host}}/api/v1/teams/submissions {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token2}}
+
+{
+    "submission_link": "https://localhost:80"
+}

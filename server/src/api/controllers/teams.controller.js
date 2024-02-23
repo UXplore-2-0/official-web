@@ -18,11 +18,22 @@ async function getAllTeams(req, res, next) {
       'createdAt',
       'updatedAt',
     ],
+    where: {
+      role: 'team',
+    },
   });
-  if (!team) {
-    return res.status(404).json({ error: 'Team not found' });
+  // get the members of each team
+  let teams = [];
+  for (let i = 0; i < team.length; i++) {
+    const members = await Member.findAll({
+      where: {
+        team_id: team[i].team_id,
+      },
+    });
+    teams.push({ ...team[i].dataValues, members });
   }
-  return res.status(201).json(team);
+
+  return res.status(201).json(teams);
 }
 
 async function addMember(req, res, next) {
@@ -353,22 +364,36 @@ async function getQA(req, res, next) {
 async function getQAs(req, res, next) {
   const tid = parseInt(req.user.team_id);
 
-  const qa = await QA.findAll({ where: { team_id: tid } });
+  const qa = await QA.findAll({
+    where: { team_id: tid },
+    include: [
+      {
+        model: Team,
+        attributes: ['team_name', 'email', 'university'],
+      },
+    ],
+  });
   return res.json(qa);
 }
 
-async function addAnswer(req, res, next) {
-  const tid = req.params.team_id;
-  const qid = req.params.qa_id;
+async function getAllQAs(req, res, next) {
+  const qas = await QA.findAll({
+    include: [
+      {
+        model: Team,
+        attributes: ['team_name', 'email', 'university'],
+      },
+    ],
+  });
+  return res.json(qas);
+}
 
-  const team = await Team.findOne({ where: { team_id: tid } });
-  if (!team) {
-    return res.status(404).json({ error: 'Team not found' });
-  }
+async function addAnswer(req, res, next) {
+  const qid = req.params.qa_id;
 
   const qa = await QA.findOne({ where: { qa_id: qid } });
   if (!qa) {
-    return res.status(404).json({ error: 'Team not found' });
+    return res.status(404).json({ error: 'Question not found' });
   }
   qa.set({
     is_answered: true,
@@ -403,6 +428,32 @@ async function getStatus(req, res, next) {
   });
 }
 
+async function deleteTeam(req, res, next) {
+  const teamId = req.params.team_id;
+
+  await Team.destroy({
+    where: {
+      team_id: teamId,
+    },
+  });
+
+  return res.status(201).json({ message: 'Team Delete Successfull' });
+}
+
+async function getSubmissions(req, res, next) {
+  // get the submissions from the database
+  const submissions = await Question.findAll({
+    include: [
+      {
+        model: Team,
+        attributes: ['team_name', 'email', 'university'],
+      },
+    ],
+  });
+
+  return res.json({ submissions });
+}
+
 function addQAs(req, res, next) {}
 
 module.exports = {
@@ -420,7 +471,9 @@ module.exports = {
   getQAs,
   getAllTeams,
   addQuestion,
-  // getSubmissions,
+  getSubmissions,
   addAnswer,
   getStatus,
+  deleteTeam,
+  getAllQAs,
 };

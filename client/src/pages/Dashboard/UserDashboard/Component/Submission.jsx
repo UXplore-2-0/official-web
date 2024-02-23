@@ -70,7 +70,7 @@ function Submission() {
               class="mt-1 text-sm text-gray-600 dark:text-gray-400"
               id="file_input_help"
             >
-              SVG, PNG, JPG or GIF (MAX. 800x400px).
+              JPG, PNG, PDF, FIGMA (No More Than 50MB).
             </p>
 
             <button className="px-10 py-2 bg-sky-600 rounded-lg hover:bg-sky-500 transition-all duration-300 mt-6">
