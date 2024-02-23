@@ -7,6 +7,11 @@ import {useGSAP} from '@gsap/react'
 
 // import { useEffect} from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Intro from "../Intro/Intro";
+import Timeline from "../Timeline/Timeline";
+import Sponsorships from "../Sponsorships/Sponsorships";
+// import Sponsorships from "../Sponsorships/Sponsorships";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +44,8 @@ const App = () => {
     let timeLine = gsap.timeline();
     const numBlinks = 14;
 
+    
+
     for (let i = 0; i <= numBlinks; i++) {
       timeLine.to(
         "#uxplore-landing-right, #thunder-1, #mora-landing-left, #mora-landing-right, #thunder-2, #logo-landing, #uxplore-landing",
@@ -54,31 +61,26 @@ const App = () => {
           opacity: 1,
           duration: 0.1,
           ease: "power1.inOut",
-          
         });
       } else if (i % 6 === 3) {
         timeLine.to("#thunder-2, #thunder-1, #uxplore-landing", {
           opacity: 1,
           duration: 0.1,
           ease: "power1.inOut",
-          
         });
       } else if (i % 6 === 4) {
         timeLine.to("#thunder-2, #mora-landing-right", {
           opacity: 1,
           duration: 0.1,
           ease: "power1.inOut",
-        
         });
       } else if (i === 14) {
         timeLine.to("#logo-landing", {
           opacity: 1,
           duration: 1.5,
           ease: "power1.inOut",
-        
           onComplete: function () {
             setIsAnimated(true);
-           
           },
         });
       } else {
@@ -93,27 +95,68 @@ const App = () => {
     gsap.to("#main-div-after-animated", {
       opacity: 1,
       ease: "power1.inOut",
-      
     });
+
+    gsap.to("#ship", {
+      x: 100,
+      delay:1,
+      duration: 1,
+    })
+    gsap.to("#title-1", {
+      scrollTrigger: {
+        scrub: 1,
+      },
+      scale: 2.5,
+    });
+  
+    
+    gsap.to("#ship", {
+      scrollTrigger: {
+        scrub: 1,
+      },
+      scale: 0.3,
+      y: 600,
+    });
+  
+    gsap.to("#cloud-left", {
+      scrollTrigger: {
+        scrub: 1,
+      },
+      scale: 2.25,
+    });
+  
+    gsap.to("#cloud-right", {
+      scrollTrigger: {
+        scrub: 1,
+      },
+      scale: 2.25,
+    });
+  
+    gsap.to("#moon", {
+      scrollTrigger: {
+        scrub: 1,
+      },
+      scale: 1.25,
+      y: 1000,
+      x: 1000,
+    });
+  
+  
+    gsap.to("#logo", {
+      scrollTrigger: {
+        end: "+=50",
+      },
+      scale: 0.9,
+      y: -100,
+    });
+    
   }, { scope: document.getElementById("container"), dependencies: [isAnimated]});
 
-
-useGSAP ( () => {
-  gsap.to("#title-1", {
-    scrollTrigger: {
-      scrub: 1,
-    },
-    scale: 2.5,
-  });
-
-  gsap.to("#title-2", {
-    scrollTrigger: {
-      scrub: 1,
-      start: "+100",
-    },
-    scale: 1.5,
-  });
-}, { scope: document.getElementById("container") })
+// useGSAP(() => {
+  
+  
+ 
+// }, { scope: document.getElementById("container") })
 
   // gsap.to("#title-1", {
   //   scrollTrigger : {
@@ -121,71 +164,6 @@ useGSAP ( () => {
   //   },
   //   scale: 1.5
   // });
-
-  gsap.to("#ship", {
-    scrollTrigger: {
-      scrub: 1,
-    },
-    scale: 0.3,
-    y: 600,
-  });
-
-  gsap.to("#cloud-left", {
-    scrollTrigger: {
-      scrub: 1,
-    },
-    scale: 2.25,
-  });
-
-  gsap.to("#cloud-right", {
-    scrollTrigger: {
-      scrub: 1,
-    },
-    scale: 2.25,
-  });
-
-  gsap.to("#moon", {
-    scrollTrigger: {
-      scrub: 1,
-    },
-    scale: 1.25,
-    y: 900,
-    x: 200,
-  });
-
-
-  gsap.to("#logo", {
-    scrollTrigger: {
-      end: "+=50",
-    },
-    scale: 0.9,
-    y: -100,
-  });
-
-  gsap.to(".middle-card", {
-    scrollTrigger: {
-      scrub: 1,
-    },
-    scale: 1.5,
-  });
-
-  gsap.to(".left-card", {
-    scrollTrigger: {
-      scrub: 3,
-    },
-    x: 500,
-    rotate: 0,
-  });
-
-
-  gsap.to(".right-card", {
-    scrollTrigger: {
-      scrub: 3,
-    },
-    x: -500,
-    rotate: 0,
-  });
-
 
 
 
@@ -274,8 +252,11 @@ useGSAP ( () => {
               </div>
             </div> 
           </div>*/}
-
-         
+    
+         <Intro />
+         <Timeline />
+         <Sponsorships />
+      
         </div>
       ) : (
         <>

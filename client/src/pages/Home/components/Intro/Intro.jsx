@@ -58,13 +58,13 @@ function Intro() {
           },
         });
     
-        gsap.from("img", {
+        gsap.from(".logo", {
           duration: 3,
           opacity: 0,
           delay: 0.5,
           scrollTrigger: {
             trigger: ".box2",
-            start: "top 60%",
+            // start: "top 60%",
             end: "bottom 40%",
             toggleActions: "play none none none",
           },
