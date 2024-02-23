@@ -1,11 +1,10 @@
-const { Team } = require('../models');
+const { Team, QA, Member } = require('../models');
 
 const submissions = [];
-const teams = [];
 
 // Function to handle submission in the competitionm
 async function submitInCompetition(req, res, next) {
-  const { teamId, submission, presentation, submissionTime } = req.body;
+  const { teamId, QA, presentation, submissionTime } = req.body;
 
   const team = await Team.find((t) => t.id === teamId);
 
