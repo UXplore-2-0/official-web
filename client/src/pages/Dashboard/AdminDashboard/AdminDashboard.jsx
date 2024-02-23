@@ -14,7 +14,7 @@ function AdminDashboard() {
                 <Sidebar selected={selected} setSelected={setSelected} />
             </div>
 
-            <div className="flex-1  ">
+            <div className="flex-1  w-3/4">
                 {selected === "Dashboard" && <Static />}
                 {selected === "TeamDetails" && <TeamDetails />}
                 {selected === "SubmissionDetails" && <SubmissionDetails />}
