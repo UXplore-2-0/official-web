@@ -73,13 +73,8 @@ export default function Guidlines() {
   gsap.registerPlugin(ScrollTrigger);
   return (
     <div
-      className="w-[100%] h-[100%] flex flex-col bg-cover justify-between py-11 sm:flex-row-reverse"
-      // style={{
-      //   backgroundImage:
-      //     "url('https://rare-gallery.com/thumbs/1180321-sea-artwork-underwater-light-ocean-darkness.jpg')",
-      // }}
-    >
-      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8 md:text-[128px] sm:text-[45] w-full sm:justify-end sm:ml-0">
+      className="w-[100%] h-[100%] flex flex-col bg-cover  py-11 lg:flex-row-reverse lg:flex-end lg:text-[120px] justify-between">
+      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8  w-full sm:ml-5 md:flex-end md:text-[60px] min-[1222px]:text-[100px] lg:justify-center justify-center">
         {"GUIDELINES".split("").map((characters, index) => {
           return characters === " " ? (
             <span key={index}>&nbsp;</span>
@@ -90,7 +85,7 @@ export default function Guidlines() {
           );
         })}
       </div>
-      <div className="bg-white/0 mb-3 points-block backdrop-blur-md w-full sm:max-w-[80%]">
+      <div className="bg-white/0 mb-3 points-block backdrop-blur-md sm:max-w-[80%] w-[100%] justify-center">
         {array.map((sentence, index) => {
           return (
             <div key={index} className="ml-5  text-white  p-3 flex-wrap">
