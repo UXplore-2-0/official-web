@@ -6,6 +6,21 @@ function Problem() {
   const { user } = useContext(AuthContext);
   const [question, setQuestion] = useState(null);
 
+  const loadQuestion = () => {
+    axios
+      .get("/teams/getquestion", {
+        headers: {
+          "x-auth-token": user.token,
+        },
+      })
+      .then((response) => {
+        setQuestion(response.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching question: ", err);
+      });
+  };
+
   useEffect(() => {
     axios
       .get("/teams/getquestion", {
@@ -14,12 +29,17 @@ function Problem() {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setQuestion(response.data);
       })
       .catch((err) => {
         console.error("Error fetching question: ", err);
       });
+
+    const intervalId = setInterval(() => {
+      loadQuestion();
+    }, 10000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (

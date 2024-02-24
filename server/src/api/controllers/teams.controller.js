@@ -2,7 +2,7 @@ const { Team, Member, Question, QA, Properties } = require('../models');
 const { validateMember, validateBeverage } = require('../validations/member');
 const { validateQuestion } = require('../validations/QA');
 const { validateQuestionBody } = require('../validations/team');
-const { Op, where } = require('sequelize');
+const { Op } = require('sequelize');
 
 const MAX_MEMBERS = 3;
 
@@ -454,6 +454,23 @@ async function getSubmissions(req, res, next) {
   return res.json({ submissions });
 }
 
+async function getSubmission(req, res, next) {
+  // get the submissions from the database
+  const submission = await Question.findOne({
+    where: {
+      team_id: req.user.team_id,
+    },
+    include: [
+      {
+        model: Team,
+        attributes: ['team_name', 'email', 'university'],
+      },
+    ],
+  });
+
+  return res.json({ submission });
+}
+
 function addQAs(req, res, next) {}
 
 module.exports = {
@@ -476,4 +493,5 @@ module.exports = {
   getStatus,
   deleteTeam,
   getAllQAs,
+  getSubmission,
 };

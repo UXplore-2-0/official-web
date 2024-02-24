@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     submitted_at: {
       type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: Date(),
+      defaultValue: DataTypes.NOW,
     },
   });
 

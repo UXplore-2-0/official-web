@@ -21,10 +21,18 @@ const {
   getStatus,
   deleteTeam,
   getAllQAs,
+  getSubmission,
 } = require('../controllers/teams.controller');
+const { uploadFile } = require('../controllers/file.controller');
+const multer = require('multer');
 
+// create multer instance for file uploading
+const upload = multer();
 // create a router for handle the team routes
 const router = express.Router();
+
+// file upload route
+router.post('/upload', auth, upload.single('file'), uploadFile);
 
 // QA related routes
 router.post('/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
@@ -50,6 +58,7 @@ router.get('/all', auth, admin, getAllTeams); // TODO: success
 router.delete('/delete/:team_id', auth, admin, deleteTeam); // TODO: success
 
 // team authorized routes
+router.get('/submission', auth, getSubmission); // TODO: success
 router.get('/status', getStatus); // TODO: success
 router.post('/add', auth, addMember); // TODO: success
 router.get('/:member_id', auth, getMember); // TODO: sucess

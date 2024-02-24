@@ -1,6 +1,17 @@
 const nodemailer = require('nodemailer');
 const Mailgen = require('mailgen');
+const { google } = require('googleapis');
+const CONSTANTS = require('./constants');
 
+const oAuth2Client = new google.auth.OAuth2(
+  process.env.GMAIL_CLIENT_ID,
+  process.env.GMAIL_CLIENT_SECRET,
+  process.env.GMAIL_REDIRECT_URI
+);
+
+oAuth2Client.setCredentials({ refresh_token: process.env.GMAIL_REFRESH_TOKEN });
+
+// function for generate the mail body of the email
 function generateMailBody(verificationToken, team_name) {
   let mailGenerator = new Mailgen({
     theme: 'default',
@@ -18,7 +29,7 @@ function generateMailBody(verificationToken, team_name) {
       action: {
         instructions: `To get started with Your Team ${team_name}, please click here:`,
         button: {
-          color: '#22BC66',
+          color: 'dodgerblue',
           text: 'Confirm your account',
           link: `http://localhost:3000/verify/${team_name}/${verificationToken}`,
         },
@@ -61,20 +72,23 @@ function generateResetMailBody(token, team_id) {
 }
 
 function createMailTrasport() {
-  // Create a transporter
-  let transporter = nodemailer.createTransport({
-    host: `${process.env.MAIL_TEST_HOST}`,
-    port: process.env.MAIL_TEST_PORT, // replace with your email provider
+  // const accessToken = await oAuth2Client.getAccessToken();
+  const accessToken =
+    'ya29.a0AfB_byCqGiNIFLq5o-S2DEwLP3SECrdBrBB8DlibTlVO2H3su7A2v8xA6w3MW5QMO6OvFHHuMcZXSGUvnIcS_4L4FEhjBQYDmrYbZ5hwm6l6SK5fKear-AnDh38KpUk7hvTdzUWM9W6pjXBktgY1RfNTuqWj1UVErxutaCgYKAckSARMSFQHGX2MiVMDWa-dbqB1V7A0JdPanEA0171';
+
+  const transport = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-      user: `${process.env.MAIL_TEST_USER}`, // replace with your email
-      pass: `${process.env.MAIL_TEST_PASSWORD}`, // replace with your password
+      ...CONSTANTS.auth,
+      accessToken: accessToken,
     },
   });
 
-  return transporter;
+  return transport;
 }
 
 async function sendMail(verificationToken, team_name, email) {
+  // get the transporter
   const transporter = createMailTrasport();
 
   // Email options

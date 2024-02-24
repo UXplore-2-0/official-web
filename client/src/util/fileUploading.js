@@ -1,43 +1,43 @@
-const { BlobServiceClient } = require("@azure/storage-blob");
-const fs = require("fs");
-const path = require("path");
+import { BlobServiceClient, AnonymousCredential } from "@azure/storage-blob";
+// import path from "path";
 
-const connStr = process.env.AZURE_CONNECTION_STRING || null;
+const connStr = import.meta.env.VITE_AZURE_CONNECTION_STRING || null;
 
 // storage account credentials
-const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
-const containerName = process.env.BLOB_CONTAINER_NAME;
+// const blobServiceClient = BlobServiceClient.fromConnectionString(connStr);
+const containerName = import.meta.env.VITE_BLOB_CONTAINER_NAME;
 
 function getNormalBlobName(teamId, teamName, filePath) {
-  return `${teamId}-${teamName}-${path.basename(filePath)}`;
+  return `${teamId}-${teamName}`;
 }
 
 async function uploadFileToBlob(filePath, teamId, teamName) {
   try {
-    const containerClient = blobServiceClient.getContainerClient(containerName);
-
-    // make a unique name for the uploaded blob
-    const blobName = getNormalBlobName(teamId, teamName, filePath);
-
-    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
-    const fileStream = fs.createReadStream(filePath);
-
-    // upload the file to the blob storage
-    const uploadBlobResponse = await blockBlobClient.uploadStream(
-      fileStream,
-      fs.statSync(filePath).size
+    const blobServiceClient = new BlobServiceClient(
+      `https://${
+        import.meta.env.VITE_AZURE_STORAGE_ACCOUNT
+      }.blob.core.windows.net`,
+      new AnonymousCredential()
     );
 
+    const containerName = `${import.meta.env.VITE_BLOB_CONTAINER_NAME}`;
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+    const blobName = getNormalBlobName(teamId, teamName, filePath);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+
+    await blockBlobClient.uploadBrowserData(filePath);
+    console.log("File uploaded successfully!");
+
     return generateBlobUrl(blobName);
-  } catch (err) {
-    return { error: err.message };
+  } catch (error) {
+    console.error("Error uploading file:", error);
   }
 }
 
 function generateBlobUrl(blobName) {
-  return `https://${process.env.AZURE_STORAGE_ACCOUNT}.blob.core.windows.net/${containerName}/${blobName}`;
+  return `https://${
+    import.meta.env.VITE_AZURE_STORAGE_ACCOUNT
+  }.blob.core.windows.net/${containerName}/${blobName}`;
 }
 
-module.exports = {
-  uploadFileToBlob,
-};
+export { uploadFileToBlob };

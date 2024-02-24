@@ -12,7 +12,7 @@ const {
   generateVerificationToken,
   generateJWT,
 } = require('../utils/token');
-const { sendMail, sendResetMail } = require('../utils/email');
+const { sendMail, sendResetMail } = require('../email/email');
 
 /**
  * Handles the sign up process for a team.
