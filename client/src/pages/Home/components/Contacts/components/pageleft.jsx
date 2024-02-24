@@ -89,7 +89,7 @@ function PageLeft() {
         </div>
       </div>
       <div className="pageright-main">
-        <h1 className="contactus-title">Contact Us</h1>
+        <h1 className="contactus-title">CONTACT US</h1>
       </div>
     </div>
   );

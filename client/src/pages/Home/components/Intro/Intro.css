@@ -3,10 +3,14 @@
     background-size: cover;
     background-position: center;
     font-family: 'Rubik' , sans-serif;
-    padding-bottom: 70px;
+
+    height: 100vh;
+    top: 100;
+   padding-bottom: 70px;
     filter:brightness(68%);
 
-    background-attachment: fixed;    
+    background-attachment: fixed;  
+    
 }
 .heading{
     position: relative;
