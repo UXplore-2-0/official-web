@@ -19,8 +19,6 @@ function UserDashboard() {
   const [selected, setSelected] = useState("Dashboard");
   const [team, setTeam] = useState({});
   const [status, setStatus] = useState({});
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
   const [uploading, setUploading] = useState(false);
 
   const refreshTeam = () => {
@@ -36,6 +34,13 @@ function UserDashboard() {
       .catch((err) => {
         console.log(err);
       });
+
+    axios
+      .get("/teams/status")
+      .then((res) => {
+        setStatus(res.data);
+      })
+      .catch((err) => {});
   };
 
   useEffect(() => {
@@ -56,11 +61,16 @@ function UserDashboard() {
       })
       .then((res) => {
         setTeam(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
+
+    const intervlId = setInterval(() => {
+      refreshTeam();
+    }, 5000);
+
+    return () => clearInterval(intervlId);
   }, []);
 
   return (
@@ -82,44 +92,6 @@ function UserDashboard() {
       {selected === "Dashboard" && (
         <>
           <div class={`${open ? "sm:ml-64 " : "sm:ml-28"} h-full dark`}>
-            {error && (
-              <div className="absolute top-[50%] left-[50%]">
-                <div
-                  className="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-                  role="alert"
-                >
-                  <FontAwesomeIcon
-                    icon={faClose}
-                    style={{ color: "red" }}
-                    className="px-3"
-                  />
-                  <span className="sr-only">Info</span>
-                  <div>
-                    <span className="font-medium">Error! </span> {error}
-                  </div>
-                </div>
-              </div>
-            )}
-            {success && (
-              <div className="absolute top-[50%] left-[50%]">
-                <div
-                  className="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
-                  role="alert"
-                >
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    style={{ color: "green" }}
-                    className="px-3"
-                  />
-                  <span className="sr-only">Info</span>
-                  <div>
-                    <span className="font-medium">Success!</span> Successfully
-                    addded the announcement
-                  </div>
-                </div>
-              </div>
-            )}
-
             {uploading && (
               <div
                 className="absolute w-full h-full z-50"
@@ -151,25 +123,24 @@ function UserDashboard() {
                         {` ${team.team && team.team.team_name}`}
                       </span>
                     </div>
-                    <button
-                      type="button"
-                      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    >
-                      <FontAwesomeIcon icon={faLink} className="px-3" />
-                      Connect to Zoom
-                    </button>
+                    {status && status.zoomLink && (
+                      <a href={status.zoom_link}>
+                        <button
+                          type="button"
+                          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          <FontAwesomeIcon icon={faLink} className="px-3" />
+                          Connect to Zoom
+                        </button>
+                      </a>
+                    )}
                   </div>
                   <div className="flex flex-row justify-between items-center w-full h-1/2">
                     <div className=" mx-3 flex w-2/4 ml-3 rounded">
                       <Problem />
                     </div>
                     <div className="w-2/4 ml-2 mr-2 rounded">
-                      <Submission
-                        team={team}
-                        setError={setError}
-                        setSuccess={setSuccess}
-                        setUploading={setUploading}
-                      />
+                      <Submission team={team} setUploading={setUploading} />
                     </div>
                   </div>
                 </div>
@@ -183,17 +154,20 @@ function UserDashboard() {
         </>
       )}
 
-      {selected === "AddMember" && <AddMember team={team} setTeam={setTeam} />}
+      {selected === "AddMember" && (
+        <AddMember team={team} setTeam={setTeam} open={open} />
+      )}
       {selected === "Members" && (
         <MemberDeatils
           selected={selected}
           setSelected={setSelected}
           team={team}
           refreshTeam={refreshTeam}
+          open={open}
         />
       )}
-      {selected === "Settings" && <Settings />}
-      {selected === "FAQ" && <FAQ />}
+      {selected === "Settings" && <Settings open={open} />}
+      {selected === "FAQ" && <FAQ open={open} />}
     </div>
   );
 }

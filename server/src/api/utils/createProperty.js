@@ -24,13 +24,18 @@ async function createProperty() {
       property_value: '',
     });
 
-    const startTimeProperty = await Properties.build({
-      property_name: 'start_time',
+    const timeProperty = await Properties.build({
+      property_name: 'time',
       property_value: '',
     });
 
-    const endTimeProperty = await Properties.build({
-      property_name: 'end_time',
+    const zoomLinkProperty = await Properties.build({
+      property_name: 'zoom_link',
+      property_value: '',
+    });
+
+    const messageProperty = await Properties.build({
+      property_name: 'message',
       property_value: '',
     });
 
@@ -42,8 +47,9 @@ async function createProperty() {
     // save the question property to the database
     await questionProperty.save();
     await questionLinkProperty.save();
-    await startTimeProperty.save();
-    await endTimeProperty.save();
+    await timeProperty.save();
+    await zoomLinkProperty.save();
+    await messageProperty.save();
     await status.save();
   } catch (error) {
     console.log('Error creating properties', error);

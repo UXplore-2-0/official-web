@@ -49,7 +49,7 @@ function Notification() {
   }, []);
 
   return (
-    <div className="min-w-80 w-150 mr-0 h-2/4 rounded-lg p-4 gap-4 flex flex-col text-sm mt-3 mb-3">
+    <div className="min-w-80 w-150 mr-0 max-h-[100%] rounded-lg p-4 gap-4 flex flex-col text-sm mt-3 mb-3">
       <div className="flex flex-row justify-between">
         <h1 className="text-white font-bold text-lg border-sky-500">
           <FontAwesomeIcon icon={faBell} className="mx-3" />

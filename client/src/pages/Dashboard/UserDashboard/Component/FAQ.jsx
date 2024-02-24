@@ -1,15 +1,11 @@
-import {
-  faMessage,
-  faPaperPlane,
-  faRefresh,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane, faRefresh } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState, useEffect } from "react";
 import AuthContext from "../../../../context/AuthContext";
 import axios from "../../../../api/axios";
 import FAQCard from "./FAQCard";
 
-function FAQ() {
+function FAQ({ open }) {
   const { user } = useContext(AuthContext);
   const [faqs, setFaqs] = useState([]);
   const [newFAQ, setNewFAQ] = useState("");
@@ -84,7 +80,11 @@ function FAQ() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-between items-center h-full sm:ml-64 dark">
+    <div
+      className={`${
+        open ? "sm:ml-64" : "sm:ml-32"
+      } flex flex-col justify-between items-center h-full dark`}
+    >
       <div className="flex flex-row justify-between items-center w-full">
         <div
           className="text-white font-bold text-6xl px-5 py-2 w-[60%]"

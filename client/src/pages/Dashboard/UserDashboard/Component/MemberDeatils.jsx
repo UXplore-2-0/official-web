@@ -1,19 +1,15 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons";
 
-function MemberDeatils({ selected, setSelected, team, refreshTeam }) {
+function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
   const handleAddMembers = () => {
     setSelected("AddMember");
   };
 
   const MAX_NUMBERS = 3;
 
-  const circumference = ((2 * 22) / 7) * 120;
-  const strokeDashoffset =
-    circumference - (team.count / MAX_NUMBERS) * 100 * circumference;
-
   return (
-    <div className="sm:ml-64 dark p-20 h-full">
+    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark p-20 h-full`}>
       <div className="flex justify-between items-center px-5 py-2">
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Member Details

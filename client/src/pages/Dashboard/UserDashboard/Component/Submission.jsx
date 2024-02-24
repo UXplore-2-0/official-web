@@ -3,16 +3,18 @@ import AuthContext from "../../../../context/AuthContext";
 import axios from "../../../../api/axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCheck,
+  faClose,
   faCloudUpload,
   faFileAlt,
-  faFileUpload,
-  faSave,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Submission({ team, setError, setSuccess, setUploading }) {
+function Submission({ team, setUploading }) {
   const { user } = useContext(AuthContext);
   const [selectedFile, setSelectedFile] = useState(null);
   const [submission, setSubmission] = useState(null);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -20,6 +22,10 @@ function Submission({ team, setError, setSuccess, setUploading }) {
   };
 
   const uploadFileToServer = async () => {
+    if (selectedFile === null) {
+      setError("Please select a file to upload");
+      return;
+    }
     const formData = new FormData();
     formData.append("file", selectedFile);
     setUploading(true);
@@ -34,17 +40,18 @@ function Submission({ team, setError, setSuccess, setUploading }) {
       .then((res) => {
         setSubmission(res.data.data);
         setUploading(false);
-        setError(null);
         setSuccess(true);
+        setError(null);
+
         setTimeOut(() => {
           setSuccess(false);
-        }, 2000);
+        }, 3000);
       })
       .catch((err) => {
         setError(err.message);
         setTimeout(() => {
           setError(null);
-        }, 2000);
+        }, 3000);
       });
   };
 
@@ -66,6 +73,44 @@ function Submission({ team, setError, setSuccess, setUploading }) {
   return (
     // <div className="flex flex-col justify-center items-center p-3 my-5 bg-[#1b222b] rounded-xl">
     <div className="mt-3 w-full">
+      {error && (
+        <div className="fixed top-[50%] left-[50%]">
+          <div
+            className="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            role="alert"
+          >
+            <FontAwesomeIcon
+              icon={faClose}
+              style={{ color: "red" }}
+              className="px-3"
+            />
+            <span className="sr-only">Info</span>
+            <div>
+              <span className="font-medium">Error! </span> {error}
+            </div>
+          </div>
+        </div>
+      )}
+      {success && (
+        <div className="fixed top-[50%] left-[50%]">
+          <div
+            className="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            role="alert"
+          >
+            <FontAwesomeIcon
+              icon={faCheck}
+              style={{ color: "green" }}
+              className="px-3"
+            />
+            <span className="sr-only">Info</span>
+            <div>
+              <span className="font-medium">Success!</span> Successfully addded
+              the announcement
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex justify-center flex-col items-center h-full w-full p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-4">
         <div
           className="text-white font-semibold my-1"

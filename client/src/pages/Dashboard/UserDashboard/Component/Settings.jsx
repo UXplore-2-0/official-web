@@ -1,9 +1,9 @@
 import React from "react";
 import ResetPassword from "./ResetPassword";
 
-function Settings() {
+function Settings({ open }) {
   return (
-    <div className="sm:ml-64 dark">
+    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark`}>
       <ResetPassword />
     </div>
   );

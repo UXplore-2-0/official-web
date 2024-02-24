@@ -404,26 +404,34 @@ async function addAnswer(req, res, next) {
 }
 
 async function getStatus(req, res, next) {
-  const startTime = await Properties.findOne({
+  const time = await Properties.findOne({
     where: {
-      property_name: 'start_time',
+      property_name: 'time',
     },
   });
 
-  const endTime = await Properties.findOne({
-    where: {
-      property_name: 'end_time',
-    },
-  });
   const status = await Properties.findOne({
     where: {
       property_name: 'status',
     },
   });
 
+  const zoomLink = await Properties.findOne({
+    where: {
+      property_name: 'zoom_link',
+    },
+  });
+
+  const message = await Properties.findOne({
+    where: {
+      property_name: 'message',
+    },
+  });
+
   res.json({
-    startTime,
-    endTime,
+    time: time.property_value,
+    zoom_link: zoomLink.property_value,
+    message: message.property_value,
     status: status.property_value === 'inactive' ? false : true,
   });
 }

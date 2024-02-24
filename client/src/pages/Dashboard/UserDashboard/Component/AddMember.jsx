@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "../../../../api/axios";
 import AuthContext from "../../../../context/AuthContext";
 
-function AddMember({ team, setTeam }) {
+function AddMember({ team, setTeam, open }) {
   const { user } = useContext(AuthContext);
 
   const [name, setName] = useState();
@@ -65,7 +65,7 @@ function AddMember({ team, setTeam }) {
   };
 
   return (
-    <div className="sm:ml-64 dark p-20">
+    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark p-20`}>
       <div
         className="flex justify-center items-center font-bold text-white m-10"
         style={{ fontSize: "40px" }}

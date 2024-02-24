@@ -68,8 +68,10 @@ function Timer({ status }) {
   return (
     <div className="w-full h-full">
       <div className="flex flex-col items-center justify-center w-full gap-8 sm:gap-12 h-full py-4">
-        <span className="text-2xl sm:text-3xl font-semibold text-white text-center tracking-widest px-2">
-          {status.status ? "Contest end in" : "Contest start in"}
+        <span className="text-2xl sm:text-4xl font-bold text-white text-center px-2">
+          {status.message
+            ? status.messahe
+            : "Contest will start soon, Get ready to go!"}
         </span>
         <div className="flex justify-center gap-3 sm:gap-8">
           <div className="flex flex-col gap-5 relative">
