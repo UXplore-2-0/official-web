@@ -2,6 +2,7 @@ import React from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import "./Guidlines.css";
 
 export default function Guidlines() {
   useGSAP(() => {
@@ -73,8 +74,13 @@ export default function Guidlines() {
   gsap.registerPlugin(ScrollTrigger);
   return (
     <div
-      className="w-[100%] h-[100%] flex flex-col bg-cover  py-11 lg:flex-row-reverse lg:flex-end lg:text-[120px] justify-between">
-      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8  w-full sm:ml-5 md:flex-end md:text-[60px] min-[1222px]:text-[100px] lg:justify-center justify-center">
+      className="w-[100%] h-[100%] flex flex-col bg-cover justify-between py-11 sm:flex-row-reverse"
+      // style={{
+      //   backgroundImage:
+      //     "url('https://rare-gallery.com/thumbs/1180321-sea-artwork-underwater-light-ocean-darkness.jpg')",
+      // }}
+    >
+      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8 md:text-[128px] sm:text-[45] w-full sm:justify-end sm:ml-0">
         {"GUIDELINES".split("").map((characters, index) => {
           return characters === " " ? (
             <span key={index}>&nbsp;</span>

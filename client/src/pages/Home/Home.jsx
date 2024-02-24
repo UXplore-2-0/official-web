@@ -122,12 +122,7 @@ function Home() {
         x: 300,
       });
 
-      gsap.to("#logo", {
-        scrollTrigger: {
-          scrub: 0,
-        },
-        opacity: 0,
-      });
+      
     },
     { scope: document.getElementById("container"), dependencies: [isAnimated] }
   );
