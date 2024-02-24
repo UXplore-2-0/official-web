@@ -1,6 +1,17 @@
 const nodemailer = require('nodemailer');
 const Mailgen = require('mailgen');
+const { google } = require('googleapis');
+const CONSTANTS = require('./constants');
 
+const oAuth2Client = new google.auth.OAuth2(
+  process.env.GMAIL_CLIENT_ID,
+  process.env.GMAIL_CLIENT_SECRET,
+  process.env.GMAIL_REDIRECT_URI
+);
+
+oAuth2Client.setCredentials({ refresh_token: process.env.GMAIL_REFRESH_TOKEN });
+
+// function for generate the mail body of the email
 function generateMailBody(verificationToken, team_name) {
   let mailGenerator = new Mailgen({
     theme: 'default',
@@ -18,9 +29,9 @@ function generateMailBody(verificationToken, team_name) {
       action: {
         instructions: `To get started with Your Team ${team_name}, please click here:`,
         button: {
-          color: '#22BC66',
+          color: 'dodgerblue',
           text: 'Confirm your account',
-          link: `http://localhost:5000/api/v1/auth/verify/${team_name}/${verificationToken}`,
+          link: `${process.env.FRONT_END_URL}/verify/${team_name}/${verificationToken}`,
         },
       },
       outro:
@@ -50,7 +61,7 @@ function generateResetMailBody(token, team_id) {
         button: {
           color: '#22BC66',
           text: 'Reset your password',
-          link: `http://localhost:5000/api/v1/auth/forget-password/reset/${team_id}/${token}`,
+          link: `${process.env.FRONT_END_URL}/reset-password/${team_id}/${token}`,
         },
       },
       outro: 'If you have any questions, please contact us at',
@@ -61,20 +72,21 @@ function generateResetMailBody(token, team_id) {
 }
 
 function createMailTrasport() {
-  // Create a transporter
-  let transporter = nodemailer.createTransport({
-    host: `${process.env.MAIL_TEST_HOST}`,
-    port: process.env.MAIL_TEST_PORT, // replace with your email provider
+  // const accessToken = await oAuth2Client.getAccessToken();
+  const accessToken = `${process.env.GMAIL_CLIENT_ACCESS_TOKEN}`;
+  const transport = nodemailer.createTransport({
+    service: 'gmail',
     auth: {
-      user: `${process.env.MAIL_TEST_USER}`, // replace with your email
-      pass: `${process.env.MAIL_TEST_PASSWORD}`, // replace with your password
+      ...CONSTANTS.auth,
+      accessToken: accessToken,
     },
   });
 
-  return transporter;
+  return transport;
 }
 
 async function sendMail(verificationToken, team_name, email) {
+  // get the transporter
   const transporter = createMailTrasport();
 
   // Email options
@@ -87,13 +99,6 @@ async function sendMail(verificationToken, team_name, email) {
 
   // Send email
   let info = await transporter.sendMail(mailOptions);
-
-  console.log(
-    'Message sent: %s',
-    info.messageId,
-    ' token: ',
-    verificationToken
-  );
   return info;
 }
 
@@ -109,9 +114,6 @@ async function sendResetMail(token, email, team_id) {
   };
 
   let info = await transporter.sendMail(mailOptions);
-
-  console.log('Message sent: %s', info.messageId, ' token: ', token);
-
   return info;
 }
 
