@@ -12,6 +12,9 @@ import AuthContext from "./context/AuthContext";
 import axios from "./api/axios";
 import PageNotFound404 from "./pages/404/PageNotFound404";
 import SubmissionDetails from "./pages/Dashboard/AdminDashboard/Pages/SubmissionDetails";
+import ResetPassword from "./pages/PasswordReset/PasswordReset";
+import PasswordReset from "./pages/PasswordReset/PasswordReset";
+import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,7 +49,6 @@ function App() {
   return (
     <AuthContext.Provider value={{ user, setUser, login, logout }}>
       <div>
-        {/* <Home /> */}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -64,7 +66,12 @@ function App() {
             )}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/verify/:team_name/:token" element={<EmailVerify />} />
+            <Route
+              path="/reset-password/:team_id/:token"
+              element={<PasswordReset />}
+            />
             <Route path="*" element={<PageNotFound404 />} />
           </Routes>
         </BrowserRouter>

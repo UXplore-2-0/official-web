@@ -43,7 +43,7 @@ function Submission({ team, setUploading }) {
         setSuccess(true);
         setError(null);
 
-        setTimeOut(() => {
+        setTimeout(() => {
           setSuccess(false);
         }, 3000);
       })

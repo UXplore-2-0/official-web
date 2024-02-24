@@ -8,6 +8,7 @@ import Faq from "./Pages/Faq";
 import Announcement from "./Pages/Announcement";
 import AuthContext from "../../../context/AuthContext";
 import axios from "../../../api/axios";
+import AdminRegistration from "./Pages/AdminRegistration";
 
 function AdminDashboard() {
   const { user } = useContext(AuthContext);
@@ -73,6 +74,7 @@ function AdminDashboard() {
         {selected === "Problem" && <Problem />}
         {selected === "Faq" && <Faq />}
         {selected === "Announcement" && <Announcement />}
+        {selected == "Registration" && <AdminRegistration user={user} />}
       </div>
     </div>
   );

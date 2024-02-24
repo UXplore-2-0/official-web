@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
-import logo from "../../../public/logo512.png";
 import Logo from "./images/Logo.png";
 import SeaImage from "./images/Sea.png";
 import { IoHomeOutline } from "react-icons/io5";
@@ -66,6 +65,10 @@ function Login() {
 
       setFormData({ email: "", password: "", rememberMe: false });
     }
+  };
+
+  const handleResetPassword = () => {
+    navigate("/forget-password");
   };
 
   const handleChange = (e) => {
@@ -168,7 +171,11 @@ function Login() {
                       <label htmlFor="remember">Remember me</label>
                     </div>
                     <div>
-                      <a href="#" className="hover:underline">
+                      <a
+                        href="#"
+                        className="hover:underline"
+                        onClick={handleResetPassword}
+                      >
                         Forgot password?
                       </a>
                     </div>
