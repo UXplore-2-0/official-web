@@ -74,8 +74,7 @@ function generateResetMailBody(token, team_id) {
 function createMailTrasport() {
   // const accessToken = await oAuth2Client.getAccessToken();
   const accessToken =
-    'ya29.a0AfB_byCqGiNIFLq5o-S2DEwLP3SECrdBrBB8DlibTlVO2H3su7A2v8xA6w3MW5QMO6OvFHHuMcZXSGUvnIcS_4L4FEhjBQYDmrYbZ5hwm6l6SK5fKear-AnDh38KpUk7hvTdzUWM9W6pjXBktgY1RfNTuqWj1UVErxutaCgYKAckSARMSFQHGX2MiVMDWa-dbqB1V7A0JdPanEA0171';
-
+    'ya29.a0AfB_byAcPz6bfVPnSSMDii0In61QKheVEUgANH36tFxTr9lQLcDFechfaEzRifYGlcj-mpKdNjqcmr_40XLBPHFOFu-HjaiOALL2kLD13KSe-L1en5E7UDH-LO9wvbCGmyJM7cLkqKCTjIcg8FKUKOGXN5LWM6WQFQpB8QaCgYKAYMSARMSFQHGX2Mi2jS7ooX0qdgqFv_LwIOgQw0173';
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {

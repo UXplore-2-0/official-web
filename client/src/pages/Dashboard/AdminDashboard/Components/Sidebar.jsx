@@ -10,12 +10,16 @@ import {
   faUsers,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AuthContext from "../../../../context/AuthContext";
 function Sidebar({ selected, setSelected }) {
   const [open, setOpen] = React.useState(true);
+  const { setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    setUser(null);
     navigate("/login");
   };
 

@@ -21,7 +21,6 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
   const { user, setUser } = useContext(AuthContext);
 
   const logout = () => {
-    console.log(user);
     setUser(null);
     // redirect to the main page
     navigate("/");
