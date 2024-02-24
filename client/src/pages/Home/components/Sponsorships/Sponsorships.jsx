@@ -17,7 +17,7 @@ function Sponsorships() {
     },
     scale: 2,
   });
-
+  
   gsap.to(".left-card", {
     scrollTrigger: {
       scrub: 3,

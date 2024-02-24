@@ -12,8 +12,11 @@ import "./App.css";
 function App() {
   return (
     <div>
-      <Register />
-    </div>
+
+
+      <Guidlines />
+
+</div>
   );
 }
 

@@ -1,5 +1,4 @@
 
-
 .bottom-background {
     
     background-image: url('./images/bgNew.jpg');
@@ -9,7 +8,7 @@
     background-position: center;
     background-attachment: fixed;
     font-family: 'Rubik' , sans-serif;
-    height: 100%;
+    height: 100vh;
 
 }
 
@@ -20,9 +19,6 @@
     font-weight: bold;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 10dvh;
-    
-
-    
 }
    
 
@@ -43,11 +39,8 @@
 #cards-division {
     display: flex;
     flex-wrap: wrap;
-    
     align-items: top;
     min-height: 100vh;
-   
-    
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 20px;
@@ -58,7 +51,6 @@
 .left-card, .right-card {
     flex: 1 1 300px;
     padding: 20px;
-    
     color: #000;
     text-align: center;
     border-radius: 25px;
@@ -106,4 +98,17 @@
         
     }
 }
+
+#sponsorships {
+    background-image: url('./images/bgNew.jpg');
+    background-size: cover;
+    background-position: cover;
+    font-family: 'Rubik' , sans-serif;
+    height: 100vh;
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
 
