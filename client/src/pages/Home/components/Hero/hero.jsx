@@ -1,4 +1,5 @@
 
+
 import Button from "../Loginbutton/button";
 
 import "./hero.css";
@@ -39,3 +40,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+

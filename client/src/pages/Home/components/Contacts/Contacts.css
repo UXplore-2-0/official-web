@@ -1,0 +1,66 @@
+.ContactUsMain {
+  position: relative;
+}
+
+.pageleft-contacts {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.bubble-contacts {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.contactus {
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: #0a0f1d;
+  z-index: 0;
+  position: relative;
+}
+
+.deapsea-dev {
+  width: auto;
+  height: 100vh;
+}
+
+.deapsea {
+  height: 100%;
+  width: auto;
+}
+
+.bg-gradient {
+  flex-grow: 1;
+  background: linear-gradient(to left, #0a0f1d, #0f172a);
+}
+
+.bg-gradient-2 {
+  width: 150px;
+  background: linear-gradient(to right, #0a0f1d, #0f172a);
+}
+
+@media screen and (max-width: 1280px) {
+  .bg-gradient-2 {
+    width: 100px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .bg-gradient-2 {
+    width: 0px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .bg-gradient-2 {
+    width: 0px;
+  }
+}

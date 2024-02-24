@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import HomeView from "./components/HomeView/homeview";
 import { useGSAP } from "@gsap/react";
@@ -7,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 // import Timeline from './components/Timeline/Timeline';
 // import Sponsorships from './components/Sponsorships/Sponsorships';
 // import Contacts from './components/Contacts/Contacts';
-// import Intro from './components/Intro/Intro';
+// import Intro from './components/Intro/Intro
 
 import StickyButton from "./components/StickyButtons/stickybuttons";
 gsap.registerPlugin(ScrollTrigger);
@@ -134,8 +135,11 @@ function Home() {
 
   return (
     <>
+
       <StickyButton className="sticky-buttons-container-button" />
       <HomeView isAnimated={isAnimated} />
+
+     
     </>
   );
 }

@@ -1,15 +1,62 @@
-import React from 'react'
-import './Intro.css'
+import React from "react";
+import "./Intro.css";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+
 import logo from './logo.png'
 import Button from '../Loginbutton/button';
 
 
-
 function Intro() {
-    useGSAP(() => {
+  useGSAP(() => {
+    gsap.from(".text1", {
+      duration: 3,
+      x: 100,
+      stagger: 1,
+      scrollTrigger: {
+        trigger: ".box2",
+        start: "top 80%",
+        end: "bottom 40%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.from(".text2", {
+      duration: 3,
+      x: -20,
+      stagger: 1,
+      scrollTrigger: {
+        trigger: ".box2",
+        start: "top 80%",
+        end: "bottom 40%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.from(".text3", {
+      duration: 3,
+      x: 150,
+      stagger: 1,
+      scrollTrigger: {
+        trigger: ".box2",
+        start: "top 80%",
+        end: "bottom 40%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.from(".explanation", {
+      duration: 3,
+      opacity: 0,
+      ease: "slow(0.7,0.7,false)",
+      scrollTrigger: {
+        trigger: ".box2",
+        start: "top 60%",
+        end: "bottom 40%",
+        toggleActions: "play none none none",
+      },
+    });
 
         gsap.from(".text1", {
           duration: 3,
@@ -111,8 +158,11 @@ function Intro() {
         </div>
         <Button buttonText="DOWNLOAD PDF" style = {{bottom : 0}} />
     </section>
+
     </>
-  )
+  );
 }
 
+
 export default Intro;
+
