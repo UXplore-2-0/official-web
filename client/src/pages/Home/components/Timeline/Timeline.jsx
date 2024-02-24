@@ -55,7 +55,7 @@ function Timeline() {
 
   return (
     
-    <div className="timeline-backdrop text-white px-10 py-10 md:py-24">
+    <section id='timeline' className="timeline-backdrop text-white px-10 py-10 md:py-24">
 
       <div className='timeline-title flex flex-col items-center'>
         <h1 className='mb-1 text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium' style={{ fontFamily: "Raleway" }}>TIMELINE</h1>
@@ -107,9 +107,9 @@ function Timeline() {
         </div>
           
       </div>
-    </div>
+    </section>
     
   )
 }
 
-export default Timeline
+export default Timeline;

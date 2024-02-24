@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import Navbar from "./layout/NavBar/Navbar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import UserDashboard from "./pages/Dashboard/UserDashboard/UserDashboard";
 import AdminDashboard from "./pages/Dashboard/AdminDashboard/AdminDashboard";
-import "./App.css";
 import EmailVerify from "./pages/EmailVerify/EmailVerify";
 import AuthContext from "./context/AuthContext";
 import axios from "./api/axios";
 import PageNotFound404 from "./pages/404/PageNotFound404";
-import SubmissionDetails from "./pages/Dashboard/AdminDashboard/Pages/SubmissionDetails";
-import ResetPassword from "./pages/PasswordReset/PasswordReset";
 import PasswordReset from "./pages/PasswordReset/PasswordReset";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
+import "./App.css";
 
 function App() {
   const [user, setUser] = useState(null);
