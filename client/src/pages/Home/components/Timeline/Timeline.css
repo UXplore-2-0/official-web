@@ -3,8 +3,29 @@
     background-image: url('./images/bgNew.jpg');
     top: 0;
     left:0;
+   
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     font-family: 'Rubik' , sans-serif;
+    height: auto;
+}
+
+
+#timeline {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+#timeline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+   
+    z-index: 1000;
 }
