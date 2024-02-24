@@ -49,7 +49,7 @@ function Sponsorships() {
 
       <section id = "sponsorships" className="bottom-background">
             <div className="title-division">
-              <div id="title-2">OUR PARTNERS</div>
+              <div id="title-2" className='mb-1 text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium'>OUR PARTNERS</div>
             </div>
             <div id="cards-division">
               <div className="left-card">

@@ -4,7 +4,7 @@ import Button from "../Loginbutton/button";
 import "./hero.css";
 const Hero = () => {
   return (
-    <section>
+    <section id = "section-hero">
       <img
         src="./sponsor/background-sky.jpeg"
         alt="backgroundimage"
@@ -31,8 +31,8 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-        <Button buttonText="login" style={{ top: 0 }} />
-        <Button buttonText="Download PDF" style={{ top: 0 }} />
+        <Button buttonText="LOGIN" style={{ top: 0 }} />
+        <Button buttonText="REGISTER" style={{ top: 0 }} />
       </div>
     </section>
   );
