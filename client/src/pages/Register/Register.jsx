@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "../../api/axios";
 import universities from "../../data/universities";
 import logo from "../../../public/logo512.png";
+import Logo from "./images/Logo.png";
+import SeaImage from "./images/Sea.png";
+import { IoHomeOutline } from "react-icons/io5";
 
 function Register() {
   const [email, setEmail] = useState("");
@@ -13,9 +15,15 @@ function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {});
+  const [formData, setFormData] = useState({
+    team_name: "",
+    university: "",
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
 
-  const handleSubmit = (event) => {
+  const handleSubmit_ = (event) => {
     event.preventDefault();
     if (password !== confirmPassword) {
       setError("Passwords do not match");
@@ -66,189 +74,250 @@ function Register() {
       });
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    setErrors({ ...errors, [name]: "" }); // Clear error when user types
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = {};
+
+    // Validate team name
+    if (!formData.team_name.trim()) {
+      validationErrors.team = "Team name is required";
+    }
+
+    // Validate university
+    if (!formData.university.trim()) {
+      validationErrors.university = "University is required";
+    }
+
+    // // Validate other university name
+    // if (formData.university === "Other" && !formData.otherUniversity.trim()) {
+    //   validationErrors.otherUniversity = "University name is required";
+    // }
+
+    // Validate email format
+    if (!formData.email.trim()) {
+      validationErrors.email = "Leader's email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      validationErrors.email = "Invalid email address";
+    }
+
+    // Validate password
+    if (!formData.password.trim()) {
+      validationErrors.password = "Password is required";
+    }
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      // Form is valid, proceed with submission
+      // @Shavin: You can send the form data to the server here
+      // make the API request
+      axios
+        .post("auth/signup", formData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          setSuccess(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          setError("An error occurred");
+        });
+      console.log("Form submitted:", formData);
+
+      // Clear form data
+      setFormData({
+        team_name: "",
+        university: "",
+        email: "",
+        password: "",
+      });
+    }
+  };
+
   return (
-    <div>
-      {!success && (
-        <section class="bg-black-50 dark:bg-gray-900 dark">
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-            <Link
-              to="/"
-              className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-            >
-              <img className="w-16 h-16 mr-2" src={logo} alt="logo" />
-              MoraUXplore 2.0
-            </Link>
-
-            <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-              <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                  Create a team
-                </h1>
-
-                {error && (
-                  <div
-                    class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
-                    role="alert"
-                  >
-                    <span class="font-medium">Invalid!</span> {error}.
-                  </div>
-                )}
-                <form className="space-y-4 md:space-y-6" action="#">
-                  <div>
-                    <label
-                      for="email"
-                      className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Leader email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="name@company.com"
-                      required=""
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      for="team-name"
-                      className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Team Name
-                    </label>
-                    <input
-                      type="texr"
-                      name="team-name"
-                      id="team-name"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Team Name"
-                      required=""
-                      value={teamName}
-                      onChange={(e) => setTeamName(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      for="team-name"
-                      className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      University
-                    </label>
-                    <select
-                      id="beverages"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      required
-                      value={university}
-                      onChange={(e) => setUniversity(e.target.value)}
-                    >
-                      {universities.map((university) => (
-                        <option value={university}>{university}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label
-                      for="password"
-                      className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      required=""
-                      password={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label
-                      for="confirm-password"
-                      className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-                    >
-                      Confirm password
-                    </label>
-                    <input
-                      type="password"
-                      name="password"
-                      id="confirm-password"
-                      placeholder="••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      required=""
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                  </div>
-                  <div className="flex items-start">
-                    <div className="flex items-center h-5">
-                      <input
-                        id="terms"
-                        aria-describedby="terms"
-                        type="checkbox"
-                        className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                        required=""
-                        value={success}
-                      />
-                    </div>
-                    <div className="ml-3 text-sm">
-                      <label
-                        for="terms"
-                        className="font-light text-gray-500 dark:text-gray-300"
-                      >
-                        I accept the{" "}
-                        <a
-                          className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                          href="#"
-                        >
-                          Terms and Conditions
-                        </a>
-                      </label>
-                    </div>
-                  </div>
-                  <button
-                    type="submit"
-                    onClick={handleSubmit}
-                    className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                  >
-                    Create Team
-                  </button>
-                  <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                    Already have an account?{" "}
-                    <Link
-                      to="/login"
-                      className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                    >
-                      Login here
-                    </Link>
-                  </p>
-                </form>
-              </div>
-            </div>
+    <div
+      className="relative overflow-hidden w-full h-full"
+      style={{
+        background:
+          "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
+      }}
+    >
+      <div className="absolute z-10 w-full flex justify-end top-1/2 sm:top-0">
+        <img
+          src={SeaImage}
+          alt="Sea Image"
+          className="fixed object-cover h-lvh w-full sm:w-1/2"
+        />
+      </div>
+      <div className="relative z-20 text-white flex flex-col items-center justify-center w-full min-h-screen">
+        <div className="bg-white/5 backdrop-blur-2xl shadow-lg flex flex-col items-center justify-center w-[85%] sm:w-[78%] md:w-[70%] lg:w-[55%] py-8 lg:py-10 xl:py-16 rounded-2xl font-poppins my-5">
+          <img
+            src={Logo}
+            alt="Mora UXplore 2.0 Logo"
+            className="w-28 sm:w-32 lg:w-36"
+          />
+          <div className="flex flex-col items-center justify-center my-6 xl:my-10">
+            <h1 className="text-2xl tracking-widest">REGISTER NOW</h1>
+            <p className="text-xs">Please enter your details.</p>
           </div>
-        </section>
-      )}
-      {success && (
-        <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-black-50 py-12 dark">
-          <div className="relative bg-slate-900 px-6 pt-10 pb-9 shadow-xl mx-auto w-full max-w-lg rounded-2xl">
-            <div className="mx-auto flex w-full max-w-md flex-col space-y-16">
-              <div className="flex flex-col items-center justify-center text-center space-y-2">
-                <div className="font-semibold text-3xl text-white">
-                  <p>Email Verification</p>
+          <div className="relative w-[85%] sm:w-[55%] md:w-[45%]">
+            <button className="fixed top-0 left-0 p-2 sm:p-3 m-2">
+              <IoHomeOutline className="text-white/70 text-lg sm:text-2xl" />
+            </button>
+            <form
+              className="flex flex-col items-center justify-center"
+              onSubmit={handleSubmit}
+              noValidate
+              autoComplete="off"
+            >
+              <label className="w-full text-sm mb-1" htmlFor="team">
+                Team Name
+              </label>
+              <input
+                type="text"
+                id="team"
+                name="team"
+                value={formData.team}
+                onChange={handleChange}
+                placeholder="Enter your team name"
+                className={`w-full bg-transparent text-sm p-2 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.team ? "border-red-500" : ""}`}
+              />
+              {errors.team && (
+                <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  {errors.team}
                 </div>
-                <div className="flex flex-row text-lg font-medium text-gray-400">
-                  <p>We have sent a verification link to your email!</p>
+              )}
+
+              <label className="w-full text-sm mb-1" htmlFor="university">
+                University
+              </label>
+              <select
+                id="university"
+                name="university"
+                value={formData.university}
+                placeholder="Enter your university"
+                className={`w-full bg-transparent text-sm p-2 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.university ? "border-red-500" : ""}`}
+                onChange={handleChange}
+              >
+                <option className="bg-[#1E3855]" value="">
+                  Select your university
+                </option>
+                <option className="bg-[#1E3855]">University of Moratuwa</option>
+                <option className="bg-[#1E3855]">University of Colombo</option>
+                <option className="bg-[#1E3855]">
+                  University of Peradeniya
+                </option>
+                <option className="bg-[#1E3855]">University of Kelaniya</option>
+                <option className="bg-[#1E3855]">University of Ruhuna</option>
+                <option className="bg-[#1E3855]">University of Jaffna</option>
+                <option className="bg-[#1E3855]">
+                  University of Sri Jayewardenepura
+                </option>
+                <option className="bg-[#1E3855]">
+                  University of Sabaragamuwa
+                </option>
+                <option className="bg-[#1E3855]">University of Wayamba</option>
+                <option className="bg-[#1E3855]">University of Rajarata</option>
+                <option className="bg-[#1E3855]">
+                  University of Uva Wellassa
+                </option>
+                <option className="bg-[#1E3855]">
+                  University of the Visual & Performing Arts
+                </option>
+                <option className="bg-[#1E3855]">Other</option>
+              </select>
+              {errors.university && (
+                <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  {errors.university}
+                </div>
+              )}
+
+              {formData.university === "Other" && (
+                <div className="w-full">
+                  <input
+                    type="text"
+                    id="otherUniversity"
+                    name="otherUniversity"
+                    value={formData.otherUniversity}
+                    onChange={handleChange}
+                    placeholder="Enter your university"
+                    className={`w-full bg-transparent text-sm p-2 -mt-3 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.otherUniversity ? "border-red-500" : ""}`}
+                  />
+                  {errors.otherUniversity && (
+                    <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                      {errors.otherUniversity}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <label className="w-full text-sm mb-1" htmlFor="email">
+                Leader's Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter the leader's email"
+                className={`w-full bg-transparent text-sm p-2 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.email ? "border-red-500" : ""}`}
+              />
+              {errors.email && (
+                <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  {errors.email}
+                </div>
+              )}
+
+              <label className="w-full text-sm mb-1" htmlFor="password">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter a new password"
+                className={`w-full bg-transparent text-sm p-2 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.password ? "border-red-500" : ""}`}
+              />
+              {errors.password && (
+                <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  {errors.password}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="w-[100%] my-4 bg-black bg-opacity-10 rounded-md py-1 sm:py-2 text-sm"
+              >
+                Register
+              </button>
+              <div className="flex flex-col sm:flex-row sm:gap-1 items-center justify-center">
+                <div className="text-xs">Already have an account?</div>
+                <div className="text-xs">
+                  <a href="#" className="hover:underline">
+                    Log in
+                  </a>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }

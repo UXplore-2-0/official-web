@@ -3,141 +3,187 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
 import logo from "../../../public/logo512.png";
+import Logo from "./images/Logo.png";
+import SeaImage from "./images/Sea.png";
+import { IoHomeOutline } from "react-icons/io5";
 import AuthContext from "../../context/AuthContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    remember: false,
+  });
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const { user, setUser, login, logout } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post(
-        "/auth/login",
-        {
-          email: email,
-          password: password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
+    const validationErrors = {};
+
+    // Validate email format
+    if (!formData.email.trim()) {
+      validationErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      validationErrors.email = "Invalid email address";
+    }
+
+    // Validate password
+    if (!formData.password.trim()) {
+      validationErrors.password = "Password is required";
+    }
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      axios
+        .post(
+          "/auth/login",
+          {
+            email: email,
+            password: password,
           },
-        }
-      )
-      .then((res) => {
-        // set the user value
-        setUser({ token: res.data.token, role: res.data.role });
-        console.log(user);
-        navigate("/dashboard");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((res) => {
+          // set the user value
+          setUser({ token: res.data.token, role: res.data.role });
+          console.log(user);
+          navigate("/dashboard");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      setFormData({ email: "", password: "", rememberMe: false });
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    setErrors({ ...errors, [name]: "" }); // Clear error when user types
   };
 
   return (
-    <section className="bg-black-50 dark:bg-gray-900 dark">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a
-          href="#"
-          className="flex items-center mb-6 text-3xl font-semibold text-gray-900 dark:text-white"
-        >
-          <img class="w-16 h-16 mr-2" src={logo} alt="logo" />
-          MoraUXplore 2.0
-        </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Sign in to your account
-            </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
-              <div>
-                <label
-                  for="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Your Team Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="name@company.com"
-                  required=""
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div>
-                <label
-                  for="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Password
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="••••••••"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  required=""
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div class="flex items-center justify-between">
-                <div className="flex items-start">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      type="checkbox"
-                      class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                      required=""
-                    />
-                  </div>
-                  <div className="ml-3 text-sm">
-                    <label
-                      for="remember"
-                      className="text-gray-500 dark:text-gray-300"
-                    >
-                      Remember me
-                    </label>
-                  </div>
+    <div
+      className="relative"
+      style={{
+        background:
+          "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
+      }}
+    >
+      <div className="absolute z-10 w-full flex justify-end top-1/2 sm:top-0">
+        <img
+          src={SeaImage}
+          alt="Sea Image"
+          className="fixed object-cover h-lvh w-full sm:w-1/2"
+        />
+      </div>
+      <div className="relative z-20 text-white flex flex-col items-center justify-center w-full min-h-screen">
+        <div className="bg-white/5 backdrop-blur-2xl shadow-lg flex flex-col items-center justify-center w-[85%] sm:w-[78%] md:w-[70%] lg:w-[55%] py-8 lg:py-10 xl:py-16 rounded-2xl font-poppins my-5">
+          <img
+            src={Logo}
+            alt="Mora UXplore 2.0 Logo"
+            className="w-28 sm:w-32 lg:w-36"
+          />
+          <div className="flex flex-col items-center justify-center my-6 xl:my-10">
+            <h1 className="text-2xl tracking-widest">WELCOME BACK</h1>
+            <p className="text-xs">Please enter your details.</p>
+          </div>
+          <div className="relative w-[85%] sm:w-[55%] md:w-[45%]">
+            <button className="fixed top-0 left-0 p-2 sm:p-3 m-2">
+              <IoHomeOutline className="text-white/70 text-lg sm:text-2xl" />
+            </button>
+            <form
+              className="flex flex-col items-center justify-center"
+              onSubmit={handleSubmit}
+              noValidate
+              autoComplete="off"
+            >
+              <label className="w-full text-sm mb-1" htmlFor="email">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email"
+                className={`w-full bg-transparent text-sm p-2 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.email ? "border-red-500" : ""}`}
+              />
+              {errors.email && (
+                <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  {errors.email}
                 </div>
-                <a
-                  href="#"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  Forgot password?
-                </a>
+              )}
+              <label className="w-full text-sm mb-1" htmlFor="password">
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                placeholder="Enter your password"
+                className={`w-full bg-transparent text-sm p-2 mb-4 border border-white border-opacity-25 rounded-lg
+                          ${errors.password ? "border-red-500" : ""}`}
+              />
+              {errors.password && (
+                <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  {errors.password}
+                </div>
+              )}
+              <div className="flex justify-between text-xs w-full mt-4 mb-2">
+                <div className="flex flex-row">
+                  <input
+                    type="checkbox"
+                    id="remember"
+                    name="remember"
+                    checked={formData.remember}
+                    onChange={(e) =>
+                      setFormData({ ...formData, remember: e.target.checked })
+                    }
+                    className="mr-1"
+                  />
+                  <label htmlFor="remember">Remember me</label>
+                </div>
+                <div>
+                  <a href="#" className="hover:underline">
+                    Forgot password?
+                  </a>
+                </div>
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                onClick={handleSubmit}
+                className="w-[100%] mb-4 bg-black bg-opacity-10 rounded-md py-1 sm:py-2 text-sm"
               >
-                Sign in
+                Log in
               </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don’t have an account yet?{" "}
-                <Link
-                  to={"/register"}
-                  className="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >
-                  Sign up
-                </Link>
-              </p>
+              <div className="flex flex-col sm:flex-row sm:gap-1 items-center justify-center">
+                <div className="text-xs">Don't have an account?</div>
+                <div className="text-xs">
+                  <a href="#" className="hover:underline">
+                    Register free!
+                  </a>
+                </div>
+              </div>
             </form>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

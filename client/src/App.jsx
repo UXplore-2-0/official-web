@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import Navbar from "./layout/NavBar/Navbar";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -10,7 +11,7 @@ import EmailVerify from "./pages/EmailVerify/EmailVerify";
 import AuthContext from "./context/AuthContext";
 import axios from "./api/axios";
 import PageNotFound404 from "./pages/404/PageNotFound404";
-import SubmissionDetails from './pages/Dashboard/AdminDashboard/Pages/SubmissionDetails'
+import SubmissionDetails from "./pages/Dashboard/AdminDashboard/Pages/SubmissionDetails";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -43,8 +44,6 @@ function App() {
   };
 
   return (
-
-
     <AuthContext.Provider value={{ user, setUser, login, logout }}>
       <div>
         {/* <Home /> */}
