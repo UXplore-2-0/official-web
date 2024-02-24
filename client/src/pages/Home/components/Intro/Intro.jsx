@@ -10,6 +10,7 @@ import Button from '../Loginbutton/button';
 
 function Intro() {
   useGSAP(() => {
+
     gsap.from(".text1", {
       duration: 3,
       x: 100,
@@ -58,84 +59,36 @@ function Intro() {
       },
     });
 
-        gsap.from(".text1", {
-          duration: 3,
-          x: 100,
-          stagger: 1,
-          scrollTrigger: {
-            trigger: ".box2",
-            start: "top 80%",
-            end: "bottom 40%",
-            toggleActions: "play none none none",
-          },
-        });
-    
-        gsap.from(".text2", {
-          duration: 3,
-          x: -20,
-          stagger: 1,
-          scrollTrigger: {
-            trigger: ".box2",
-            start: "top 80%",
-            end: "bottom 40%",
-            toggleActions: "play none none none",
-          },
-        });
-    
-        gsap.from(".text3", {
-          duration: 3,
-          x: 150,
-          stagger: 1,
-          scrollTrigger: {
-            trigger: ".box2",
-            start: "top 80%",
-            end: "bottom 40%",
-            toggleActions: "play none none none",
-          },
-        });
-    
-        gsap.from(".explanation", {
-          duration: 3,
-          opacity: 0,
-          ease: "slow(0.7,0.7,false)",
-          scrollTrigger: {
-            trigger: ".box2",
-            start: "top 60%",
-            end: "bottom 40%",
-            toggleActions: "play none none none",
-          },
-        });
-    
-        gsap.from(".logo", {
-          duration: 3,
-          opacity: 0,
-          delay: 0.5,
-          scrollTrigger: {
-            trigger: ".box2",
-            // start: "top 60%",
-            end: "bottom 40%",
-            toggleActions: "play none none none",
-          },
-        });
-    
-        gsap.fromTo(".main-section", {
-          scale: 1.1
-        }, {
-          duration: 5,
-          scale: 1,
-          ease: 'power1.inOut',
-          yoyo: true,
-          scrollTrigger: {
-            trigger: ".main-section",
-            start: "top top",
-            end: "bottom bottom",
-            start: "top 60%",
-            end: "bottom 40%",
-            toggleActions: "play none none none",
-          }
-        });
-      }, []);
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(".logo", {
+      duration: 3,
+      opacity: 0,
+      delay: 0.5,
+      scrollTrigger: {
+        trigger: ".box2",
+        // start: "top 60%",
+        end: "bottom 40%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    gsap.fromTo(".main-section", {
+      scale: 1.1
+    }, {
+      duration: 5,
+      scale: 1,
+      ease: 'power1.inOut',
+      yoyo: true,
+      scrollTrigger: {
+        trigger: ".main-section",
+        start: "top top",
+        end: "bottom bottom",
+        start: "top 60%",
+        end: "bottom 40%",
+        toggleActions: "play none none none",
+      }
+    });
+  }, []);
+gsap.registerPlugin(ScrollTrigger);
 
   return (
     <>

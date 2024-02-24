@@ -74,7 +74,7 @@ export default function Guidlines() {
   gsap.registerPlugin(ScrollTrigger);
   return (
     <div
-      className="w-[100%] h-[100%] flex flex-col bg-cover justify-between py-11 sm:flex-row-reverse"
+      className="w-[100%] h-[100%] flex flex-col bg-cover justify-between py-11 sm:flex-row-reverse custom-background"
       // style={{
       //   backgroundImage:
       //     "url('https://rare-gallery.com/thumbs/1180321-sea-artwork-underwater-light-ocean-darkness.jpg')",

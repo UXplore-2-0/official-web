@@ -100,15 +100,22 @@
 }
 
 #sponsorships {
-    background-image: url('./images/bgNew.jpg');
+    background-image: url('./images/underwater.jpg');
     background-size: cover;
     background-position: cover;
     font-family: 'Rubik' , sans-serif;
-    height: 100vh;
+    
     position: relative;
     width: 100%;
-    height: auto;
+   
     overflow: hidden;
 }
 
+
+@media screen and (max-width: 768px) {
+    #sponsorships {
+        height: 140vh; 
+    }
+    
+}
 
