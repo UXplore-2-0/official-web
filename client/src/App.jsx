@@ -8,11 +8,10 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import "./App.css";
 
-
 function App() {
   return (
     <div>
-      <Register />
+      <Home />
     </div>
   );
 }
