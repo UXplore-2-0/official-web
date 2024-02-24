@@ -1,40 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import AuthContext from "../../../../context/AuthContext";
+import axios from "../../../../api/axios";
 
 function Static() {
-  const statsData = [
-    { title: "Total Teams", value: 391 },
-    { title: "Total Submission", value: 249 },
-    { title: "Online", value: 25 },
-    // Add more stats as needed
-  ];
-  //   const [statsData, setStatsData] = useState([]);
+  const { user } = useContext(AuthContext);
+  const [stat, setStat] = useState([]);
 
   useEffect(() => {
-    // Fetch data from backend when the component mounts
-    fetch("/api/stats")
-      .then((response) => response.json())
-      .then((data) => setStatsData(data))
-      .catch((error) => console.error("Error fetching stats:", error));
+    axios
+      .get("/stat/", {
+        headers: {
+          "x-auth-token": user.token,
+        },
+      })
+      .then((res) => {
+        setStat(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching stats: ", err);
+      });
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="w-full max-w-screen-md p-6 bg-white rounded-lg shadow-md">
-        <h2 className="flex justify-center text-3xl font-semibold mb-4">
+    <div className="flex flex-col justify-start items-start h-screen">
+      <div className="flex flex-row justify-between items-center mx-5 my-3 h-[25%] w-full px-5">
+        <h1
+          className="flex text-6xl font-bold mb-4 text-white"
+          style={{ alignSelf: "flex-start" }}
+        >
           Statistics
-        </h2>
+        </h1>
+      </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {statsData.map((stat, index) => (
-            <div key={index} className="p-4 bg-gray-100 rounded-xl shadow-md">
-              <div className="flex justify-center font-medium mb-2 text-gray-700">
-                {stat.title}
-              </div>
-              <div className="flex justify-center text-2xl font-bold text-blue-500">
-                {stat.value}
-              </div>
-            </div>
-          ))}
+      <div className="flex flex-col justify-center items-center w-[50%] h-full p-5 mx-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-4">
+        <div
+          className="flex items-center p-4 mb-4 text-4xl text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+          role="alert"
+        >
+          <span className="sr-only">Info</span>
+          <div>
+            <span className="font-medium">Total Teams</span>{" "}
+            {stat && stat.teamCount}
+          </div>
+        </div>
+
+        <div
+          className="flex items-center p-4 mb-4 text-4xl text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+          role="alert"
+        >
+          <span className="sr-only">Total Users</span>
+          <div>
+            <span className="font-medium">Total Users</span>{" "}
+            {stat && stat.memberCount}
+          </div>
+        </div>
+
+        <div
+          className="flex items-center p-4 mb-4 text-4xl text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
+          role="alert"
+        >
+          <span className="sr-only">Total Submissions </span>
+          <div>
+            <span className="font-medium">Total Submissions</span>{" "}
+            {stat && stat.submissionCount}
+          </div>
         </div>
       </div>
     </div>
