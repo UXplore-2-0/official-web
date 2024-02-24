@@ -95,7 +95,7 @@ function Intro() {
         <div class="container mx-auto ">
             <div class="lg:flex bg-brown bg-blue flex-wrap lg:mx-5 py-7">
                 <div class="box1 lg:basis-1/2 md:text-center text-center sm:text-center lg:text-start">
-                    <span class="lg:text-[124px] md:text-[90px] sm:text-[64px] text-[48px] leading-[1]   heading font-medium" style={{ fontFamily: "Raleway" }}>
+                    <span class="lg:text-[124px] md:text-[90px] sm:text-[64px] text-[48px] leading-[1]   heading font-medium" style={{ fontFamily: "Raleway" , filter:"brightness(100%)" }}>
                     <div class="text-white text1">WHAT IS</div> <div class="text-white text2">UXPLORE</div>  <div class="text-white text3"> 2.0</div>
 
                     </span>

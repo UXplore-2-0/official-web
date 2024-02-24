@@ -1,5 +1,5 @@
 import React from 'react'
-import Main from './components/Main/Main'
+import Main from './components/Hero/hero'
 import Guidlines from './components/Guidlines/Guidlines'
 import Timeline from './components/Timeline/Timeline'
 import Sponsorships from './components/Sponsorships/Sponsorships'
@@ -12,10 +12,9 @@ function Home() {
     <>
       <Main/>
       <Intro />
-      
-      <Timeline/>
       <Guidlines/>
-      <Sponsorships/>
+      <Timeline/>
+      {/* <Sponsorships/> */}
       <Contacts/>
     </>
     

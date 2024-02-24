@@ -1,10 +1,12 @@
 .intro-backdrop {
-    background-image: url('./bgNew.jpg');
+    background-image: url('./bgNew1.png');
     background-size: cover;
     background-position: center;
     font-family: 'Rubik' , sans-serif;
-    height: 90vh;
-    
+    padding-bottom: 70px;
+    filter:brightness(68%);
+
+    background-attachment: fixed;    
 }
 .heading{
     position: relative;
