@@ -49,7 +49,7 @@ export default function Guidlines() {
     "All participants must be currently enrolled undergraduates, and all team members should be from the same university or institute.";
 
   const sentence2 =
-    "One team should consist of a maximum of three members and a  of two members.";
+    "One team should consist of a maximum of three members and minimum of two members.";
   const sentence3 =
     "All interested teams must register for the event before the deadline. Registrations after the deadline are not approved.";
   const sentence4 =
