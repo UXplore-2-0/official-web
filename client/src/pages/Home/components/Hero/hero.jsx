@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import Button from "../Loginbutton/button";
 import "./hero.css";
 
 const Hero = () => {
   return (
-    <section id = "section-hero">
+    <section id="section-hero">
       <img
         src="./sponsor/background-sky.jpeg"
         alt="backgroundimage"
@@ -30,13 +31,16 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-        <Button buttonText="LOGIN" style={{ top: 0 }} />
-        <Button buttonText="REGISTER" style={{ top: 0 }} />
+        <Link to="/login">
+          {" "}
+          <Button buttonText="LOGIN" style={{ top: 0 }} />
+        </Link>
+        <Link to="/register">
+          <Button buttonText="REGISTER" style={{ top: 0 }} />
+        </Link>
       </div>
     </section>
   );
 };
 
 export default Hero;
-
-
