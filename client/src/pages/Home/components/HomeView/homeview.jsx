@@ -10,6 +10,7 @@ import Sponsorships from "../Sponsorships/Sponsorships";
 
 import Hero from "../Hero/hero";
 import Landing from "../Landing/landing";
+import Guidlines from "../Guidlines/Guidlines";
 
 
 
@@ -24,6 +25,7 @@ const HomeView = ({isAnimated}) => {
           <Hero />
           <Intro />
           <Timeline />
+          <Guidlines />
           <Sponsorships />
         </div>
       ) : (
