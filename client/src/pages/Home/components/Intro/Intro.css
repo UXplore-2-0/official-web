@@ -1,16 +1,13 @@
 .intro-backdrop {
-    background-image: url('./bgNew.jpg');
+    background-image: url('./bgNew1.png');
     background-size: cover;
-    background-position: cover;
-    font-family: 'Rubik' , sans-serif;
-    height: 100vh;
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-}
-    
+    background-position: center;
+    font-family: 'Poppins' , sans-serif;
+    padding-bottom: 70px;
+    filter:brightness(68%);
 
+    background-attachment: fixed;    
+}
 .heading{
     position: relative;
 }

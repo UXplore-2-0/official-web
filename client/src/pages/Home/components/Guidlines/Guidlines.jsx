@@ -81,7 +81,7 @@ export default function Guidlines() {
   gsap.registerPlugin(ScrollTrigger);
   return (
     <div
-      className="w-[100%] h-[100%] flex flex-col bg-cover  py-11 lg:flex-row-reverse lg:flex-end lg:text-[120px] justify-between custom-background"
+      id="guidlines" className="w-[100%] h-[100%] flex flex-col bg-cover  py-11 lg:flex-row-reverse lg:flex-end lg:text-[120px] justify-between custom-background"
 
     >
       <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8  w-full sm:ml-5 md:flex-end md:text-[60px] min-[1222px]:text-[100px] lg:justify-center justify-center" style={{ fontFamily: "Poppins" }}>

@@ -82,11 +82,11 @@ gsap.registerPlugin(ScrollTrigger);
             <div class="box1 lg:basis-1/2 md:text-center text-center sm:text-center lg:text-start">
               <span
                 class="lg:text-[124px] md:text-[90px] sm:text-[64px] text-[48px] leading-[1]   heading font-medium"
-                style={{ fontFamily: "Raleway" }}
+                style={{ fontFamily: "Poppins" }}
               >
-                <div class="text-white text1">WHAT IS</div>{" "}
-                <div class="text-white text2">UXPLORE</div>{" "}
-                <div class="text-white text3"> 2.0</div>
+                <div class="text-white text1">What is</div>{" "}
+                <div class="text-white text2">MORA</div>{" "}
+                <div class="text-white text3"> UXPlore 2.0</div>
               </span>
               <img
                 src={logo}
@@ -97,7 +97,7 @@ gsap.registerPlugin(ScrollTrigger);
             <div class="box2  lg:basis-4/6 lg:mt-96 md:mt-8 sm:mt-8 mt-10 lg:-mx-60 mx-10">
               <span
                 class="lg:text-[22px] md:text-[20px] sm:text-[18px] text-[16px] text-white font-[200] explanation opacity-1"
-                style={{ fontFamily: "rubik,sans-serif" }}
+                
               >
                Mora UXplore 2.0 is an event initiated by the IEEE Student
                 Branch of the University of Moratuwa. This event is conducted
