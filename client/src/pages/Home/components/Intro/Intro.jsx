@@ -70,22 +70,6 @@ function Intro() {
       },
     });
 
-    gsap.fromTo(".main-section", {
-      scale: 1.1
-    }, {
-      duration: 5,
-      scale: 1,
-      ease: 'power1.inOut',
-      yoyo: true,
-      scrollTrigger: {
-        trigger: ".main-section",
-        start: "top top",
-        end: "bottom bottom",
-        start: "top 60%",
-        end: "bottom 40%",
-        toggleActions: "play none none none",
-      }
-    });
   }, []);
 gsap.registerPlugin(ScrollTrigger);
 
@@ -115,15 +99,18 @@ gsap.registerPlugin(ScrollTrigger);
                 class="lg:text-[22px] md:text-[20px] sm:text-[18px] text-[16px] text-white font-[200] explanation opacity-1"
                 style={{ fontFamily: "rubik,sans-serif" }}
               >
-                Mora UXplore 1.0 is an event initiated by the IEEE Student
-                Branch of University of Moratuwa. This event is conducted for
-                the first time. Mora UXplore is a UI/UX designing competition
-                bringing all undergraduates together with creativity and
-                user-friendly creations. Mora UXplore is open to all
-                undergraduates in any university who are enthusiastic to create
-                UI/UX. This event consists of an awareness session, three
-                workshops, three rounds and a final designathon. We are
-                expecting 150+ teams consisting of 450+ participants.
+               Mora UXplore 2.0 is an event initiated by the IEEE Student
+                Branch of the University of Moratuwa. This event is conducted
+                for the second consecutive year, followed by the success of its
+                inaugural counterpart, Mora UXplore 1.0 in 2023. Mora UXplore is
+                a UI/UX designing competition, that brings together all
+                enthusiastic undergraduates through creativity and user-friendly
+                creations. The event welcomes undergraduates from all
+                universities with a passion for UI/UX. Mora UXplore 2.0 consists
+                of an awareness session, three instructive workshops, three
+                competitive rounds, and a final designathon. It’s expected to
+                accompany 500+ teams consisting of over 1,500
+                participants for the event.
               </span>
             </div>
           </div>
