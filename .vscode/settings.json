@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/34fe9c7c-87ee-43dc-8832-44a5419701b9/resourceGroups/eyon/providers/Microsoft.Web/sites/morauxplore2",
+  "appService.deploySubpath": "server"
+}
