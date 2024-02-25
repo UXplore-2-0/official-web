@@ -8,7 +8,6 @@ import Button from "../Loginbutton/button";
 
 function Intro() {
   useGSAP(() => {
-
     gsap.from(".text1", {
       duration: 3,
       x: 100,
@@ -70,9 +69,9 @@ function Intro() {
       },
     });
 
-  }, []);
-gsap.registerPlugin(ScrollTrigger);
 
+  }, []);
+  gsap.registerPlugin(ScrollTrigger);
 
   return (
     <>
