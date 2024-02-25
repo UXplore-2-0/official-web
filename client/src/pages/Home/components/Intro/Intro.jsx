@@ -82,7 +82,7 @@ gsap.registerPlugin(ScrollTrigger);
             <div class="box1 lg:basis-1/2 md:text-center text-center sm:text-center lg:text-start">
               <span
                 class="lg:text-[124px] md:text-[90px] sm:text-[64px] text-[48px] leading-[1]   heading font-medium"
-                style={{ fontFamily: "Poppins" }}
+                style={{ fontFamily: "Roboto" }}
               >
                 <div class="text-white text1">What is</div>{" "}
                 <div class="text-white text2">MORA</div>{" "}
