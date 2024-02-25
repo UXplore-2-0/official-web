@@ -19,6 +19,9 @@ process.on('uncaughtException', unCaughtExceptionHandler);
 
 // handle all the routes belongs to the server
 require('./api/start/routes')(app);
+app.get('/', (req, res) => {
+  res.send('Welcome to the server');
+});
 
 const port = process.env.PORT || 5000;
 
