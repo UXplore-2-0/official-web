@@ -1,12 +1,13 @@
 .intro-backdrop {
-    background-image: url('./bgNew1.png');
-    background-size: cover;
-    background-position: center;
+    /* background-image: url('./bgNew1.png'); */
+    background-color: #002634;
+    /* background-size: cover;
+    background-position: center; */
     font-family: 'Poppins' , sans-serif;
-    padding-bottom: 70px;
-    filter:brightness(68%);
+    padding-bottom: 20px;
+    filter:brightness(100%);
 
-    background-attachment: fixed;    
+    /* background-attachment: fixed;     */
 }
 .heading{
     position: relative;

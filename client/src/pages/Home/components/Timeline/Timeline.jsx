@@ -58,8 +58,8 @@ function Timeline() {
     <section id='timeline' className="timeline-backdrop text-white px-10 py-10 md:py-24">
 
       <div className='timeline-title flex flex-col items-center'>
-        <h1 className='mb-1 text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium' style={{ fontFamily: "Raleway" }}>TIMELINE</h1>
-        <p className='text-center text-stone-200 text-sm md:text-base lg:text-lg'>Unraveling the Dynamic Journey through Time in the Mora UXplore 2.0 Evolution</p>
+        <h1 className='mb-1 text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium' style={{ fontFamily: "Poppins" }}>TIMELINE</h1>
+        <p className='text-center text-stone-200 text-sm md:text-base lg:text-lg' style={{ fontFamily: "Poppins" }} >Unraveling the Dynamic Journey through Time in the Mora UXplore 2.0 Evolution</p>
       </div>
 
       <div className='timeline flex flex-col gap-y-[2em] items-center mx-auto my-[3em] md:my-[5em]'>
