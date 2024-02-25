@@ -1,10 +1,10 @@
 import React from "react";
 import ImageView from "./imageview.jsx";
-import P1 from "../assests/Senel.svg";
-import P2 from "../assests/Yasith.svg";
-import P3 from "../assests/Nivishka.svg";
-import P4 from "../assests/Sahan.svg";
-import P5 from "../assests/Ishan.svg";
+import P1 from "../assests/Senel.png";
+import P2 from "../assests/Yasith.png";
+import P3 from "../assests/Nivishka.png";
+import P4 from "../assests/Sahan.png";
+import P5 from "../assests/Ishan.png";
 import ImageText from "./imagetext.jsx";
 import "./pageleft.css";
 
