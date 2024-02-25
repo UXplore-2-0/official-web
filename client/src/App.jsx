@@ -12,6 +12,7 @@ import PageNotFound404 from "./pages/404/PageNotFound404";
 import PasswordReset from "./pages/PasswordReset/PasswordReset";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import "./App.css";
+import EmailVerification from "./pages/EmailVerification/EmailVerify";
 function App() {
   const [user, setUser] = useState(null);
 
@@ -63,7 +64,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
-            <Route path="/verify/:team_name/:token" element={<EmailVerify />} />
+            {/* <Route path="/verify/:team_name/:token" element={<EmailVerify />} /> */}
+            <Route path="/verify" element={<EmailVerification/>} />
             <Route
               path="/reset-password/:team_id/:token"
               element={<PasswordReset />}
