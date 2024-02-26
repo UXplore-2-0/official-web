@@ -13,6 +13,7 @@ import PasswordReset from "./pages/PasswordReset/PasswordReset";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import "./App.css";
 import EmailVerification from "./pages/EmailVerification/EmailVerify";
+import CheckEmail from "./pages/EmailVerification/CheckEmail";
 function App() {
   const [user, setUser] = useState(null);
 
@@ -66,6 +67,7 @@ function App() {
             <Route path="/forget-password" element={<ForgetPassword />} />
             {/* <Route path="/verify/:team_name/:token" element={<EmailVerify />} /> */}
             <Route path="/verify" element={<EmailVerification/>} />
+            <Route path="/check-email" element={<CheckEmail />} />
             <Route
               path="/reset-password/:team_id/:token"
               element={<PasswordReset />}

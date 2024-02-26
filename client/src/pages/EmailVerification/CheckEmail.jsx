@@ -1,10 +1,8 @@
 import React from "react";
 import Logo from "./images/Logo.png";
-import SeaImage from "./images/Sea.png";
-import DoneGif from "./images/done.gif";
 import { Link } from "react-router-dom";
 
-function EmailVerification() {
+function CheckEmail() {
 
 
   return (
@@ -49,15 +47,6 @@ function EmailVerification() {
                 Successfully registered the team{" "}
                 <span className="text-cyan-400">Space x</span>.
               </p>
-              <Link to="/login">
-                <button
-                  data-modal-toggle="successModal"
-                  type="button"
-                  className="py-2 px-4  text-sm font-medium text-center text-white rounded-full bg-gradient-to-r from-cyan-500 to-blue-500  hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:focus:ring-primary-900"
-                >
-                  Continue to Dashboard
-                </button>
-              </Link>
           </div>
         </div>
       </div>
@@ -65,4 +54,4 @@ function EmailVerification() {
   );
 }
 
-export default EmailVerification;
+export default CheckEmail;
