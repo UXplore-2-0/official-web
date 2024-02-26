@@ -12,7 +12,6 @@ import PageNotFound404 from "./pages/404/PageNotFound404";
 import PasswordReset from "./pages/PasswordReset/PasswordReset";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import "./App.css";
-
 function App() {
   const [user, setUser] = useState(null);
 
