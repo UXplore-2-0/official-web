@@ -140,9 +140,6 @@
     /* background-color: #024669; */
     background-color: black;
     height: 100vh;
-
-  
-   
     color: #fff;
     
     overflow: hidden;
@@ -170,25 +167,6 @@
     position: relative;
 }
 
-#cloud-right {
-    position: absolute;
-    top: -20%;
-    right: -0%;
-    width: auto;
-    height: 100%;
-    opacity: 0.7;
-}
-
-#cloud-left {
-    position: absolute;
-    top: -20%;
-    left: -10%;
-    width: auto;
-    height: 100%;
-    opacity: 0.7;
-}
-
-
 .center-container {
     background-color: #000;
     display: flex;
@@ -209,21 +187,6 @@
     
 }
 
-#thunder-1 {
-    width: auto;
-    height: 100%;
-    left : 0%;
-    top: 0%;
-    
-}
-
- #thunder-2 {
-    width: auto;
-    height: 100%;
-    left : 50%;
-    top: 0%;
-    
-}
 
 #logo-landing {
     top : 10%
@@ -275,41 +238,6 @@
 
 
 
-@media screen and (max-width : 768px) {
-    #animated-page-background {
-        height: 100%;
-        width: auto;
-        
-    }
-
-    #logo {
-        height : 30%;
-        width : auto;
-        top: 20%;
-    }
-    #ship {
-        left: 0%;
-        
-    }
-
-    #main-div-after-animated {
-        height: 80%;
-        width: auto;
-    }
-    
-    #cloud-right {
-        top: 0%;
-        right: -60%;
-        
-    }
-
-    #cloud-left {
-        top: 0%;
-        left: -50%;
-        
-    }
-}
-
 
 /* @media screen and (max-width : 1000px) {
     #ship {
@@ -318,15 +246,6 @@
 
 } */
 
-#moon {
-    position: fixed;
-    top : 0;
-    left: 50%;
-    height: 25%;
-    width: auto;
-    
-
-}
 
 
 #annimated-page-background {

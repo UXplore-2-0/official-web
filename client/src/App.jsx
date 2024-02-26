@@ -23,6 +23,7 @@ function App() {
     }
   }, []);
 
+
   const login = (userData) => {
     axios
       .post("/auth/login", userData)
@@ -34,6 +35,7 @@ function App() {
       })
       .catch((error) => {});
   };
+
 
   const logout = () => {
     // Clear authentication

@@ -81,6 +81,7 @@ export default function Guidlines() {
   gsap.registerPlugin(ScrollTrigger);
   return (
     <div
+
       id="guidlines" className="w-[100%] h-[100%] flex flex-col bg-cover  py-11 lg:flex-row-reverse lg:flex-end lg:text-[120px] justify-between custom-background"
 
     >
