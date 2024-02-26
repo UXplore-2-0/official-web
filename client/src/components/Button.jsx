@@ -6,26 +6,29 @@ const rippleAnimation = keyframes`
     width: 0;
     height: 0;
     opacity: 0.5;
+    background: #419ac6;
   }
   100% {
     width: 500px;
     height: 500px;
     opacity: 0;
+    background: #419ac6;
   }
 `;
 
 const AnimatedButton = styled.button`
   position: relative;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bold;
   cursor: pointer;
-  background-color: #000;
-  width: 100px;
-  color: #fff;
+  background-color: white;
+  width: 150px;
+  color: #0e1629;
   border: none;
-  border-radius: 5px;
+  border-radius: 1000px;
   overflow: hidden;
+  box-shadow: 3px 3px 3px #808080;
 
   &:hover span {
     animation: ${rippleAnimation} 1s linear infinite;

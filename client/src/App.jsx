@@ -8,7 +8,11 @@ import "./App.css";
 import Button from "./components/Button";
 
 function App() {
-  return <div></div>;
+  return (
+    <div>
+      <Button buttonText="Register" />
+    </div>
+  );
 }
 
 export default App;
