@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { Team, Question } = require('../models');
 const { uploadFileToBlob } = require('../utils/fileUpload');
 
@@ -32,16 +31,29 @@ async function uploadFile(req, res, next) {
     },
   });
 
-  // update the question with the file url
-  const updatedQuestion = await question.update({
-    submission_link: fileUrl,
-    is_submitted: true,
-  });
+  if (question) {
+    // update the question with the file url
+    const updatedQuestion = await question.update({
+      submission_link: fileUrl,
+      is_submitted: true,
+    });
+    return res.json({
+      message: 'File uploaded successfully',
+      data: updatedQuestion,
+    });
+  } else {
+    // create a new question with the file url
+    const newQuestion = await Question.create({
+      team_id: team_id,
+      submission_link: fileUrl,
+      is_submitted: true,
+    });
 
-  return res.json({
-    message: 'File uploaded successfully',
-    data: updatedQuestion,
-  });
+    return res.json({
+      message: 'File uploaded successfully',
+      data: newQuestion,
+    });
+  }
 }
 
 module.exports = {

@@ -71,9 +71,9 @@ function generateResetMailBody(token, team_id) {
   return mailGenerator.generate(email);
 }
 
-function createMailTrasport() {
-  // const accessToken = await oAuth2Client.getAccessToken();
-  const accessToken = `${process.env.GMAIL_CLIENT_ACCESS_TOKEN}`;
+async function createMailTrasport() {
+  const accessToken = await oAuth2Client.getAccessToken();
+  // const accessToken = `${process.env.GMAIL_CLIENT_ACCESS_TOKEN}`;
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -91,7 +91,7 @@ async function sendMail(verificationToken, team_name, email) {
 
   // Email options
   let mailOptions = {
-    from: `${process.env.MAIL_TEST_HOST}`, // sender address
+    from: `${process.env.GMAIL_FROM_EMAIL}`, // sender address
     to: email, // list of receivers
     subject: 'UXPlore 2.0 Registration', // Subject line
     html: generateMailBody(verificationToken, team_name), // html body
@@ -107,7 +107,7 @@ async function sendResetMail(token, email, team_id) {
   const transporter = createMailTrasport();
 
   let mailOptions = {
-    from: `${process.env.MAIL_TEST_HOST}`,
+    from: `${process.env.GMAIL_FROM_EMAIL}`,
     to: email,
     subject: 'Password Reset | Mora UXPlore 2.0',
     html: generateResetMailBody(token, team_id),
