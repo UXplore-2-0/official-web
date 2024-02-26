@@ -114,7 +114,7 @@ function Intro() {
             </div>
           </div>
         </div>
-        <Button buttonText="DOWNLOAD PDF" style={{ bottom: 0 }} />
+        {/* <Button buttonText="DOWNLOAD PDF" style={{ bottom: 0 }} /> */}
       </section>
     </>
   );

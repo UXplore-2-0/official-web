@@ -11,6 +11,7 @@ import axios from "./api/axios";
 import PageNotFound404 from "./pages/404/PageNotFound404";
 import PasswordReset from "./pages/PasswordReset/PasswordReset";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
+import Terms from "./pages/Home/components/Terms/Terms";
 import "./App.css";
 function App() {
   const [user, setUser] = useState(null);
@@ -64,6 +65,7 @@ function App() {
             )}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/Terms" element={<Terms />} />
             <Route path="/forget-password" element={<ForgetPassword />} />
             <Route path="/verify/:team_name/:token" element={<EmailVerify />} />
             <Route

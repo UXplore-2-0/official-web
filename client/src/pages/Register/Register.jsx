@@ -253,7 +253,7 @@ function Register() {
                     className="text-xs flex flex-row justify-start w-full mb-4"
                     style={{ textAlign: "left" }}
                   >
-                    By Registering you agree to these Terms and Conditions.
+                    By Registering you agree to these <Link to="/Terms"> Terms and Conditions. </Link> 
                   </div>
 
                   <button
