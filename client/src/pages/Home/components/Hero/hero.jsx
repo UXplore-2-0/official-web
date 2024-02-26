@@ -6,6 +6,8 @@ import React, {useEffect} from "react";
 
 import "./hero.css";
 
+import RegisterButton from "../RegisterButton/registerbutton";
+
 const Hero = () => {
 
 
@@ -63,13 +65,18 @@ const Hero = () => {
         }}
       >
 
+
         <Link to="/login">
           {" "}
           <Button buttonText="LOGIN" style={{ top: 0 }} />
         </Link>
         <Link to="/register">
-          <Button buttonText="REGISTER" style={{ top: 0 }} />
+          <RegisterButton buttonText="REGISTER" style={{ top: 0 }} />
         </Link>
+
+   
+       
+     
 
       </div>
     </section>
