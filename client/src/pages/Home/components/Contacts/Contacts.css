@@ -39,12 +39,12 @@
 
 .bg-gradient {
   flex-grow: 1;
-  background: linear-gradient(to left, #0a0f1d, #0f172a);
+  background: linear-gradient(to left, #091022, #0f172a);
 }
 
 .bg-gradient-2 {
   width: 150px;
-  background: linear-gradient(to right, #0a0f1d, #0f172a);
+  background: linear-gradient(to right, #0b1222, #0f172a);
 }
 
 @media screen and (max-width: 1280px) {
