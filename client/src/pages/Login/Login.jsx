@@ -8,6 +8,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import AuthContext from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
+import { log } from "console";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -21,6 +22,11 @@ function Login() {
   const [invalid, setInvalid] = useState(false);
 
   const { setUser } = useContext(AuthContext);
+
+  const saveToken = async (token, role) => {
+    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("role", res.data.role);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +63,13 @@ function Login() {
         .then((res) => {
           // set the user value
           setUser({ token: res.data.token, role: res.data.role });
+          // save the token in the local storage
+          try {
+            saveToken(res.data.token, res.data.role);
+          } catch (error) {
+            console.error("Error saving token to local storage", error);
+          }
+          
           navigate("/dashboard");
         })
         .catch((err) => {

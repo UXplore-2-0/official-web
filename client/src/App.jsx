@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate, HashRouter} from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -17,13 +17,12 @@ function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
+    const token = JSON.parse(sessionStorage.getItem("token"));
+    const role = JSON.parse(sessionStorage.getItem("role"));
     if (token) {
       setUser({ token, role });
     }
   }, []);
-
 
   const login = (userData) => {
     axios
@@ -31,8 +30,8 @@ function App() {
       .then((response) => {
         setUser({ token: response.data.token, role: response.data.role });
         // save to the local storage
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("role", response.data.role);
+        sessionStorage.setItem("token", "123");
+        sessionStorage.setItem("role", "admin");        
       })
       .catch((error) => {});
   };
@@ -41,14 +40,14 @@ function App() {
   const logout = () => {
     // Clear authentication
     setUser(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("role");
   };
 
   return (
     <AuthContext.Provider value={{ user, setUser, login, logout }}>
       <div>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             {user && (
@@ -74,7 +73,7 @@ function App() {
             />
             <Route path="*" element={<PageNotFound404 />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </div>
     </AuthContext.Provider>
   );
