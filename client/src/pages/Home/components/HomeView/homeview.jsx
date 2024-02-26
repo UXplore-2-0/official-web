@@ -29,7 +29,7 @@ const HomeView = ({isAnimated}) => {
           <Intro />
           <Timeline />
           <Guidlines />
-          <Sponsorships />
+          {/* <Sponsorships /> */}
           <Contacts />
         </div>
       ) : (

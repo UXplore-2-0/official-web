@@ -85,7 +85,7 @@ function Intro() {
               >
                 <div class="text-white text1">What is</div>{" "}
                 <div class="text-white text2">MORA</div>{" "}
-                <div class="text-white text3"> UXPlore 2.0</div>
+                <div class="text-white text3"> UXplore 2.0</div>
               </span>
               <img
                 src={logo}

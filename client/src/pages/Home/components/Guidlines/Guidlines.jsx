@@ -47,7 +47,7 @@ export default function Guidlines() {
   }, []);
 
   const sentence1 =
-    "All participants must be currently enrolled undergraduates, and all team members should be from the same university or institute.";
+    " All participants must be currently enrolled undergraduates, and all team members should be from the same university or institute.";
 
   const sentence2 =
     "One team should consist of a maximum of three members and minimum of two members.";
@@ -103,7 +103,7 @@ export default function Guidlines() {
               <div
                 className="flex ml-2 text-sm text-white/40 flex-wrap sm:text-base md:text-lg"
                 style={{ fontFamily: "rubik,sans-serif" }}
-              >
+              >&#x2022;
                 {sentence.split(" ").map((word, index) => (
                   <span key={index} className="char">
                     {index > 0 && <span>&nbsp;</span>}
