@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "./images/Logo.png";
+import SeaImage from "./images/Sea.png";
 import { Link } from "react-router-dom";
 
 function CheckEmail() {
@@ -14,9 +15,8 @@ function CheckEmail() {
             "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
         }}
       >
-        <div className="absolute z-10 w-full flex justify-center  sm:top-0">
-        
-           <img src="https://media.tenor.com/pz0zpQXlK5sAAAAi/sparkle-confetti.gif" alt=""  className="fixed object-cover h-100vh w-full sm:w-1/2" />
+        <div className="absolute z-10 w-full flex justify-end top-1/2 sm:top-0">
+            <img src={SeaImage} alt="" className="fixed object-cover h-1vh w-full sm:w-1/2"/>
         </div>
         <div className="relative z-20 text-white flex flex-col items-center justify-center w-full min-h-screen">
           
@@ -43,9 +43,11 @@ function CheckEmail() {
                 </svg>
                 <span className="sr-only">Success</span>
               </div>
-              <p className="mb-8 text-lg md:text-2xl text-center  font-semibold text-white">
-                Successfully registered the team{" "}
-                <span className="text-cyan-400">Space x</span>.
+              <p className="mb-8 text-lg md:text-3xl text-center  font-semibold text-white">
+                Check your email!
+              </p>
+              <p className="text-sm text-center  font-medium text-cyan-50">
+                Verification sent , please check your email.
               </p>
           </div>
         </div>
