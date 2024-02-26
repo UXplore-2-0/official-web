@@ -164,6 +164,8 @@ section img {
     }
 } */
 
+
+
 .main-background {
     /* background-color: #024669; */
     background-color: black;
@@ -263,15 +265,36 @@ section img {
 
 #ship {
     position: fixed;
-    bottom : -100px;
+    bottom : -10%;
     height : 80%;
+
     width: auto;
-    justify-content: space-between;
+    
     
    
     /* left : -15%; */
     
 
+}
+
+#intro-div {
+    position: relative;
+    top: 40%;
+    right: -80%;
+    width: 50%;
+    height: 60%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 280%;
+  
+        font-family: "Quicksand", sans-serif;
+        font-optical-sizing: auto;
+        font-weight:bold;
+                font-style: normal;
+     
+    padding: 10dvh;
+   text-align: right;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 #animated-page-background {
@@ -326,8 +349,11 @@ section img {
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 400%;
-    font-weight: bold;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:bold;
+            font-style: normal;
     padding: 10dvh;
    text-align: right;
     text-shadow: 2px 2px 4px #000000;
@@ -342,11 +368,29 @@ section img {
     #logo {
         width: 20%;
         height : auto;
-        top: -15%;
+        top: -20%;
     }
+
+    
     #ship {
-        left: -10%;
+        left: -20%;
         
+    }
+
+    #intro-div {
+        position: relative;
+        top: 45%;
+        right: -80%;
+        width: 60%;
+        height: 70%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 280%;
+    
+       
+       text-align: right;
+        text-shadow: 2px 2px 4px #000000;
+   
     }
 
    
@@ -368,13 +412,13 @@ section img {
     
     #cloud-right {
         top: 0%;
-        right: -60%;
+        right: -30%;
         
     }
 
     #cloud-left {
         top: 0%;
-        left: -60%;
+        left: -30%;
         
     }
     #text-division {
@@ -382,6 +426,7 @@ section img {
         font-size: 450%;
         
         right : -65%;
+        
         
         
 
@@ -408,10 +453,19 @@ section img {
         width: 50%;
         height: auto;
     }
+    #intro-div {
+       
+        height: 70%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 200%;
+       
+        
+    }
 
   
     #ship {
-        left: 0%;
+        left: -20%;
         
     }
     #moon {
@@ -434,6 +488,7 @@ section img {
         
         right : -70%;
         top: 40%;
+        
       
         
     }
@@ -455,10 +510,22 @@ section img {
         width: 30%;
         height: auto;
     }
-
+    #intro-div {
+       
+        height: 70%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 240%;
+       
+        
+        
+        
+    }
   
     #ship {
-        left: 0%;
+     
+        left: -20%;
+        
         
     }
     #moon {
@@ -481,7 +548,7 @@ section img {
         
         right : -70%;
         top: 40%;
-        
+       
        
         
         
@@ -496,7 +563,7 @@ section img {
     }
 
     #ieelogo {
-        position: fixed;
+        
         right : inherit;
         left: 5%;
         
@@ -504,6 +571,16 @@ section img {
         width: 70%;
         height: auto;
     }
+    #intro-div {
+       
+        height: 70%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 200%;
+        
+       
+    }
+    
 
   
     #ship {
@@ -533,6 +610,7 @@ section img {
         
         
     }
+
 }
 
 
@@ -541,6 +619,15 @@ section img {
     #animated-page-background {
         height: 100%;
         width: 100%;
+        
+    }
+    #intro-div {
+       
+        height: 70%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 220%;
+       
         
     }
 
@@ -556,7 +643,7 @@ section img {
 
   
     #ship {
-        left: 20%;
+        left: -20%;
         
     }
     #moon {
@@ -579,6 +666,7 @@ section img {
         
         right : -60%;
         top: 40%;
+       
        
         
       
@@ -733,21 +821,38 @@ section img {
         
     }
 
+    #ship {
+        left: -20%;
+                
+    }
+
     #ieelogo {
         position: fixed;
         right : 10%;
         left: inherit;
         
         top: 80%;
-        width: 30%;
+        width: 40%;
         height: auto;
+    }
+  
+    #intro-div {
+       
+        height: 50%;
+        right: -70%;
+        width: 70%;
+        top: 40%;
+       
+       
+       
+        font-size: 140%;
+       
+       
     }
 
   
-    #ship {
-        left: -20%;
-        
-    }
+    
+   
     #moon {
         width: 50%;
         height: auto;
@@ -757,10 +862,12 @@ section img {
     }
 
     #logo {
-        width: 50%;
+        width: 40%;
         height : auto;
         top:10%;
+        left: 0%;
     }
+   
 
 
     #main-div-after-animated {
@@ -769,14 +876,19 @@ section img {
     }
     
     #cloud-right {
+        
         top: 0%;
-        right: -60%;
+        width: 140%;
+        
+       
+        right: 0%;
         
     }
 
     #cloud-left {
         top: 0%;
-        left: -60%;
+        left: 50%;
+        display: none;
         
     }
     #intro-text {
@@ -793,13 +905,14 @@ section img {
        top: 50%;
 
     }
-   
+
 }
 
 @media screen and (max-width : 600px) and (orientation: landscape){
     #animated-page-background {
         height: 100%;
         width: 100%;
+
         
     }
 
@@ -808,8 +921,8 @@ section img {
         right : 5%;
         left: inherit;
         
-        top: 60%;
-        width: 50%;
+        top: 85%;
+        width: 30%;
         height: auto;
     }
 
@@ -832,6 +945,16 @@ section img {
         top: 25%;
     }
 
+    #intro-div {
+       
+        height: 70%;
+        top: 70%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 100%;
+        
+        
+    }
 
     #main-div-after-animated {
         height: 80%;

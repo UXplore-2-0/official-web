@@ -126,14 +126,14 @@ function Home() {
         scale: 2.25,
       });
 
-      // gsap.to("#moon", {
-      //   scrollTrigger: {
-      //     scrub: 1,
-      //   },
-      //   scale: 1.25,
-      //   y: 1000,
-      //   x: 300,
-      // });
+      gsap.to("#moon", {
+        scrollTrigger: {
+          scrub: 1,
+        },
+        scale: 1.25,
+        y: 1000,
+        x: -300,
+      });
 
       
     },

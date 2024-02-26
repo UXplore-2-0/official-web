@@ -33,16 +33,19 @@ const Hero = () => {
   const Text  = () => {
     if (numberOfRegistrations > 100) {
       return (
-        <>
+        <div id = "text-division">
         <h1 id="registration-text">{numberOfRegistrations}+</h1>
         <h2>REGISTRATIONS</h2>
-        </>
+        </div>
       );
     } else {
       return (
-        <>
-         <h2 id = "intro-text">Shaping Tomorrow's Experiences Today!</h2>
-        </>
+        <div id = "intro-div">
+          
+         <h2 id = "intro-text">Navigate Possibilities, Design Realities:
+
+Mora UXplore 2.0 - Shaping Tomorrow's Experiences Today!</h2>
+        </div>
        
       );
     }
@@ -63,9 +66,9 @@ const Hero = () => {
 
 
       <img id="ship" src="./sponsor/ship-new.png" alt="ship" />
-      <div id = "text-division" >
+     
       <Text />
-      </div>
+     
 
       <img id="logo" src="./sponsor/logowithbg.png" alt="logo" />
       <img src="./sponsor/ieelogo.png"   id="ieelogo" />
