@@ -10,13 +10,13 @@ gsap.registerPlugin(ScrollTrigger);
 function Sponsorships() {
   useGSAP(() => {
 
-  gsap.to(".middle-card", {
-    scrollTrigger: {
-      scrub: 1,
-      start: "+1000",
-    },
-    scale: 2,
-  });
+  // gsap.to(".middle-card", {
+  //   scrollTrigger: {
+  //     scrub: 1,
+  //     start: "top 90%",
+  //   },
+  //   scale: 2,
+  // });
   
   gsap.to(".left-card", {
     scrollTrigger: {

@@ -5,6 +5,15 @@
     color: #333;
 }
 
+#moon {
+    position: absolute;
+    opacity: 0.8;
+    width: 20%;
+    height: auto;
+    left : 30%;
+    top : 10%;
+}
+
 /* .container{
     display: flex;
     flex-wrap: wrap;
@@ -207,7 +216,6 @@ section img {
     opacity: 0.7;
 }
 
-
 .center-container {
     background-color: #000;
     display: flex;
@@ -285,30 +293,67 @@ section img {
 
 
 #logo {
-    position: fixed;
+    position: absolute;
     padding: 5%;
     margin-top: 10%;
-    width: 25%;
+    width: 20%;
     height: auto;
+    top : -20%;
+    
+ 
 }
 
+#ieelogo {
 
-
-@media screen and (max-width : 768px) {
+    position: fixed;
+    right : 5%;
+    
+    top: 80%;
+    width: 30%;
+    height: auto;
+  
+}
+#text-division {
+    position: relative;
+    top: 40%;
+    right: -70%;
+    width: fit-content;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 500%;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 10dvh;
+   text-align: right;
+    text-shadow: 2px 2px 4px #000000;
+}
+@media screen and (max-width : 1200px) {
     #animated-page-background {
         height: 100%;
-        width: auto;
+        width: 100%;
         
     }
 
     #logo {
-        height : 30%;
-        width : auto;
-        top: 20%;
+        width: 20%;
+        height : auto;
+        top: -15%;
     }
     #ship {
-        left: -20%;
+        left: -10%;
         
+    }
+
+   
+
+
+
+    #moon {
+        width: 20%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
     }
 
     #main-div-after-animated {
@@ -324,9 +369,493 @@ section img {
 
     #cloud-left {
         top: 0%;
-        left: -50%;
+        left: -60%;
         
     }
+    #text-division {
+       
+        font-size: 450%;
+        
+        right : -65%;
+        
+        
+
+       
+        
+    }
+
+    
+}
+
+@media screen and (max-width : 1024px) and (orientation: portrait) {
+    #animated-page-background {
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    #ieelogo {
+        position: fixed;
+        right : 5%;
+        left: inherit;
+        
+        top: 70%;
+        width: 50%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: 0%;
+        
+    }
+    #moon {
+        width: 30%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+    #logo {
+        width: 20%;
+        height : auto;
+        top: -10%;
+    }
+
+    #text-division {
+       
+        font-size: 350%;
+        
+        right : -70%;
+        top: 40%;
+      
+        
+    }
+}
+
+@media screen and (max-width : 1024px) and (orientation: landscape) {
+    #animated-page-background {
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    #ieelogo {
+       
+        right : 5%;
+        left: inherit;
+        
+        top: 80%;
+        width: 30%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: 0%;
+        
+    }
+    #moon {
+        width: 30%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+    #logo {
+        width: 20%;
+        height : auto;
+        top: -15%;
+    }
+
+    #text-division {
+       
+        font-size: 350%;
+        
+        right : -70%;
+        top: 40%;
+        
+       
+        
+        
+    }
+}
+
+@media screen and (max-width : 900px) and (orientation: portrait) {
+    #animated-page-background {
+        height: 100%;
+        width: auto;
+        
+    }
+
+    #ieelogo {
+        position: fixed;
+        right : inherit;
+        left: 5%;
+        
+        top: 70%;
+        width: 70%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: -20%;
+        
+    }
+    #moon {
+        width: 50%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+    #logo {
+        width: 20%;
+        height : auto;
+        top: -10%;
+    }
+
+    #text-division {
+       
+        font-size: 300%;
+        
+        right : -70%;
+        top: 40%;
+        
+        
+    }
+}
+
+
+
+@media screen and (max-width : 900px) and (orientation: landscape) {
+    #animated-page-background {
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    #ieelogo {
+        position: fixed;
+        right : 5%;
+        left: inherit;
+        
+        top: 80%;
+        width: 30%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: 20%;
+        
+    }
+    #moon {
+        width: 20%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+    #logo {
+        width: 20%;
+        height : auto;
+        top: -10%;
+    }
+
+    #text-division {
+       
+        font-size: 350%;
+        
+        right : -60%;
+        top: 40%;
+       
+        
+      
+    }
+}
+
+
+
+@media screen and (max-width : 768px) and (orientation: portrait){
+    #animated-page-background {
+        height: 100%;
+        width: auto;
+        
+    }
+
+    #ieelogo {
+        position: fixed;
+        right : 5%;
+        left: inherit;
+        
+        top: 90%;
+        width: 30%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: -20%;
+        
+    }
+    #moon {
+        width: 50%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+    #logo {
+        width: 25%;
+        height : auto;
+        top: -5%;
+    }
+
+
+    #main-div-after-animated {
+        height: 80%;
+        width: auto;
+    }
+    
+    #cloud-right {
+        top: 0%;
+        right: -60%;
+        
+    }
+
+    #cloud-left {
+        top: 0%;
+        left: -60%;
+        
+    }
+
+
+    #text-division {
+       right: inherit;
+       font-size : 300%;
+       left : 40%;
+       text-align: left;
+       top: 40%;
+      
+       
+   
+        
+    }
+   
+}
+
+
+
+@media screen and (max-width : 768px ) and (orientation: landscape){
+    #animated-page-background {
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    #ieelogo {
+        position: fixed;
+        left : inherit;
+        right : 5%;
+        top: 85%;
+        width: 30%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: 0%;
+        
+    }
+    #moon {
+        width: 20%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+
+    #main-div-after-animated {
+        height: 80%;
+        width: auto;
+    }
+    
+    #cloud-right {
+        top: 0%;
+        right: -60%;
+        
+    }
+
+    #cloud-left {
+        top: 0%;
+        left: -60%;
+        
+    }
+
+    #text-division {
+       
+        font-size: 270%;
+        
+        right : -65%;
+        top: 50%;
+      
+       
+
+        
+    }
+
+    #logo {
+        width: 25%;
+        height : auto;
+        top: -10%;
+    }
+   
+}
+
+
+@media screen and (max-width : 600px) and (orientation: portrait){
+    #animated-page-background {
+        height: 100%;
+        width: auto;
+        
+    }
+
+    #ieelogo {
+        position: fixed;
+        right : 10%;
+        left: inherit;
+        
+        top: 80%;
+        width: 30%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: -20%;
+        
+    }
+    #moon {
+        width: 50%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+    #logo {
+        width: 50%;
+        height : auto;
+        top:10%;
+    }
+
+
+    #main-div-after-animated {
+        height: 80%;
+        width: auto;
+    }
+    
+    #cloud-right {
+        top: 0%;
+        right: -60%;
+        
+    }
+
+    #cloud-left {
+        top: 0%;
+        left: -60%;
+        
+    }
+
+
+    #text-division {
+       right: -50%;
+       font-size : 200%;
+       left : inherit;
+       text-align: right;
+       top: 50%;
+
+    }
+   
+}
+
+@media screen and (max-width : 600px) and (orientation: landscape){
+    #animated-page-background {
+        height: 100%;
+        width: 100%;
+        
+    }
+
+    #ieelogo {
+        position: fixed;
+        right : 5%;
+        left: inherit;
+        
+        top: 60%;
+        width: 50%;
+        height: auto;
+    }
+
+  
+    #ship {
+        left: 00%;
+        
+    }
+    #moon {
+        width: 30%;
+        height: auto;
+        left : 20%;
+        top : 10%;
+
+    }
+
+    #logo {
+        width: 40%;
+        height : auto;
+        top: 25%;
+    }
+
+
+    #main-div-after-animated {
+        height: 80%;
+        width: auto;
+    }
+    
+    #cloud-right {
+        top: 0%;
+        right: -60%;
+        
+    }
+
+    #cloud-left {
+        top: 0%;
+        left: -60%;
+        
+    }
+
+
+    #text-division {
+       right: inherit;
+       font-size : 200%;
+       left : inherit;
+       right : -65%;
+       text-align: right;
+       top: 40%;
+       
+      
+       
+   
+        
+    }
+   
 }
 
 
@@ -337,15 +866,6 @@ section img {
 
 } */
 
-#moon {
-    position: fixed;
-    top : 0;
-    left: 50%;
-    height: 25%;
-    width: auto;
-    
-
-}
 
 
 #annimated-page-background {
@@ -356,6 +876,11 @@ section img {
 #main-div-after-animated {
     height: 100%;
 }
+
+
+
+
+
 
 /* .center-container img:nth-child(1) {
     top: 50%;
@@ -372,3 +897,7 @@ section img {
     top: 50%;
     left: 50%;
 } */
+
+#registration-text {
+    position : relative;
+}

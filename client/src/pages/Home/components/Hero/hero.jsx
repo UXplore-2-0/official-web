@@ -1,9 +1,30 @@
 
 
 import Button from "../Loginbutton/button";
-
+import gsap from "gsap/gsap-core";
+import React, {useEffect} from "react";
 import "./hero.css";
 const Hero = () => {
+
+
+
+  const numberOfRegistrations = 123;
+
+  //count 0 to number of registrations
+  useEffect(() => {
+    let counter = 0;
+    const interval = setInterval(() => {
+      if (counter < numberOfRegistrations) {
+        counter++;
+        document.getElementById("registration-text").innerHTML = counter ;
+      } else {
+        clearInterval(interval);
+      }
+    }, 10);
+    return () => clearInterval(interval);
+  });
+   
+
   return (
     <section id = "section-hero">
       <img
@@ -16,10 +37,17 @@ const Hero = () => {
 
       <img id="cloud-left" src="./sponsor/clouds-2.png" alt="clouds-2" />
 
+
       <img id="ship" src="./sponsor/ship-new.png" alt="ship" />
+      <div id = "text-division" >
+        <h1 id="registration-text">{numberOfRegistrations}+</h1>
+        <h2>REGISTRATIONS</h2>
+
+        
+      </div>
 
       <img id="logo" src="./sponsor/logowithbg.png" alt="logo" />
-
+      <img src="./sponsor/ieelogo.png"   id="ieelogo" />
       <div
         style={{
           position: "absolute",
@@ -32,8 +60,11 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-        <Button buttonText="LOGIN" style={{ top: 0 }} />
-        <Button buttonText="REGISTER" style={{ top: 0 }} />
+        <Button id = "login-button" buttonText="LOGIN" style={{ top: 0  }} />
+   
+        <Button id = "registration-button"  buttonText="REGISTER" style={{ top: 0 }} />
+     
+       
       </div>
     </section>
   );

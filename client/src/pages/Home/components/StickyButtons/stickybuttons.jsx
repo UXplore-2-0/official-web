@@ -13,6 +13,11 @@ function StickyButton() {
   };
 
   return (
+    <div className = "sticky-buttons-container-wrapper">
+    
+    <img src="./sponsor/LeftDuo.svg" alt="arrow"  className = "arrow-image"/>
+   <img src="./sponsor/Rectangle.svg" alt="arrow"  className = "rectangle"/>
+   
     <div className="sticky-buttons-container">
       <button className="sticky-buttons-container-button" onClick={() => scrollToSection('main')}>
         Main
@@ -30,6 +35,7 @@ function StickyButton() {
         Sponsorships
       </button>
       {/* <button className="circular-sticky-button">Register</button> */}
+    </div>
     </div>
   );
 }

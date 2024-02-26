@@ -14,14 +14,16 @@ import StickyButton from "./components/StickyButtons/stickybuttons";
 gsap.registerPlugin(ScrollTrigger);
 function Home() {
   const [isAnimated, setIsAnimated] = useState(false);
-  useGSAP(() => {
-    gsap.from(".sticky-buttons-container-button, .circular-sticky-button", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      delay: 6,
-    });
-  });
+  // useGSAP(() => {
+  //   gsap.from(".rectangle, .arrow-image, .sticky-buttons-container, .sticky-buttons-container-button", {
+  //     opacity: 0,
+  //     y: 50,
+  //     duration: 1,
+  //     delay: 6,
+     
+
+  //   });
+  // });
 
   useGSAP(
     () => {
@@ -79,11 +81,22 @@ function Home() {
         ease: "power1.inOut",
       });
 
-      gsap.to("#ship", {
-        x: 100,
-        delay: 1,
+      
+
+      // gsap.to("#ship", {
+      //   x: 100,
+      //   delay: 1,
+      //   duration: 1,
+      // });
+      //scale up scale down forever
+      gsap.to("#registration-button", {
+        scale: 1.1,
         duration: 1,
+        repeat: -1,
+
+        yoyo: true,
       });
+      
       gsap.to("#title-1", {
         scrollTrigger: {
           scrub: 1,
@@ -113,14 +126,14 @@ function Home() {
         scale: 2.25,
       });
 
-      gsap.to("#moon", {
-        scrollTrigger: {
-          scrub: 1,
-        },
-        scale: 1.25,
-        y: 1000,
-        x: 300,
-      });
+      // gsap.to("#moon", {
+      //   scrollTrigger: {
+      //     scrub: 1,
+      //   },
+      //   scale: 1.25,
+      //   y: 1000,
+      //   x: 300,
+      // });
 
       
     },
@@ -130,8 +143,8 @@ function Home() {
 
   return (
     <>
-
-      <StickyButton className="sticky-buttons-container-button" />
+      
+     
       <HomeView isAnimated={isAnimated} />
 
      
