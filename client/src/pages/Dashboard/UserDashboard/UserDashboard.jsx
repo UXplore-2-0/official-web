@@ -16,7 +16,7 @@ import { faCheck, faClose, faLink } from "@fortawesome/free-solid-svg-icons";
 function UserDashboard() {
   const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
-  const [selected, setSelected] = useState("Dashboard");
+  const [selected, setSelected] = useState("AddMember");
   const [team, setTeam] = useState({});
   const [status, setStatus] = useState({});
   const [uploading, setUploading] = useState(false);

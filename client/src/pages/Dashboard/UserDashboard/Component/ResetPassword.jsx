@@ -135,7 +135,7 @@ function ResetPassword() {
           </div>
           {success && (
             <div class="flex justify-center items-center p-4 m-10 text-base leading-5 text-white bg-green-500 rounded-lg opacity-100 font-regular">
-              Password rsetted suucessfully.
+              Password resetted sucessfully.
             </div>
           )}
         </div>

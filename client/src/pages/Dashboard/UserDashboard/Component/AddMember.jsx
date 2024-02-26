@@ -17,6 +17,7 @@ function AddMember({ team, setTeam, open }) {
   const [error, setError] = useState(null);
 
   const isThereIsLeader = () => {
+    console.log(team);
     const leader = team.members.find((member) => member.is_leader === true);
     if (leader) {
       return true;
@@ -194,7 +195,7 @@ function AddMember({ team, setTeam, open }) {
           )}
         </div>
 
-        {isThereIsLeader() ? (
+        {team.members && isThereIsLeader() ? (
           <div className="flex flex-row my-5">
             <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-3 py-1.5 rounded dark:bg-green-900 dark:text-green-300">
               Leader is already choosen.

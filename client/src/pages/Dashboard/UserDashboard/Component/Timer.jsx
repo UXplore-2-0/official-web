@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Tim from "./Tim";
+
 function Timer({ status }) {
+
+  let date = status.time ? new Date(status.time) : new Date();
+  
   const [countDownTime, setCountDownTIme] = useState({
     days: "00",
     hours: "00",
@@ -49,12 +52,12 @@ function Timer({ status }) {
   const startCountDown = useCallback(() => {
     const customDate = new Date();
     const countDownDate = new Date(
-      customDate.getFullYear(),
-      customDate.getMonth() + 0,
-      customDate.getDate() + 6,
-      customDate.getHours(),
-      customDate.getMinutes(),
-      customDate.getSeconds() + 1
+      date.getFullYear() - customDate.getFullYear(),
+      date.getMonth() - customDate.getMonth(),
+      date.getDate() - customDate.getDate(),
+      date.getHours() - customDate.getHours(),
+      date.getMinutes() - customDate.getMinutes(),
+      date.getSeconds() - customDate.getSeconds() 
     );
     setInterval(() => {
       getTimeDifference(countDownDate.getTime());
@@ -63,6 +66,13 @@ function Timer({ status }) {
 
   useEffect(() => {
     startCountDown();
+
+    setInterval(() => {
+      console.log(status);
+
+      date = status.time ? new Date(status.time) : new Date();
+      startCountDown();
+    }, 1000);
   }, [startCountDown]);
 
   return (
@@ -70,7 +80,7 @@ function Timer({ status }) {
       <div className="flex flex-col items-center justify-center w-full gap-8 sm:gap-12 h-full py-4">
         <span className="text-2xl sm:text-4xl font-bold text-white text-center px-2">
           {status.message
-            ? status.messahe
+            ? status.message
             : "Contest will start soon, Get ready to go!"}
         </span>
         <div className="flex justify-center gap-3 sm:gap-8">

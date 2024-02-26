@@ -16,25 +16,7 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-    const role = JSON.parse(sessionStorage.getItem("role"));
-    if (token) {
-      setUser({ token, role });
-    }
-  }, []);
-
-  const login = (userData) => {
-    axios
-      .post("/auth/login", userData)
-      .then((response) => {
-        setUser({ token: response.data.token, role: response.data.role });
-        // save to the local storage
-        sessionStorage.setItem("token", "123");
-        sessionStorage.setItem("role", "admin");        
-      })
-      .catch((error) => {});
-  };
+  
 
 
   const logout = () => {
@@ -45,19 +27,19 @@ function App() {
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, logout }}>
       <div>
         <HashRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             {user && (
               <Route
-                path="/dashboard"
+                exact path="/dashboard"
                 element={
                   user && user.role === "admin" ? (
-                    <AdminDashboard />
+                    <AdminDashboard key={window.location.pathname} />
                   ) : (
-                    <UserDashboard />
+                    <UserDashboard key={window.location.pathname} />
                   )
                 }
               />

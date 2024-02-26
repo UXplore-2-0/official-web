@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "../../api/axios";
@@ -9,6 +9,7 @@ import AuthContext from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
 import { log } from "console";
+import Loading from "../Loading/Loading";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -18,14 +19,24 @@ function Login() {
   });
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const [invalid, setInvalid] = useState(false);
 
   const { setUser } = useContext(AuthContext);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const role = localStorage.getItem("role");
+    if (token) {
+      setUser({ token, role });
+      navigate("/dashboard");
+    }
+  }, []);
+
   const saveToken = async (token, role) => {
-    localStorage.setItem("token", res.data.token);
-    localStorage.setItem("role", res.data.role);
+    localStorage.setItem("token", token);
+    localStorage.setItem("role", role);
   }
 
   const handleSubmit = (e) => {
@@ -46,6 +57,7 @@ function Login() {
 
     setErrors(validationErrors);
 
+    setLoading(true);
     if (Object.keys(validationErrors).length === 0) {
       axios
         .post(
@@ -70,9 +82,11 @@ function Login() {
             console.error("Error saving token to local storage", error);
           }
           
+          setLoading(false);
           navigate("/dashboard");
         })
         .catch((err) => {
+          setLoading(false);
           setInvalid(true);
         });
 
@@ -92,7 +106,9 @@ function Login() {
 
   return (
     <>
-      {!invalid && (
+      {!loading && (
+        <>
+          {!invalid && (
         <div
           className="relative"
           style={{
@@ -262,6 +278,9 @@ function Login() {
           </div>
         </div>
       )}
+        </>
+      )}
+      {loading && <Loading />}
     </>
   );
 }

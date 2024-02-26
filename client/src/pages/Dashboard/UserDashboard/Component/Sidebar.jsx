@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import control from "../Component/Assets/control.png";
 import logo from "../../../../../public/logo512.png";
 import Setting from "../Component/Assets/Setting.png";
@@ -80,14 +80,16 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
             style={{ color: "gray" }}
             onClick={() => setOpen(!open)}
           />
-          <div className="flex gap-x-4 items-center">
-            <img
-              src={logo}
-              className={`cursor-pointer duration-500 ${
-                open && "rotate-[360deg]"
-              } `}
-            />
-          </div>
+          <Link to="/" >
+            <div className="flex gap-x-4 items-center">
+              <img
+                src={logo}
+                className={`cursor-pointer duration-500 ${
+                  open && "rotate-[360deg]"
+                } `}
+              />
+            </div>
+          </Link>
         </div>
 
         {/* <div class="text-2xl font-bold text-center text-blue-500">
@@ -97,9 +99,8 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             <li>
-              <a
-                href="#"
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all ${
+              <div
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all cursor-pointer ${
                   selected === "Dashboard" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
                 } ${!open && "w-12"}`}
@@ -116,12 +117,12 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
                 {open && <span className="ms-3">Dashboard</span>}
-              </a>
+              </div>
             </li>
             <li>
-              <a
-                href="#"
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+              <div
+                
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group  cursor-pointer ${
                   selected === "Members" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
                 } ${!open && "w-12"}`}
@@ -131,14 +132,13 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                 {open && (
                   <span className="flex-1 ms-3 whitespace-nowrap">Members</span>
                 )}
-              </a>
+              </div>
             </li>
 
             {team.count < 3 && (
               <li>
-                <a
-                  href="#"
-                  className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                <div
+                  className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
                     selected === "AddMember" &&
                     "dark:bg-slate-600 hover:dark:bg-blue-900"
                   } ${!open && "w-12"}`}
@@ -150,13 +150,12 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                       Add Members
                     </span>
                   )}
-                </a>
+                </div>
               </li>
             )}
             <li>
-              <a
-                href="#"
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+              <div
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
                   selected === "FAQ" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
                 } ${!open && "w-12"}`}
@@ -166,12 +165,11 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                 {open && (
                   <span className="flex-1 ms-3 whitespace-nowrap">FAQs</span>
                 )}
-              </a>
+              </div>
             </li>
             <li>
-              <a
-                href="#"
-                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+              <div
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
                   selected === "Settings" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
                 } ${!open && "w-12"}`}
@@ -183,12 +181,11 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                     Settings
                   </span>
                 )}
-              </a>
+              </div>
             </li>
           </ul>
-          <a
-            href="#"
-            className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-red-700 transition group ${
+          <div
+            className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-red-700 transition group cursor-pointer ${
               !open && "w-12"
             }`}
             style={{ justifySelf: "flex-end" }}
@@ -196,7 +193,7 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
           >
             <FontAwesomeIcon icon={faSignOut} />
             {open && <span className="ms-3">Logout</span>}
-          </a>
+          </div>
         </div>
       </aside>
     </div>
