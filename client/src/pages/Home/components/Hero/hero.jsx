@@ -12,21 +12,41 @@ const Hero = () => {
 
 
 
-  const numberOfRegistrations = 123;
+  const numberOfRegistrations = 10;
 
-  //count 0 to number of registrations
+
   useEffect(() => {
     let counter = 0;
     const interval = setInterval(() => {
+      if (numberOfRegistrations > 100) {
       if (counter < numberOfRegistrations) {
         counter++;
-        document.getElementById("registration-text").innerHTML = counter ;
+        document.getElementById("registration-text").innerHTML = counter + "+";
       } else {
         clearInterval(interval);
       }
+    }
     }, 10);
     return () => clearInterval(interval);
   });
+
+  const Text  = () => {
+    if (numberOfRegistrations > 100) {
+      return (
+        <>
+        <h1 id="registration-text">{numberOfRegistrations}+</h1>
+        <h2>REGISTRATIONS</h2>
+        </>
+      );
+    } else {
+      return (
+        <>
+         <h2 id = "intro-text">Shaping Tomorrow's Experiences Today!</h2>
+        </>
+       
+      );
+    }
+  };
    
 
   return (
@@ -44,10 +64,7 @@ const Hero = () => {
 
       <img id="ship" src="./sponsor/ship-new.png" alt="ship" />
       <div id = "text-division" >
-        <h1 id="registration-text">{numberOfRegistrations}+</h1>
-        <h2>REGISTRATIONS</h2>
-
-        
+      <Text />
       </div>
 
       <img id="logo" src="./sponsor/logowithbg.png" alt="logo" />
@@ -64,19 +81,16 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-
+<Link to="/register">
+          <RegisterButton buttonText="REGISTER" style={{ top: 0 }} />
+        </Link>
 
         <Link to="/login">
           {" "}
           <Button buttonText="LOGIN" style={{ top: 0 }} />
         </Link>
-        <Link to="/register">
-          <RegisterButton buttonText="REGISTER" style={{ top: 0 }} />
-        </Link>
+        
 
-   
-       
-     
 
       </div>
     </section>

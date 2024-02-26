@@ -256,6 +256,11 @@ section img {
     top : 10%
 }
 
+#intro-text {
+    position: relative;
+    right : 20%;
+}
+
 #ship {
     position: fixed;
     bottom : -100px;
@@ -773,6 +778,10 @@ section img {
         top: 0%;
         left: -60%;
         
+    }
+    #intro-text {
+        position: relative;
+        right : -10%;
     }
 
 
