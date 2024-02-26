@@ -6,11 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
     },
     question: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1, 255],
-      },
     },
     team_id: {
       type: DataTypes.INTEGER,
@@ -22,10 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     answer: {
       type: DataTypes.STRING(255),
-      allowNull: false,
-      validate: {
-        len: [1, 255],
-      },
+      allowNull: true,
     },
   });
 

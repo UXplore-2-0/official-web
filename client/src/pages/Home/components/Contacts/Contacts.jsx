@@ -7,7 +7,7 @@ import PageLeft from "./components/pageleft.jsx";
 
 function Contacts() {
   return (
-    <div className="ContactUsMain">
+    <div id="contact"  className="ContactUsMain">
       <div className="contactus">
         <div className="bg-gradient-2"></div>
         <div className="deapsea-dev">

@@ -47,19 +47,24 @@ export default function Guidlines() {
   }, []);
 
   const sentence1 =
-    "The project's success is contingent on adhering to the established guidelines.";
+    "All participants must be currently enrolled undergraduates, and all team members should be from the same university or institute.";
 
-  const sentence2 = "Hello, GSAP is awesome gsd! ugasbuzdb ushncihn hnduiaHNXS";
+  const sentence2 =
+    "One team should consist of a maximum of three members and minimum of two members.";
   const sentence3 =
-    "Employees should familiarize themselves with the company's ethical guidelines";
+    "All interested teams must register for the event before the deadline. Registrations after the deadline are not approved.";
   const sentence4 =
-    "The teacher provided clear guidelines for the research paper, including formatting and citation requirements.";
+    "All participating teams will be assigned a design challenge to which the solutions must be submitted within the specified timeframe.";
   const sentence5 =
-    "The team developed comprehensive guidelines for project management to improve efficiency.";
+    "Teams may use any design platform of their choice for the competition.";
   const sentence6 =
-    "Guidelines for social media use in the workplace help maintain a professional online presence.";
+    "Each team can submit only one entry at the submission rounds.";
   const sentence7 =
-    "When in doubt, consult the guidelines to make informed decisions.";
+    "All entries must be submitted through the official Mora UXPlore 2.0 Website.";
+  const sentence8 =
+    "Participants will engage in two preliminary rounds, followed by a semi-final and the final designathon.";
+  const sentence9 =
+    "Copying another project or plagiarism is strictly prohibited.";
 
   const array = [
     sentence1,
@@ -69,19 +74,18 @@ export default function Guidlines() {
     sentence5,
     sentence6,
     sentence7,
+    sentence8,
+    sentence9,
   ];
 
   gsap.registerPlugin(ScrollTrigger);
   return (
     <div
-      className="w-[100%] h-[100%] flex flex-col bg-cover justify-between py-11 sm:flex-row-reverse custom-background"
-      id = "guidlines"
-      // style={{
-      //   backgroundImage:
-      //     "url('https://rare-gallery.com/thumbs/1180321-sea-artwork-underwater-light-ocean-darkness.jpg')",
-      // }}
+
+      id="guidlines" className="w-[100%] h-[100%] flex flex-col bg-cover  py-11 lg:flex-row-reverse lg:flex-end lg:text-[120px] justify-between custom-background"
+
     >
-      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8 md:text-[128px] sm:text-[45] w-full sm:justify-end sm:ml-0">
+      <div className="text-[45px] text-white rounded-xl mb-3 ml-5 p-3 guidelines flex items-center mr-8  w-full sm:ml-5 md:flex-end md:text-[60px] min-[1222px]:text-[100px] lg:justify-center justify-center" style={{ fontFamily: "Poppins" }}>
         {"GUIDELINES".split("").map((characters, index) => {
           return characters === " " ? (
             <span key={index}>&nbsp;</span>

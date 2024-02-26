@@ -18,37 +18,52 @@ const {
   addQuestion,
   getSubmissions,
   addAnswer,
+  getStatus,
+  deleteTeam,
+  getAllQAs,
+  getSubmission,
 } = require('../controllers/teams.controller');
+const { uploadFile } = require('../controllers/file.controller');
+const multer = require('multer');
 
+// create multer instance for file uploading
+const upload = multer();
 // create a router for handle the team routes
 const router = express.Router();
 
-// team authorized routes
-router.post('/:team_name/add', auth, addMember);
-router.get('/:team_name/:member_id', auth, getMember);
-router.put('/:team_name/:member_id', auth, updateMember);
-router.delete('/:team_name/:member_id', auth, deleteMember);
-router.get('/:team_name', auth, getTeam);
-
-// beverage related routes
-router.post('/:team_name/:member_id/beverages', auth, addBeverage);
-router.put('/:team_name/:member_id/beverages', auth, updateBeverages);
-
-// submission related routes
-router.post('/:team_name/submissions', auth, addSubmission);
-
-// question related routes
-router.get('/:team_name/question', auth, getQuestion);
+// file upload route
+router.post('/upload', auth, upload.single('file'), uploadFile);
 
 // QA related routes
-router.post('/:team_name/qa', auth, addQA);
-router.get('/:team_name/qa', auth, getQAs);
-router.get('/:team_name/qa/:qa_id', auth, getQA);
+router.post('/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
+router.post('/qa', auth, addQA); // TODO: success
+router.get('/qa/all', auth, getAllQAs); // TODO: success
+router.get('/getqa', auth, getQAs); // TODO: success
+router.get('/qa/:qa_id', auth, getQA); // TODO: success
+
+// question related routes
+router.get('/getquestion', auth, getQuestion); // TODO: suucess
+
+// beverage related routes
+router.post('/:member_id/beverages', auth, addBeverage); // TODO: sucess
+router.put('/:member_id/beverages', auth, addBeverage); // TODO: success
+
+// submission related routes
+router.post('/submissions', auth, addSubmission);
 
 // admin only authorized routes
-router.get('/', auth, admin, getAllTeams);
-router.post('/:team_name/question', auth, admin, addQuestion);
-router.get(':/team_name/submission', auth, admin, getSubmissions);
-router.post(':/team_name/qa/:qa_id/answer', auth, admin, addAnswer);
+router.post('/question', auth, admin, addQuestion); // TODO: suucess
+router.get('/submissions', auth, admin, getSubmissions);
+router.get('/all', auth, admin, getAllTeams); // TODO: success
+router.delete('/delete/:team_id', auth, admin, deleteTeam); // TODO: success
+
+// team authorized routes
+router.get('/submission', auth, getSubmission); // TODO: success
+router.get('/status', getStatus); // TODO: success
+router.post('/add', auth, addMember); // TODO: success
+router.get('/:member_id', auth, getMember); // TODO: sucess
+router.put('/:member_id', auth, updateMember); // TODO: sucess
+router.delete('/:member_id', auth, deleteMember); // TODO: sucess
+router.get('/', auth, getTeam); // TODO: success
 
 module.exports = router;
