@@ -72,7 +72,7 @@ function FAQ({ open }) {
 
     const intervalId = setInterval(() => {
       loadFAQ();
-    }, 2000);
+    }, 5000);
 
     return () => {
       clearInterval(intervalId);

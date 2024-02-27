@@ -68,7 +68,7 @@ function UserDashboard() {
 
     const intervlId = setInterval(() => {
       refreshTeam();
-    }, 5000);
+    }, 20000);
 
     return () => clearInterval(intervlId);
   }, []);

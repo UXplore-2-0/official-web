@@ -90,7 +90,7 @@ function Intro() {
               <img
                 src={logo}
                 alt=""
-                className="logo w-48 lg:mt-48 md:hidden sm:hidden hidden lg:block opacity-1"
+                className="logo w-48 lg:mt-40 md:hidden sm:hidden hidden lg:block opacity-1"
               />
             </div>
             <div class="box2  lg:basis-4/6 lg:mt-96 md:mt-8 sm:mt-8 mt-10 lg:-mx-60 mx-10">

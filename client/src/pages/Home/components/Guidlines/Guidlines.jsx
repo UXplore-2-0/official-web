@@ -7,7 +7,7 @@ import "./Guidlines.css";
 export default function Guidlines() {
   useGSAP(() => {
     gsap.from(".char", {
-      duration: 0.8,
+      duration: 0.5,
       scrollTrigger: {
         trigger: ".char",
         start: "top 90%",
@@ -23,7 +23,7 @@ export default function Guidlines() {
     });
 
     gsap.from(".points-block", {
-      duration: 0.8,
+      duration: 0.5,
       opacity: 0,
       x: -100,
       ease: "ease-in-out",
@@ -47,24 +47,24 @@ export default function Guidlines() {
   }, []);
 
   const sentence1 =
-    " All participants must be currently enrolled undergraduates, and all team members should be from the same university or institute.";
+    "• All participants must be currently enrolled undergraduates, and all team members should be from the same university or institute.";
 
   const sentence2 =
-    "One team should consist of a maximum of three members and minimum of two members.";
+    "• One team should consist of a maximum of three members and minimum of two members.";
   const sentence3 =
-    "All interested teams must register for the event before the deadline. Registrations after the deadline are not approved.";
+    "• All interested teams must register for the event before the deadline. Registrations after the deadline are not approved.";
   const sentence4 =
-    "All participating teams will be assigned a design challenge to which the solutions must be submitted within the specified timeframe.";
+    "• All participating teams will be assigned a design challenge to which the solutions must be submitted within the specified timeframe.";
   const sentence5 =
-    "Teams may use any design platform of their choice for the competition.";
+    "• Teams may use any design platform of their choice for the competition.";
   const sentence6 =
-    "Each team can submit only one entry at the submission rounds.";
+    "• Each team can submit only one entry at the submission rounds.";
   const sentence7 =
-    "All entries must be submitted through the official Mora UXPlore 2.0 Website.";
+    "• All entries must be submitted through the official Mora UXplore 2.0 Website.";
   const sentence8 =
-    "Participants will engage in two preliminary rounds, followed by a semi-final and the final designathon.";
+    "• Participants will engage in two preliminary rounds, followed by a semi-final and the final designathon.";
   const sentence9 =
-    "Copying another project or plagiarism is strictly prohibited.";
+    "• Copying another project or plagiarism is strictly prohibited.";
 
   const array = [
     sentence1,
@@ -103,7 +103,7 @@ export default function Guidlines() {
               <div
                 className="flex ml-2 text-sm text-white/40 flex-wrap sm:text-base md:text-lg"
                 style={{ fontFamily: "rubik,sans-serif" }}
-              >&#x2022;
+              >
                 {sentence.split(" ").map((word, index) => (
                   <span key={index} className="char">
                     {index > 0 && <span>&nbsp;</span>}

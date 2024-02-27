@@ -22,6 +22,8 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
 
   const logout = () => {
     setUser(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
     // redirect to the main page
     navigate("/");
   };

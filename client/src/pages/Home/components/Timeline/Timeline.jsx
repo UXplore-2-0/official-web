@@ -65,7 +65,7 @@ function Timeline() {
       <div className='timeline flex flex-col gap-y-[2em] items-center mx-auto my-[3em] md:my-[5em]'>
           
         <div className='inner-container shadow-lg bg-transparent backdrop-blur-xl border-2 border-solid border-[#888] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]'>
-          <p className='text-xs font-normal md:text-base'>February 25</p>
+          <p className='text-xs font-normal md:text-base'>February 27</p>
           <h1 className='text-xl md:text-3xl font-bold'>Registration Open</h1>
           <p className='text-xs font-normal md:text-base pt-[3px]'>Through Mora UXplore 2.0 Official Website</p>
         </div>
@@ -97,13 +97,13 @@ function Timeline() {
         <div className='inner-container shadow-lg bg-transparent backdrop-blur-xl border-2 border-solid border-[#888] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]'>
           <p className='text-xs font-normal md:text-base'>April 9</p>
           <h1 className='text-xl md:text-3xl font-bold'>Semi Finals</h1>
-          <p className='text-xs font-normal md:text-base pt-[3px]'>At University Premises</p>
+          <p className='text-xs font-normal md:text-base pt-[3px]'>Physically</p>
         </div>
 
         <div className='inner-container shadow-lg bg-transparent backdrop-blur-xl border-2 border-solid border-[#888] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]'>
           <p className='text-xs font-normal md:text-base'>April 27</p>
           <h1 className='text-xl md:text-3xl font-bold'>Final Designathon & Award Ceremony</h1>
-          <p className='text-xs font-normal md:text-base pt-[3px]'>At University Premises</p>
+          <p className='text-xs font-normal md:text-base pt-[3px]'>Physically</p>
         </div>
           
       </div>

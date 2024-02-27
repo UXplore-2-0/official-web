@@ -69,10 +69,10 @@ function EmailVerify() {
                 </div>
                 <p className="mb-8 text-lg md:text-2xl text-center  font-semibold text-white">
                   Successfully registered the team{" "}
-                  <span className="text-cyan-400">Space x</span>.
+                  <span className="text-cyan-400"></span>.
                 </p>
                 <p className="mb-8 text-lg md:text-2xl text-center  font-semibold text-white">
-                  <span className="text-sky-500">Next Step {" "}</span> Continue to the dashbard and add members.
+                  <span className="text-sky-500">Next Step {" "}</span> Continue to the dashboard to add members.
                   </p>
                 <Link to="/login">
                   <button

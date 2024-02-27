@@ -32,9 +32,8 @@ function Register() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLoading(true);
     const validationErrors = {};
-
+    
     // Validate team name
     if (!formData.team_name.trim()) {
       validationErrors.team_name = "Team name is required";
@@ -43,32 +42,37 @@ function Register() {
     if (!formData.team_name.trim().length >= 3) {
       validationErrors.team_name =
         "Team name must be at least 3 characters long";
-    }
-
+      }
+      
     // Validate university
     if (!formData.university.trim()) {
       validationErrors.university = "University is required";
     }
-
+    
     if (formData.university === "Other" && !formData.otherUniversity.trim()) {
       validationErrors.otherUniversity = "University is required";
     }
-
+    
     // Validate email format
     if (!formData.email.trim()) {
       validationErrors.email = "Leader's email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       validationErrors.email = "Invalid email address";
     }
-
+    
     // Validate password
-    if (!formData.password.trim()) {
+    if (!formData.password.trim() ) {
       validationErrors.password = "Password is required";
     }
-
+    
+    if (formData.password.trim().length < 8) {
+      validationErrors.password = "Password must be at least 8 characters long";
+    }
+    
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
+      setLoading(true);
       const data = {
         team_name: formData.team_name,
         university:
@@ -93,8 +97,9 @@ function Register() {
         })
         .catch((err) => {
           setError(err.response.data.message);
+          setLoading(false);
 
-          setTimeOut(() => {
+          setTimeout(() => {
             setError("");
           }, 2500);
         });

@@ -66,9 +66,9 @@ function Timer({ status }) {
 
   useEffect(() => {
     startCountDown();
-
+    console.log("Interval", status);
     setInterval(() => {
-      console.log(status);
+      console.log("Interval", status);
 
       date = status.time ? new Date(status.time) : new Date();
       startCountDown();

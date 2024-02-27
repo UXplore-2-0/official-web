@@ -41,7 +41,7 @@ function Notification() {
 
     const intervalID = setInterval(() => {
       loadNotifications();
-    }, 2000);
+    }, 5000);
 
     return () => {
       clearInterval(intervalID);

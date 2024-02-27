@@ -150,9 +150,8 @@ function TeamDetails({ teams, setTeams }) {
                   </td>
 
                   <td class="px-6 py-4">
-                    <a
-                      href="#"
-                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    <div 
+                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
                       onClick={() => {
                         setDeletedTeam(team.team_id);
                         setWantToDelete(true);
@@ -163,7 +162,7 @@ function TeamDetails({ teams, setTeams }) {
                         className="px-2 hover:bg-slate-700 rounded-full w-3 h-3 p-1 duration-200 transition-all"
                         style={{ color: "red" }}
                       />
-                    </a>
+                    </div>
                   </td>
                 </tr>
               ))}

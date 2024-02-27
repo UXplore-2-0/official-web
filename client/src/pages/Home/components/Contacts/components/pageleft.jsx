@@ -51,7 +51,7 @@ function PageLeft() {
               <ImageText
                 name="Nivishka Manchanayake"
                 lead="Event Co-Chairperson"
-                University="IEEE Mora UXPlore 2.0"
+                University="IEEE Mora UXplore 2.0"
                 email="nivishkaabhith@gmail.com"
                 number="+94 70 426 7365"
               />
@@ -63,7 +63,7 @@ function PageLeft() {
               <ImageText
                 name="Sahan Dilip"
                 lead="Event Co-Chairperson"
-                University="IEEE Mora UXPlore 2.0"
+                University="IEEE Mora UXplore 2.0"
                 email="sahangunathunga.21@cse.mrt.ac.lk"
                 number="+94 76 815 8332"
               />
@@ -80,7 +80,7 @@ function PageLeft() {
               <ImageText
                 name="Ishan Hansaka"
                 lead="Event Co-Chairperson"
-                University="IEEE Mora UXPlore 2.0"
+                University="IEEE Mora UXplore 2.0"
                 email="ishanhansakasilva@gmail.com"
                 number="+94 77 543 7008"
               />

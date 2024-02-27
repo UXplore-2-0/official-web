@@ -79,8 +79,7 @@ function Sidebar({ selected, setSelected }) {
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
             <li>
-              <a
-                href="#"
+              <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group transition-all ${
                   selected === "Dashboard" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -98,12 +97,11 @@ function Sidebar({ selected, setSelected }) {
                   <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
                 </svg>
                 <span className="ms-3">Dashboard</span>
-              </a>
+              </div>
             </li>
 
             <li>
-              <a
-                href="#"
+              <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   selected === "Problem" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -112,11 +110,10 @@ function Sidebar({ selected, setSelected }) {
               >
                 <FontAwesomeIcon icon={faCircleQuestion} />
                 <span className="flex-1 ms-3 whitespace-nowrap">Problem</span>
-              </a>
+              </div>
             </li>
             <li>
-              <a
-                href="#"
+              <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   selected === "Announcement" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -127,12 +124,11 @@ function Sidebar({ selected, setSelected }) {
                 <span className="flex-1 ms-3 whitespace-nowrap">
                   Announcement
                 </span>
-              </a>
+              </div>
             </li>
 
             <li>
-              <a
-                href="#"
+              <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   selected === "SubmissionDetails" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -143,12 +139,11 @@ function Sidebar({ selected, setSelected }) {
                 <span className="flex-1 ms-3 whitespace-nowrap">
                   Submission Details
                 </span>
-              </a>
+              </div>
             </li>
 
             <li>
-              <a
-                href="#"
+              <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   selected === "TeamDetails" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -159,12 +154,11 @@ function Sidebar({ selected, setSelected }) {
                 <span className="flex-1 ms-3 whitespace-nowrap">
                   Team Details
                 </span>
-              </a>
+              </div>
             </li>
 
             <li>
-              <a
-                href="#"
+              <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   selected === "Registration" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -175,12 +169,11 @@ function Sidebar({ selected, setSelected }) {
                 <span className="flex-1 ms-3 whitespace-nowrap">
                   Admin Registration
                 </span>
-              </a>
+              </div>
             </li>
 
             <li>
-              <a
-                href="#"
+              <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
                   selected === "Faq" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -189,18 +182,17 @@ function Sidebar({ selected, setSelected }) {
               >
                 <FontAwesomeIcon icon={faComment} />
                 <span className="flex-1 ms-3 whitespace-nowrap">FAQs</span>
-              </a>
+              </div>
             </li>
           </ul>
-          <a
-            href="#"
+          <div
             className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-red-700 transition group"
             style={{ justifySelf: "flex-end" }}
             onClick={logout}
           >
             <FontAwesomeIcon icon={faSignOut} />
             <span className="flex-1 ms-3 whitespace-nowrap">Logout</span>
-          </a>
+          </div>
         </div>
       </aside>
     </div>
