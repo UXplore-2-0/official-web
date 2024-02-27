@@ -7,7 +7,7 @@ import "./Guidlines.css";
 export default function Guidlines() {
   useGSAP(() => {
     gsap.from(".char", {
-      duration: 0.5,
+      duration: 0.8,
       scrollTrigger: {
         trigger: ".char",
         start: "top 90%",
@@ -19,11 +19,11 @@ export default function Guidlines() {
       rotationX: 180,
       transformOrigin: "0% 50% -50",
       ease: "back",
-      stagger: 0.085,
+      stagger: 0.055,
     });
 
     gsap.from(".points-block", {
-      duration: 0.5,
+      duration: 0.8,
       opacity: 0,
       x: -100,
       ease: "ease-in-out",

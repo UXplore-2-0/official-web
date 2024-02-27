@@ -8,7 +8,6 @@ import { IoHomeOutline } from "react-icons/io5";
 import AuthContext from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWarning } from "@fortawesome/free-solid-svg-icons";
-import { log } from "console";
 import Loading from "../Loading/Loading";
 
 function Login() {
@@ -121,7 +120,11 @@ function Login() {
               src={SeaImage}
               alt="Sea Image"
               className="fixed object-cover h-lvh w-full sm:w-1/2"
-            />
+                style={{
+                  transition: "clip-path 1s ease", /* This is the transition property responsible for the fade effect */
+                  clipPath: "polygon(100% 0, 100% 100%, 0% 100%, 0% 0)" /* Initially clip the image to show only the right side */
+                }}
+              />
           </div>
           <div className="relative z-20 text-white flex flex-col items-center justify-center w-full min-h-screen">
             <div className="bg-white/5 backdrop-blur-2xl shadow-lg flex flex-col items-center justify-center w-[85%] sm:w-[78%] md:w-[70%] lg:w-[55%] py-8 lg:py-10 xl:py-16 rounded-2xl font-poppins my-5">
