@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useRef } from "react";
 import { BrowserRouter, Routes, Route, useNavigate, HashRouter} from "react-router-dom";
+import gsap from "gsap";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
@@ -13,10 +14,10 @@ import PasswordReset from "./pages/PasswordReset/PasswordReset";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import Terms from "./pages/Home/components/Terms/Terms";
 import "./App.css";
+import { ReactLenis, useLenis  } from '@studio-freight/react-lenis'
+
 function App() {
   const [user, setUser] = useState(null);
-
-  
 
 
   const logout = () => {
@@ -27,37 +28,42 @@ function App() {
   };
 
   return (
+    <ReactLenis root>
     <AuthContext.Provider value={{ user, setUser, logout }}>
-      <div>
-        <HashRouter>
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            {user && (
+      
+        <div>
+          <HashRouter>
+            <Routes>
+            
+              <Route exact path="/" element={<Home />} />
+              {user && (
+                <Route
+                  exact path="/dashboard"
+                  element={
+                    user && user.role === "admin" ? (
+                      <AdminDashboard key={window.location.pathname} />
+                    ) : (
+                      <UserDashboard key={window.location.pathname} />
+                    )
+                  }
+                />
+              )}
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/Terms" element={<Terms />} />
+              <Route path="/forget-password" element={<ForgetPassword />} />
+              <Route path="/verify/:team_name/:token" element={<EmailVerify />} />
               <Route
-                exact path="/dashboard"
-                element={
-                  user && user.role === "admin" ? (
-                    <AdminDashboard key={window.location.pathname} />
-                  ) : (
-                    <UserDashboard key={window.location.pathname} />
-                  )
-                }
+                path="/reset-password/:team_id/:token"
+                element={<PasswordReset />}
               />
-            )}
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/Terms" element={<Terms />} />
-            <Route path="/forget-password" element={<ForgetPassword />} />
-            <Route path="/verify/:team_name/:token" element={<EmailVerify />} />
-            <Route
-              path="/reset-password/:team_id/:token"
-              element={<PasswordReset />}
-            />
-            <Route path="*" element={<PageNotFound404 />} />
-          </Routes>
-        </HashRouter>
-      </div>
+              <Route path="*" element={<PageNotFound404 />} />
+            </Routes>
+          </HashRouter>
+        </div>
+      
     </AuthContext.Provider>
+    </ReactLenis>
   );
 }
 
