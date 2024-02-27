@@ -12,6 +12,7 @@ const Hero = () => {
   const numberOfRegistrations = 10;
 
   useEffect(() => {
+   
     let counter = 0;
     const interval = setInterval(() => {
       if (numberOfRegistrations > 100) {
@@ -47,6 +48,11 @@ const Hero = () => {
     }
   };
 
+  const handledCancelRegistrations = () => {
+    alert("Regisrations are not open yet");
+
+  }
+
   return (
     <section id="section-hero">
       <img
@@ -77,14 +83,13 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-        <Link to="/register">
-          <RegisterButton buttonText="REGISTER" style={{ top: 0 }} />
-        </Link>
+        <button onClick = {handledCancelRegistrations} id="register-button" style = {{opacity: 0.4}}>
+          <RegisterButton  buttonText="REGISTER" style={{ top: 0 }} />
+        </button>
 
-        <Link to="/login">
-          {" "}
-          <Button buttonText="LOGIN" style={{ top: 0 }} />
-        </Link>
+       <botton onClick = {handledCancelRegistrations} id="login-button" style = {{opacity : 0.4}}>
+          <Button onClick= {handledCancelRegistrations} buttonText="LOGIN" style={{ top: 0}} />
+        </botton>
       </div>
     </section>
   );
