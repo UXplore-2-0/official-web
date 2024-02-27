@@ -16,9 +16,6 @@ import "./App.css";
 function App() {
   const [user, setUser] = useState(null);
 
-  
-
-
   const logout = () => {
     // Clear authentication
     setUser(null);
