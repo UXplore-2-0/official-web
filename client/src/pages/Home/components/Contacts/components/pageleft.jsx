@@ -20,7 +20,7 @@ function PageLeft() {
             <div className="member-imagetext-dev">
               <ImageText
                 name="Senel Ephraims"
-                lead="Charman of IEEE Student Branch"
+                lead="Chairman of IEEE Student Branch"
                 University="University of Moratuwa"
                 email="senel.ephraims@ieee.org"
                 number="+94 77 041 0762"
@@ -32,7 +32,7 @@ function PageLeft() {
             <div className="member-imagetext-dev">
               <ImageText
                 name="Yasith Senarath"
-                lead="Vice-Charman of IEEE Student Branch"
+                lead="Vice-Chairman of IEEE Student Branch"
                 University="University of Moratuwa"
                 email="yasithsenarath@ieee.org"
                 number="+94 71 596 0336"
