@@ -75,7 +75,7 @@ function Intro() {
 
   return (
     <>
-      <section className="intro-backdrop main-section">
+      <section className="intro-backdrop main-section px-3">
         <div id="Intro" class="container mx-auto ">
           <div class="lg:flex bg-brown bg-blue flex-wrap lg:mx-5 py-9">
             <div class="box1 lg:basis-1/2 md:text-center text-center sm:text-center lg:text-start">
