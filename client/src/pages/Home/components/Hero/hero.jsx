@@ -2,55 +2,50 @@ import { Link } from "react-router-dom";
 import Button from "../Loginbutton/button";
 
 import gsap from "gsap/gsap-core";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 
 import "./hero.css";
 
 import RegisterButton from "../RegisterButton/registerbutton";
 
 const Hero = () => {
-
-
-
   const numberOfRegistrations = 10;
-
 
   useEffect(() => {
     let counter = 0;
     const interval = setInterval(() => {
       if (numberOfRegistrations > 100) {
-      if (counter < numberOfRegistrations) {
-        counter++;
-        document.getElementById("registration-text").innerHTML = counter + "+";
-      } else {
-        clearInterval(interval);
+        if (counter < numberOfRegistrations) {
+          counter++;
+          document.getElementById("registration-text").innerHTML =
+            counter + "+";
+        } else {
+          clearInterval(interval);
+        }
       }
-    }
     }, 10);
     return () => clearInterval(interval);
   });
 
-  const Text  = () => {
+  const Text = () => {
     if (numberOfRegistrations > 100) {
       return (
-        <div id = "text-division">
-        <h1 id="registration-text">{numberOfRegistrations}+</h1>
-        <h2>REGISTRATIONS</h2>
+        <div id="text-division">
+          <h1 id="registration-text">{numberOfRegistrations}+</h1>
+          <h2>REGISTRATIONS</h2>
         </div>
       );
     } else {
       return (
-        <div id = "intro-div">
-          
-         <h2 id = "intro-text">Navigate Possibilities, Design Realities:
-
-Mora UXplore 2.0 - Shaping Tomorrow's Experiences Today!</h2>
+        <div id="intro-div">
+          <h2 id="intro-text">
+            Navigate Possibilities, Design Realities: Mora UXplore 2.0 - Shaping
+            Tomorrow's Experiences Today!
+          </h2>
         </div>
-       
       );
     }
   };
-   
 
   return (
     <section id="section-hero">
@@ -64,14 +59,12 @@ Mora UXplore 2.0 - Shaping Tomorrow's Experiences Today!</h2>
 
       <img id="cloud-left" src="./sponsor/clouds-2.png" alt="clouds-2" />
 
-
       <img id="ship" src="./sponsor/ship-new.png" alt="ship" />
-     
+
       <Text />
-     
 
       <img id="logo" src="./sponsor/logowithbg.png" alt="logo" />
-      <img src="./sponsor/ieelogo.png"   id="ieelogo" />
+      <img src="./sponsor/ieelogo.png" id="ieelogo" />
       <div
         style={{
           position: "absolute",
@@ -84,7 +77,7 @@ Mora UXplore 2.0 - Shaping Tomorrow's Experiences Today!</h2>
           overflow: "none",
         }}
       >
-<Link to="/register">
+        <Link to="/register">
           <RegisterButton buttonText="REGISTER" style={{ top: 0 }} />
         </Link>
 
@@ -92,9 +85,6 @@ Mora UXplore 2.0 - Shaping Tomorrow's Experiences Today!</h2>
           {" "}
           <Button buttonText="LOGIN" style={{ top: 0 }} />
         </Link>
-        
-
-
       </div>
     </section>
   );
