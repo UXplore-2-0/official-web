@@ -39,7 +39,7 @@ const Hero = () => {
     } else {
       return (
         <div id="intro-div">
-          <h2 id="intro-text">
+          <h2 id="intro-text" >
             Navigate Possibilities, Design Realities: Mora UXplore 2.0 - Shaping
             Tomorrow's Experiences Today!
           </h2>

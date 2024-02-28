@@ -29,7 +29,7 @@ function StickyButton() {
         Timeline
       </button>
       <button className="sticky-buttons-container-button" onClick={() => scrollToSection('guidlines')}>
-        Guidlines
+        Guidelines
       </button>
       {/* <button className="sticky-buttons-container-button" onClick={() => scrollToSection('sponsorships')}>
         Partners
