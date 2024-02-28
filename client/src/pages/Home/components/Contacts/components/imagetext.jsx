@@ -1,7 +1,7 @@
 import React from "react";
 import "./imagetext.css";
 
-function ImageText({ name, lead, University, email, number }) {
+function ImageText({ name, lead, organization, university, email, number }) {
   return (
     <div className="member-imagetext">
       <div className="name-dev">
@@ -9,7 +9,8 @@ function ImageText({ name, lead, University, email, number }) {
       </div>
       <div className="details-dev">
         <p>{lead}</p>
-        <p>{University}</p>
+        <p>{organization}</p>
+        <p>{university}</p>
         <p>{email}</p>
         <p>{number}</p>
       </div>
