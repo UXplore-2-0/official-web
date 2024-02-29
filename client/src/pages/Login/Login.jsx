@@ -203,13 +203,12 @@ function Login() {
                       <label htmlFor="remember">Remember me</label>
                     </div>
                     <div>
-                      <a
-                        href="#"
+                      <div
                         className="hover:underline"
                         onClick={handleResetPassword}
                       >
                         Forgot password?
-                      </a>
+                      </div>
                     </div>
                   </div>
                   <button

@@ -40,7 +40,8 @@ const Hero = () => {
       return (
         <div id="intro-div">
           <h2 id="intro-text" >
-            Navigate Possibilities, Design Realities: Mora UXplore 2.0 - Shaping
+            Navigate Possibilities,<br></br>
+            Design Realities: <br></br> Mora UXplore 2.0  <br></br> Shaping
             Tomorrow's Experiences Today!
           </h2>
         </div>
@@ -48,10 +49,10 @@ const Hero = () => {
     }
   };
 
-  const handledCancelRegistrations = () => {
-    alert("Regisrations are not open yet");
+  // const handledCancelRegistrations = () => {
+  //   alert("Regisrations are not open yet");
 
-  }
+  // }
 
   return (
     <section id="section-hero">
@@ -83,13 +84,17 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-        <button onClick = {handledCancelRegistrations} id="register-button" style = {{opacity: 0.4}}>
-          <RegisterButton  buttonText="REGISTER" style={{ top: 0 }} />
-        </button>
+        <Link to="/register">
+          <button  id="register-button" >
+            <RegisterButton  buttonText="REGISTER" style={{ top: 0 }} />
+          </button>
+        </Link>
 
-       <botton onClick = {handledCancelRegistrations} id="login-button" style = {{opacity : 0.4}}>
-          <Button onClick= {handledCancelRegistrations} buttonText="LOGIN" style={{ top: 0}} />
-        </botton>
+        <Link to="/login">
+          <botton  id="login-button" >
+            <Button  buttonText="LOGIN" style={{ top: 0}} />
+          </botton>
+        </Link>
       </div>
     </section>
   );
