@@ -22,9 +22,7 @@ function generateVerificationToken() {
 }
 
 function generateJWT(payload) {
-  return jwt.sign(payload, process.env.JWT_SECRET, {
-    expiresIn: '1d',
-  });
+  return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '100h' });
 }
 
 module.exports = {

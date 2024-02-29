@@ -14,14 +14,16 @@ import StickyButton from "./components/StickyButtons/stickybuttons";
 gsap.registerPlugin(ScrollTrigger);
 function Home() {
   const [isAnimated, setIsAnimated] = useState(false);
-  useGSAP(() => {
-    gsap.from(".sticky-buttons-container-button, .circular-sticky-button", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      delay: 6,
-    });
-  });
+  // useGSAP(() => {
+  //   gsap.from(".rectangle, .arrow-image, .sticky-buttons-container, .sticky-buttons-container-button", {
+  //     opacity: 0,
+  //     y: 50,
+  //     duration: 1,
+  //     delay: 6,
+     
+
+  //   });
+  // });
 
   useGSAP(
     () => {
@@ -30,7 +32,7 @@ function Home() {
 
       for (let i = 0; i <= numBlinks; i++) {
         timeLine.to(
-          "#uxplore-landing-right, #thunder-1, #mora-landing-left, #mora-landing-right, #thunder-2, #logo-landing, #uxplore-landing",
+          "#uxplore-landing-right, #mora-landing-left, #mora-landing-right, #logo-landing, #uxplore-landing",
           {
             opacity: 0,
             duration: 0.1,
@@ -39,19 +41,19 @@ function Home() {
         );
 
         if (i % 6 === 0) {
-          timeLine.to("#thunder-1, #mora-landing-left", {
+          timeLine.to("#mora-landing-left", {
             opacity: 1,
             duration: 0.1,
             ease: "power1.inOut",
           });
         } else if (i % 6 === 3) {
-          timeLine.to("#thunder-2, #thunder-1, #uxplore-landing", {
+          timeLine.to("#uxplore-landing", {
             opacity: 1,
             duration: 0.1,
             ease: "power1.inOut",
           });
         } else if (i % 6 === 4) {
-          timeLine.to("#thunder-2, #mora-landing-right", {
+          timeLine.to("#mora-landing-right", {
             opacity: 1,
             duration: 0.1,
             ease: "power1.inOut",
@@ -66,7 +68,7 @@ function Home() {
             },
           });
         } else {
-          timeLine.to("#thunder-2, #uxplore-landing-right", {
+          timeLine.to("#uxplore-landing-right", {
             opacity: 1,
             duration: 0.1,
             ease: "power1.inOut",
@@ -79,17 +81,28 @@ function Home() {
         ease: "power1.inOut",
       });
 
-      gsap.to("#ship", {
-        x: 100,
-        delay: 1,
-        duration: 1,
-      });
-      gsap.to("#title-1", {
-        scrollTrigger: {
-          scrub: 1,
-        },
-        scale: 2.5,
-      });
+      
+
+      // gsap.to("#ship", {
+      //   x: 100,
+      //   delay: 1,
+      //   duration: 1,
+      // });
+      //scale up scale down forever
+      // gsap.to("#registration-button", {
+      //   scale: 1.1,
+      //   duration: 1,
+      //   repeat: -1,
+
+      //   yoyo: true,
+      // });
+      
+      // gsap.to("#title-1", {
+      //   scrollTrigger: {
+      //     scrub: 1,
+      //   },
+      //   scale: 2.5,
+      // });
 
       gsap.to("#ship", {
         scrollTrigger: {
@@ -119,7 +132,7 @@ function Home() {
         },
         scale: 1.25,
         y: 1000,
-        x: 300,
+        x: -300,
       });
 
       
@@ -130,8 +143,8 @@ function Home() {
 
   return (
     <>
-
-      <StickyButton className="sticky-buttons-container-button" />
+      
+     
       <HomeView isAnimated={isAnimated} />
 
      

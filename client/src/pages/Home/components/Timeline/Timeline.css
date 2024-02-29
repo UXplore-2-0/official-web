@@ -1,14 +1,14 @@
 .timeline-backdrop {
-      
-    background-image: url('./images/bgNew.jpg');
+
+    background-image: url('./images/Underwater.jpg');
     top: 0;
     left:0;
-   
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+   
     font-family: 'Rubik' , sans-serif;
-    height: auto;
+    height: 100vh;
+    width: 40%;
 }
 
 

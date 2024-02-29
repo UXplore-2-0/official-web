@@ -1,11 +1,11 @@
-/* #guidlines {
-    background-color: url('./bgNew.jpg');
-    background-size: cover;
-    background-position: cover;
-    font-family: 'Rubik' , sans-serif;
-    height: 100vh;
-    position: relative;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-} */
+.custom-background {
+  background-size: cover;
+  background-position: cover;
+  font-family: "Rubik", sans-serif;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: #002634;
+}

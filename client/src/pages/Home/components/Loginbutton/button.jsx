@@ -25,7 +25,7 @@ const AnimatedButton = styled.button`
   width: fit-content;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 1000px;
   overflow: hidden;
 
   &:hover span {

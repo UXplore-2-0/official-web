@@ -12,7 +12,7 @@ const {
   generateVerificationToken,
   generateJWT,
 } = require('../utils/token');
-const { sendMail, sendResetMail } = require('../utils/email');
+const { sendMail, sendResetMail } = require('../email/email');
 
 /**
  * Handles the sign up process for a team.
@@ -55,6 +55,7 @@ async function signUpTeam(req, res, next) {
     email: data.email,
     password: hash,
     verification_token: token,
+    university: data.university,
   });
   // save the team in the database with the verification token
   await newTeam.save();
@@ -140,6 +141,13 @@ async function login(req, res, next) {
     });
   }
 
+  if (!team.is_verified) {
+    return res.status(400).json({
+      status: false,
+      message: 'Account is not verified!',
+    });
+  }
+
   // compare the provided password with the password in the database
   bcrypt.compare(password, team.password).then((match) => {
     if (!match) {
@@ -158,6 +166,7 @@ async function login(req, res, next) {
       status: true,
       message: 'Login successful!',
       token: accessToken,
+      role: team.role,
     });
   });
 }

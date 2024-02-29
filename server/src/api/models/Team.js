@@ -22,6 +22,14 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       },
     },
+    university: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      validate: {
+        len: [1, 255],
+      },
+      defaultValue: 'N/A',
+    },
     password: {
       type: DataTypes.STRING(1024),
       allowNull: false,

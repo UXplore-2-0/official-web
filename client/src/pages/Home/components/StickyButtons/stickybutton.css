@@ -1,35 +1,73 @@
-/* StickyButtons.css */
-.sticky-buttons-container {
+.sticky-buttons-container-wrapper {
   position: fixed;
-  top: 50%;
-  right: -40px;
-  transform: translateY(-50%);
+
+
+  
+  right: -150px;
+
+  width: fit-content;
+  height : 40%;
   z-index: 10000;
-  opacity: 0.4;
-  transition: opacity 0.3s ease, right 0.3s ease; /* Added transition property */
-  justify-content: center;
+  display : flex;
+  top: 20%;
+
+  
+  
+}
+
+.sticky-buttons-container {
+
+  position: relative;
+  z-index: 10000;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, right 0.3s ease;
   align-items: center;
-  /* backdrop-filter: blur(10px); */
+  backdrop-filter: blur(40px);
   border-radius: 10px;
+  background-color: #000000;
+  height: fit-content;
+ 
   
 }
 
-.sticky-buttons-container:hover {
-  opacity: 1;
-  right: 0;
+.rectangle {
+
+  position: relative;
+  height: 270px;
+  
+  margin-right: 5px;
 }
 
-.sticky-buttons-container:hover {
-  opacity: 1;
-  right: 0;
+.sticky-buttons-container-wrapper:hover .sticky-buttons-container {
+  transform: translateX(-150px);
+  transition: all 0.3s ease-in-out;
 }
+
+.sticky-buttons-container-wrapper:hover .sticky-buttons-container-wrapper {
+  transform: translateX(-150px);
+  transition: all 0.3s ease-in-out;
+}
+
+.sticky-buttons-container-wrapper:hover .rectangle{
+  transform: translateX(-150px);
+  transition: all 0.3s ease-in-out;
+}
+
+.sticky-buttons-container-wrapper:hover .arrow-image {
   
+  transform: translateX(-150px) rotate(180deg);
+  transition: all 0.3s ease-in-out;
+
+}
+
+
+
   .sticky-buttons-container-button {
+    
     display: block;
     width: 150px;
     padding: 10px;
     margin-bottom: 10px;
-    
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -40,20 +78,23 @@
     
   }
   
-  .sticky-buttons-container button:hover {
+  .sticky-buttons-container-button:hover {
    
    scale: 1.2;
+   opacity: 1;
    transition: all 0.3s ease-in-out;
   
   }
-  
 
+ 
+/* 
   .circular-sticky-button {
+    opacity: 0;
     position: relative;
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color:#fff;
+    background-color:#000000;
     color: #000000;
     margin : 30px;
     margin-top: 30%;
@@ -61,8 +102,26 @@
     font-size: 15px;
     text-align: center;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-  }
+  } */
   
-  .circular-sticky-button:hover {
-   
-  }
+  /* @media screen and (max-width: 768px) {
+    .sticky-buttons-container {
+      right: -60px;
+    }
+    
+  } */
+
+  
+
+  .arrow-image {
+
+
+    position: relative;
+    width: 50px; 
+    height:100px; 
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 10px;
+    
+}
+

@@ -11,6 +11,8 @@ import Sponsorships from "../Sponsorships/Sponsorships";
 import Hero from "../Hero/hero";
 import Landing from "../Landing/landing";
 import Guidlines from "../Guidlines/Guidlines";
+import Contacts from "../Contacts/Contacts";
+import StickyButton from "../StickyButtons/stickybuttons";
 
 
 
@@ -22,11 +24,13 @@ const HomeView = ({isAnimated}) => {
     <div style={{ backgroundColor: "#000" }} id="main">
       {isAnimated ? (
         <div id="main-div-after-animated" style={{ opacity: 0 }}>
+          <StickyButton />
           <Hero />
           <Intro />
           <Timeline />
           <Guidlines />
-          <Sponsorships />
+          {/* <Sponsorships /> */}
+          <Contacts />
         </div>
       ) : (
         <Landing />

@@ -170,15 +170,6 @@
 
 } */
 
-#moon {
-    position: fixed;
-    top : 0;
-    left: 50%;
-    height: 25%;
-    width: auto;
-}
-
-
 #annimated-page-background {
     position: relative;
     height : 100%;

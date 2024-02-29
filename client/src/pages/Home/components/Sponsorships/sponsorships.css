@@ -1,16 +1,5 @@
 
-.bottom-background {
-    
-    background-image: url('./images/bgNew.jpg');
-    top: 0;
-    left:0;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    font-family: 'Rubik' , sans-serif;
-    height: 100vh;
 
-}
 
 #title-2 {
     position : absolute;
@@ -74,40 +63,65 @@
 
 
 .middle-card{
+    position: relative;
     flex: 1 1 300px; 
     margin: 10px;
     padding: 20px;
     justify-content: bottom;
-    color: #333;
+    color: hsl(0, 0%, 20%);
     text-align: center;
     border-radius: 25px;
-    height : 100px;
+    height : 50%;
 }
 
 #middle-card {
     top: 400;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) and (orientation: portrait) {
     .left-card, .right-card, .middle-card {
-        flex-basis: 100%; 
+        flex-basis: 100%;
+
+    }
+
+    #cards-division {
+        padding: 10px;
     }
 
     #title-2 {
         font-size: 270%;
         
     }
+    #sponsorships {
+        height: 140vh; 
+    }
 }
 
+/* @media screen and (max-width: 768px) and (orientation: landscape) {
+    
+    #cards-division {
+        padding: 10px;
+    }
+
+    #title-2 {
+        font-size: 270%;
+        
+    }
+    #sponsorships {
+        height: 140vh; 
+    }
+} */
+
 #sponsorships {
-    background-image: url('./images/bgNew.jpg');
+    background-image: url('./images/underwater.jpg');
     background-size: cover;
     background-position: cover;
     font-family: 'Rubik' , sans-serif;
-    height: 100vh;
+    
     position: relative;
     width: 100%;
-    height: auto;
+    height: fit-content;
+   
     overflow: hidden;
 }
 

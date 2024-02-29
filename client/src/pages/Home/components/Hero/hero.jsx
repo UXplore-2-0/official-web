@@ -1,11 +1,61 @@
-
-
+import { Link } from "react-router-dom";
 import Button from "../Loginbutton/button";
 
+import gsap from "gsap/gsap-core";
+import React, { useEffect } from "react";
+
 import "./hero.css";
+
+import RegisterButton from "../RegisterButton/registerbutton";
+
 const Hero = () => {
+  const numberOfRegistrations = 10;
+
+  useEffect(() => {
+   
+    let counter = 0;
+    const interval = setInterval(() => {
+      if (numberOfRegistrations > 100) {
+        if (counter < numberOfRegistrations) {
+          counter++;
+          document.getElementById("registration-text").innerHTML =
+            counter + "+";
+        } else {
+          clearInterval(interval);
+        }
+      }
+    }, 10);
+    return () => clearInterval(interval);
+  });
+
+  const Text = () => {
+    if (numberOfRegistrations > 100) {
+      return (
+        <div id="text-division">
+          <h1 id="registration-text">{numberOfRegistrations}+</h1>
+          <h2>REGISTRATIONS</h2>
+        </div>
+      );
+    } else {
+      return (
+        <div id="intro-div">
+          <h2 id="intro-text" >
+            Navigate Possibilities,<br></br>
+            Design Realities: <br></br> Mora UXplore 2.0  <br></br> Shaping
+            Tomorrow's Experiences Today!
+          </h2>
+        </div>
+      );
+    }
+  };
+
+  // const handledCancelRegistrations = () => {
+  //   alert("Regisrations are not open yet");
+
+  // }
+
   return (
-    <section id = "section-hero">
+    <section id="section-hero">
       <img
         src="./sponsor/background-sky.jpeg"
         alt="backgroundimage"
@@ -18,8 +68,10 @@ const Hero = () => {
 
       <img id="ship" src="./sponsor/ship-new.png" alt="ship" />
 
-      <img id="logo" src="./sponsor/logowithbg.png" alt="logo" />
+      <Text />
 
+      <img id="logo" src="./sponsor/logowithbg.png" alt="logo" />
+      <img src="./sponsor/ieelogo.png" id="ieelogo" />
       <div
         style={{
           position: "absolute",
@@ -32,13 +84,20 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-        <Button buttonText="LOGIN" style={{ top: 0 }} />
-        <Button buttonText="REGISTER" style={{ top: 0 }} />
+        <Link to="/register">
+          <button  id="register-button" >
+            <RegisterButton  buttonText="REGISTER" style={{ top: 0 }} />
+          </button>
+        </Link>
+
+        <Link to="/login">
+          <botton  id="login-button" >
+            <Button  buttonText="LOGIN" style={{ top: 0}} />
+          </botton>
+        </Link>
       </div>
     </section>
   );
 };
 
 export default Hero;
-
-
