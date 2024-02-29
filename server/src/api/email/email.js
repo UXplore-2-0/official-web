@@ -31,7 +31,7 @@ function generateMailBody(verificationToken, team_name) {
         button: {
           color: 'dodgerblue',
           text: 'Confirm your account',
-          link: `${process.env.FRONT_END_URL}/verify/${team_name}/${verificationToken}`,
+          link: `${process.env.FRONT_END_URL}/#/verify/${team_name}/${verificationToken}`,
         },
       },
       outro:
@@ -61,7 +61,7 @@ function generateResetMailBody(token, team_id) {
         button: {
           color: '#22BC66',
           text: 'Reset your password',
-          link: `${process.env.FRONT_END_URL}/reset-password/${team_id}/${token}`,
+          link: `${process.env.FRONT_END_URL}/#/reset-password/${team_id}/${token}`,
         },
       },
       outro: 'If you have any questions, please contact us at',
@@ -87,7 +87,7 @@ async function createMailTrasport() {
 
 async function sendMail(verificationToken, team_name, email) {
   // get the transporter
-  const transporter = createMailTrasport();
+  const transporter = await createMailTrasport();
 
   // Email options
   let mailOptions = {
@@ -104,7 +104,7 @@ async function sendMail(verificationToken, team_name, email) {
 
 async function sendResetMail(token, email, team_id) {
   // get the transporter
-  const transporter = createMailTrasport();
+  const transporter = await createMailTrasport();
 
   let mailOptions = {
     from: `${process.env.GMAIL_FROM_EMAIL}`,

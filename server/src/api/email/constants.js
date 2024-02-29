@@ -1,9 +1,9 @@
 const auth = {
   type: 'OAuth2',
   user: 'morauxplore@gmail.com',
-  clientId: process.env.CLIENT_ID,
-  clientSecret: process.env.CLIENT_SECRET,
-  refreshToken: process.env.REFRESH_TOKEN,
+  clientId: process.env.GMAIL_CLIENT_ID,
+  clientSecret: process.env.GMAIL_CLIENT_SECRET,
+  refreshToken: process.env.GMAIL_REFRESH_TOKEN,
 };
 
 const mailoptions = {
