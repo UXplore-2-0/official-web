@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons";
+import EditMember from "./EditMember";
 
 function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
-  const handleAddMembers = () => {
-    setSelected("AddMember");
-  };
+  const [edit, setEdit] = useState(false);
+  const [selectedMember, setSelectedMember] = useState({});
 
   const MAX_NUMBERS = 3;
 
@@ -107,18 +107,39 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
                   </td>
 
                   <td class="px-6 py-4">
-                    <a
-                      href="#"
-                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    <button
+                      type="submit"
+                      className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      onClick={() => {
+                        setEdit(true);
+                        setSelectedMember(member);
+                      }}
                     >
                       Edit
-                    </a>
+                    </button>
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
       </div>
+
+      {edit && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-opacity-50 dark p-5 flex-col"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backdropFilter: "blur(5px)",
+          }}
+        >
+          <EditMember
+            member={selectedMember}
+            setClose={setEdit}
+            user={user}
+            refreshTeam={refreshTeam}
+          />
+        </div>
+      )}
     </div>
   );
 }
