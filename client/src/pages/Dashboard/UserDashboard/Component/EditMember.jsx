@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../../api/axios";
 import Loading from "../../../Loading/Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose, faWarning } from "@fortawesome/free-solid-svg-icons";
 
 function EditMember({ member, user, setClose, refreshTeam }) {
   const [name, setName] = useState(member.name);
@@ -79,8 +81,8 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       name="name"
                       id="name"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                      value={member.name}
-                      placeholder="Type member name"
+                      // value={member.name}
+                      placeholder={member.name}
                       required=""
                       onChange={(e) => setName(e.target.value)}
                     />
@@ -97,8 +99,8 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       name="uni_index"
                       id="brand"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                      value={member.uni_index}
-                      placeholder="Type University Index"
+                      // value={member.uni_index}
+                      placeholder={member.uni_index}
                       required=""
                       onChange={(e) => setUniIndex(e.target.value)}
                     />
@@ -111,11 +113,10 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       NIC Number
                     </label>
                     <input
-                      type="text"
+                      type="email"
                       name="nic"
                       id="price"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                      value="2999"
                       placeholder={member.nic}
                       required=""
                       pattern="^[0-9]{9}[vVxX]$|^[0-9]{12}$"
@@ -134,8 +135,8 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       name="contact_no"
                       id="contact_id"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                      value={member.contact_no}
-                      placeholder="123-45-678"
+                      // value={member.contact_no}
+                      placeholder={member.contact_no}
                       pattern="[0-9]{10}"
                       required=""
                       onChange={(e) => setPhone(e.target.value)}
@@ -151,7 +152,7 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                     <select
                       id="category"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                      value={member.beverages}
+                      // value={member.beverages}
                       required=""
                       onChange={(e) => setBeverage(e.target.value)}
                     >
@@ -178,7 +179,7 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                         value={member.email}
                         placeholder="Type email"
                         required=""
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        pattern="^[0-9]{9}[vVxX]$|^[0-9]{12}$"
                         disabled
                       />
                     )}
@@ -188,10 +189,10 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                         name="email"
                         id="name"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        value={member.email}
-                        placeholder="Type email"
+                        // value={member.email}
+                        placeholder={member.email}
                         required=""
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        pattern="^[0-9]{9}[vVxX]$|^[0-9]{12}$"
                         onChange={(e) => setEmail(e.target.value)}
                       />
                     )}
@@ -210,18 +211,7 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                     className="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
                     onClick={() => setClose(false)}
                   >
-                    <svg
-                      className="w-5 h-5 mr-1 -ml-1"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
+                    <FontAwesomeIcon icon={faClose} className="me-2" />
                     Close
                   </button>
                 </div>

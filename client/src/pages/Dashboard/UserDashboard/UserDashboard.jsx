@@ -164,6 +164,7 @@ function UserDashboard() {
           team={team}
           refreshTeam={refreshTeam}
           open={open}
+          user={user}
         />
       )}
       {selected === "Settings" && <Settings open={open} />}

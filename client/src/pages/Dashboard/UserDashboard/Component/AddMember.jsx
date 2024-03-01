@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "../../../../api/axios";
 import AuthContext from "../../../../context/AuthContext";
 import Loading from "../../../Loading/Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWarning } from "@fortawesome/free-solid-svg-icons";
 
 function AddMember({ team, setTeam, open }) {
   const { user } = useContext(AuthContext);

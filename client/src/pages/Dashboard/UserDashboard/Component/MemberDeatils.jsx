@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons";
 import EditMember from "./EditMember";
 
-function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
+function MemberDeatils({ selected, setSelected, team, refreshTeam, open , user}) {
   const [edit, setEdit] = useState(false);
   const [selectedMember, setSelectedMember] = useState({});
 
