@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons";
 import EditMember from "./EditMember";
@@ -6,6 +6,10 @@ import EditMember from "./EditMember";
 function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
   const [edit, setEdit] = useState(false);
   const [selectedMember, setSelectedMember] = useState({});
+
+  const handleAddMembers = () => {
+    setSelected("AddMember");
+  };
 
   const MAX_NUMBERS = 3;
 
