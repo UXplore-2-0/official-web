@@ -16,6 +16,7 @@ function AddMember({ team, setTeam, open }) {
   const [beverage, setBeverage] = useState("Veg");
   const [leader, setLeader] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
@@ -31,6 +32,49 @@ function AddMember({ team, setTeam, open }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const validationErrors = {};
+
+    if (name === "") {
+      validationErrors.name = "Name is required";
+    }
+
+    if (email === "") {
+      validationErrors.email = "Email is required";
+    }
+
+    if (uniIndex === "") {
+      validationErrors.uniIndex = "University Index is required";
+    }
+
+    if (nic === "") {
+      validationErrors.nic = "NIC is required";
+    }
+
+    if (phone === "") {
+      validationErrors.phone = "Phone is required";
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (email && !emailRegex.test(email)) {
+      validationErrors.email = "Invalid Email";
+    }
+
+    const phoneRegex = /^[0-9]{10}$/;
+    if (phone && !phoneRegex.test(phone)) {
+      validationErrors.phone = "Invalid Phone";
+    }
+
+    const nicRegex = /^[0-9]{9}[vVxX]$|^[0-9]{12}$/;
+    if (nic && !nicRegex.test(nic)) {
+      validationErrors.nic = "Invalid NIC";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setValidationErrors(validationErrors);
+      return;
+    }
+
     const data = {
       name: name,
       email: leader ? team.team.email : email,
@@ -67,7 +111,7 @@ function AddMember({ team, setTeam, open }) {
       })
       .catch((err) => {
         setUploading(false);
-        setError("Something went wrong");
+        setError("Something went wrong! Please try again.");
 
         setTimeout(() => {
           setError(null);
@@ -103,6 +147,11 @@ function AddMember({ team, setTeam, open }) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
+                {validationErrors.name && (
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                    {validationErrors.name}
+                  </div>
+                )}
               </div>
               <div>
                 <label
@@ -120,6 +169,11 @@ function AddMember({ team, setTeam, open }) {
                   value={uniIndex}
                   onChange={(e) => setUniIndex(e.target.value)}
                 />
+                {validationErrors.uniIndex && (
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                    {validationErrors.uniIndex}
+                  </div>
+                )}
               </div>
               <div>
                 <label
@@ -138,6 +192,11 @@ function AddMember({ team, setTeam, open }) {
                   value={nic}
                   onChange={(e) => setNic(e.target.value)}
                 />
+                {validationErrors.nic && (
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                    {validationErrors.nic}
+                  </div>
+                )}
               </div>
               <div>
                 <label
@@ -150,12 +209,17 @@ function AddMember({ team, setTeam, open }) {
                   type="tel"
                   id="phone"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="123-45-678"
+                  placeholder="12345678"
                   pattern="[0-9]{10}"
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
+                {validationErrors.phone && (
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                    {validationErrors.phone}
+                  </div>
+                )}
               </div>
               <div>
                 <label
@@ -184,16 +248,23 @@ function AddMember({ team, setTeam, open }) {
                 Email address
               </label>
               {!leader ? (
-                <input
-                  type="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="john.doe@company.com"
-                  required
-                  value={email}
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                  onChange={(e) => setEmail(e.target.value)}
-                />
+                <>
+                  <input
+                    type="email"
+                    id="email"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="john.doe@company.com"
+                    required
+                    value={email}
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {validationErrors.email && (
+                    <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                      {validationErrors.email}
+                    </div>
+                  )}
+                </>
               ) : (
                 <input
                   type="email"

@@ -16,9 +16,53 @@ function EditMember({ member, user, setClose, refreshTeam }) {
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
+  const [validationErrors, setValidationErrors] = useState({});
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const validationErrors = {};
+
+    if (name === "") {
+      validationErrors.name = "Name is required";
+    }
+
+    if (email === "") {
+      validationErrors.email = "Email is required";
+    }
+
+    if (uniIndex === "") {
+      validationErrors.uniIndex = "University Index is required";
+    }
+
+    if (nic === "") {
+      validationErrors.nic = "NIC is required";
+    }
+
+    if (phone === "") {
+      validationErrors.phone = "Phone is required";
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (email && !emailRegex.test(email)) {
+      validationErrors.email = "Invalid Email";
+    }
+
+    const phoneRegex = /^[0-9]{10}$/;
+    if (phone && !phoneRegex.test(phone)) {
+      validationErrors.phone = "Invalid Phone";
+    }
+
+    const nicRegex = /^[0-9]{9}[vVxX]$|^[0-9]{12}$/;
+    if (nic && !nicRegex.test(nic)) {
+      validationErrors.nic = "Invalid NIC";
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setValidationErrors(validationErrors);
+      return;
+    }
+
     const data = {
       name: name,
       email: email,
@@ -47,10 +91,11 @@ function EditMember({ member, user, setClose, refreshTeam }) {
           setSuccess(false);
           setError(null);
         }, 3000);
+        setEdit(false);
       })
       .catch((err) => {
         setUploading(false);
-        setError("Something went wrong");
+        setError("Something went wrong! Please try again later.");
 
         setTimeout(() => {
           setError(null);
@@ -86,6 +131,11 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       required=""
                       onChange={(e) => setName(e.target.value)}
                     />
+                    {validationErrors.name && (
+                      <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                        {validationErrors.name}
+                      </div>
+                    )}
                   </div>
                   <div class="w-full">
                     <label
@@ -104,6 +154,11 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       required=""
                       onChange={(e) => setUniIndex(e.target.value)}
                     />
+                    {validationErrors.uniIndex && (
+                      <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                        {validationErrors.uniIndex}
+                      </div>
+                    )}
                   </div>
                   <div className="w-full">
                     <label
@@ -122,6 +177,11 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       pattern="^[0-9]{9}[vVxX]$|^[0-9]{12}$"
                       onChange={(e) => setNic(e.target.value)}
                     />
+                    {validationErrors.nic && (
+                      <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                        {validationErrors.nic}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label
@@ -141,6 +201,11 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       required=""
                       onChange={(e) => setPhone(e.target.value)}
                     />
+                    {validationErrors.phone && (
+                      <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                        {validationErrors.phone}
+                      </div>
+                    )}
                   </div>
                   <div>
                     <label
@@ -183,18 +248,26 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                         disabled
                       />
                     )}
+
                     {!member.is_leader && (
-                      <input
-                        type="text"
-                        name="email"
-                        id="name"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        // value={member.email}
-                        placeholder={member.email}
-                        required=""
-                        pattern="^[0-9]{9}[vVxX]$|^[0-9]{12}$"
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
+                      <>
+                        <input
+                          type="text"
+                          name="email"
+                          id="name"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          // value={member.email}
+                          placeholder={member.email}
+                          required=""
+                          pattern="^[0-9]{9}[vVxX]$|^[0-9]{12}$"
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                        {validationErrors.email && (
+                          <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                            {validationErrors.email}
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 </div>

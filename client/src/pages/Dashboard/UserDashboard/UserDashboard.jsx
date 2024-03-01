@@ -32,7 +32,7 @@ function UserDashboard() {
         setTeam(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
 
     axios
@@ -50,7 +50,7 @@ function UserDashboard() {
         setStatus(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
 
     axios
@@ -63,7 +63,7 @@ function UserDashboard() {
         setTeam(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
 
     const intervlId = setInterval(() => {
