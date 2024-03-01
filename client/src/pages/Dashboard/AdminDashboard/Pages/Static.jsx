@@ -15,10 +15,9 @@ function Static() {
       })
       .then((res) => {
         setStat(res.data);
-        console.log(res.data);
       })
       .catch((err) => {
-        console.error("Error fetching stats: ", err);
+        console.error("Error fetching stats");
       });
   }, []);
 
@@ -33,37 +32,31 @@ function Static() {
         </h1>
       </div>
 
-      <div className="flex flex-col justify-center items-center w-[50%] h-full p-5 mx-5 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 my-4">
-        <div
-          className="flex items-center p-4 mb-4 text-4xl text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-          role="alert"
-        >
-          <span className="sr-only">Info</span>
-          <div>
-            <span className="font-medium">Total Teams</span>{" "}
-            {stat && stat.teamCount}
+      <div className="flex flex-row justify-between items-center mx-5 my-3 h-[75%] w-full px-5">
+        <div className="flex flex-col justify-start items-start w-1/2 h-full">
+          <div className="flex flex-row justify-between items-center w-full">
+            <h1 className="text-2xl font-bold text-white">Total Teams</h1>
+            <h1 className="text-4xl font-bold text-sky-500">
+              {stat && stat.teamCount}
+            </h1>
           </div>
         </div>
 
-        <div
-          className="flex items-center p-4 mb-4 text-4xl text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-          role="alert"
-        >
-          <span className="sr-only">Total Users</span>
-          <div>
-            <span className="font-medium">Total Users</span>{" "}
-            {stat && stat.memberCount}
+        <div className="flex flex-col justify-start items-start w-1/2 h-full">
+          <div className="flex flex-row justify-between items-center w-full">
+            <h1 className="text-2xl font-bold text-white">Total Members</h1>
+            <h1 className="text-4xl font-bold text-sky-500">
+              {stat && stat.memberCount}
+            </h1>
           </div>
         </div>
 
-        <div
-          className="flex items-center p-4 mb-4 text-4xl text-blue-800 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400"
-          role="alert"
-        >
-          <span className="sr-only">Total Submissions </span>
-          <div>
-            <span className="font-medium">Total Submissions</span>{" "}
-            {stat && stat.submissionCount}
+        <div className="flex flex-col justify-start items-start w-1/2 h-full">
+          <div className="flex flex-row justify-between items-center w-full">
+            <h1 className="text-2xl font-bold text-white">Total Submissions</h1>
+            <h1 className="text-4xl font-bold text-sky-500">
+              {stat && stat.submissionCount}
+            </h1>
           </div>
         </div>
       </div>
