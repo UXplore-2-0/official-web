@@ -72,6 +72,7 @@ const Hero = () => {
 
       <img id="logo" src="./sponsor/logowithbg.png" alt="logo" />
       <img src="./sponsor/ieelogo.png" id="ieelogo" />
+      <img src="./images/cse-logo.png" id = "cse-logo" />
       <div
         style={{
           position: "absolute",
