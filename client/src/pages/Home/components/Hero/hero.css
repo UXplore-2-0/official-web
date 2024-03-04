@@ -209,10 +209,22 @@ section img {
 #ieelogo {
   position: relative;
   right: inherit;
-  left: 75%;
+  left: 65%;
 
-  top: 30%;
+  top: 27%;
   width: 20%;
+  height: auto;
+  z-index: 1001;
+}
+
+
+#cse-logo {
+  position: relative;
+  right: inherit;
+  left: 87%;
+
+  top: 17%;
+  width: 10%;
   height: auto;
   z-index: 1001;
 }
@@ -264,10 +276,14 @@ section img {
   }
 
   #ieelogo {
-    left: 75%;
+    left: 63%;
 
     top: 20%;
     width: 20%;
+  }
+
+  #cse-logo {
+ top: 10%
   }
 
   #moon {
@@ -305,16 +321,24 @@ section img {
   }
 
   #ieelogo {
-    left: 75%;
+    left: 0%;
 
-    top: 30%;
+    top: 0%;
     width: 20%;
+  }
+
+  #cse-logo {
+    top: 40%
   }
   #intro-div {
     height: 70%;
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 200%;
+   
+  
+   
+   
   }
 
   #ship {
@@ -341,24 +365,34 @@ section img {
   }
 }
 
+
 @media screen and (max-width: 1024px) and (orientation: landscape) {
   #animated-page-background {
     height: 100%;
     width: 100%;
   }
 
-  #ieelogo {
-    left: 75%;
+  /* #ieelogo {
+    left: 50%;
 
-    top: 20%;
+    top: 30%;
     width: 20%;
+  } */
+
+  #cse-logo {
+    top : 13%;
+    left : 85%;
   }
+
   #intro-div {
     height: 70%;
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 240%;
+   
   }
+
+  
 
   #ship {
     left: -20%;
@@ -392,14 +426,21 @@ section img {
   #ieelogo {
     left: 75%;
 
-    top: 30%;
+    top: 0%;
     width: 20%;
   }
+
+  /* #cse-logo {
+    top: 20%
+  } */
   #intro-div {
     height: 70%;
     transform: translate(-50%, -50%);
     color: #fff;
+   
     font-size: 200%;
+   
+    
   }
 
   #ship {
@@ -436,13 +477,21 @@ section img {
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 220%;
+   
+
   }
 
   #ieelogo {
-    left: 65%;
+    left: 50%;
 
-    top: 19%;
-    width: 30%;
+    top: 17%;
+
+    width: 25%;
+  }
+
+  #cse-logo {
+    top: 10%;
+    left: 80%;
   }
 
   #ship {
@@ -474,12 +523,23 @@ section img {
     height: 100%;
     width: auto;
   }
+  #intro-div {
+    height: 80%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 180%;
+  }
 
   #ieelogo {
-    left: 65%;
+    left: 45%;
 
-    top: 10%;
+    top: 12%;
     width: 30%;
+  }
+
+  #cse-logo {
+    top: 6%;
+    left: 80%;
   }
 
   #ship {
@@ -529,7 +589,7 @@ section img {
   }
 
   #ieelogo {
-    left: 65%;
+    left:5%;
 
     top: 20%;
     width: 30%;
@@ -593,10 +653,14 @@ section img {
   }
 
   #ieelogo {
-    left: 65%;
-
+    left: 40%;
     top: 40%;
     width: 30%;
+  }
+  #cse-logo {
+    top: 36%;
+    left: 80%;
+    width: 15%;
   }
 
   #intro-div {
@@ -604,7 +668,7 @@ section img {
     right: -70%;
     width: 70%;
     top: 40%;
-    font-size: 170%;
+    font-size: 150%;
   }
 
   #moon {
@@ -659,10 +723,18 @@ section img {
   }
 
   #ieelogo {
-    left: 65%;
+    left: 45%;
 
     top: 10%;
     width: 30%;
+  }
+
+  #cse-logo {
+    top : inherit;
+    bottom : 5%;
+    
+    width : 12%;
+    left: 80%;
   }
 
   #ship {
@@ -687,7 +759,7 @@ section img {
     transform: translate(-50%, -50%);
     color: #fff;
     font-size: 100%;
-    background-color: aqua;
+    
   }
 
   #main-div-after-animated {
