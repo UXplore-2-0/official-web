@@ -148,7 +148,7 @@ function AddMember({ team, setTeam, open }) {
                   onChange={(e) => setName(e.target.value)}
                 />
                 {validationErrors.name && (
-                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4 ">
                     {validationErrors.name}
                   </div>
                 )}
@@ -170,7 +170,7 @@ function AddMember({ team, setTeam, open }) {
                   onChange={(e) => setUniIndex(e.target.value)}
                 />
                 {validationErrors.uniIndex && (
-                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4 ">
                     {validationErrors.uniIndex}
                   </div>
                 )}
@@ -193,7 +193,7 @@ function AddMember({ team, setTeam, open }) {
                   onChange={(e) => setNic(e.target.value)}
                 />
                 {validationErrors.nic && (
-                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4 ">
                     {validationErrors.nic}
                   </div>
                 )}
@@ -216,7 +216,7 @@ function AddMember({ team, setTeam, open }) {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 {validationErrors.phone && (
-                  <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                  <div className="w-full text-xs text-red-500 -mt-3 mb-4 ">
                     {validationErrors.phone}
                   </div>
                 )}

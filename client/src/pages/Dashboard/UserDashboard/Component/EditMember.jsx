@@ -23,23 +23,23 @@ function EditMember({ member, user, setClose, refreshTeam }) {
 
     const validationErrors = {};
 
-    if (name === "") {
+    if (name.trim() === "") {
       validationErrors.name = "Name is required";
     }
 
-    if (email === "") {
+    if (email.trim() === "") {
       validationErrors.email = "Email is required";
     }
 
-    if (uniIndex === "") {
+    if (uniIndex.trim() === "") {
       validationErrors.uniIndex = "University Index is required";
     }
 
-    if (nic === "") {
+    if (nic.trim() === "") {
       validationErrors.nic = "NIC is required";
     }
 
-    if (phone === "") {
+    if (phone.trim() === "") {
       validationErrors.phone = "Phone is required";
     }
 
@@ -155,7 +155,7 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       onChange={(e) => setUniIndex(e.target.value)}
                     />
                     {validationErrors.uniIndex && (
-                      <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                      <div className="w-full text-xs text-red-500 -mt-3 mb-4 py-2">
                         {validationErrors.uniIndex}
                       </div>
                     )}
@@ -178,7 +178,7 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       onChange={(e) => setNic(e.target.value)}
                     />
                     {validationErrors.nic && (
-                      <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                      <div className="w-full text-xs text-red-500 -mt-3 mb-4 py-2" >
                         {validationErrors.nic}
                       </div>
                     )}
@@ -202,7 +202,7 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                       onChange={(e) => setPhone(e.target.value)}
                     />
                     {validationErrors.phone && (
-                      <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                      <div className="w-full text-xs text-red-500 -mt-3 mb-4 py-2">
                         {validationErrors.phone}
                       </div>
                     )}
@@ -263,7 +263,7 @@ function EditMember({ member, user, setClose, refreshTeam }) {
                           onChange={(e) => setEmail(e.target.value)}
                         />
                         {validationErrors.email && (
-                          <div className="w-full text-xs text-red-500 -mt-3 mb-4">
+                          <div className="w-full text-xs text-red-500 -mt-3 mb-4 py-2">
                             {validationErrors.email}
                           </div>
                         )}

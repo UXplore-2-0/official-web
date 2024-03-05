@@ -83,7 +83,7 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open , user})
                     scope="row"
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {member.name}
+                    {member.name.length > 20 ? member.name.slice(0, 20) + "..." : member.name}
                   </th>
                   <td class="px-6 py-4">{member.email}</td>
                   <td class="px-6 py-4">{member.contact_no}</td>
