@@ -31,9 +31,9 @@ function StickyButton() {
       <button className="sticky-buttons-container-button" onClick={() => scrollToSection('guidlines')}>
         Guidelines
       </button>
-      {/* <button className="sticky-buttons-container-button" onClick={() => scrollToSection('sponsorships')}>
+      <button className="sticky-buttons-container-button" onClick={() => scrollToSection('sponsorships')}>
         Partners
-      </button> */}
+      </button>
       <button className="circular-sticky-button">Register</button>
       <button className="sticky-buttons-container-button" onClick={() => scrollToSection('contact')}>
         Contact Us
