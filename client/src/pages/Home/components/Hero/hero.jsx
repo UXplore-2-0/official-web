@@ -85,11 +85,11 @@ const Hero = () => {
           overflow: "none",
         }}
       >
-        <Link to="/register">
+        {/* <Link to="/register">
           <button  id="register-button" >
             <RegisterButton  buttonText="REGISTER" style={{ top: 0 }} />
           </button>
-        </Link>
+        </Link> */}
 
         <Link to="/login">
           <botton  id="login-button" >
