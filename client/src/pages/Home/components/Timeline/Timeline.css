@@ -11,6 +11,9 @@
     width: 40%;
 }
 
+.active-container {
+    filter: drop-shadow(0px 4px 4px rgba(24, 78, 116, 0.8));
+}
 
 #timeline {
     position: relative;
