@@ -87,7 +87,7 @@ function Timeline() {
         </div>
 
         <div className="inner-container shadow-lg bg-transparent backdrop-blur-3xl border-2 border-solid border-[#888] opacity-70 rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]">
-          <p className="text-xs font-normal md:text-base">March 9</p>
+          <p className="text-xs font-normal md:text-base">March 14</p>
           <h1 className="text-xl md:text-3xl font-bold">
             Registration Closing
           </h1>
@@ -97,7 +97,7 @@ function Timeline() {
         </div>
 
         <div className="inner-container active-container shadow-lg bg-transparent backdrop-blur-xl border-[3px] border-solid border-[#419AC6] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]">
-          <p className="text-xs font-normal md:text-base">March 16</p>
+          <p className="text-xs font-normal md:text-base"><s>March 16 </s> &nbsp; March 23</p>
           <h1 className="text-xl md:text-3xl font-bold">Workshop 01</h1>
           <p className="text-xs font-normal md:text-base pt-[3px]">Via Zoom</p>
           <div className="shadow-lg bg-white/20 my-2 mt-3 py-[2px] md:py-[3px] rounded-lg flex justify-center"></div>
