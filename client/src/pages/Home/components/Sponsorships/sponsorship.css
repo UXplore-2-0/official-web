@@ -1,0 +1,12 @@
+#sponsorship-backdrop {
+
+    background-image: url('./images/underwater.jpg');
+    top: 0;
+    left:0;
+    background-size: cover;
+    background-position: center;
+   
+    font-family: 'Rubik' , sans-serif;
+    height: fit-content;
+    width: 100%;
+}
