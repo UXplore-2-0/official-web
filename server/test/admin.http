@@ -69,12 +69,12 @@ Content-Type: {{contentType}}
 x-auth-token: {{token}}
 
 
+@token2=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJzaGF2aW4vdXhwbG9yZTIiLCJ0ZWFtX2lkIjoyLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTA3ODIxMTgsImV4cCI6MTcxMTE0MjExOH0.mlWs4byjRfoqTF5wdq-VTXfAiQXLNiVaWViJyZuNCXw
 ### submision
 GET {{host}}/api/v1/teams/submissions {{http}}
-x-auth-token: {{token}}
+x-auth-token: {{token2}}
 
 ### submission
-@token2=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJTYW5zYSIsInRlYW1faWQiOjIsInJvbGUiOiJ0ZWFtIiwiaWF0IjoxNzA4NzYzMDQ2LCJleHAiOjE3MDkxMjMwNDZ9.Aln79l7aErbtsldDrZMwZ4R1lQnuzXtfgPueBfGifFY
 GET {{host}}/api/v1/teams/submission {{http}}
 x-auth-token: {{token2}}
 

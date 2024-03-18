@@ -22,6 +22,7 @@ const {
   deleteTeam,
   getAllQAs,
   getSubmission,
+  addScore,
 } = require('../controllers/teams.controller');
 const { uploadFile } = require('../controllers/file.controller');
 const multer = require('multer');
@@ -53,7 +54,8 @@ router.post('/submissions', auth, addSubmission);
 
 // admin only authorized routes
 router.post('/question', auth, admin, addQuestion); // TODO: suucess
-router.get('/submissions', auth, admin, getSubmissions);
+router.get('/submissions', auth, admin, getSubmissions); // TODO: success
+router.post('/submissions/score', auth, admin, addScore);
 router.get('/all', auth, admin, getAllTeams); // TODO: success
 router.delete('/delete/:team_id', auth, admin, deleteTeam); // TODO: success
 

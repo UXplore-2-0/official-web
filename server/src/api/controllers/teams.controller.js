@@ -479,6 +479,29 @@ async function getSubmission(req, res, next) {
   return res.json({ submission });
 }
 
+async function addScore(req, res, next) {
+  const { team_id, score } = req.body;
+
+  // find subnmission with the given team_id
+  const submission = await Question.findOne({
+    where: {
+      team_id: team_id,
+    },
+  });
+
+  if (!submission) {
+    return res.status(404).json({ error: 'Submission not found' });
+  }
+
+  // update the score of the team submission
+  submission.set({
+    score: score,
+  });
+
+  await submission.save();
+  return res.json(submission);
+}
+
 function addQAs(req, res, next) {}
 
 module.exports = {
@@ -502,4 +525,5 @@ module.exports = {
   deleteTeam,
   getAllQAs,
   getSubmission,
+  addScore,
 };

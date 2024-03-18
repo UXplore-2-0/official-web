@@ -22,6 +22,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       defaultValue: DataTypes.NOW,
     },
+    score: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      defaultValue: 0,
+    },
   });
 
   Question.associate = (models) => {

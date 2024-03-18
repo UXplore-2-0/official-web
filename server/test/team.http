@@ -54,3 +54,13 @@ x-auth-token: {{token2}}
 {
     "submission_link": "https://localhost:80"
 }
+
+### add score to a submission
+POST {{host}}/api/v1/teams/submissions/score {{http}}
+Content-Type: {{contentType}}
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJzaGF2aW4vdXhwbG9yZTIiLCJ0ZWFtX2lkIjoyLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTA3ODIxMTgsImV4cCI6MTcxMTE0MjExOH0.mlWs4byjRfoqTF5wdq-VTXfAiQXLNiVaWViJyZuNCXw
+
+{
+    "team_id" : 19,
+    "score": 99
+}

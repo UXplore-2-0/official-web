@@ -1,0 +1,11 @@
+@hostname = http://localhost
+@port = 5000
+@host = {{hostname}}:{{port}}
+@contentType = application/json
+@http = HTTP/1.1
+
+# get full stats
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZWFtX25hbWUiOiJzaGF2aW4vdXhwbG9yZTIiLCJ0ZWFtX2lkIjoyLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTA3ODIxMTgsImV4cCI6MTcxMTE0MjExOH0.mlWs4byjRfoqTF5wdq-VTXfAiQXLNiVaWViJyZuNCXw
+GET {{host}}/api/v1/stat {{http}}
+Content-Type: {{contentType}}
+x-auth-token: {{token}}
