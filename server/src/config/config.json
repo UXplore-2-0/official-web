@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "MoraUXplore",
+    "username": "morauxplore",
     "password": "*!shyaROX^k",
     "database": "uxplore",
-    "host": "morauxplore.mysql.database.azure.com",
+    "host": "morauxplore2.mysql.database.azure.com",
     "dialect": "mysql",
     "dialectOptions": {
       "ssl": {
