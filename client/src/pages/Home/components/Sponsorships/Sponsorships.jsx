@@ -1,9 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import "./sponsorship.css";
-
-gsap.registerPlugin(useGSAP);
 
 function Sponsorships() {
   const logos = [
@@ -15,20 +12,16 @@ function Sponsorships() {
 
   const containerRef = useRef();
 
-  useGSAP(() => {
-    // GSAP animation
+  useEffect(() => {
     const tl = gsap.timeline({ repeat: -1 });
-
-    // Calculate the total width of all slides
     const totalWidth = logos.length * 100;
 
-    // Animate the slide container to move left indefinitely
     tl.to(containerRef.current, {
       x: `-${totalWidth}%`,
-      duration: 20, // Adjust as needed based on the speed you desire
+      duration: 20,
       ease: "linear",
     });
-  }, { scope: containerRef });
+  }, [logos]);
 
   return (
     <section id="sponsorship-backdrop" className="py-16">
@@ -37,39 +30,32 @@ function Sponsorships() {
           <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-white">OUR PARTNERS</h2>
         </div>
         <div className="overflow-hidden relative flex items-center">
-          <div className="flex items" ref={containerRef}>
-            
-
-         
-            
-
-          {logos.map((logo, index) => (
-  <div>
-  <img
-    key={index}
-    src={logo.path}
-    alt={`Logo ${index + 1}`}
-    className="mx-2 md:mx-4 lg:mx-6 xl:mx-8 w-1/2"
-    style={{ backgroundColor: "white", borderRadius: "10px", height: "200px" , width : "auto"}}
-  />
-  </div>
-))}
-
-            
-
-
-
-           
+          <div className="flex items" ref={containerRef} style={{ width: `${logos.length * 100}%` }}>
             {logos.map((logo, index) => (
-              
+              <div key={index}
+              >
               <img
-                key={index}
+                
                 src={logo}
                 alt={`Logo ${index + 1}`}
                 className="mx-2 md:mx-4 lg:mx-6 xl:mx-8 w-1/2 h-1/2"
-                style={{ backgroundColor: "white", borderRadius: "10px" , height: "200px" , width : "auto"}}
+                style={{ backgroundColor: "white", borderRadius: "10px", height: "200px", width: "auto" }}
               />
-              
+              <p>{logo == './sponsor/zone24x7-logo - Light Background.png' ? "Zone24x7" : "IEEE Young Professionals"}</p>
+              </div>
+            ))}
+            {logos.map((logo, index) => (
+              <div key={index}
+              >
+              <img 
+                
+                src={logo}
+                alt={`Logo ${index + 1}`}
+                className="mx-2 md:mx-4 lg:mx-6 xl:mx-8 w-1/2 h-1/2"
+                style={{ backgroundColor: "white", borderRadius: "10px", height: "200px", width: "auto" }}
+              />
+              <p>{logo == './sponsor/zone24x7-logo - Light Background.png' ? "Zone24x7" : "IEEE Young Professionals"}</p>
+              </div>
             ))}
           </div>
         </div>
