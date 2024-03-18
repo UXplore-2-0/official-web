@@ -7,7 +7,6 @@ const {
   deleteMember,
   getTeam,
   addBeverage,
-  updateBeverages,
   addSubmission,
   getQuestion,
   addQA,
@@ -36,36 +35,36 @@ const router = express.Router();
 router.post('/upload', auth, upload.single('file'), uploadFile);
 
 // QA related routes
-router.post('/qa/:qa_id/answer', auth, admin, addAnswer); // TODO: success
-router.post('/qa', auth, addQA); // TODO: success
-router.get('/qa/all', auth, getAllQAs); // TODO: success
-router.get('/getqa', auth, getQAs); // TODO: success
-router.get('/qa/:qa_id', auth, getQA); // TODO: success
+router.post('/qa/:qa_id/answer', auth, admin, addAnswer);
+router.post('/qa', auth, addQA);
+router.get('/qa/all', auth, getAllQAs);
+router.get('/getqa', auth, getQAs);
+router.get('/qa/:qa_id', auth, getQA);
 
 // question related routes
-router.get('/getquestion', auth, getQuestion); // TODO: suucess
+router.get('/getquestion', auth, getQuestion);
 
 // beverage related routes
-router.post('/:member_id/beverages', auth, addBeverage); // TODO: sucess
-router.put('/:member_id/beverages', auth, addBeverage); // TODO: success
+router.post('/:member_id/beverages', auth, addBeverage);
+router.put('/:member_id/beverages', auth, addBeverage);
 
 // submission related routes
 router.post('/submissions', auth, addSubmission);
 
 // admin only authorized routes
-router.post('/question', auth, admin, addQuestion); // TODO: suucess
-router.get('/submissions', auth, admin, getSubmissions); // TODO: success
+router.post('/question', auth, admin, addQuestion);
+router.get('/submissions', auth, admin, getSubmissions);
 router.post('/submissions/score', auth, admin, addScore);
-router.get('/all', auth, admin, getAllTeams); // TODO: success
-router.delete('/delete/:team_id', auth, admin, deleteTeam); // TODO: success
+router.get('/all', auth, admin, getAllTeams);
+router.delete('/delete/:team_id', auth, admin, deleteTeam);
 
 // team authorized routes
-router.get('/submission', auth, getSubmission); // TODO: success
-router.get('/status', getStatus); // TODO: success
-router.post('/add', auth, addMember); // TODO: success
-router.get('/:member_id', auth, getMember); // TODO: sucess
-router.put('/:member_id', auth, updateMember); // TODO: sucess
-router.delete('/:member_id', auth, deleteMember); // TODO: sucess
-router.get('/', auth, getTeam); // TODO: success
+router.get('/submission', auth, getSubmission);
+router.get('/status', getStatus);
+router.post('/add', auth, addMember);
+router.get('/:member_id', auth, getMember);
+router.put('/:member_id', auth, updateMember);
+router.delete('/:member_id', auth, deleteMember);
+router.get('/', auth, getTeam);
 
 module.exports = router;

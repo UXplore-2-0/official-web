@@ -7,6 +7,9 @@ const { Op } = require('sequelize');
 const MAX_MEMBERS = 3;
 
 async function getAllTeams(req, res, next) {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 50;
+
   const team = await Team.findAll({
     attributes: [
       'team_id',
@@ -21,6 +24,8 @@ async function getAllTeams(req, res, next) {
     where: {
       role: 'team',
     },
+    limit: limit,
+    offset: (page - 1) * limit,
   });
   // get the members of each team
   let teams = [];
@@ -377,6 +382,10 @@ async function getQAs(req, res, next) {
 }
 
 async function getAllQAs(req, res, next) {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 50;
+
+  // get the questions and answers from the database
   const qas = await QA.findAll({
     include: [
       {
@@ -384,6 +393,8 @@ async function getAllQAs(req, res, next) {
         attributes: ['team_name', 'email', 'university'],
       },
     ],
+    limit: limit,
+    offset: (page - 1) * limit,
   });
   return res.json(qas);
 }
@@ -449,6 +460,8 @@ async function deleteTeam(req, res, next) {
 }
 
 async function getSubmissions(req, res, next) {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 50;
   // get the submissions from the database
   const submissions = await Question.findAll({
     include: [
@@ -457,6 +470,8 @@ async function getSubmissions(req, res, next) {
         attributes: ['team_name', 'email', 'university'],
       },
     ],
+    limit: limit,
+    offset: (page - 1) * limit,
   });
 
   return res.json({ submissions });
