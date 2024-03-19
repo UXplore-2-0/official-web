@@ -1,0 +1,29 @@
+.sponsorships {
+    background-image: url('./images/underwater.jpg');
+    background-color: #002634;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Poppins' , sans-serif;
+    padding-bottom: 40px;
+    filter:brightness(100%);
+    overflow: hidden;
+
+
+   
+}
+
+.text-sponsor {
+    font-size: 100px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 10px;
+    color: #fff;
+
+}
+
+@media screen and (max-width: 768px) {
+    .text-sponsor {
+        font-size: 50px;
+    }
+    
+}
