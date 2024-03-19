@@ -1,100 +1,149 @@
-import React, { useRef, useEffect } from "react";
-import gsap from "gsap";
-import "./sponsorship.css";
-
+import React from "react";
+import styled, { keyframes, css } from "styled-components";
+import "./sponsorships.css";
 function Sponsorships() {
-  const logos = [
-    {
-      src: "./sponsor/zone24x7-logo - Light Background.png",
-      text: "Zone 24x7",
-    },
-    {
-      src: "./sponsor/IEEEYoungProfessionalsLogoTM_RGB_Horiz.png",
-      text: "IEEE Young Professionals",
-    },
-    {
-      src: "./sponsor/zone24x7-logo - Light Background.png",
-      text: "Zone 24x7",
-    },
-    {
-      src: "./sponsor/IEEEYoungProfessionalsLogoTM_RGB_Horiz.png",
-      text: "IEEE Young Professionals",
-    },
+  const row1 = [
+    {path: "./sponsor/zone.png", name: "Workshop Partner"},
+    {path: "./sponsor/ieee.png", name: "Supportive Partner"},
+   
   ];
 
- 
-  const logosCombined = [...logos, ...logos];
-
-  const containerRef = useRef();
-
-  useEffect(() => {
-    const totalWidth = logosCombined.length * 40;
-
-   
-    const slideAnimation = gsap.to(containerRef.current, {
-      x: `-${totalWidth}%`,
-      duration: 20,
-      ease: "linear",
-      repeat: -1,
-    });
-
-   
-    const resetAnimation = gsap.to(containerRef.current, {
-      x: 0,
-      duration: 0,
-      onComplete: () => {
-        slideAnimation.restart();
-      },
-    });
-
-    
-    slideAnimation.eventCallback("onRepeat", () => {
-      resetAnimation.restart();
-    });
-
-    return () => {
-      slideAnimation.pause();
-      resetAnimation.pause();
-    };
-  }, [logosCombined]);
 
   return (
-    <section id="sponsorship-backdrop" className="py-16">
-      <div className="container mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-white">
-            OUR PARTNERS
-          </h2>
-        </div>
-        <div className="overflow-hidden relative flex items-center">
-          <div
-            className="flex items "
-            ref={containerRef}
-            style={{
-              width: `${logosCombined.length * 40}%`,
-              marginLeft: "-40%",
-            }}
-          >
-            {logosCombined.map((logo, index) => (
-              <>
-                <img
-                  src={logo.src}
-                  alt={`Logo ${index + 1}`}
-                  className="mx-0.5 md:mx-0.5 lg:mx-0.5 xl:mx-1.25 w-full bg-white p-1 rounded-md"
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto",
-                    transform: "scale(0.56)",
-                  }}
-                  // <p className="text-white text-center">{logo.text}</p>
-                />
-              </>
+    <div className="sponsorships">
+    <AppContainer>
+      <Wrapper>
+        <p className = "text-sponsor">OUR PARTNERS</p>
+      
+        <Marquee>
+          <MarqueeGroup>
+            {row1.map((el) => (
+              <ImageGroup>
+                <Image src={el.path} />
+                <Titletext>{el.name}</Titletext>
+              </ImageGroup>
             ))}
-          </div>
-        </div>
-      </div>
-    </section>
+          </MarqueeGroup>
+          <MarqueeGroup>
+            {row1.map((el) => (
+              <ImageGroup>
+                <Image src={el.path} />
+                <Titletext>{el.name}</Titletext>
+              </ImageGroup>
+            ))}
+          </MarqueeGroup>
+        </Marquee>
+        
+      </Wrapper>
+    </AppContainer>
+
+  </div>
   );
 }
 
 export default Sponsorships;
+
+const AppContainer = styled.div`
+  width: 100vw;
+  height: 70vh;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+`;
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+
+
+const Titletext = styled.div`
+  font-size: 20px;
+  font-weight: 250;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 10px;
+  color: #fff;
+`;
+
+const Note = styled.div`
+  font-size: 18px;
+  font-weight: 200;
+  margin-bottom: 40px;
+  color: #7c8e9a;
+`;
+
+const Marquee = styled.div`
+  display: flex;
+  width: 1200px;
+  overflow: hidden;
+  user-select: none;
+  
+
+  mask-image: linear-gradient(
+    to right,
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 1) 10%,
+    hsl(0 0% 0% / 1) 90%,
+    hsl(0 0% 0% / 0)
+  );
+`;
+
+const scrollX = keyframes`
+  from {
+    left: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+`;
+
+const common = css`
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  white-space: nowrap;
+  width: 100%;
+  animation: ${scrollX} 30s linear infinite;
+`;
+
+const MarqueeGroup = styled.div`
+  ${common}
+
+`;
+const MarqueeGroup2 = styled.div`
+  ${common}
+  animation-direction: reverse;
+  animation-delay: -3s;
+`;
+
+const ImageGroup = styled.div`
+  display: grid;
+  
+  border-radius: 0.5rem;
+  place-items: center;
+  width: clamp(10rem, 1rem + 40vmin, 30rem);
+  padding: calc(clamp(10rem, 1rem + 30vmin, 30rem) / 10);
+`;
+
+const Image = styled.img`
+  object-fit: contain;
+  width: 100%;
+  height: 80%;
+  background-color: #fff;
+  /* border: 1px solid black; */
+  border-radius: 0.5rem;
+  aspect-ratio: 16/9;
+  padding: 5px 20px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+`;
