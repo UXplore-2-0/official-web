@@ -5,6 +5,7 @@ import {
   faCircleQuestion,
   faCloudArrowUp,
   faComment,
+  faRankingStar,
   faSignOut,
   faTowerBroadcast,
   faUserPlus,
@@ -182,6 +183,20 @@ function Sidebar({ selected, setSelected }) {
               >
                 <FontAwesomeIcon icon={faComment} />
                 <span className="flex-1 ms-3 whitespace-nowrap">FAQs</span>
+              </div>
+            </li>
+            <li>
+              <div
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ${
+                  selected === "LeaderBoard" &&
+                  "dark:bg-slate-600 hover:dark:bg-blue-900"
+                }`}
+                onClick={() => setSelected("LeaderBoard")}
+              >
+                <FontAwesomeIcon icon={faRankingStar} />
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Leader Board
+                </span>
               </div>
             </li>
           </ul>

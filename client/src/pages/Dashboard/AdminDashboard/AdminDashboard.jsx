@@ -3,6 +3,7 @@ import Problem from "./Pages/Problem";
 import TeamDetails from "./Pages/TeamDetails";
 import SubmissionDetails from "./Pages/SubmissionDetails";
 import Static from "./Pages/Static";
+import LeaderBoard from "../LeaderBoard";
 import Sidebar from "./Components/Sidebar";
 import Faq from "./Pages/Faq";
 import Announcement from "./Pages/Announcement";
@@ -74,7 +75,8 @@ function AdminDashboard() {
         {selected === "Problem" && <Problem />}
         {selected === "Faq" && <Faq />}
         {selected === "Announcement" && <Announcement />}
-        {selected == "Registration" && <AdminRegistration user={user} />}
+        {selected === "Registration" && <AdminRegistration user={user} />}
+        {selected === "LeaderBoard" && <LeaderBoard open={true} />}
       </div>
     </div>
   );
