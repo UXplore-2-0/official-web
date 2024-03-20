@@ -22,7 +22,7 @@ oAuth2Client.setCredentials({
 
 async function createMailTrasport() {
   // const accessToken = await oAuth2Client.getAccessToken();
-  const accessToken = `ya29.a0Ad52N3971LsHTkhMC5VapGhWmOsK7it1Aa7TXvncxFq_DgQw1C5VFLMrSrfNoKVOh1GBhkpHpdqmyW5wgGVhnk3AGon2IZnEwkMgVXjSMOYTPRYTybBLCP11EqFc2BIRRBfC03QYGTunpeGyqmser2KDwURKkT7kszDSaCgYKATkSARISFQHGX2MiTkE9cY86Mt5NaSOGhCrvQQ0171`;
+  const accessToken = `ya29.a0Ad52N3_He7ibtyU4UK5_25YkhqCV2YpjBajK-NS_3ME2srRGbRfosnkmXSz1Au9cTeDv3v6eSJ3X0cl5kE5y7S4rdr9zmERJ636qmE4P8i0tVyo4PULBl5Ntq1eI0xQ553FcuOn9NRjie5PukuzzWLMSRl-zt8tL9FpZaCgYKAbsSARISFQHGX2MiIv3A1Vx1jLoVRKTpHOuO6A0171`;
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -70,7 +70,7 @@ function extractEmailListFromCSV(filePath, callback) {
     });
 }
 
-const filePath = './verified_teams.csv'; // Provide the path to your CSV file
+const filePath = './1.csv'; // Provide the path to your CSV file
 
 extractEmailListFromCSV(filePath, (error, emailList) => {
   if (error) {
@@ -99,7 +99,7 @@ extractEmailListFromCSV(filePath, (error, emailList) => {
             })
             .catch((error) => {
               // log the emails to another csv file
-              fs.appendFile('1.csv', `${email}\n`, (err) => {
+              fs.appendFile('2.csv', `${email}\n`, (err) => {
                 if (err) {
                   console.error('Error writing to failed_emails.csv:', err);
                 }
