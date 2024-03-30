@@ -7,6 +7,7 @@ import Problem from "./Component/Problem";
 import Timer from "./Component/Timer";
 import Submission from "./Component/Submission";
 import AddMember from "./Component/AddMember";
+import Winners from "./Component/Winners";
 import Settings from "./Component/Settings";
 import axios from "../../../api/axios";
 import FAQ from "./Component/FAQ";
@@ -170,7 +171,9 @@ function UserDashboard() {
       )}
       {selected === "Settings" && <Settings open={open} />}
       {selected === "FAQ" && <FAQ open={open} />}
-      {selected === "LeaderBoard" && <LeaderBoard open={open} />}
+      {/* {selected === "LeaderBoard" && <LeaderBoard open={open} />} */}
+      {selected === "Winners" && <Winners open={open} />}
+
     </div>
   );
 }

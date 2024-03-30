@@ -6,6 +6,7 @@ import Setting from "../Component/Assets/Setting.png";
 import User from "../Component/Assets/User.png";
 import images from "../Component/Assets/images.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import winnerImage from "../../../../../public/images/success.png";
 import {
   faArrowLeft,
   faArrowRight,
@@ -169,7 +170,7 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                 )}
               </div>
             </li>
-            <li>
+            {/* <li>
               <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
                   selected === "LeaderBoard" &&
@@ -184,7 +185,27 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                   </span>
                 )}
               </div>
+            </li> */}
+            <li>
+            <div
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
+                  selected === "Winners" &&
+                  "dark:bg-slate-600 hover:dark:bg-blue-900"
+                } ${!open && "w-12"}`}
+                onClick={() => setSelected("Winners")}
+              >
+                <FontAwesomeIcon icon={faUser} />
+                {/* <img src={winnerImage} className="h-1" /> */}
+                {open && (
+                  <span className="flex-1 ms-3 whitespace-nowrap">
+                    Winners
+                  </span>
+                )}
+              </div>
+
+
             </li>
+
             <li>
               <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
