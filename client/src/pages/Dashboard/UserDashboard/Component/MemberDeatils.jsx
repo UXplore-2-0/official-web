@@ -3,7 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons";
 import EditMember from "./EditMember";
 
-function MemberDeatils({ selected, setSelected, team, refreshTeam, open , user}) {
+function MemberDeatils({
+  selected,
+  setSelected,
+  team,
+  refreshTeam,
+  open,
+  user,
+}) {
   const [edit, setEdit] = useState(false);
   const [selectedMember, setSelectedMember] = useState({});
 
@@ -39,14 +46,14 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open , user})
             Refresh
           </button>
 
-          {team.count < 3 && (
+          {/* {team.count < 3 && (
             <button
               className="flex justify-center items-center rounded-lg bg-blue-700 text-white hover:bg-blue-500 py-2 px-5 transition"
               onClick={handleAddMembers}
             >
               Add Member
             </button>
-          )}
+          )} */}
         </div>
       </div>
 
@@ -83,7 +90,9 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open , user})
                     scope="row"
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {member.name.length > 20 ? member.name.slice(0, 20) + "..." : member.name}
+                    {member.name.length > 20
+                      ? member.name.slice(0, 20) + "..."
+                      : member.name}
                   </th>
                   <td class="px-6 py-4">{member.email}</td>
                   <td class="px-6 py-4">{member.contact_no}</td>

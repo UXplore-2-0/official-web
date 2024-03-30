@@ -10,6 +10,7 @@ import AddMember from "./Component/AddMember";
 import Settings from "./Component/Settings";
 import axios from "../../../api/axios";
 import FAQ from "./Component/FAQ";
+import LeaderBoard from "../LeaderBoard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClose, faLink } from "@fortawesome/free-solid-svg-icons";
 
@@ -169,6 +170,7 @@ function UserDashboard() {
       )}
       {selected === "Settings" && <Settings open={open} />}
       {selected === "FAQ" && <FAQ open={open} />}
+      {selected === "LeaderBoard" && <LeaderBoard open={open} />}
     </div>
   );
 }

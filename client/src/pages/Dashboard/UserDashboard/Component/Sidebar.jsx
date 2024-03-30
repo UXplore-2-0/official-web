@@ -10,6 +10,7 @@ import {
   faArrowLeft,
   faArrowRight,
   faCircleQuestion,
+  faRankingStar,
   faSignOut,
   faUser,
   faUsers,
@@ -82,7 +83,7 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
             style={{ color: "gray" }}
             onClick={() => setOpen(!open)}
           />
-          <Link to="/" >
+          <Link to="/">
             <div className="flex gap-x-4 items-center">
               <img
                 src={logo}
@@ -123,7 +124,6 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
             </li>
             <li>
               <div
-                
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group  cursor-pointer ${
                   selected === "Members" &&
                   "dark:bg-slate-600 hover:dark:bg-blue-900"
@@ -137,7 +137,7 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
               </div>
             </li>
 
-            {team.count < 3 && (
+            {/* {team.count < 3 && (
               <li>
                 <div
                   className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
@@ -154,7 +154,7 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                   )}
                 </div>
               </li>
-            )}
+            )} */}
             <li>
               <div
                 className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
@@ -166,6 +166,22 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                 <FontAwesomeIcon icon={faCircleQuestion} />
                 {open && (
                   <span className="flex-1 ms-3 whitespace-nowrap">FAQs</span>
+                )}
+              </div>
+            </li>
+            <li>
+              <div
+                className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer ${
+                  selected === "LeaderBoard" &&
+                  "dark:bg-slate-600 hover:dark:bg-blue-900"
+                } ${!open && "w-12"}`}
+                onClick={() => setSelected("LeaderBoard")}
+              >
+                <FontAwesomeIcon icon={faRankingStar} />
+                {open && (
+                  <span className="flex-1 ms-3 whitespace-nowrap">
+                    Leader Board
+                  </span>
                 )}
               </div>
             </li>
