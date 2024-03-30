@@ -22,6 +22,7 @@ const {
   getAllQAs,
   getSubmission,
   addScore,
+  getScores,
 } = require('../controllers/teams.controller');
 const { uploadFile } = require('../controllers/file.controller');
 const multer = require('multer');
@@ -65,6 +66,7 @@ router.post('/add', auth, addMember);
 router.get('/:member_id', auth, getMember);
 router.put('/:member_id', auth, updateMember);
 router.delete('/:member_id', auth, deleteMember);
+router.get('/scores', auth, getScores);
 router.get('/', auth, getTeam);
 
 module.exports = router;

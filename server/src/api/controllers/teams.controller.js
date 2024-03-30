@@ -517,6 +517,21 @@ async function addScore(req, res, next) {
   return res.json(submission);
 }
 
+async function getScores(req, res, next) {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 50;
+
+  const scoresWithRank = await sequelize.query(
+    `SELECT t.team_id, t.team_name, t.university, RANK() OVER (ORDER BY q.score DESC) as "position"
+    FROM questions q JOIN teams t ON t.team_id = q.team_id LIMIT ${limit} OFFSET ${
+      (page - 1) * limit
+    };`,
+    { type: QueryTypes.SELECT }
+  );
+
+  return res.json({ submissions });
+}
+
 function addQAs(req, res, next) {}
 
 module.exports = {

@@ -8,7 +8,7 @@ const dotenv = require('dotenv');
 dotenv.config({ path: '../../../.env' });
 
 const source_email = 'morauxplore@gmail.com';
-const subject = 'Update: Continuing Forward with Mora UXplore 2.0';
+const subject = 'Clarification of the Round 01 Task of Mora UXplore 2.0';
 
 const oAuth2Client = new google.auth.OAuth2(
   process.env.GMAIL_CLIENT_ID,
@@ -22,7 +22,7 @@ oAuth2Client.setCredentials({
 
 async function createMailTrasport() {
   // const accessToken = await oAuth2Client.getAccessToken();
-  const accessToken = `ya29.a0Ad52N3_He7ibtyU4UK5_25YkhqCV2YpjBajK-NS_3ME2srRGbRfosnkmXSz1Au9cTeDv3v6eSJ3X0cl5kE5y7S4rdr9zmERJ636qmE4P8i0tVyo4PULBl5Ntq1eI0xQ553FcuOn9NRjie5PukuzzWLMSRl-zt8tL9FpZaCgYKAbsSARISFQHGX2MiIv3A1Vx1jLoVRKTpHOuO6A0171`;
+  const accessToken = `ya29.a0Ad52N39uS6nu3z1mR-X15iz0E-OKbtNtftsf3U41qw-oxCimv_1_A9rpwEsxVQBHuh-gxafM6fiOQF4hYE04j-X-xxYi4MOcZcHbOOPtOL_AWCLHpGCOdNUK99k7KTftDEEN7jX3T6_BhhVcYxp5oO_w4uBM1xRzQ1ieaCgYKAYASARISFQHGX2MiGujDxfCZDCtujWK_BQ3SUg0171`;
   const transport = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -70,7 +70,7 @@ function extractEmailListFromCSV(filePath, callback) {
     });
 }
 
-const filePath = './1.csv'; // Provide the path to your CSV file
+const filePath = './failed_emails_2.csv'; // Provide the path to your CSV file
 
 extractEmailListFromCSV(filePath, (error, emailList) => {
   if (error) {
@@ -99,9 +99,13 @@ extractEmailListFromCSV(filePath, (error, emailList) => {
             })
             .catch((error) => {
               // log the emails to another csv file
-              fs.appendFile('2.csv', `${email}\n`, (err) => {
+              fs.appendFile('failed_emails_3.csv', `${email}\n`, (err) => {
                 if (err) {
-                  console.error('Error writing to failed_emails.csv:', err);
+                  console.error(
+                    'Error writing to failed_emails.csv:',
+                    email,
+                    err
+                  );
                 }
               });
               console.error('Error sending email:', email, error);
