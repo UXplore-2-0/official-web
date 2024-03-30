@@ -128,7 +128,7 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open , user})
           </tbody>
         </table>
       </div>
-
+{/* 
       {edit && (
         <div
           className="fixed inset-0 flex items-center justify-center bg-opacity-50 dark p-5 flex-col"
@@ -144,7 +144,7 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open , user})
             refreshTeam={refreshTeam}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 }
