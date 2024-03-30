@@ -198,7 +198,7 @@ function Sidebar({ selected, setSelected, team, open, setOpen }) {
                 {/* <img src={winnerImage} className="h-1" /> */}
                 {open && (
                   <span className="flex-1 ms-3 whitespace-nowrap">
-                    Winners
+                    Selected Teams
                   </span>
                 )}
               </div>
