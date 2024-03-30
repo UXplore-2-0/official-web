@@ -6,4 +6,4 @@ import UserDashboard from "./pages/Dashboard/UserDashboard/UserDashboard";
 import Winners from "./pages/Dashboard/UserDashboard/Component/Winners";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Winners />);
+root.render(<App />);
