@@ -21,7 +21,7 @@ function MemberDeatils({
   const MAX_NUMBERS = 3;
 
   return (
-    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark p-20 h-full`}>
+    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark p-20 h-min-screen`}>
       <div className="flex justify-between items-center px-5 py-2">
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Member Details
@@ -137,7 +137,7 @@ function MemberDeatils({
           </tbody>
         </table>
       </div>
-{/* 
+      {/* 
       {edit && (
         <div
           className="fixed inset-0 flex items-center justify-center bg-opacity-50 dark p-5 flex-col"

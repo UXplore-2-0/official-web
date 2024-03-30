@@ -78,10 +78,11 @@ function UserDashboard() {
 
   return (
     <div
-      className="h-screen"
+      className="dark"
       style={{
         background:
           "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
+        minHeight: "100vh",
       }}
     >
       <Sidebar
