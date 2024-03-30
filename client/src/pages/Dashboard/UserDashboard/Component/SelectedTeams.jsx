@@ -14,7 +14,11 @@ function SelectedTeams() {
   }, []);
 
   return (
-    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark p-20 h-full`}>
+    <div
+      className={`${
+        open ? "sm:ml-64" : "sm:ml-32"
+      } dark p-20 justify-between h-[100%]`}
+    >
       <div className="flex justify-between items-center px-5 py-2">
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Selected Teams of the Round 1
