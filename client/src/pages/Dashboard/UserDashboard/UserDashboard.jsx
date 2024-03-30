@@ -14,6 +14,7 @@ import FAQ from "./Component/FAQ";
 import LeaderBoard from "../LeaderBoard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClose, faLink } from "@fortawesome/free-solid-svg-icons";
+import SelectedTeams from "./Component/SelectedTeams";
 
 function UserDashboard() {
   const { user } = useContext(AuthContext);
@@ -172,8 +173,7 @@ function UserDashboard() {
       {selected === "Settings" && <Settings open={open} />}
       {selected === "FAQ" && <FAQ open={open} />}
       {/* {selected === "LeaderBoard" && <LeaderBoard open={open} />} */}
-      {selected === "Winners" && <Winners open={open} />}
-
+      {selected === "Winners" && <SelectedTeams open={open} />}
     </div>
   );
 }
