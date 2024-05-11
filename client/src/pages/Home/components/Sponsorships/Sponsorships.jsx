@@ -5,6 +5,7 @@ function Sponsorships() {
   const row1 = [
     {path: "./sponsor/zone.png", name: "Workshop Partner"},
     {path: "./sponsor/ieee.png", name: "Supportive Partner"},
+    {path: "./sponsor/EXE.jpg", name: "Workshop  Partner"},
    
   ];
 
