@@ -150,11 +150,11 @@ function Submission({ team, setUploading }) {
               )}
 
             <button 
-              className="px-10 py-2 w-full opacity-40 bg-sky-600 rounded-lg hover:bg-sky-500 transition-all duration-300 mt-6"
-              
+              className="px-10 py-2 w-full bg-sky-600 rounded-lg hover:bg-sky-500 transition-all duration-300 mt-6"
+              onClick={uploadFileToServer}
             >
               <FontAwesomeIcon icon={faCloudUpload} className="px-3" />
-              Submission Closed
+              Submit
             </button>
           </div>
         </div>
