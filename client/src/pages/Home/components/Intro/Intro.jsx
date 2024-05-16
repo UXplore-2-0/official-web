@@ -69,6 +69,32 @@ function Intro() {
       },
     });
 
+    const items = document.querySelectorAll(".data");
+
+  gsap.from(items, {
+    textContent: 0,
+    duration: 1.5,
+    ease: "power1.in",
+    snap: { textContent: 1 },
+    stagger: {
+      each: 1.0,
+      onUpdate: function() {
+        this.targets()[0].innerHTML = numberWithCommas(Math.ceil(this.targets()[0].textContent));
+      },
+    },
+    scrollTrigger: {
+      trigger: ".box2",
+      start: "top 80%",
+      end: "bottom 40%",
+      toggleActions: "play none none none",
+    },
+  });
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+
 
   }, []);
   gsap.registerPlugin(ScrollTrigger);
@@ -93,11 +119,15 @@ function Intro() {
                 className="logo w-48 lg:mt-40 md:hidden sm:hidden hidden lg:block opacity-1"
               />
             </div>
-            <div class="box2  lg:basis-4/6 lg:mt-96 md:mt-8 sm:mt-8 mt-10 lg:-mx-60 mx-10">
+            <div className=" lg:text-[34px] xl:pt-32 md:text-[25px] sm:text-[18px] text-[16px] text-white font-[200]  xl:pl-16  hidden lg:flex lg:pl-96" >
+              <div className="mt-2"> Teams &nbsp;</div>
+              <div class="data lg:text-[44px] ">565 &nbsp;</div>
+              <div className="mt-2 ml-7"> Members &nbsp;</div>
+              <div class="data lg:text-[44px] ">1150</div>
+            </div>
+            <div class="box2  lg:basis-4/6  md:mt-8 sm:mt-8 mt-10 mx-10 lg:ml-96">
               <span
-                class="lg:text-[22px] md:text-[20px] sm:text-[18px] text-[16px] text-white font-[200] explanation opacity-1"
-                
-              >
+                class="lg:text-[22px] md:text-[20px] sm:text-[18px] text-[16px] text-white font-[200] explanation opacity-1">
                Mora UXplore 2.0 is an event initiated by the IEEE Student
                 Branch of the University of Moratuwa. This event is conducted
                 for the second consecutive year, followed by the success of its

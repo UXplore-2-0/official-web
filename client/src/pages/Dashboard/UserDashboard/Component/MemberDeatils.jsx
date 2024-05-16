@@ -1,7 +1,19 @@
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons";
+import EditMember from "./EditMember";
 
-function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
+function MemberDeatils({
+  selected,
+  setSelected,
+  team,
+  refreshTeam,
+  open,
+  user,
+}) {
+  const [edit, setEdit] = useState(false);
+  const [selectedMember, setSelectedMember] = useState({});
+
   const handleAddMembers = () => {
     setSelected("AddMember");
   };
@@ -9,7 +21,7 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
   const MAX_NUMBERS = 3;
 
   return (
-    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark p-20 h-full`}>
+    <div className={`${open ? "sm:ml-64" : "sm:ml-32"} dark p-20 h-min-screen`}>
       <div className="flex justify-between items-center px-5 py-2">
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
           Member Details
@@ -34,14 +46,14 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
             Refresh
           </button>
 
-          {team.count < 3 && (
+          {/* {team.count < 3 && (
             <button
               className="flex justify-center items-center rounded-lg bg-blue-700 text-white hover:bg-blue-500 py-2 px-5 transition"
               onClick={handleAddMembers}
             >
               Add Member
             </button>
-          )}
+          )} */}
         </div>
       </div>
 
@@ -78,7 +90,9 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
                     scope="row"
                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                   >
-                    {member.name}
+                    {member.name.length > 20
+                      ? member.name.slice(0, 20) + "..."
+                      : member.name}
                   </th>
                   <td class="px-6 py-4">{member.email}</td>
                   <td class="px-6 py-4">{member.contact_no}</td>
@@ -107,18 +121,39 @@ function MemberDeatils({ selected, setSelected, team, refreshTeam, open }) {
                   </td>
 
                   <td class="px-6 py-4">
-                    <a
-                      href="#"
-                      class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    <button
+                      type="submit"
+                      className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      onClick={() => {
+                        setEdit(true);
+                        setSelectedMember(member);
+                      }}
                     >
                       Edit
-                    </a>
+                    </button>
                   </td>
                 </tr>
               ))}
           </tbody>
         </table>
       </div>
+      {/* 
+      {edit && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-opacity-50 dark p-5 flex-col"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backdropFilter: "blur(5px)",
+          }}
+        >
+          <EditMember
+            member={selectedMember}
+            setClose={setEdit}
+            user={user}
+            refreshTeam={refreshTeam}
+          />
+        </div>
+      )} */}
     </div>
   );
 }

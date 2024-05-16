@@ -7,16 +7,19 @@ import Problem from "./Component/Problem";
 import Timer from "./Component/Timer";
 import Submission from "./Component/Submission";
 import AddMember from "./Component/AddMember";
+import Winners from "./Component/Winners";
 import Settings from "./Component/Settings";
 import axios from "../../../api/axios";
 import FAQ from "./Component/FAQ";
+import LeaderBoard from "../LeaderBoard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClose, faLink } from "@fortawesome/free-solid-svg-icons";
+import SelectedTeams from "./Component/SelectedTeams";
 
 function UserDashboard() {
   const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(true);
-  const [selected, setSelected] = useState("AddMember");
+  const [selected, setSelected] = useState("Dashboard");
   const [team, setTeam] = useState({});
   const [status, setStatus] = useState({});
   const [uploading, setUploading] = useState(false);
@@ -32,7 +35,7 @@ function UserDashboard() {
         setTeam(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
 
     axios
@@ -50,7 +53,7 @@ function UserDashboard() {
         setStatus(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
 
     axios
@@ -63,7 +66,7 @@ function UserDashboard() {
         setTeam(res.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
 
     const intervlId = setInterval(() => {
@@ -75,10 +78,11 @@ function UserDashboard() {
 
   return (
     <div
-      className="h-screen"
+      className="dark"
       style={{
         background:
           "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
+        minHeight: "100vh",
       }}
     >
       <Sidebar
@@ -154,9 +158,9 @@ function UserDashboard() {
         </>
       )}
 
-      {selected === "AddMember" && (
+      {/* {selected === "AddMember" && (
         <AddMember team={team} setTeam={setTeam} open={open} />
-      )}
+      )} */}
       {selected === "Members" && (
         <MemberDeatils
           selected={selected}
@@ -164,10 +168,13 @@ function UserDashboard() {
           team={team}
           refreshTeam={refreshTeam}
           open={open}
+          user={user}
         />
       )}
       {selected === "Settings" && <Settings open={open} />}
       {selected === "FAQ" && <FAQ open={open} />}
+      {/* {selected === "LeaderBoard" && <LeaderBoard open={open} />} */}
+      {selected === "Winners" && <SelectedTeams open={open} />}
     </div>
   );
 }

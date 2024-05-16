@@ -217,14 +217,14 @@ function Login() {
                   >
                     Log in
                   </button>
-                  <div className="flex flex-col sm:flex-row sm:gap-1 items-center justify-center">
+                  {/* <div className="flex flex-col sm:flex-row sm:gap-1 items-center justify-center">
                     <div className="text-xs">Don't have an account?</div>
                     <div className="text-xs">
                       <Link to="/register" className="hover:underline">
                         Register
                       </Link>
                     </div>
-                  </div>
+                  </div> */}
                 </form>
               </div>
             </div>

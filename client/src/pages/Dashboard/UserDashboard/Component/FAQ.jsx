@@ -83,7 +83,7 @@ function FAQ({ open }) {
     <div
       className={`${
         open ? "sm:ml-64" : "sm:ml-32"
-      } flex flex-col justify-between items-center h-full dark`}
+      } flex flex-col justify-between items-center h-min-screen dark`}
     >
       <div className="flex flex-row justify-between items-center w-full">
         <div
