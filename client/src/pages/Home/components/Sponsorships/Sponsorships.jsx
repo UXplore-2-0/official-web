@@ -3,9 +3,11 @@ import styled, { keyframes, css } from "styled-components";
 import "./sponsorships.css";
 function Sponsorships() {
   const row1 = [
-    {path: "./sponsor/zone.png", name: "Workshop Partner"},
+    
     {path: "./sponsor/ieee.png", name: "Supportive Partner"},
-    {path: "./sponsor/EXE.jpg", name: "Workshop  Partner"},
+    {path: "./sponsor/EXE.jpg", name: "Workshop Partner"},
+    {path: "./sponsor/zone.png", name: "Golden Partner"},
+    
    
   ];
 
@@ -19,9 +21,10 @@ function Sponsorships() {
         <Marquee>
           <MarqueeGroup>
             {row1.map((el) => (
-              <ImageGroup>
-                <Image src={el.path} />
-                <Titletext>{el.name}</Titletext>
+              <ImageGroup key={el.name} golden = {el.name == "Golden Partner"}>
+               
+                <Image src={el.path} golden = { el.name == "Golden Partner"} />
+                <Titletext golden = {el.name == "Golden Partner"}>{el.name}</Titletext>
               </ImageGroup>
             ))}
           </MarqueeGroup>
@@ -74,6 +77,12 @@ const Titletext = styled.div`
   font-family: "Poppins", sans-serif;
   margin-bottom: 10px;
   color: #fff;
+
+  ${(props) =>
+    props.golden &&
+    css`
+    color: #FFD700;
+    `}
 `;
 
 const Note = styled.div`
@@ -118,6 +127,9 @@ const common = css`
   animation: ${scrollX} 30s linear infinite;
 `;
 
+
+
+
 const MarqueeGroup = styled.div`
   ${common}
 
@@ -135,6 +147,16 @@ const ImageGroup = styled.div`
   place-items: center;
   width: clamp(10rem, 1rem + 40vmin, 30rem);
   padding: calc(clamp(10rem, 1rem + 30vmin, 30rem) / 10);
+  
+
+  ${(props) =>
+    props.golden &&
+    css`
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 10px #FFD700;
+   
+    `}
 `;
 
 const Image = styled.img`
@@ -147,4 +169,14 @@ const Image = styled.img`
   aspect-ratio: 16/9;
   padding: 5px 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  ${(props) =>
+    props.golden && 
+    css`
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 10px #FFD700;
+    background-color: #FFD700;
+   
+   
+    `}
 `;
