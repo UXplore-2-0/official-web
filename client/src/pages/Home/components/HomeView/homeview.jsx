@@ -13,6 +13,7 @@ import Landing from "../Landing/landing";
 import Guidlines from "../Guidlines/Guidlines";
 import Contacts from "../Contacts/Contacts";
 import StickyButton from "../StickyButtons/stickybuttons";
+import Shirt from "../Shirt/Shirt";
 
 
 
@@ -30,6 +31,7 @@ const HomeView = ({isAnimated}) => {
           <Timeline />
           <Guidlines />
           <Sponsorships />
+          <Shirt />
           <Contacts />
         </div>
       ) : (

@@ -18,7 +18,7 @@ function Winners() {
       <div className="flex flex-row items-center justify-center w-full h-[20%] py-5" style={{
         background: "linear-gradient(to bottom right, #182B44 5%, #1E3855 15%, #0F2132 40%, #1E455E 95%)",
       }}>
-        <h1 className="text-white text-6xl font-bold mx-3 flex justify-center">Winners of Round 1</h1>
+        <h1 className="text-white text-6xl font-bold mx-3 flex justify-center">Winners of Round 2</h1>
       </div>
 
       <div className="relative overflow-hidden shadow-md sm:rounded-lg dark">

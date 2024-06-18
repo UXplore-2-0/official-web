@@ -22,6 +22,10 @@ function StickyButton() {
       <button className="sticky-buttons-container-button" onClick={() => scrollToSection('main')}>
         Main
       </button>
+      <button className="sticky-buttons-container-button" onClick={() => scrollToSection('shirt-back')}>
+        Merchandise
+      </button>
+
       <button className="sticky-buttons-container-button" onClick={() => scrollToSection('Intro')}>
         Intro
       </button>

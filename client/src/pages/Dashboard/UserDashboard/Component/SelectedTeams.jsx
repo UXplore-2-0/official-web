@@ -21,7 +21,7 @@ function SelectedTeams() {
     >
       <div className="flex justify-between items-center px-5 py-2">
         <div className="text-white font-bold py-5" style={{ fontSize: "35px" }}>
-          Selected Teams of the Round 1
+          Selected Teams of the Round 2
         </div>
       </div>
 

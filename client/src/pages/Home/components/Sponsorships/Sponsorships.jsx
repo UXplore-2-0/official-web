@@ -175,7 +175,7 @@ const Image = styled.img`
     outline: none;
     border-color: #FFD700;
     box-shadow: 0 0 10px #FFD700;
-    background-color: #FFD700;
+    background-color: #FFFFFF;
    
    
     `}
