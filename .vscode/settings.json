@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/69c06d54-d9f5-4a86-8fe2-886258b96617/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/morauxplore2",
+  "appService.deploySubpath": "server"
+}

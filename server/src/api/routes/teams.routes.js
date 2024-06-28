@@ -50,12 +50,12 @@ router.post('/:member_id/beverages', auth, addBeverage);
 router.put('/:member_id/beverages', auth, addBeverage);
 
 // submission related routes
-router.post('/submissions', auth, addSubmission);
+// router.post('/submissions', auth, addSubmission);
 
 // admin only authorized routes
 router.post('/question', auth, admin, addQuestion);
 router.get('/submissions', auth, admin, getSubmissions);
-router.post('/submissions/score', auth, admin, addScore);
+// router.post('/submissions/score', auth, admin, addScore);
 router.get('/all', auth, admin, getAllTeams);
 router.delete('/delete/:team_id', auth, admin, deleteTeam);
 
@@ -66,7 +66,7 @@ router.post('/add', auth, addMember);
 router.get('/:member_id', auth, getMember);
 router.put('/:member_id', auth, updateMember);
 router.delete('/:member_id', auth, deleteMember);
-router.get('/scores', auth, getScores);
+// router.get('/scores', auth, getScores);
 router.get('/', auth, getTeam);
 
 module.exports = router;
