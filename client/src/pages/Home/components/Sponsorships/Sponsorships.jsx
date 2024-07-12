@@ -6,10 +6,13 @@ function Sponsorships() {
     
     {path: "./sponsor/ieee.png", name: "Supportive Partner"},
     {path: "./sponsor/EXE.jpg", name: "Workshop Partner"},
-    {path: "./sponsor/zone.png", name: "Golden Partner"},
+    {path: "./sponsor/zone.png", name: "Gold Partner"},
+    {path: "./sponsor/wavenet.png", name: "Workshop Partner"},
+    {path: "./sponsor/IFS.png", name: "Strategic Partner"},
     
    
   ];
+
 
 
   return (
@@ -21,10 +24,10 @@ function Sponsorships() {
         <Marquee>
           <MarqueeGroup>
             {row1.map((el) => (
-              <ImageGroup key={el.name} golden = {el.name == "Golden Partner"}>
+              <ImageGroup key={el.name} golden = {el.name == "Gold Partner"}>
                
-                <Image src={el.path} golden = { el.name == "Golden Partner"} />
-                <Titletext golden = {el.name == "Golden Partner"}>{el.name}</Titletext>
+                <Image src={el.path} golden = { el.name == "Gold Partner"} />
+                <Titletext golden = {el.name == "Gold Partner"}>{el.name}</Titletext>
               </ImageGroup>
             ))}
           </MarqueeGroup>

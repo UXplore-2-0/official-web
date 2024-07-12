@@ -121,21 +121,21 @@ function Submission({ team, setUploading }) {
 
         <div className="flex items-center justify-center w-full flex-col">
           <div className="flex flex-col justify-center items-center my-2 w-full">
-            <input
+            {/* <input
               className="block w-full mt-6 text-base text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
               id="multiple_files"
               type="file"
               multiple
               onChange={handleFileChange}
-            />
+            /> */}
             <p
               class="mt-1 text-sm text-gray-600 dark:text-gray-400"
               id="file_input_help"
             >
-              JPG, PNG, PDF, FIGMA (No More Than 50MB).
+              Semi Finals Submissions 
             </p>
 
-            {submission &&
+            {/* {submission &&
               submission.submission &&
               submission.submission.is_submitted && (
                 <div className="text-slate-500 text-sm py-1 ">
@@ -147,14 +147,15 @@ function Submission({ team, setUploading }) {
                     </a>
                   </span>
                 </div>
-              )}
+              )} */}
 
             <button 
-              // className="px-10 py-2 w-full bg-sky-600 rounded-lg hover:bg-sky-500 transition-all duration-300 mt-6"
+              className="px-10 py-2 w-full bg-sky-600 rounded-lg hover:bg-sky-500 transition-all duration-300 mt-6"
               // onClick={uploadFileToServer}
+              onClick={() =>{ window.open('https://forms.gle/McNwc1qacY3EipEj8', '_blank', 'noopener,noreferrer')}}
             >
               <FontAwesomeIcon icon={faCloudUpload} className="px-3 opacity-50" />
-              Submission closed
+              Submit
             </button>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import {useNavigate} from "react-router-dom";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -9,6 +9,7 @@ import "./Timeline.css";
 gsap.registerPlugin(ScrollTrigger);
 
 function Timeline() {
+  const navi = useNavigate();
   useGSAP(() => {
     gsap.utils.toArray(".inner-container").forEach((div) => {
       gsap.from(div, {
@@ -105,19 +106,21 @@ function Timeline() {
             Round 01
           </p>
         </div>
+        <div className="inner-container shadow-lg bg-transparent backdrop-blur-xl border-2 border-solid border-[#888] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]">
 
-        <div className="inner-container active-container shadow-lg bg-transparent backdrop-blur-xl border-[3px] border-solid border-[#419AC6] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]">
           <p className="text-xs font-normal md:text-base">May 13 </p>
           <h1 className="text-xl md:text-3xl font-bold">Workshop 02</h1>
           <p className="text-xs font-normal md:text-base pt-[3px]">Via Zoom</p>
           <div className="shadow-lg bg-white/20 my-2 mt-3 py-[2px] md:py-[3px] rounded-lg flex justify-center"></div>
           <p className="text-sm font-bold md:text-xl pt-[3px]">Round 02</p>
         </div>
+        <div className="inner-container active-container shadow-lg bg-transparent backdrop-blur-xl border-[3px] border-solid border-[#419AC6] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]">
 
-        <div className="inner-container shadow-lg bg-transparent backdrop-blur-xl border-2 border-solid border-[#888] rounded-2xl w-[225px] md:w-[375px] p-[0.8em] md:p-[1em] lg:p-[1.2em] xl:p-[1.5em]">
           {/* <p className="text-xs font-normal md:text-base"> June 8 </p> */}
           <h1 className="text-xl md:text-3xl font-bold">Workshop 03</h1>
-          <p className="text-xs font-normal md:text-base pt-[3px]">Via Zoom</p>
+          <p onClick={() =>{ window.open('https://forms.gle/LhXjnyha1dkqxXYz9', '_blank', 'noopener,noreferrer')}} className=" text-blue-300 text-s font-normal md:text-base pt-[3px]"> Click to Register </p>
+
+         
           <div className="shadow-lg bg-white/20 my-2 mt-3 py-[2px] md:py-[3px] rounded-lg flex justify-center"></div>
           <p className="text-sm font-bold md:text-xl pt-[3px]">
             Semi Finals
