@@ -7,7 +7,7 @@ function Sponsorships() {
     { path: "./sponsor/EXE.jpg", name: "Workshop Partner" },
     {
       path: "./sponsor/hackathons.png",
-      name: "Official Digital Certificate Partner",
+      name: "Digital Media Partner",
     },
     { path: "./sponsor/zone.png", name: "Gold Partner" },
     { path: "./sponsor/wavenet.png", name: "Workshop Partner" },
