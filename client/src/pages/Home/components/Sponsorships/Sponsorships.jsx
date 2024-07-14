@@ -3,48 +3,51 @@ import styled, { keyframes, css } from "styled-components";
 import "./sponsorships.css";
 function Sponsorships() {
   const row1 = [
-    
-    {path: "./sponsor/ieee.png", name: "Supportive Partner"},
-    {path: "./sponsor/EXE.jpg", name: "Workshop Partner"},
-    {path: "./sponsor/zone.png", name: "Gold Partner"},
-    {path: "./sponsor/wavenet.png", name: "Workshop Partner"},
-    {path: "./sponsor/IFS.png", name: "Strategic Partner"},
-    
-   
+    { path: "./sponsor/ieee.png", name: "Supportive Partner" },
+    { path: "./sponsor/EXE.jpg", name: "Workshop Partner" },
+    {
+      path: "./sponsor/hackathons.png",
+      name: "Official Digital Certificate Partner",
+    },
+    { path: "./sponsor/zone.png", name: "Gold Partner" },
+    { path: "./sponsor/wavenet.png", name: "Workshop Partner" },
+    { path: "./sponsor/IFS.png", name: "Strategic Partner" },
+    { path: "./sponsor/hacksl.png", name: "Digital Media Partner" },
+    {
+      path: "./sponsor/micro.png",
+      name: "Official Digital Certificate Partner",
+    },
   ];
-
-
 
   return (
     <div className="sponsorships">
-    <AppContainer>
-      <Wrapper>
-        <p className = "text-sponsor">OUR PARTNERS</p>
-      
-        <Marquee>
-          <MarqueeGroup>
-            {row1.map((el) => (
-              <ImageGroup key={el.name} golden = {el.name == "Gold Partner"}>
-               
-                <Image src={el.path} golden = { el.name == "Gold Partner"} />
-                <Titletext golden = {el.name == "Gold Partner"}>{el.name}</Titletext>
-              </ImageGroup>
-            ))}
-          </MarqueeGroup>
-          <MarqueeGroup>
-            {row1.map((el) => (
-              <ImageGroup>
-                <Image src={el.path} />
-                <Titletext>{el.name}</Titletext>
-              </ImageGroup>
-            ))}
-          </MarqueeGroup>
-        </Marquee>
-        
-      </Wrapper>
-    </AppContainer>
+      <AppContainer>
+        <Wrapper>
+          <p className="text-sponsor">OUR PARTNERS</p>
 
-  </div>
+          <Marquee>
+            <MarqueeGroup>
+              {row1.map((el) => (
+                <ImageGroup key={el.name} golden={el.name === "Gold Partner"}>
+                  <Image src={el.path} golden={el.name === "Gold Partner"} />
+                  <Titletext golden={el.name == "Gold Partner"}>
+                    {el.name}
+                  </Titletext>
+                </ImageGroup>
+              ))}
+            </MarqueeGroup>
+            <MarqueeGroup>
+              {row1.map((el) => (
+                <ImageGroup>
+                  <Image src={el.path} />
+                  <Titletext>{el.name}</Titletext>
+                </ImageGroup>
+              ))}
+            </MarqueeGroup>
+          </Marquee>
+        </Wrapper>
+      </AppContainer>
+    </div>
   );
 }
 
@@ -58,8 +61,6 @@ const AppContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 `;
 
 const Wrapper = styled.div`
@@ -72,8 +73,6 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-
-
 const Titletext = styled.div`
   font-size: 20px;
   font-weight: 250;
@@ -84,7 +83,7 @@ const Titletext = styled.div`
   ${(props) =>
     props.golden &&
     css`
-    color: #FFD700;
+      color: #ffd700;
     `}
 `;
 
@@ -97,10 +96,9 @@ const Note = styled.div`
 
 const Marquee = styled.div`
   display: flex;
-  width: 1200px;
+  width: 3000px;
   overflow: hidden;
   user-select: none;
-  
 
   mask-image: linear-gradient(
     to right,
@@ -130,12 +128,8 @@ const common = css`
   animation: ${scrollX} 30s linear infinite;
 `;
 
-
-
-
 const MarqueeGroup = styled.div`
   ${common}
-
 `;
 const MarqueeGroup2 = styled.div`
   ${common}
@@ -145,20 +139,18 @@ const MarqueeGroup2 = styled.div`
 
 const ImageGroup = styled.div`
   display: grid;
-  
+
   border-radius: 0.5rem;
   place-items: center;
   width: clamp(10rem, 1rem + 40vmin, 30rem);
   padding: calc(clamp(10rem, 1rem + 30vmin, 30rem) / 10);
-  
 
   ${(props) =>
     props.golden &&
     css`
-    outline: none;
-    border-color: #FFD700;
-    box-shadow: 0 0 10px #FFD700;
-   
+      outline: none;
+      border-color: #ffd700;
+      box-shadow: 0 0 10px #ffd700;
     `}
 `;
 
@@ -173,13 +165,11 @@ const Image = styled.img`
   padding: 5px 20px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   ${(props) =>
-    props.golden && 
+    props.golden &&
     css`
-    outline: none;
-    border-color: #FFD700;
-    box-shadow: 0 0 10px #FFD700;
-    background-color: #FFFFFF;
-   
-   
+      outline: none;
+      border-color: #ffd700;
+      box-shadow: 0 0 10px #ffd700;
+      background-color: #ffffff;
     `}
 `;
