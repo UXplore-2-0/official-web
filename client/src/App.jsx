@@ -35,7 +35,7 @@ function App() {
           <HashRouter>
             <Routes>
             
-              <Route exact path="/" element={<Home />} />
+              <Route exact path="/" element={<Login />} />
               {user && (
                 <Route
                   exact path="/dashboard"

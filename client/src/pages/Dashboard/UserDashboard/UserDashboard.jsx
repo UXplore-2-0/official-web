@@ -15,6 +15,7 @@ import LeaderBoard from "../LeaderBoard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClose, faLink } from "@fortawesome/free-solid-svg-icons";
 import SelectedTeams from "./Component/SelectedTeams";
+import Tim from "./Component/Tim";
 
 function UserDashboard() {
   const { user } = useContext(AuthContext);
@@ -152,7 +153,11 @@ function UserDashboard() {
                   <Notification />
                 </div>
               </div>
-              <Timer status={status} />
+              
+              <Tim />
+              
+              {/* <Timer status={status} /> */}
+
             </div>
           </div>
         </>
