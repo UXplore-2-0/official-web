@@ -14,14 +14,15 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "uxplore2",
-    "password": "*!shyaROX^k",
+    "username": "avnadmin",
+    "password": "AVNS_hE7YUK68Niwxy7taVTO",
     "database": "uxplore",
-    "host": "uxplore2-1.mysql.database.azure.com",
+    "host": "uxplore2-uxplore2.h.aivencloud.com",
     "dialect": "mysql",
+    "port": 22297,
     "dialectOptions": {
       "ssl": {
-        "require": true,
+        "require": false,
         "rejectUnauthorized": false
       }
     }
